@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Play, CheckCircle, Clock, Users, Award, ArrowRight } from 'lucide-react';
+import { Play, CheckCircle, ArrowRight } from 'lucide-react';
 
 const HifuSection = () => {
   const [activeVideo, setActiveVideo] = useState(0);

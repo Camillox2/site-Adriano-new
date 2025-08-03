@@ -15,21 +15,11 @@ root.render(
 
 // Performance monitoring (opcional)
 if (typeof window !== 'undefined') {
-  // Web Vitals
-  const reportWebVitals = (onPerfEntry) => {
-    if (onPerfEntry && onPerfEntry instanceof Function) {
-      import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
-        getCLS(onPerfEntry);
-        getFID(onPerfEntry);
-        getFCP(onPerfEntry);
-        getLCP(onPerfEntry);
-        getTTFB(onPerfEntry);
-      });
-    }
-  };
-
-  // Para desenvolvimento, você pode ativar o monitoramento
-  // reportWebVitals(console.log);
+  // Web Vitals - função para monitoramento de performance
+  import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
+    // Implementar métricas quando necessário
+    console.log('Web Vitals carregado para monitoramento');
+  });
 }
 
 // Service Worker para PWA (opcional)

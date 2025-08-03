@@ -123,7 +123,7 @@ export const useLazyVideo = (videoRef) => {
     }
 
     return () => observer.disconnect();
-  }, []);
+  }, [videoRef]);
 };
 
 // Componente principal do Assets

@@ -1,4 +1,16 @@
 // Índice centralizado de todos os componentes do site Dr. Adriano Camillo
+import React from 'react';
+
+// Importar componentes para usar na exportação default
+import Header from './Header';
+import Hero from './Hero';
+import HifuSection from './HifuSection';
+import ServicesSection from './ServicesSection';
+import AboutSection from './AboutSection';
+import TestimonialsSection from './TestimonialsSection';
+import ContactSection from './ContactSection';
+import Footer from './Footer';
+import WhatsAppButton from './WhatsAppButton';
 
 // ===== COMPONENTES PRINCIPAIS =====
 export { default as Header } from './Header';

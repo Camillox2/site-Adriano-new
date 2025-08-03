@@ -1,5 +1,5 @@
 import React from 'react';
-import { Award, Users, Clock, Star, GraduationCap, MapPin } from 'lucide-react';
+import { Award, Star, GraduationCap, MapPin } from 'lucide-react';
 
 const AboutSection = () => {
   const achievements = [

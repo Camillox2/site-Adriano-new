@@ -543,7 +543,7 @@ export function initPageAnimations() {
 }
 
 // Export default com todas as funções principais
-export default {
+const AnimationUtils = {
   AnimationObserver,
   TypingAnimation,
   CounterAnimation,
@@ -557,3 +557,5 @@ export default {
   ENTRANCE_ANIMATIONS,
   INTERACTION_ANIMATIONS
 };
+
+export default AnimationUtils;

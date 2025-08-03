@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import WhatsAppButton from '../components/WhatsAppButton';
-import { Play, CheckCircle, ArrowRight, Star, Clock, Award, Users, Phone } from 'lucide-react';
+import { Play, CheckCircle, Phone } from 'lucide-react';
 
 const HifuDetails = () => {
   const [activeTab, setActiveTab] = useState('overview');
