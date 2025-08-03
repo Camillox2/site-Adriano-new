@@ -1,0 +1,8 @@
+# Ignorar dependências e arquivos temporários
+node_modules/
+dist/
+.env
+*.log
+# Ignorar imagens e vídeos grandes fora do LFS
+src/assets/images/*
+!src/assets/images/logo.png
