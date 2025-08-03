@@ -1,0 +1,19 @@
+/* VS Code Settings for Tailwind CSS */
+{
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "tailwindCSS.includeLanguages": {
+    "html": "html",
+    "javascript": "javascript",
+    "css": "css"
+  },
+  "tailwindCSS.experimental.classRegex": [
+    "class[:]\\s*?[\"'`]([^\"'`]*).*?[\"'`]",
+    "class[:]\\s*?[\"'`]([^\"'`]*).*?[\"'`]",
+    "[\"'`]([^\"'`]*)[\"'`]"
+  ]
+}

@@ -2,31 +2,46 @@
 import React from 'react';
 
 // Importação de imagens
+import logo from './images/newlogo.png';
+import logotipoSite from './images/Logotipo Site-02.png';
+import pai from './images/pai.jpg';
+import paidois from './images/paidois.jpg';
+import consultorio1 from './images/20240723_165806.jpg';
+import consultorio2 from './images/20240723_165833.jpg';
+import consultorio3 from './images/20240723_170110.jpg';
+import whatsappScreenshot from './images/Screenshot_20231028_123109_WhatsApp.jpg';
+import photosScreenshot from './images/Screenshot_20241126_094251_Photos.jpg';
+import hifuVideo from './videos/hifu.mp4';
+import hifuAtendimentoVideo from './videos/hifuatendimento.mp4';
+import hifuDoisVideo from './videos/hifudois.mp4';
+
+
 const images = {
   // Logo e identidade visual
-  logo: '/assets/images/logo.png',
-  logotipo: '/assets/images/Logotipo Site-02.png',
+  logo: logo,
+  logotipo: logotipoSite,
   
   // Fotos do consultório e equipamentos
-  consultorio1: '/assets/images/20240723_165806.jpg',
-  consultorio2: '/assets/images/20240723_165833.jpg',
-  consultorio3: '/assets/images/20240723_170110.jpg',
+  consultorio1: consultorio1,
+  consultorio2: consultorio2,
+  consultorio3: consultorio3,
   
   // Screenshots e materiais
-  whatsappScreenshot: '/assets/images/Screenshot_20231028_123109_WhatsApp.jpg',
-  photosScreenshot: '/assets/images/Screenshot_20241126_094251_Photos.jpg',
+  whatsappScreenshot: whatsappScreenshot,
+  photosScreenshot: photosScreenshot,
   
-  // Imagem padrão (pai.jpg)
-  drAdriano: '/assets/images/pai.jpg',
-  paidois: '/assets/images/paidois.jpg'
+  // Fotos do Dr. Adriano
+  drAdriano: pai,
+  pai: pai,
+  paidois: paidois
 };
 
 // Importação de vídeos
 const videos = {
   // Vídeos HIFU
-  hifu: '/assets/videos/hifu.mp4',
-  hifuAtendimento: '/assets/videos/hifuatendimento.mp4',
-  hifuDois: '/assets/videos/hifudois.mp4'
+  hifu: hifuVideo,
+  hifuAtendimento: hifuAtendimentoVideo,
+  hifuDois: hifuDoisVideo
 };
 
 // Componente para carregar imagens de forma otimizada
@@ -35,22 +50,37 @@ export const OptimizedImage = ({
   alt, 
   className = '', 
   loading = 'lazy',
+  placeholder = true,
   ...props 
 }) => {
+  const [imageLoaded, setImageLoaded] = React.useState(false);
+  const [hasError, setHasError] = React.useState(false);
+
+  const handleImageLoad = () => {
+    setImageLoaded(true);
+  };
+
   const handleImageError = (e) => {
+    setHasError(true);
     // Fallback para imagem padrão em caso de erro
-    e.target.src = '/assets/images/logo.png';
+    e.target.src = '/assets/images/newlogo.png';
   };
 
   return (
-    <img
-      src={src}
-      alt={alt}
-      className={className}
-      loading={loading}
-      onError={handleImageError}
-      {...props}
-    />
+    <div className="relative overflow-hidden">
+      {placeholder && !imageLoaded && !hasError && (
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-200 to-slate-300 animate-shimmer"></div>
+      )}
+      <img
+        src={src}
+        alt={alt}
+        className={`${className} ${imageLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-500`}
+        loading={loading}
+        onLoad={handleImageLoad}
+        onError={handleImageError}
+        {...props}
+      />
+    </div>
   );
 };
 

@@ -72,7 +72,7 @@ const TestimonialsSection = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-r from-blue-600 to-green-600 relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-r from-emerald-600 to-slate-600 relative overflow-hidden">
       {/* Background Decorations */}
       <div className="absolute top-0 left-0 w-full h-full opacity-10">
         <div className="absolute top-10 left-10 w-20 h-20 bg-white rounded-full animate-pulse"></div>
@@ -89,7 +89,7 @@ const TestimonialsSection = () => {
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
             O que nossos pacientes dizem
           </h2>
-          <p className="text-blue-100 text-xl max-w-3xl mx-auto">
+          <p className="text-emerald-100 text-xl max-w-3xl mx-auto">
             A satisfação e confiança dos nossos pacientes são nossa maior conquista
           </p>
         </div>
@@ -100,7 +100,7 @@ const TestimonialsSection = () => {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
               {/* Quote Icon */}
               <div className="lg:col-span-1 text-center lg:text-left">
-                <Quote className="text-blue-600 mx-auto lg:mx-0 mb-4" size={64} />
+                <Quote className="text-emerald-600 mx-auto lg:mx-0 mb-4" size={64} />
                 <div className="flex justify-center lg:justify-start mb-4">
                   {[...Array(testimonials[currentTestimonialIndex].rating)].map((_, i) => (
                     <Star key={i} className="text-yellow-500 fill-current" size={24} />
@@ -180,7 +180,7 @@ const TestimonialsSection = () => {
               </p>
               <div>
                 <h5 className="text-white font-semibold text-sm">{testimonial.name}</h5>
-                <p className="text-blue-200 text-xs">{testimonial.treatment} • {testimonial.location}</p>
+                <p className="text-emerald-200 text-xs">{testimonial.treatment} • {testimonial.location}</p>
               </div>
             </div>
           ))}
@@ -192,13 +192,13 @@ const TestimonialsSection = () => {
             <h3 className="text-2xl font-bold text-white mb-4">
               Seja nosso próximo paciente satisfeito!
             </h3>
-            <p className="text-blue-100 mb-6">
+            <p className="text-emerald-100 mb-6">
               Junte-se aos centenas de pacientes que já transformaram seus sorrisos 
               e autoestima conosco. Agende sua consulta hoje mesmo!
             </p>
             <button 
               onClick={() => window.open('https://wa.me/5549998362864', '_blank')}
-              className="bg-white text-blue-600 px-8 py-4 rounded-full font-semibold hover:shadow-xl transition-all duration-300 inline-flex items-center gap-2"
+              className="bg-white text-emerald-600 px-8 py-4 rounded-full font-semibold hover:shadow-xl transition-all duration-300 inline-flex items-center gap-2"
             >
               📱 Quero ser o próximo!
             </button>

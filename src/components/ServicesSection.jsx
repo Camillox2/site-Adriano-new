@@ -1,5 +1,116 @@
-import React, { useState } from 'react';
-import { ArrowRight, X, CheckCircle, Phone } from 'lucide-react';
+import React, { useState, memo, useRef, useEffect } from 'react';
+import { ArrowRight, X, CheckCircle, Phone, Heart, Smile, Syringe } from 'lucide-react';
+
+// Componente ServiceCard 3D magnético otimizado
+const ServiceCard = memo(({ service, onModalOpen }) => {
+  const cardRef = useRef(null);
+  const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    const card = cardRef.current;
+    if (!card) return;
+
+    const handleMouseMove = (e) => {
+      if (!isHovered) return;
+      
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      
+      const rotateX = (y - centerY) / 20;
+      const rotateY = (centerX - x) / 20;
+      
+      card.style.transform = `
+        perspective(1000px) 
+        rotateX(${rotateX}deg) 
+        rotateY(${rotateY}deg) 
+        translateZ(20px)
+        scale3d(1.02, 1.02, 1.02)
+      `;
+    };
+
+    const handleMouseEnter = () => {
+      setIsHovered(true);
+      card.style.transition = 'transform 0.1s ease-out';
+    };
+
+    const handleMouseLeave = () => {
+      setIsHovered(false);
+      card.style.transition = 'transform 0.5s ease-out';
+      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px) scale3d(1, 1, 1)';
+    };
+
+    card.addEventListener('mousemove', handleMouseMove);
+    card.addEventListener('mouseenter', handleMouseEnter);
+    card.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      card.removeEventListener('mousemove', handleMouseMove);
+      card.removeEventListener('mouseenter', handleMouseEnter);
+      card.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, [isHovered]);
+
+  return (
+    <div 
+      ref={cardRef}
+      className="magnetic-card bg-gradient-to-br from-white via-blue-50/30 to-emerald-50/30 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden group border border-blue-100/50 backdrop-blur-sm"
+      style={{
+        transformStyle: 'preserve-3d',
+      }}
+    >
+      {/* Animated background particles */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+        <div className="absolute top-4 right-4 w-2 h-2 bg-blue-400 rounded-full animate-ping"></div>
+        <div className="absolute bottom-8 left-6 w-1 h-1 bg-emerald-400 rounded-full animate-bounce delay-300"></div>
+        <div className="absolute top-1/2 right-1/3 w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse delay-500"></div>
+      </div>
+
+      <div className="relative p-8 h-full flex flex-col">
+        {/* Floating Icon with glow effect */}
+        <div className="mb-6 relative">
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-emerald-400/20 rounded-full blur-xl scale-150 group-hover:scale-200 transition-transform duration-500"></div>
+          <div className="relative transform group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 group-hover:animate-bounce">
+            {service.icon}
+          </div>
+        </div>
+        
+        {/* Content */}
+        <div className="flex-1">
+          <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-blue-600 transition-colors duration-300">
+            {service.title}
+          </h3>
+          <p className="text-gray-600 mb-6 leading-relaxed group-hover:text-gray-700 transition-colors">
+            {service.description}
+          </p>
+        </div>
+        
+        {/* Animated CTA Button */}
+        <button 
+          onClick={() => onModalOpen(service)}
+          className="relative w-full bg-gradient-to-r from-blue-600 to-emerald-600 text-white py-4 rounded-xl font-semibold hover:from-blue-700 hover:to-emerald-700 transition-all duration-500 flex items-center justify-center gap-2 group/btn overflow-hidden"
+        >
+          {/* Button animation background */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700"></div>
+          
+          <span className="relative z-10 group-hover/btn:scale-105 transition-transform">Saiba Mais</span>
+          <ArrowRight 
+            size={16} 
+            className="relative z-10 group-hover/btn:translate-x-2 group-hover/btn:scale-125 transition-all duration-300" 
+          />
+        </button>
+
+        {/* Decorative elements */}
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-emerald-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+        <div className="absolute bottom-0 right-0 w-1 h-full bg-gradient-to-t from-blue-500 to-emerald-500 transform scale-y-0 group-hover:scale-y-100 transition-transform duration-500 origin-bottom"></div>
+      </div>
+    </div>
+  );
+});
+
+ServiceCard.displayName = 'ServiceCard';
 
 const ServicesSection = () => {
   const [activeModal, setActiveModal] = useState(null);
@@ -7,7 +118,7 @@ const ServicesSection = () => {
   const services = [
     {
       id: 'ortodontia',
-      icon: '🦷',
+      icon: <Smile className="w-12 h-12 text-blue-600" />,
       title: 'Ortodontia',
       description: 'Correção do posicionamento dos dentes e mordida',
       shortDescription: 'Aparelhos modernos para o sorriso perfeito',
@@ -32,7 +143,7 @@ const ServicesSection = () => {
     },
     {
       id: 'implantes',
-      icon: '😀',
+      icon: <Heart className="w-12 h-12 text-emerald-600" />,
       title: 'Implantes Dentais',
       description: 'Reposição de dentes perdidos com tecnologia de ponta',
       shortDescription: 'Solução definitiva para dentes perdidos',
@@ -57,7 +168,7 @@ const ServicesSection = () => {
     },
     {
       id: 'harmonizacao',
-      icon: '💉',
+      icon: <Syringe className="w-12 h-12 text-blue-600" />,
       title: 'Harmonização Orofacial',
       description: 'Rejuvenescimento facial não cirúrgico',
       shortDescription: 'Beleza natural sem cirurgia',
@@ -79,66 +190,16 @@ const ServicesSection = () => {
         'Acompanhamento pós-procedimento',
         'Manutenção conforme necessário'
       ]
-    },
-    {
-      id: 'ozonioterapia',
-      icon: '🧪',
-      title: 'Ozonioterapia',
-      description: 'Tratamento inovador com ozônio medicinal',
-      shortDescription: 'Terapia natural e eficaz',
-      fullDescription: 'Terapia inovadora utilizando ozônio medicinal para tratamento de diversas condições bucais. O ozônio acelera a cicatrização, tem ação antimicrobiana natural e reduz inflamações de forma completamente natural.',
-      benefits: [
-        'Acelera significativamente a cicatrização',
-        'Poderosa ação antimicrobiana',
-        'Reduz inflamações naturalmente',
-        'Tratamento 100% natural',
-        'Sem efeitos colaterais',
-        'Complementa outros tratamentos',
-        'Melhora a saúde geral',
-        'Terapia inovadora'
-      ],
-      process: [
-        'Avaliação da condição',
-        'Preparação da área',
-        'Aplicação do ozônio',
-        'Acompanhamento da evolução',
-        'Sessões conforme necessário'
-      ]
-    },
-    {
-      id: 'hifu',
-      icon: '⚡',
-      title: 'HIFU - Ultrasson Microfocado',
-      description: 'Lifting facial não invasivo revolucionário',
-      shortDescription: 'Tecnologia de rejuvenescimento avançada',
-      fullDescription: 'Tecnologia revolucionária de Ultrasson Microfocado para lifting e rejuvenescimento facial. Estimula a produção de colágeno nas camadas profundas da pele sem necessidade de cirurgia, proporcionando resultados naturais e duradouros.',
-      benefits: [
-        'Lifting natural sem cirurgia',
-        'Estimula produção de colágeno',
-        'Sem tempo de recuperação',
-        'Resultados progressivos e duradouros',
-        'Tecnologia FDA aprovada',
-        'Procedimento seguro e eficaz',
-        'Melhora da firmeza da pele',
-        'Resultados naturais'
-      ],
-      process: [
-        'Consulta e avaliação facial',
-        'Planejamento do tratamento',
-        'Aplicação do HIFU',
-        'Acompanhamento dos resultados',
-        'Manutenção quando necessário'
-      ]
     }
   ];
 
   const Modal = ({ service, onClose }) => (
-    <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
+    <div className="fixed inset-0 bg-blue-900/80 flex items-center justify-center z-50 p-4">
       <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
         <div className="p-8">
           <div className="flex justify-between items-start mb-6">
             <div className="flex items-center gap-4">
-              <span className="text-5xl">{service.icon}</span>
+              {service.icon}
               <div>
                 <h2 className="text-3xl font-bold text-gray-800">{service.title}</h2>
                 <p className="text-gray-600">{service.shortDescription}</p>
@@ -178,7 +239,7 @@ const ServicesSection = () => {
               <div className="space-y-3">
                 {service.process.map((step, index) => (
                   <div key={index} className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-green-600 text-white rounded-full flex items-center justify-center text-sm font-bold">
+                    <div className="w-8 h-8 bg-emerald-600 text-white rounded-full flex items-center justify-center text-sm font-bold">
                       {index + 1}
                     </div>
                     <span className="text-gray-600">{step}</span>
@@ -188,7 +249,7 @@ const ServicesSection = () => {
             </div>
             
             {/* Call to Action */}
-            <div className="bg-gradient-to-r from-blue-50 to-green-50 p-6 rounded-xl">
+            <div className="bg-blue-50 p-6 rounded-xl">
               <h4 className="text-lg font-semibold text-gray-800 mb-3">
                 Interessado neste tratamento?
               </h4>
@@ -197,7 +258,7 @@ const ServicesSection = () => {
               </p>
               <button 
                 onClick={() => window.open('https://wa.me/5549998362864', '_blank')}
-                className="w-full bg-gradient-to-r from-blue-600 to-green-600 text-white py-4 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2"
+                className="w-full bg-emerald-600 text-white py-4 rounded-lg font-semibold hover:bg-emerald-700 transition-all duration-300 flex items-center justify-center gap-2"
               >
                 <Phone size={20} />
                 Agendar Consulta via WhatsApp
@@ -210,72 +271,58 @@ const ServicesSection = () => {
   );
 
   return (
-    <section id="servicos" className="py-20 bg-white">
+    <section id="servicos" className="py-20 bg-gradient-to-br from-white via-blue-50/30 to-emerald-50/30 relative overflow-hidden">
+      {/* Enhanced Animated Background Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Orbital Background Animation */}
+        <div className="absolute -top-10 -right-10 w-80 h-80 bg-gradient-to-br from-blue-100/30 to-emerald-100/30 rounded-full animate-orbital opacity-20"></div>
+        <div className="absolute top-1/3 -left-20 w-64 h-64 bg-gradient-to-br from-emerald-100/30 to-blue-100/30 rounded-full animate-wave opacity-20"></div>
+        <div className="absolute bottom-20 right-1/3 w-56 h-56 bg-gradient-to-br from-blue-200/20 to-emerald-200/20 rounded-full animate-light-pulse opacity-20"></div>
+        
+        {/* Moving Gradient Background */}
+        <div className="absolute inset-0 animate-gradient-bg opacity-[0.01]"></div>
+        
+        {/* Floating Particles */}
+        <div className="absolute top-10 left-10 w-2 h-2 bg-blue-400 rounded-full animate-particle opacity-40"></div>
+        <div className="absolute top-1/2 right-20 w-3 h-3 bg-emerald-400 rounded-full animate-float opacity-40 delay-500"></div>
+        <div className="absolute bottom-20 left-1/3 w-2 h-2 bg-blue-300 rounded-full animate-bounce-soft opacity-40 delay-1000"></div>
+      </div>
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <span className="bg-gradient-to-r from-blue-600 to-green-600 text-white px-6 py-2 rounded-full text-sm font-semibold mb-4 inline-block">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 font-bold mb-4 inline-block text-lg">
             🦷 NOSSOS SERVIÇOS
           </span>
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-4">
-            Tratamentos Especializados
-          </h2>
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-emerald-600 rounded-full animate-pulse-soft"></div>
+            <h2 className="text-4xl lg:text-6xl font-bold text-gray-900">
+              Tratamentos 
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600">
+                Especializados
+              </span>
+            </h2>
+            <div className="w-8 h-8 bg-gradient-to-r from-emerald-600 to-blue-600 rounded-full animate-pulse-soft delay-500"></div>
+          </div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Oferecemos uma gama completa de tratamentos para sua saúde bucal e estética facial, 
             sempre com tecnologia de ponta e atendimento humanizado.
           </p>
         </div>
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Enhanced 3D Magnetic Services Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 perspective-1000">
           {services.map((service) => (
-            <div 
-              key={service.id} 
-              className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group border border-gray-100"
-            >
-              <div className="p-8">
-                {/* Service Icon */}
-                <div className="text-6xl mb-6 transform group-hover:scale-110 transition-transform duration-300">
-                  {service.icon}
-                </div>
-                
-                {/* Service Info */}
-                <h3 className="text-xl font-bold text-gray-800 mb-3">{service.title}</h3>
-                <p className="text-gray-600 mb-6 leading-relaxed">{service.description}</p>
-                
-                {/* Quick Benefits Preview */}
-                <div className="mb-6">
-                  <div className="space-y-2">
-                    {service.benefits.slice(0, 3).map((benefit, index) => (
-                      <div key={index} className="flex items-center gap-2 text-sm text-gray-500">
-                        <CheckCircle className="text-green-500" size={14} />
-                        <span>{benefit}</span>
-                      </div>
-                    ))}
-                    {service.benefits.length > 3 && (
-                      <div className="text-sm text-blue-600 font-medium">
-                        +{service.benefits.length - 3} benefícios adicionais
-                      </div>
-                    )}
-                  </div>
-                </div>
-                
-                {/* CTA Button */}
-                <button 
-                  onClick={() => setActiveModal(service)}
-                  className="w-full bg-gradient-to-r from-blue-600 to-green-600 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group-hover:from-blue-700 group-hover:to-green-700"
-                >
-                  Saiba Mais
-                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                </button>
-              </div>
-            </div>
+            <ServiceCard
+              key={service.id}
+              service={service}
+              onModalOpen={setActiveModal}
+            />
           ))}
         </div>
 
         {/* Bottom CTA */}
         <div className="text-center mt-16">
-          <div className="bg-gradient-to-r from-blue-50 to-green-50 p-8 rounded-2xl max-w-4xl mx-auto">
+          <div className="bg-gray-100 p-8 rounded-2xl max-w-4xl mx-auto">
             <h3 className="text-2xl font-bold text-gray-800 mb-4">
               Não encontrou o que procura?
             </h3>
@@ -285,7 +332,7 @@ const ServicesSection = () => {
             </p>
             <button 
               onClick={() => window.open('https://wa.me/5549998362864', '_blank')}
-              className="bg-gradient-to-r from-blue-600 to-green-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transition-all duration-300 flex items-center gap-2 mx-auto"
+              className="bg-emerald-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-emerald-700 transition-all duration-300 flex items-center gap-2 mx-auto"
             >
               <Phone size={20} />
               Falar com Dr. Adriano

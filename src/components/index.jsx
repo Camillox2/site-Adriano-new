@@ -7,6 +7,7 @@ import Hero from './Hero';
 import HifuSection from './HifuSection';
 import ServicesSection from './ServicesSection';
 import AboutSection from './AboutSection';
+import GallerySection from './GallerySection';
 import TestimonialsSection from './TestimonialsSection';
 import ContactSection from './ContactSection';
 import Footer from './Footer';
@@ -18,6 +19,7 @@ export { default as Hero } from './Hero';
 export { default as HifuSection } from './HifuSection';
 export { default as ServicesSection } from './ServicesSection';
 export { default as AboutSection } from './AboutSection';
+export { default as GallerySection } from './GallerySection';
 export { default as TestimonialsSection } from './TestimonialsSection';
 export { default as ContactSection } from './ContactSection';
 export { default as Footer } from './Footer';
@@ -381,6 +383,7 @@ const Components = {
   HifuSection,
   ServicesSection,
   AboutSection,
+  GallerySection,
   TestimonialsSection,
   ContactSection,
   Footer,
