@@ -1,26 +1,30 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import HifuDetails from './pages/HifuDetails';
 import './styles/global.css';
 
-function App() {
-  // Scroll to top when route changes
-  React.useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+// Rola para o topo sempre que a rota muda (exceto navegação com âncora)
+const ScrollToTop = () => {
+  const { pathname, state } = useLocation();
 
+  useEffect(() => {
+    if (!state?.scrollTo) {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname, state]);
+
+  return null;
+};
+
+function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="App">
         <Routes>
-          {/* Página principal */}
           <Route path="/" element={<Home />} />
-          
-          {/* Página detalhada do HIFU */}
           <Route path="/hifu" element={<HifuDetails />} />
-          
-          {/* Fallback para rotas não encontradas - redireciona para home */}
           <Route path="*" element={<Home />} />
         </Routes>
       </div>

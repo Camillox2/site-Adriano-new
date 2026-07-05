@@ -1,111 +1,130 @@
 import React from 'react';
-import { Phone, Instagram } from 'lucide-react';
+import { Phone, Instagram, ShieldCheck, MapPin, Star } from 'lucide-react';
 import { images } from '../assets';
+import { SITE, WHATSAPP_DEFAULT } from '../utils/constants';
+
+const TRUST_ITEMS = [
+  { icon: Star, value: '15+', label: 'anos de experiência' },
+  { icon: MapPin, value: '4', label: 'cidades atendidas' },
+  { icon: ShieldCheck, value: '100%', label: 'atendimento personalizado' },
+];
 
 const Hero = () => {
+  const scrollToHifu = () => {
+    document.getElementById('hifu')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <section id="inicio" className="min-h-screen bg-slate-800 flex items-center relative overflow-hidden">
-      {/* Background Image with Overlay - Imagem mais visível */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center opacity-40 md:opacity-50"
+    <section
+      id="inicio"
+      className="relative min-h-[100svh] flex flex-col justify-center overflow-hidden bg-slate-900"
+    >
+      {/* Foto do consultório ao fundo */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
         style={{ backgroundImage: `url(${images.consultorio1})` }}
+        role="img"
+        aria-label="Consultório do Dr. Adriano Camillo"
       ></div>
-      <div className="absolute inset-0 bg-gradient-to-r from-slate-900/70 via-slate-800/60 to-slate-700/70"></div>
-      
-      {/* Partículas flutuantes decorativas */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-10 left-10 w-2 h-2 bg-emerald-400/60 rounded-full animate-particle-float"></div>
-        <div className="absolute top-1/4 right-16 w-3 h-3 bg-blue-400/50 rounded-full animate-particle-float" style={{animationDelay: '1s'}}></div>
-        <div className="absolute bottom-1/3 left-1/4 w-2 h-2 bg-emerald-300/60 rounded-full animate-particle-float" style={{animationDelay: '2s'}}></div>
-        <div className="absolute top-1/2 right-1/3 w-1 h-1 bg-white/70 rounded-full animate-particle-float" style={{animationDelay: '3s'}}></div>
-        <div className="absolute bottom-20 right-20 w-2 h-2 bg-blue-300/50 rounded-full animate-particle-float" style={{animationDelay: '4s'}}></div>
-        <div className="absolute top-32 left-1/3 w-1 h-1 bg-emerald-500/60 rounded-full animate-particle-float" style={{animationDelay: '0.5s'}}></div>
-      </div>
-      
-      <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-screen py-20 lg:py-0">
-          {/* Text Content - Responsivo */}
-          <div className="text-white space-y-4 md:space-y-6 animate-fade-in-up text-center lg:text-left">
-            {/* Badge profissional */}
-            <div className="inline-flex items-center gap-2 bg-emerald-600/20 border border-emerald-400/30 px-4 py-2 rounded-full text-emerald-300 text-sm font-medium backdrop-blur-sm">
-              <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-              Cirurgião-Dentista CRO-SC
-            </div>
-            
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-              Transformando
-              <span className="text-emerald-400">
-                {" "}Sorrisos
-              </span> e Autoestima
+      <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-900/80 to-slate-900/60"></div>
+      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-slate-950/80 to-transparent"></div>
+
+      <div className="container mx-auto px-4 relative z-10 pt-28 pb-16 lg:pt-32">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          {/* Texto */}
+          <div className="text-white space-y-6 text-center lg:text-left animate-fade-in-up">
+            <span className="inline-flex items-center gap-2 bg-white/10 border border-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium text-emerald-300">
+              <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse-soft" aria-hidden="true"></span>
+              Cirurgião-Dentista • São Lourenço do Oeste e região
+            </span>
+
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight">
+              Rejuvenesça e transforme
+              <span className="text-emerald-400"> seu sorriso</span>
+              <br className="hidden sm:block" /> sem cirurgia
             </h1>
-            
-            <p className="text-base sm:text-lg md:text-xl text-slate-200 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              Dr. Adriano Camillo - Especialista em Ortodontia, Implantes, Harmonização Orofacial e HIFU. 
-              Atendimento em São Lourenço do Oeste, Realeza e Ampére.
+
+            <p className="text-lg md:text-xl text-slate-200 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+              HIFU (Ultrassom Microfocado), Ortodontia, Implantes e Harmonização
+              Orofacial com o Dr. Adriano Camillo — tecnologia de ponta e mais de
+              15 anos de experiência cuidando de você.
             </p>
-            
-            {/* Specialties Pills - Responsivo */}
-            <div className="flex flex-wrap gap-2 md:gap-3 justify-center lg:justify-start">
-              <span className="bg-emerald-600/90 border border-emerald-400/30 text-white px-3 py-2 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-medium backdrop-blur-sm hover:bg-emerald-500/90 transition-colors">
-                🦷 Ortodontia
-              </span>
-              <span className="bg-emerald-600/90 border border-emerald-400/30 text-white px-3 py-2 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-medium backdrop-blur-sm hover:bg-emerald-500/90 transition-colors">
-                🔧 Implantes
-              </span>
-              <span className="bg-emerald-600/90 border border-emerald-400/30 text-white px-3 py-2 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-medium backdrop-blur-sm hover:bg-emerald-500/90 transition-colors">
-                💉 Harmonização
-              </span>
-              <span className="bg-emerald-600/90 border border-emerald-400/30 text-white px-3 py-2 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-medium backdrop-blur-sm hover:bg-emerald-500/90 transition-colors">
-                ⚡ HIFU
-              </span>
-            </div>
-            
-            {/* Call to Action Buttons - Responsivo */}
-            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 pt-4 max-w-md mx-auto lg:mx-0">
-              <button 
-                onClick={() => window.open('https://wa.me/5549998362864', '_blank')}
-                className="bg-emerald-600 border border-emerald-500 text-white px-6 py-3 md:px-8 md:py-4 rounded-full font-semibold hover:bg-emerald-700 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 shadow-lg backdrop-blur-sm"
+
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start pt-2">
+              <a
+                href={WHATSAPP_DEFAULT}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary text-base md:text-lg"
               >
-                <Phone size={18} className="md:w-5 md:h-5" />
-                Agendar Consulta
-              </button>
-              
-              <button 
-                onClick={() => window.open('https://www.instagram.com/dr.adrianocamillo/', '_blank')}
-                className="border-2 border-white/80 text-white px-6 py-3 md:px-8 md:py-4 rounded-full font-semibold hover:bg-white hover:text-slate-800 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 backdrop-blur-sm"
-              >
-                <Instagram size={18} className="md:w-5 md:h-5" />
-                Instagram
+                <Phone size={20} aria-hidden="true" />
+                Agendar Avaliação
+              </a>
+              <button onClick={scrollToHifu} className="btn-outline-light text-base md:text-lg">
+                Conhecer o HIFU
               </button>
             </div>
+
+            <p className="text-sm text-slate-300 flex items-center justify-center lg:justify-start gap-2">
+              <ShieldCheck size={16} className="text-emerald-400" aria-hidden="true" />
+              Resposta rápida pelo WhatsApp • Avaliação sem compromisso
+            </p>
+
+            {/* Instagram discreto */}
+            <a
+              href={SITE.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-slate-300 hover:text-white transition-colors text-sm"
+            >
+              <Instagram size={16} aria-hidden="true" />
+              {SITE.instagramHandle}
+            </a>
           </div>
-          
-          {/* Visual Element - Responsivo e mais atrativo */}
-          <div className="flex justify-center animate-fade-in-right order-first lg:order-last">
-            <div className="relative group">
-              {/* Efeito de brilho ao redor */}
-              <div className="absolute -inset-6 bg-gradient-to-r from-emerald-400 to-blue-400 rounded-full opacity-20 group-hover:opacity-30 transition-opacity duration-500 animate-subtle-pulse blur-xl"></div>
-              
-              {/* Container da foto */}
-              <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full overflow-hidden shadow-2xl ring-4 ring-white/20 hover:ring-emerald-400/50 transition-all duration-500 hover:scale-105 z-10">
-                <img 
-                  src={images.drAdriano} 
-                  alt="Dr. Adriano Camillo" 
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
-                />
-                {/* Overlay sutil para destacar */}
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              </div>
-              
-              {/* Badge flutuante */}
-              <div className="absolute -bottom-4 -right-4 bg-gradient-to-r from-emerald-600 to-blue-600 text-white px-4 py-2 rounded-full shadow-lg animate-bounce-soft z-20">
-                <div className="text-center">
-                  <div className="text-lg font-bold">⚕️</div>
-                  <div className="text-xs font-medium">CRO-SC</div>
-                </div>
+
+          {/* Foto do Dr. Adriano */}
+          <div className="flex justify-center lg:justify-end animate-fade-in-right order-first lg:order-last">
+            <div className="relative">
+              <div
+                className="absolute -inset-4 bg-gradient-to-tr from-emerald-500/30 to-primary-500/30 rounded-[2rem] blur-2xl"
+                aria-hidden="true"
+              ></div>
+              <img
+                src={images.drAdriano}
+                alt="Dr. Adriano Camillo em seu consultório"
+                width="480"
+                height="480"
+                fetchpriority="high"
+                className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-[26rem] lg:h-[26rem] object-cover rounded-[2rem] shadow-2xl ring-1 ring-white/20"
+              />
+              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 lg:left-auto lg:-translate-x-0 lg:-right-4 bg-white text-slate-900 px-5 py-3 rounded-2xl shadow-xl flex items-center gap-3 w-max max-w-[90vw]">
+                <ShieldCheck className="text-emerald-600 shrink-0" size={24} aria-hidden="true" />
+                <span className="text-sm font-semibold leading-tight whitespace-nowrap">
+                  Especialista em HIFU
+                  <span className="block text-xs font-normal text-slate-500 whitespace-nowrap">
+                    e Harmonização Orofacial
+                  </span>
+                </span>
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Barra de confiança */}
+        <div className="mt-16 lg:mt-20 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto lg:mx-0">
+          {TRUST_ITEMS.map(({ icon: Icon, value, label }) => (
+            <div
+              key={label}
+              className="flex items-center justify-center lg:justify-start gap-4 bg-white/5 border border-white/10 backdrop-blur-sm rounded-2xl px-6 py-4"
+            >
+              <Icon className="text-emerald-400 shrink-0" size={28} aria-hidden="true" />
+              <span>
+                <span className="block text-2xl font-bold text-white">{value}</span>
+                <span className="block text-sm text-slate-300">{label}</span>
+              </span>
+            </div>
+          ))}
         </div>
       </div>
     </section>

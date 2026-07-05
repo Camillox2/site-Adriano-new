@@ -1,3 +1,9 @@
-# https://www.robotstxt.org/robotstxt.html
+# robots.txt — dradrianocamillo.com
 User-agent: *
-Disallow:
+Allow: /
+
+# Não indexar arquivos internos do build
+Disallow: /static/js/
+Disallow: /static/css/
+
+Sitemap: https://dradrianocamillo.com/sitemap.xml

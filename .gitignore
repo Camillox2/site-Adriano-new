@@ -1,8 +1,13 @@
-# Ignorar dependências e arquivos temporários
+# Dependências e build
 node_modules/
 dist/
+build/
 .env
 *.log
-# Ignorar imagens e vídeos grandes fora do LFS
-src/assets/images/*
-!src/assets/images/logo.png
+
+# Arquivos originais pesados (não vão para o site — os otimizados ficam em src/assets)
+media_originais/
+imagens e videos novos/
+
+# Componentes antigos guardados como backup
+_arquivos_antigos/

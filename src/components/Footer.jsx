@@ -1,236 +1,164 @@
 import React from 'react';
-import { Phone, Instagram, MapPin, Clock, Heart } from 'lucide-react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Phone, Instagram, MapPin, Clock, Mail } from 'lucide-react';
+import { images } from '../assets';
+import { SITE, ADDRESS, WHATSAPP_DEFAULT } from '../utils/constants';
+
+const QUICK_LINKS = [
+  { text: 'Início', target: 'inicio' },
+  { text: 'HIFU', target: 'hifu' },
+  { text: 'Serviços', target: 'servicos' },
+  { text: 'Sobre', target: 'sobre' },
+  { text: 'Contato', target: 'contato' },
+];
+
+const SERVICES = [
+  'HIFU — Ultrassom Microfocado',
+  'Ortodontia',
+  'Implantes Dentários',
+  'Harmonização Orofacial',
+  'Ozonioterapia',
+];
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
+  const year = new Date().getFullYear();
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const services = [
-    '🦷 Ortodontia',
-    '😀 Implantes Dentais',
-    '💉 Harmonização Orofacial',
-    '⚡ HIFU - Ultrasson Microfocado',
-    '🧪 Ozonioterapia',
-    '👨🏼‍🏫 Cursos de HOF'
-  ];
-
-  const locations = [
-    'São Lourenço do Oeste',
-    'Realeza',
-    'Ampére'
-  ];
-
-  const quickLinks = [
-    { text: 'Início', href: '#inicio' },
-    { text: 'Serviços', href: '#servicos' },
-    { text: 'HIFU', href: '#hifu' },
-    { text: 'Sobre', href: '#sobre' },
-    { text: 'Contato', href: '#contato' }
-  ];
-
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId.replace('#', ''));
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+  const goToSection = (id) => {
+    if (location.pathname !== '/') {
+      navigate('/', { state: { scrollTo: id } });
+      return;
     }
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <footer className="bg-gray-900 text-white relative overflow-hidden">
-      {/* Background Decorations */}
-      <div className="absolute top-0 left-0 w-full h-full opacity-5">
-        <div className="absolute top-10 right-20 w-20 h-20 bg-blue-600 rounded-full"></div>
-        <div className="absolute bottom-20 left-20 w-16 h-16 bg-green-600 rounded-full"></div>
-      </div>
-
-      <div className="container mx-auto px-4 relative z-10">
-        {/* Main Footer Content */}
-        <div className="py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            
-            {/* Brand Section */}
-            <div className="lg:col-span-1">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-16 h-16 bg-gradient-to-r from-blue-600 to-green-600 rounded-full flex items-center justify-center text-white font-bold text-2xl">
-                  DA
-                </div>
-                <div>
-                  <h3 className="text-2xl font-bold">Dr. Adriano Camillo</h3>
-                  <p className="text-gray-400">Cirurgião Dentista</p>
-                </div>
-              </div>
-              <p className="text-gray-400 mb-6 leading-relaxed">
-                Transformando sorrisos e autoestima com tecnologia de ponta, 
-                cuidado especializado e atendimento humanizado.
-              </p>
-              
-              {/* Social Links */}
-              <div className="flex gap-4">
-                <button 
-                  onClick={() => window.open('https://wa.me/5549998362864', '_blank')}
-                  className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center hover:bg-green-700 transition-colors"
-                  title="WhatsApp"
-                >
-                  <Phone size={20} />
-                </button>
-                <button 
-                  onClick={() => window.open('https://www.instagram.com/dr.adrianocamillo/', '_blank')}
-                  className="w-12 h-12 bg-pink-600 rounded-full flex items-center justify-center hover:bg-pink-700 transition-colors"
-                  title="Instagram"
-                >
-                  <Instagram size={20} />
-                </button>
+    <footer className="bg-slate-950 text-slate-300">
+      <div className="container mx-auto px-4">
+        <div className="py-14 md:py-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+          {/* Marca */}
+          <div>
+            <div className="flex items-center gap-3 mb-5">
+              <img
+                src={images.logo}
+                alt="Logotipo Dr. Adriano Camillo"
+                width="48"
+                height="48"
+                className="w-12 h-12 object-contain"
+                loading="lazy"
+              />
+              <div>
+                <p className="text-lg font-bold text-white leading-tight">Dr. Adriano Camillo</p>
+                <p className="text-sm text-slate-400">Cirurgião-Dentista</p>
               </div>
             </div>
-            
-            {/* Quick Links */}
-            <div>
-              <h4 className="text-xl font-bold mb-6 text-white">Links Rápidos</h4>
-              <ul className="space-y-3">
-                {quickLinks.map((link, index) => (
-                  <li key={index}>
-                    <button 
-                      onClick={() => scrollToSection(link.href)}
-                      className="text-gray-400 hover:text-blue-400 transition-colors block"
-                    >
-                      {link.text}
-                    </button>
-                  </li>
-                ))}
-                <li>
-                  <button 
-                    onClick={() => window.open('https://www.instagram.com/dr.adrianocamillo/', '_blank')}
-                    className="text-gray-400 hover:text-blue-400 transition-colors"
+            <p className="text-sm leading-relaxed text-slate-400 mb-6">
+              Odontologia e estética facial avançada com tecnologia de ponta e
+              atendimento humanizado em São Lourenço do Oeste e região.
+            </p>
+            <div className="flex gap-3">
+              <a
+                href={WHATSAPP_DEFAULT}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-11 h-11 bg-secondary-600 hover:bg-secondary-500 rounded-full flex items-center justify-center transition-colors"
+                aria-label="WhatsApp"
+              >
+                <Phone size={19} className="text-white" />
+              </a>
+              <a
+                href={SITE.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-11 h-11 bg-slate-800 hover:bg-slate-700 rounded-full flex items-center justify-center transition-colors"
+                aria-label="Instagram"
+              >
+                <Instagram size={19} className="text-white" />
+              </a>
+              <a
+                href={`mailto:${SITE.email}`}
+                className="w-11 h-11 bg-slate-800 hover:bg-slate-700 rounded-full flex items-center justify-center transition-colors"
+                aria-label="E-mail"
+              >
+                <Mail size={19} className="text-white" />
+              </a>
+            </div>
+          </div>
+
+          {/* Links rápidos */}
+          <nav aria-label="Links do rodapé">
+            <h3 className="text-white font-bold mb-5">Navegação</h3>
+            <ul className="space-y-2.5 text-sm">
+              {QUICK_LINKS.map((link) => (
+                <li key={link.target}>
+                  <button
+                    onClick={() => goToSection(link.target)}
+                    className="hover:text-white transition-colors"
                   >
-                    Resultados
+                    {link.text}
                   </button>
                 </li>
-              </ul>
-            </div>
-            
-            {/* Services */}
-            <div>
-              <h4 className="text-xl font-bold mb-6 text-white">Nossos Serviços</h4>
-              <ul className="space-y-3">
-                {services.map((service, index) => (
-                  <li key={index} className="text-gray-400 text-sm">
-                    {service}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            
-            {/* Contact Info */}
-            <div>
-              <h4 className="text-xl font-bold mb-6 text-white">Contato</h4>
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <Phone className="text-green-500 flex-shrink-0" size={20} />
-                  <div>
-                    <p className="text-white font-semibold">(49) 9 9836-2864</p>
-                    <p className="text-gray-400 text-sm">WhatsApp</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3">
-                  <MapPin className="text-blue-500 flex-shrink-0 mt-1" size={20} />
-                  <div>
-                    <p className="text-white font-semibold mb-2">Atendemos em:</p>
-                    {locations.map((location, index) => (
-                      <p key={index} className="text-gray-400 text-sm">
-                        📍 {location}
-                      </p>
-                    ))}
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3">
-                  <Clock className="text-green-500 flex-shrink-0 mt-1" size={20} />
-                  <div>
-                    <p className="text-white font-semibold">Horários:</p>
-                    <p className="text-gray-400 text-sm">
-                      Segunda à Sexta: 8h às 18h<br/>
-                      Sábados: 8h às 12h
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="flex items-center gap-3">
-                  <Instagram className="text-pink-500" size={20} />
-                  <div>
-                    <button 
-                      onClick={() => window.open('https://www.instagram.com/dr.adrianocamillo/', '_blank')}
-                      className="text-blue-400 hover:text-blue-300 transition-colors font-medium"
-                    >
-                      @dr.adrianocamillo
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+              ))}
+              <li>
+                <Link to="/hifu" className="hover:text-white transition-colors">
+                  Página completa do HIFU
+                </Link>
+              </li>
+            </ul>
+          </nav>
+
+          {/* Serviços */}
+          <div>
+            <h3 className="text-white font-bold mb-5">Serviços</h3>
+            <ul className="space-y-2.5 text-sm text-slate-400">
+              {SERVICES.map((service) => (
+                <li key={service}>{service}</li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contato */}
+          <div>
+            <h3 className="text-white font-bold mb-5">Contato</h3>
+            <ul className="space-y-4 text-sm">
+              <li className="flex items-start gap-3">
+                <Phone size={17} className="text-secondary-500 shrink-0 mt-0.5" aria-hidden="true" />
+                <span>
+                  <a href={WHATSAPP_DEFAULT} target="_blank" rel="noopener noreferrer" className="text-white font-semibold hover:underline">
+                    {SITE.phone}
+                  </a>
+                  <span className="block text-slate-400">WhatsApp</span>
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <MapPin size={17} className="text-primary-500 shrink-0 mt-0.5" aria-hidden="true" />
+                <span>
+                  {ADDRESS.street}
+                  <span className="block text-slate-400">
+                    {ADDRESS.city} — {ADDRESS.state}
+                  </span>
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <Clock size={17} className="text-secondary-500 shrink-0 mt-0.5" aria-hidden="true" />
+                <span>
+                  Seg a sex: 8h às 18h
+                  <span className="block text-slate-400">Sábado: 8h às 12h</span>
+                </span>
+              </li>
+            </ul>
           </div>
         </div>
 
-        {/* CTA Section */}
-        <div className="py-8 border-t border-gray-800">
-          <div className="text-center">
-            <h3 className="text-2xl font-bold mb-4">
-              Pronto para transformar seu sorriso?
-            </h3>
-            <p className="text-gray-400 mb-6 max-w-2xl mx-auto">
-              Agende sua consulta agora mesmo e descubra como podemos ajudar 
-              você a alcançar o sorriso dos seus sonhos.
-            </p>
-            <button 
-              onClick={() => window.open('https://wa.me/5549998362864', '_blank')}
-              className="bg-gradient-to-r from-blue-600 to-green-600 text-white px-8 py-4 rounded-full font-bold hover:shadow-xl transition-all duration-300 inline-flex items-center gap-3"
-            >
-              <Phone size={20} />
-              Agendar Consulta Agora
-            </button>
-          </div>
-        </div>
-        
-        {/* Bottom Bar */}
-        <div className="py-6 border-t border-gray-800">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="text-gray-400 text-sm text-center md:text-left">
-              <p>
-                &copy; {currentYear} Dr. Adriano Camillo. Todos os direitos reservados.
-              </p>
-              <p className="mt-1">
-                CRO-SC 12345 | Desenvolvido com{' '}
-                <Heart className="inline text-red-500" size={16} />{' '}
-                para nossos pacientes
-              </p>
-            </div>
-            
-            <div className="flex gap-6 text-sm">
-              <button className="text-gray-400 hover:text-white transition-colors">
-                Política de Privacidade
-              </button>
-              <button className="text-gray-400 hover:text-white transition-colors">
-                Termos de Uso
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Specialty Badges */}
-        <div className="py-6 border-t border-gray-800">
-          <div className="flex flex-wrap justify-center gap-4">
-            <span className="bg-blue-900 text-blue-300 px-4 py-2 rounded-full text-xs font-medium">
-              🦷 Especialista em Ortodontia
-            </span>
-            <span className="bg-green-900 text-green-300 px-4 py-2 rounded-full text-xs font-medium">
-              💉 Professor de HOF
-            </span>
-            <span className="bg-purple-900 text-purple-300 px-4 py-2 rounded-full text-xs font-medium">
-              ⚡ Especialista em HIFU
-            </span>
-            <span className="bg-orange-900 text-orange-300 px-4 py-2 rounded-full text-xs font-medium">
-              🧪 Ozonioterapia
-            </span>
-          </div>
+        {/* Barra final */}
+        <div className="py-6 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-3 text-sm text-slate-500">
+          <p>
+            © {year} Dr. Adriano Camillo — Todos os direitos reservados.
+          </p>
+          <p>
+            Atendimento em São Lourenço do Oeste • Realeza • Ampére • Curitiba
+          </p>
         </div>
       </div>
     </footer>

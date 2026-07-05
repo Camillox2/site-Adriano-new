@@ -1,384 +1,450 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
+import {
+  CheckCircle,
+  ChevronDown,
+  Play,
+  Zap,
+  Target,
+  Timer,
+  TrendingUp,
+  ShieldCheck,
+  HeartHandshake,
+  ArrowRight,
+} from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import WhatsAppButton from '../components/WhatsAppButton';
-import { Play, CheckCircle, Phone } from 'lucide-react';
+import Seo from '../components/Seo';
+import { HIFU_VIDEOS, VideoModal } from '../components/HifuSection';
+import { images } from '../assets';
+import { WHATSAPP_HIFU } from '../utils/constants';
+
+// ---------- conteúdo ----------
+const BENEFITS = [
+  {
+    Icon: Target,
+    title: 'Precisão milimétrica',
+    description:
+      'A energia do ultrassom é focada em profundidades exatas da pele, tratando inclusive a camada SMAS — a mesma abordada no lifting cirúrgico.',
+  },
+  {
+    Icon: TrendingUp,
+    title: 'Resultados progressivos',
+    description:
+      'O colágeno novo é produzido gradualmente: a melhora aparece nas primeiras semanas e evolui por até 6 meses após a sessão.',
+  },
+  {
+    Icon: ShieldCheck,
+    title: 'Segurança comprovada',
+    description:
+      'Tecnologia não invasiva consolidada mundialmente, realizada em consultório por profissional habilitado.',
+  },
+  {
+    Icon: Timer,
+    title: 'Sem afastamento',
+    description:
+      'Você retorna às suas atividades no mesmo dia. Sem cortes, sem agulhas, sem internação e sem curativos.',
+  },
+  {
+    Icon: Zap,
+    title: 'Sessão única',
+    description:
+      'Na maioria dos casos, uma única sessão é suficiente — com manutenção opcional após 12 a 18 meses.',
+  },
+  {
+    Icon: HeartHandshake,
+    title: 'Conforto no tratamento',
+    description:
+      'Procedimento bem tolerado pela maioria dos pacientes, sem necessidade de anestesia geral.',
+  },
+];
+
+const AREAS = [
+  'Face completa (terço médio e inferior)',
+  'Região da papada e contorno mandibular',
+  'Pescoço e flacidez cervical',
+  'Sobrancelhas e região periocular',
+];
+
+const STEPS = [
+  {
+    title: 'Avaliação personalizada',
+    description:
+      'O Dr. Adriano analisa sua pele, o grau de flacidez e seus objetivos para definir se o HIFU é indicado e montar o plano de tratamento.',
+  },
+  {
+    title: 'Preparação da pele',
+    description:
+      'Higienização completa e demarcação das áreas que serão tratadas, com aplicação do gel condutor.',
+  },
+  {
+    title: 'Aplicação do ultrassom',
+    description:
+      'A ponteira emite os feixes de ultrassom microfocado nas profundidades planejadas. A sessão dura, em média, de 45 a 90 minutos.',
+  },
+  {
+    title: 'Orientações pós-procedimento',
+    description:
+      'Você recebe orientações simples de cuidados — protetor solar e hidratação — e já pode retomar a rotina normalmente.',
+  },
+  {
+    title: 'Acompanhamento dos resultados',
+    description:
+      'O acompanhamento garante que a evolução do colágeno siga o esperado, com registro da transformação ao longo dos meses.',
+  },
+];
+
+const FAQS = [
+  {
+    question: 'O que é HIFU (Ultrassom Microfocado)?',
+    answer:
+      'HIFU é a sigla de High Intensity Focused Ultrasound — ultrassom focado de alta intensidade. É uma tecnologia não invasiva que concentra energia em pontos precisos das camadas profundas da pele, provocando a contração imediata das fibras e estimulando a produção de colágeno novo. O resultado é um efeito lifting sem cirurgia.',
+  },
+  {
+    question: 'Para quem o HIFU é indicado?',
+    answer:
+      'É indicado principalmente para pessoas a partir dos 30 anos com flacidez leve a moderada na face, papada ou pescoço, que desejam rejuvenescer sem cirurgia. A avaliação profissional define se o HIFU é a melhor opção para o seu caso.',
+  },
+  {
+    question: 'Quando os resultados aparecem?',
+    answer:
+      'Há um efeito tensor discreto já nos primeiros dias, mas o principal resultado vem da produção de colágeno novo: a melhora se torna visível a partir de 30 dias e evolui progressivamente por até 6 meses após a sessão.',
+  },
+  {
+    question: 'O procedimento dói?',
+    answer:
+      'A maioria dos pacientes sente apenas pontadas leves ou calor durante a aplicação, bem tolerados. Não é necessária anestesia geral e o desconforto termina junto com a sessão.',
+  },
+  {
+    question: 'Quantas sessões são necessárias?',
+    answer:
+      'Na maioria dos casos, uma única sessão é suficiente. Dependendo do grau de flacidez, pode ser recomendada uma sessão de manutenção após 12 a 18 meses.',
+  },
+  {
+    question: 'Quais os cuidados após o HIFU?',
+    answer:
+      'Os cuidados são simples: usar protetor solar diariamente, manter a pele hidratada e evitar exposição solar intensa nos primeiros dias. Não há restrição para atividades do dia a dia.',
+  },
+  {
+    question: 'HIFU substitui a cirurgia plástica?',
+    answer:
+      'O HIFU trata flacidez leve a moderada com excelentes resultados, mas não substitui um lifting cirúrgico em casos de flacidez acentuada. Na avaliação, o Dr. Adriano indica com transparência o tratamento mais adequado ao seu caso.',
+  },
+];
+
+// JSON-LD FAQPage para os resultados do Google
+const FAQ_JSONLD = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQS.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+  })),
+};
+
+// ---------- componentes ----------
+const FaqItem = ({ faq, open, onToggle }) => (
+  <div className="card overflow-hidden">
+    <button
+      onClick={onToggle}
+      className="w-full flex items-center justify-between gap-4 p-5 md:p-6 text-left"
+      aria-expanded={open}
+    >
+      <span className="font-bold text-slate-900 md:text-lg">{faq.question}</span>
+      <ChevronDown
+        size={22}
+        className={`shrink-0 text-primary-700 transition-transform duration-300 ${
+          open ? 'rotate-180' : ''
+        }`}
+        aria-hidden="true"
+      />
+    </button>
+    {open && (
+      <div className="px-5 md:px-6 pb-5 md:pb-6 -mt-1 animate-fade-in">
+        <p className="text-slate-600 leading-relaxed">{faq.answer}</p>
+      </div>
+    )}
+  </div>
+);
 
 const HifuDetails = () => {
-  const [activeTab, setActiveTab] = useState('overview');
-  const [activeVideoIndex, setActiveVideoIndex] = useState(0);
-
-  const hifuVideos = [
-    { 
-      title: 'Procedimento HIFU Completo', 
-      description: 'Veja passo a passo como é realizado o procedimento HIFU',
-      file: 'hifu.mp4',
-      duration: '3:45'
-    },
-    { 
-      title: 'Consulta e Avaliação', 
-      description: 'Como é feita a avaliação inicial para HIFU',
-      file: 'hifuatendimento.mp4',
-      duration: '2:30'
-    },
-    { 
-      title: 'Resultados Reais', 
-      description: 'Transformações incríveis dos nossos pacientes',
-      file: 'hifudois.mp4',
-      duration: '4:12'
-    }
-  ];
-
-  const hifuBenefits = [
-    {
-      icon: '🎯',
-      title: 'Precisão Cirúrgica',
-      description: 'Tecnologia que atinge camadas específicas da pele com precisão milimétrica'
-    },
-    {
-      icon: '⚡',
-      title: 'Resultados Naturais',
-      description: 'Lifting natural que respeita as características únicas do seu rosto'
-    },
-    {
-      icon: '🛡️',
-      title: 'Segurança Comprovada',
-      description: 'Procedimento aprovado pelo FDA e utilizado mundialmente'
-    },
-    {
-      icon: '⏰',
-      title: 'Sem Tempo de Recuperação',
-      description: 'Volte às suas atividades normais imediatamente após o procedimento'
-    },
-    {
-      icon: '📈',
-      title: 'Resultados Progressivos',
-      description: 'Melhora contínua por até 6 meses após o tratamento'
-    },
-    {
-      icon: '💆‍♀️',
-      title: 'Conforto no Tratamento',
-      description: 'Procedimento confortável com mínimo desconforto'
-    }
-  ];
-
-  const treatmentSteps = [
-    {
-      step: 1,
-      title: 'Consulta Inicial',
-      description: 'Avaliação completa da pele e definição do plano de tratamento personalizado'
-    },
-    {
-      step: 2,
-      title: 'Preparação',
-      description: 'Limpeza da pele e aplicação de gel condutor para o procedimento'
-    },
-    {
-      step: 3,
-      title: 'Aplicação HIFU',
-      description: 'Aplicação do ultrasom microfocado nas áreas previamente definidas'
-    },
-    {
-      step: 4,
-      title: 'Pós-Tratamento',
-      description: 'Orientações e cuidados pós-procedimento para otimizar os resultados'
-    },
-    {
-      step: 5,
-      title: 'Acompanhamento',
-      description: 'Monitoramento da evolução e orientações para manutenção dos resultados'
-    }
-  ];
-
-  const faqs = [
-    {
-      question: 'O que é HIFU?',
-      answer: 'HIFU (High Intensity Focused Ultrasound) é uma tecnologia de ultrasom microfocado que promove o lifting facial não invasivo, estimulando a produção natural de colágeno.'
-    },
-    {
-      question: 'Quem pode fazer HIFU?',
-      answer: 'O HIFU é indicado para pessoas a partir dos 30 anos que apresentam flacidez facial leve a moderada e desejam um rejuvenescimento natural sem cirurgia.'
-    },
-    {
-      question: 'Quando verei os resultados?',
-      answer: 'Os primeiros resultados aparecem em 30 dias, com melhora progressiva por até 6 meses. O colágeno continua sendo produzido durante este período.'
-    },
-    {
-      question: 'O procedimento dói?',
-      answer: 'O HIFU pode causar um leve desconforto durante a aplicação, mas é bem tolerado pela maioria dos pacientes. Não é necessário anestesia.'
-    },
-    {
-      question: 'Quantas sessões são necessárias?',
-      answer: 'Geralmente uma única sessão é suficiente. Dependendo do caso, pode ser recomendada uma sessão de manutenção após 12-18 meses.'
-    },
-    {
-      question: 'Quais os cuidados pós-procedimento?',
-      answer: 'Use protetor solar, hidrate bem a pele e evite exposição solar intensa nos primeiros dias. Não há restrições para atividades normais.'
-    }
-  ];
-
-  const tabs = [
-    { id: 'overview', label: 'Visão Geral', icon: '📋' },
-    { id: 'benefits', label: 'Benefícios', icon: '✨' },
-    { id: 'process', label: 'Processo', icon: '🔄' },
-    { id: 'videos', label: 'Vídeos', icon: '🎥' },
-    { id: 'faq', label: 'FAQ', icon: '❓' }
-  ];
+  const [activeVideo, setActiveVideo] = useState(null);
+  const [openFaq, setOpenFaq] = useState(0);
+  const closeVideo = useCallback(() => setActiveVideo(null), []);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
+      <Seo
+        title="HIFU em São Lourenço do Oeste — Ultrassom Microfocado | Dr. Adriano Camillo"
+        description="Lifting facial sem cirurgia com HIFU (Ultrassom Microfocado) em São Lourenço do Oeste - SC. Trata flacidez, papada e contorno facial estimulando o colágeno. Veja vídeos, benefícios e agende sua avaliação."
+        path="/hifu"
+        jsonLd={FAQ_JSONLD}
+      />
       <Header />
-      
-      {/* Hero Section */}
-      <section className="pt-24 pb-12 bg-gradient-to-r from-blue-900 to-green-800 text-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl lg:text-6xl font-bold mb-6">
-              HIFU - Ultrasson Microfocado
-            </h1>
-            <p className="text-xl lg:text-2xl text-blue-100 mb-8">
-              O futuro do rejuvenescimento facial não invasivo
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-              <div className="bg-white bg-opacity-10 backdrop-blur-sm p-6 rounded-xl">
-                <div className="text-3xl mb-2">⚡</div>
-                <h3 className="font-semibold mb-2">Tecnologia FDA</h3>
-                <p className="text-blue-100 text-sm">Aprovada mundialmente</p>
-              </div>
-              <div className="bg-white bg-opacity-10 backdrop-blur-sm p-6 rounded-xl">
-                <div className="text-3xl mb-2">🎯</div>
-                <h3 className="font-semibold mb-2">Precisão Única</h3>
-                <p className="text-blue-100 text-sm">Atinge camadas específicas</p>
-              </div>
-              <div className="bg-white bg-opacity-10 backdrop-blur-sm p-6 rounded-xl">
-                <div className="text-3xl mb-2">✨</div>
-                <h3 className="font-semibold mb-2">Resultados Naturais</h3>
-                <p className="text-blue-100 text-sm">Lifting progressivo</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Navigation Tabs */}
-      <div className="sticky top-20 bg-white shadow-md z-30">
-        <div className="container mx-auto px-4">
-          <div className="flex overflow-x-auto">
-            {tabs.map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`flex-shrink-0 px-6 py-4 font-semibold transition-all ${
-                  activeTab === tab.id
-                    ? 'text-blue-600 border-b-2 border-blue-600'
-                    : 'text-gray-600 hover:text-blue-600'
-                }`}
-              >
-                <span className="mr-2">{tab.icon}</span>
-                {tab.label}
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
+      <main>
+        {/* Hero */}
+        <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 bg-slate-900 overflow-hidden">
+          <div
+            className="absolute inset-0 bg-cover bg-center opacity-25"
+            style={{ backgroundImage: `url(${images.hifuEquipamentoDois})` }}
+            aria-hidden="true"
+          ></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-slate-950/70 via-slate-900/80 to-slate-900"></div>
 
-      {/* Content Sections */}
-      <div className="container mx-auto px-4 py-12">
-        {/* Overview Tab */}
-        {activeTab === 'overview' && (
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-white rounded-2xl p-8 shadow-lg mb-8">
-              <h2 className="text-3xl font-bold text-gray-800 mb-6">
-                O que é HIFU?
-              </h2>
-              <p className="text-lg text-gray-600 leading-relaxed mb-6">
-                O HIFU (High Intensity Focused Ultrasound) é uma tecnologia revolucionária que utiliza 
-                ultrasom microfocado para promover o lifting facial não invasivo. O tratamento estimula 
-                a produção natural de colágeno nas camadas profundas da pele, proporcionando firmeza 
-                e rejuvenescimento progressivo.
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="max-w-3xl mx-auto text-center text-white">
+              <span className="inline-flex items-center gap-2 bg-white/10 border border-white/20 px-4 py-2 rounded-full text-sm font-medium text-emerald-300 mb-6">
+                <Zap size={15} aria-hidden="true" />
+                Ultrassom Microfocado
+              </span>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight">
+                HIFU: o lifting facial{' '}
+                <span className="text-emerald-400">sem cirurgia</span>
+              </h1>
+              <p className="text-lg md:text-xl text-slate-300 mt-6 leading-relaxed">
+                Firmeza, contorno e rejuvenescimento estimulando o colágeno da
+                sua própria pele — sem cortes, sem agulhas e sem afastamento da
+                rotina.
               </p>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-800 mb-4">Como Funciona</h3>
-                  <ul className="space-y-3">
-                    <li className="flex items-start gap-3">
-                      <CheckCircle className="text-green-600 mt-1" size={20} />
-                      <span className="text-gray-600">Energia focada atinge camadas específicas da pele</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <CheckCircle className="text-green-600 mt-1" size={20} />
-                      <span className="text-gray-600">Estimula a produção natural de colágeno</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <CheckCircle className="text-green-600 mt-1" size={20} />
-                      <span className="text-gray-600">Promove firmeza e lifting progressivo</span>
-                    </li>
+              <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center mt-8">
+                <a
+                  href={WHATSAPP_HIFU}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary text-base md:text-lg"
+                >
+                  Agendar Avaliação HIFU
+                </a>
+                <button
+                  onClick={() =>
+                    document.getElementById('videos-hifu')?.scrollIntoView({ behavior: 'smooth' })
+                  }
+                  className="btn-outline-light text-base md:text-lg"
+                >
+                  <Play size={18} aria-hidden="true" />
+                  Ver vídeos
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* O que é */}
+        <section className="section bg-white">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+              <div>
+                <span className="section-eyebrow">Entenda a tecnologia</span>
+                <h2 className="section-title mt-5">O que é o Ultrassom Microfocado?</h2>
+                <p className="text-slate-600 leading-relaxed md:text-lg mt-6">
+                  O HIFU (High Intensity Focused Ultrasound) utiliza feixes de
+                  ultrassom concentrados em pontos precisos sob a pele. Essa
+                  energia aquece de forma controlada as camadas profundas —
+                  inclusive o SMAS, a estrutura tratada em um lifting cirúrgico —
+                  provocando dois efeitos:
+                </p>
+                <ul className="mt-6 space-y-4">
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="text-emerald-600 shrink-0 mt-1" size={22} aria-hidden="true" />
+                    <span className="text-slate-700 md:text-lg">
+                      <strong>Efeito imediato:</strong> contração das fibras de
+                      colágeno existentes, com sensação de pele mais firme.
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <CheckCircle className="text-emerald-600 shrink-0 mt-1" size={22} aria-hidden="true" />
+                    <span className="text-slate-700 md:text-lg">
+                      <strong>Efeito progressivo:</strong> estímulo à produção de
+                      colágeno novo, que firma e redefine o contorno facial ao
+                      longo dos meses.
+                    </span>
+                  </li>
+                </ul>
+
+                <div className="mt-8 bg-slate-50 border border-slate-100 rounded-2xl p-6">
+                  <h3 className="font-bold text-slate-900 mb-3">Áreas tratadas</h3>
+                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    {AREAS.map((area) => (
+                      <li key={area} className="flex items-start gap-2 text-sm text-slate-700">
+                        <CheckCircle size={17} className="text-primary-700 shrink-0 mt-0.5" aria-hidden="true" />
+                        {area}
+                      </li>
+                    ))}
                   </ul>
                 </div>
-                
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-800 mb-4">Áreas Tratadas</h3>
-                  <ul className="space-y-3">
-                    <li className="flex items-start gap-3">
-                      <CheckCircle className="text-blue-600 mt-1" size={20} />
-                      <span className="text-gray-600">Face completa</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <CheckCircle className="text-blue-600 mt-1" size={20} />
-                      <span className="text-gray-600">Pescoço e papada</span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <CheckCircle className="text-blue-600 mt-1" size={20} />
-                      <span className="text-gray-600">Contorno facial</span>
-                    </li>
-                  </ul>
+              </div>
+
+              <div className="relative">
+                <img
+                  src={images.hifuEquipamento}
+                  alt="Dr. Adriano Camillo segurando a ponteira do equipamento Ultramed HIFU"
+                  loading="lazy"
+                  width="720"
+                  height="960"
+                  className="rounded-3xl shadow-2xl w-full object-cover max-h-[36rem] object-top"
+                />
+                <div className="absolute -bottom-5 left-6 right-6 sm:left-10 sm:right-10 bg-white shadow-xl rounded-2xl px-6 py-4 flex items-center gap-4 border border-slate-100">
+                  <ShieldCheck className="text-emerald-600 shrink-0" size={30} aria-hidden="true" />
+                  <p className="text-sm text-slate-700 leading-snug">
+                    <strong className="text-slate-900">Equipamento Ultramed HIFU</strong>
+                    <br />
+                    aplicado pessoalmente pelo Dr. Adriano Camillo
+                  </p>
                 </div>
               </div>
             </div>
           </div>
-        )}
+        </section>
 
-        {/* Benefits Tab */}
-        {activeTab === 'benefits' && (
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-3xl font-bold text-gray-800 text-center mb-12">
-              Benefícios do HIFU
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {hifuBenefits.map((benefit, index) => (
-                <div key={index} className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
-                  <div className="text-4xl mb-4">{benefit.icon}</div>
-                  <h3 className="text-xl font-semibold text-gray-800 mb-3">{benefit.title}</h3>
-                  <p className="text-gray-600">{benefit.description}</p>
+        {/* Benefícios */}
+        <section className="section bg-slate-50">
+          <div className="container mx-auto px-4">
+            <div className="text-center max-w-2xl mx-auto mb-12">
+              <span className="section-eyebrow">Benefícios</span>
+              <h2 className="section-title mt-5">Por que o HIFU conquistou o mundo</h2>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+              {BENEFITS.map(({ Icon, title, description }) => (
+                <div key={title} className="card card-lift p-7">
+                  <span className="inline-flex p-3 rounded-2xl bg-primary-50 text-primary-700 mb-4">
+                    <Icon size={26} aria-hidden="true" />
+                  </span>
+                  <h3 className="font-bold text-slate-900 text-lg mb-2">{title}</h3>
+                  <p className="text-slate-600 text-sm md:text-base leading-relaxed">{description}</p>
                 </div>
               ))}
             </div>
           </div>
-        )}
+        </section>
 
-        {/* Process Tab */}
-        {activeTab === 'process' && (
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-gray-800 text-center mb-12">
-              Como é o Processo
-            </h2>
-            <div className="space-y-8">
-              {treatmentSteps.map((step, index) => (
-                <div key={index} className="bg-white p-6 rounded-xl shadow-lg">
-                  <div className="flex items-start gap-6">
-                    <div className="w-12 h-12 bg-gradient-to-r from-blue-600 to-green-600 text-white rounded-full flex items-center justify-center font-bold text-lg">
-                      {step.step}
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold text-gray-800 mb-2">{step.title}</h3>
-                      <p className="text-gray-600">{step.description}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
+        {/* Vídeos */}
+        <section id="videos-hifu" className="section bg-white">
+          <div className="container mx-auto px-4">
+            <div className="text-center max-w-2xl mx-auto mb-12">
+              <span className="section-eyebrow">Transparência total</span>
+              <h2 className="section-title mt-5">Veja o procedimento de perto</h2>
+              <p className="section-subtitle mt-5">
+                Vídeos reais gravados no consultório — sem edição exagerada, do
+                jeito que acontece na prática.
+              </p>
             </div>
-          </div>
-        )}
-
-        {/* Videos Tab */}
-        {activeTab === 'videos' && (
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-gray-800 text-center mb-12">
-              Vídeos dos Procedimentos
-            </h2>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <div className="space-y-4">
-                {hifuVideos.map((video, index) => (
-                  <div 
-                    key={index}
-                    onClick={() => setActiveVideoIndex(index)}
-                    className={`p-4 rounded-lg cursor-pointer transition-all ${
-                      activeVideoIndex === index 
-                        ? 'bg-gradient-to-r from-blue-50 to-green-50 border-2 border-blue-200' 
-                        : 'bg-white hover:bg-gray-50 border border-gray-200'
-                    }`}
-                  >
-                    <div className="flex items-center gap-4">
-                      <div className={`w-12 h-12 rounded-full flex items-center justify-center ${
-                        activeVideoIndex === index
-                          ? 'bg-gradient-to-r from-blue-600 to-green-600 text-white'
-                          : 'bg-gray-200 text-gray-600'
-                      }`}>
-                        <Play size={20} />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-gray-800">{video.title}</h4>
-                        <p className="text-gray-600 text-sm">{video.description}</p>
-                        <span className="text-xs text-gray-500">{video.duration}</span>
-                      </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {HIFU_VIDEOS.map((video) => (
+                <button
+                  key={video.id}
+                  onClick={() => setActiveVideo(video)}
+                  className="card card-lift group overflow-hidden text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-primary-300"
+                  aria-label={`Assistir: ${video.title}`}
+                >
+                  <div className="relative">
+                    <img
+                      src={video.poster}
+                      alt={video.title}
+                      loading="lazy"
+                      width="640"
+                      height="360"
+                      className="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 to-transparent"></div>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="bg-white/95 rounded-full p-3 shadow-lg group-hover:bg-primary-600 group-hover:scale-110 transition-all">
+                        <Play className="text-primary-700 group-hover:text-white" size={22} fill="currentColor" aria-hidden="true" />
+                      </span>
                     </div>
+                    <span className="absolute top-3 right-3 bg-slate-900/80 text-white px-2.5 py-1 rounded-full text-xs font-medium">
+                      {video.duration}
+                    </span>
                   </div>
-                ))}
-              </div>
-              
-              <div className="bg-gray-900 rounded-xl p-8 text-center text-white">
-                <Play size={64} className="mx-auto mb-4 opacity-70" />
-                <h3 className="text-xl font-semibold mb-2">
-                  {hifuVideos[activeVideoIndex].title}
-                </h3>
-                <p className="text-gray-300 mb-4">
-                  {hifuVideos[activeVideoIndex].description}
-                </p>
-                <p className="text-gray-400 text-sm">
-                  📹 Arquivo: {hifuVideos[activeVideoIndex].file}
-                </p>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* FAQ Tab */}
-        {activeTab === 'faq' && (
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-gray-800 text-center mb-12">
-              Perguntas Frequentes
-            </h2>
-            <div className="space-y-4">
-              {faqs.map((faq, index) => (
-                <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden">
-                  <div className="p-6">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-3">
-                      {faq.question}
+                  <div className="p-4">
+                    <h3 className="font-bold text-slate-900 text-sm leading-snug group-hover:text-primary-700 transition-colors">
+                      {video.title}
                     </h3>
-                    <p className="text-gray-600 leading-relaxed">
-                      {faq.answer}
-                    </p>
+                  </div>
+                </button>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Etapas */}
+        <section className="section bg-slate-50">
+          <div className="container mx-auto px-4">
+            <div className="text-center max-w-2xl mx-auto mb-12">
+              <span className="section-eyebrow">Passo a passo</span>
+              <h2 className="section-title mt-5">Como funciona o tratamento</h2>
+            </div>
+            <div className="max-w-3xl mx-auto space-y-4">
+              {STEPS.map((step, index) => (
+                <div key={step.title} className="card p-6 md:p-7 flex items-start gap-5">
+                  <span className="w-11 h-11 shrink-0 bg-primary-600 text-white rounded-2xl flex items-center justify-center font-bold text-lg">
+                    {index + 1}
+                  </span>
+                  <div>
+                    <h3 className="font-bold text-slate-900 text-lg">{step.title}</h3>
+                    <p className="text-slate-600 mt-1.5 leading-relaxed">{step.description}</p>
                   </div>
                 </div>
               ))}
             </div>
           </div>
-        )}
-      </div>
+        </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-blue-600 to-green-600">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold text-white mb-6">
-            Pronto para o seu tratamento HIFU?
-          </h2>
-          <p className="text-blue-100 text-lg mb-8 max-w-2xl mx-auto">
-            Agende sua consulta e descubra como o HIFU pode transformar sua aparência 
-            de forma natural e segura.
-          </p>
-          <button 
-            onClick={() => window.open('https://wa.me/5549998362864?text=Olá! Gostaria de agendar uma consulta para o tratamento HIFU.', '_blank')}
-            className="bg-white text-blue-600 px-8 py-4 rounded-full font-semibold hover:shadow-xl transition-all duration-300 inline-flex items-center gap-2"
-          >
-            <Phone size={20} />
-            Agendar Consulta HIFU
-          </button>
-        </div>
-      </section>
+        {/* FAQ */}
+        <section className="section bg-white">
+          <div className="container mx-auto px-4">
+            <div className="text-center max-w-2xl mx-auto mb-12">
+              <span className="section-eyebrow">Dúvidas frequentes</span>
+              <h2 className="section-title mt-5">Tudo o que você precisa saber</h2>
+            </div>
+            <div className="max-w-3xl mx-auto space-y-4">
+              {FAQS.map((faq, index) => (
+                <FaqItem
+                  key={faq.question}
+                  faq={faq}
+                  open={openFaq === index}
+                  onToggle={() => setOpenFaq(openFaq === index ? -1 : index)}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA final */}
+        <section className="section bg-slate-900 relative overflow-hidden">
+          <div className="absolute -top-24 -right-24 w-80 h-80 bg-primary-600/20 rounded-full blur-3xl" aria-hidden="true"></div>
+          <div className="absolute -bottom-24 -left-24 w-80 h-80 bg-emerald-600/20 rounded-full blur-3xl" aria-hidden="true"></div>
+          <div className="container mx-auto px-4 relative z-10 text-center">
+            <div className="max-w-2xl mx-auto">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
+                Pronto para ver sua melhor versão no espelho?
+              </h2>
+              <p className="text-slate-300 mt-5 mb-9 text-lg leading-relaxed">
+                Agende sua avaliação com o Dr. Adriano Camillo e descubra o que o
+                Ultrassom Microfocado pode fazer por você — sem compromisso.
+              </p>
+              <a
+                href={WHATSAPP_HIFU}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary text-base md:text-lg"
+              >
+                Agendar Avaliação HIFU
+                <ArrowRight size={20} aria-hidden="true" />
+              </a>
+              <p className="text-slate-400 text-sm mt-6">
+                São Lourenço do Oeste • Realeza • Ampére • Curitiba
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
 
       <Footer />
       <WhatsAppButton />
+
+      {activeVideo && <VideoModal video={activeVideo} onClose={closeVideo} />}
     </div>
   );
 };

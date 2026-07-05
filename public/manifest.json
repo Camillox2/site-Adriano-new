@@ -1,26 +1,29 @@
 {
-  "short_name": "Dr. Adriano Camillo",
-  "name": "Dr. Adriano Camillo - Cirurgião Dentista",
+  "short_name": "Dr. Adriano",
+  "name": "Dr. Adriano Camillo — Cirurgião-Dentista",
+  "description": "HIFU (Ultrassom Microfocado), Ortodontia, Implantes e Harmonização Orofacial em São Lourenço do Oeste - SC.",
+  "lang": "pt-BR",
   "icons": [
     {
       "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "sizes": "48x48",
       "type": "image/x-icon"
     },
     {
       "src": "logo192.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "purpose": "any maskable"
     },
     {
       "src": "logo512.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "any maskable"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
-  "theme_color": "#2563eb",
-  "background_color": "#ffffff",
-  "description": "Site profissional do Dr. Adriano Camillo - Especialista em Ortodontia, Implantes, Harmonização Orofacial e HIFU"
+  "theme_color": "#1e3a8a",
+  "background_color": "#ffffff"
 }

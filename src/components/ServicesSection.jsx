@@ -1,350 +1,240 @@
-import React, { useState, memo, useRef, useEffect } from 'react';
-import { ArrowRight, X, CheckCircle, Phone, Heart, Smile, Syringe } from 'lucide-react';
+import React, { useState, useCallback } from 'react';
+import { ArrowRight, X, CheckCircle, Phone, Smile, Heart, Syringe, FlaskConical } from 'lucide-react';
+import { whatsapp } from '../utils/constants';
 
-// Componente ServiceCard 3D magnético otimizado
-const ServiceCard = memo(({ service, onModalOpen }) => {
-  const cardRef = useRef(null);
-  const [isHovered, setIsHovered] = useState(false);
+const SERVICES = [
+  {
+    id: 'ortodontia',
+    Icon: Smile,
+    color: 'text-primary-700 bg-primary-50',
+    title: 'Ortodontia',
+    description: 'Alinhamento dos dentes e correção da mordida com planejamento moderno.',
+    fullDescription:
+      'Tratamento especializado para correção da posição dos dentes e da mordida, com aparelhos convencionais e estéticos. Cada caso é planejado individualmente para um resultado eficiente e confortável.',
+    benefits: [
+      'Sorriso alinhado e harmônico',
+      'Correção da mordida e da mastigação',
+      'Facilita a higienização bucal',
+      'Previne desgastes e problemas na ATM',
+      'Opções estéticas discretas',
+      'Acompanhamento próximo em todas as fases',
+    ],
+    process: [
+      'Avaliação e documentação ortodôntica',
+      'Planejamento individualizado',
+      'Instalação do aparelho',
+      'Acompanhamento periódico',
+      'Finalização e contenção',
+    ],
+  },
+  {
+    id: 'implantes',
+    Icon: Heart,
+    color: 'text-secondary-700 bg-secondary-50',
+    title: 'Implantes Dentários',
+    description: 'Reposição definitiva de dentes perdidos com estética natural.',
+    fullDescription:
+      'Cirurgia de implantes com materiais biocompatíveis de alta qualidade e técnicas minimamente invasivas. Os implantes devolvem a função mastigatória e a estética com aparência completamente natural.',
+    benefits: [
+      'Solução fixa e duradoura',
+      'Estética e função de dente natural',
+      'Preserva o osso e os dentes vizinhos',
+      'Devolve a confiança para sorrir e comer',
+      'Técnicas minimamente invasivas',
+      'Planejamento com exames de imagem',
+    ],
+    process: [
+      'Avaliação clínica e exames de imagem',
+      'Planejamento da cirurgia',
+      'Instalação do implante',
+      'Período de osseointegração',
+      'Instalação da prótese definitiva',
+    ],
+  },
+  {
+    id: 'harmonizacao',
+    Icon: Syringe,
+    color: 'text-primary-700 bg-primary-50',
+    title: 'Harmonização Orofacial',
+    description: 'Rejuvenescimento e equilíbrio facial com resultados naturais.',
+    fullDescription:
+      'Procedimentos estéticos faciais como toxina botulínica, preenchimento com ácido hialurônico e bioestimuladores de colágeno. O foco é sempre a harmonia e a naturalidade — realçar a sua beleza, não transformá-la.',
+    benefits: [
+      'Suaviza rugas e linhas de expressão',
+      'Reposição de volume e contorno facial',
+      'Resultados imediatos e naturais',
+      'Procedimentos minimamente invasivos',
+      'Produtos de alta qualidade',
+      'Avaliação facial completa',
+    ],
+    process: [
+      'Consulta e análise facial',
+      'Plano de tratamento personalizado',
+      'Realização do procedimento',
+      'Orientações pós-procedimento',
+      'Acompanhamento e manutenção',
+    ],
+  },
+  {
+    id: 'ozonioterapia',
+    Icon: FlaskConical,
+    color: 'text-secondary-700 bg-secondary-50',
+    title: 'Ozonioterapia',
+    description: 'Terapia complementar que auxilia na cicatrização e no pós-operatório.',
+    fullDescription:
+      'A ozonioterapia é uma terapia complementar que utiliza o ozônio medicinal para auxiliar no controle de microrganismos, na cicatrização e na recuperação pós-procedimentos odontológicos.',
+    benefits: [
+      'Auxilia na cicatrização de tecidos',
+      'Ação antimicrobiana',
+      'Complementa tratamentos odontológicos',
+      'Procedimento rápido e confortável',
+      'Aplicação segura em consultório',
+      'Indicado em diversos protocolos',
+    ],
+    process: [
+      'Avaliação da indicação',
+      'Definição do protocolo',
+      'Aplicação em consultório',
+      'Acompanhamento da evolução',
+    ],
+  },
+];
 
-  useEffect(() => {
-    const card = cardRef.current;
-    if (!card) return;
-
-    const handleMouseMove = (e) => {
-      if (!isHovered) return;
-      
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      
-      const rotateX = (y - centerY) / 20;
-      const rotateY = (centerX - x) / 20;
-      
-      card.style.transform = `
-        perspective(1000px) 
-        rotateX(${rotateX}deg) 
-        rotateY(${rotateY}deg) 
-        translateZ(20px)
-        scale3d(1.02, 1.02, 1.02)
-      `;
-    };
-
-    const handleMouseEnter = () => {
-      setIsHovered(true);
-      card.style.transition = 'transform 0.1s ease-out';
-    };
-
-    const handleMouseLeave = () => {
-      setIsHovered(false);
-      card.style.transition = 'transform 0.5s ease-out';
-      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px) scale3d(1, 1, 1)';
-    };
-
-    card.addEventListener('mousemove', handleMouseMove);
-    card.addEventListener('mouseenter', handleMouseEnter);
-    card.addEventListener('mouseleave', handleMouseLeave);
-
-    return () => {
-      card.removeEventListener('mousemove', handleMouseMove);
-      card.removeEventListener('mouseenter', handleMouseEnter);
-      card.removeEventListener('mouseleave', handleMouseLeave);
-    };
-  }, [isHovered]);
-
-  return (
-    <div 
-      ref={cardRef}
-      className="magnetic-card bg-gradient-to-br from-white via-blue-50/30 to-emerald-50/30 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden group border border-blue-100/50 backdrop-blur-sm"
-      style={{
-        transformStyle: 'preserve-3d',
-      }}
+const ServiceModal = ({ service, onClose }) => (
+  <div
+    className="fixed inset-0 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-fade-in"
+    onClick={onClose}
+    role="dialog"
+    aria-modal="true"
+    aria-label={service.title}
+  >
+    <div
+      className="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
+      onClick={(e) => e.stopPropagation()}
     >
-      {/* Animated background particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-        <div className="absolute top-4 right-4 w-2 h-2 bg-blue-400 rounded-full animate-ping"></div>
-        <div className="absolute bottom-8 left-6 w-1 h-1 bg-emerald-400 rounded-full animate-bounce delay-300"></div>
-        <div className="absolute top-1/2 right-1/3 w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse delay-500"></div>
+      <div className="sticky top-0 bg-white/95 backdrop-blur border-b border-slate-100 px-6 md:px-8 py-5 flex items-center justify-between gap-4 rounded-t-3xl">
+        <div className="flex items-center gap-4">
+          <span className={`inline-flex p-3 rounded-2xl ${service.color}`}>
+            <service.Icon size={26} aria-hidden="true" />
+          </span>
+          <h2 className="text-xl md:text-2xl font-bold text-slate-900">{service.title}</h2>
+        </div>
+        <button
+          onClick={onClose}
+          className="p-2.5 rounded-full text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition-colors"
+          aria-label="Fechar"
+        >
+          <X size={22} />
+        </button>
       </div>
 
-      <div className="relative p-8 h-full flex flex-col">
-        {/* Floating Icon with glow effect */}
-        <div className="mb-6 relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-emerald-400/20 rounded-full blur-xl scale-150 group-hover:scale-200 transition-transform duration-500"></div>
-          <div className="relative transform group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 group-hover:animate-bounce">
-            {service.icon}
-          </div>
-        </div>
-        
-        {/* Content */}
-        <div className="flex-1">
-          <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-blue-600 transition-colors duration-300">
-            {service.title}
-          </h3>
-          <p className="text-gray-600 mb-6 leading-relaxed group-hover:text-gray-700 transition-colors">
-            {service.description}
-          </p>
-        </div>
-        
-        {/* Animated CTA Button */}
-        <button 
-          onClick={() => onModalOpen(service)}
-          className="relative w-full bg-gradient-to-r from-blue-600 to-emerald-600 text-white py-4 rounded-xl font-semibold hover:from-blue-700 hover:to-emerald-700 transition-all duration-500 flex items-center justify-center gap-2 group/btn overflow-hidden"
-        >
-          {/* Button animation background */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700"></div>
-          
-          <span className="relative z-10 group-hover/btn:scale-105 transition-transform">Saiba Mais</span>
-          <ArrowRight 
-            size={16} 
-            className="relative z-10 group-hover/btn:translate-x-2 group-hover/btn:scale-125 transition-all duration-300" 
-          />
-        </button>
+      <div className="px-6 md:px-8 py-6 space-y-8">
+        <p className="text-slate-600 leading-relaxed md:text-lg">{service.fullDescription}</p>
 
-        {/* Decorative elements */}
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-emerald-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
-        <div className="absolute bottom-0 right-0 w-1 h-full bg-gradient-to-t from-blue-500 to-emerald-500 transform scale-y-0 group-hover:scale-y-100 transition-transform duration-500 origin-bottom"></div>
+        <div>
+          <h3 className="font-bold text-slate-900 mb-4 text-lg">Benefícios</h3>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {service.benefits.map((benefit) => (
+              <li key={benefit} className="flex items-start gap-2.5">
+                <CheckCircle size={19} className="text-emerald-600 shrink-0 mt-0.5" aria-hidden="true" />
+                <span className="text-slate-700 text-sm md:text-base">{benefit}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="font-bold text-slate-900 mb-4 text-lg">Como funciona</h3>
+          <ol className="space-y-3">
+            {service.process.map((step, index) => (
+              <li key={step} className="flex items-center gap-3.5">
+                <span className="w-8 h-8 shrink-0 bg-primary-600 text-white rounded-full flex items-center justify-center text-sm font-bold">
+                  {index + 1}
+                </span>
+                <span className="text-slate-700 text-sm md:text-base">{step}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        <div className="bg-slate-50 border border-slate-100 p-6 rounded-2xl text-center">
+          <p className="text-slate-700 font-medium mb-4">
+            Quer saber se este tratamento é indicado para o seu caso?
+          </p>
+          <a
+            href={whatsapp(`Olá, Dr. Adriano! Gostaria de saber mais sobre ${service.title}.`)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary w-full sm:w-auto"
+          >
+            <Phone size={18} aria-hidden="true" />
+            Agendar Avaliação
+          </a>
+        </div>
       </div>
     </div>
-  );
-});
-
-ServiceCard.displayName = 'ServiceCard';
+  </div>
+);
 
 const ServicesSection = () => {
   const [activeModal, setActiveModal] = useState(null);
-
-  const services = [
-    {
-      id: 'ortodontia',
-      icon: <Smile className="w-12 h-12 text-blue-600" />,
-      title: 'Ortodontia',
-      description: 'Correção do posicionamento dos dentes e mordida',
-      shortDescription: 'Aparelhos modernos para o sorriso perfeito',
-      fullDescription: 'Tratamento especializado para correção da posição dos dentes e mordida, utilizando aparelhos convencionais, estéticos e ortodontia digital com planejamento 3D. Nossa abordagem moderna garante resultados eficazes e confortáveis.',
-      benefits: [
-        'Melhora significativa da estética do sorriso',
-        'Correção da mordida e função mastigatória',
-        'Facilita a higienização bucal',
-        'Previne problemas na ATM',
-        'Aumenta a autoestima e confiança',
-        'Planejamento digital 3D',
-        'Aparelhos estéticos disponíveis',
-        'Acompanhamento personalizado'
-      ],
-      process: [
-        'Consulta e avaliação inicial',
-        'Planejamento digital 3D',
-        'Instalação do aparelho',
-        'Acompanhamento mensal',
-        'Finalização e contenção'
-      ]
-    },
-    {
-      id: 'implantes',
-      icon: <Heart className="w-12 h-12 text-emerald-600" />,
-      title: 'Implantes Dentais',
-      description: 'Reposição de dentes perdidos com tecnologia de ponta',
-      shortDescription: 'Solução definitiva para dentes perdidos',
-      fullDescription: 'Cirurgia de implantes dentários com tecnologia de ponta e materiais de alta qualidade. Utilizamos implantes de titânio e técnicas minimamente invasivas para reposição de dentes perdidos, garantindo funcionalidade e estética naturais.',
-      benefits: [
-        'Restaura completamente a função mastigatória',
-        'Estética completamente natural',
-        'Preserva o osso alveolar',
-        'Durabilidade de décadas',
-        'Não afeta dentes adjacentes',
-        'Melhora a qualidade de vida',
-        'Tecnologia de ponta',
-        'Materiais biocompatíveis'
-      ],
-      process: [
-        'Avaliação e planejamento',
-        'Exames de imagem 3D',
-        'Cirurgia de implante',
-        'Período de osseointegração',
-        'Colocação da prótese'
-      ]
-    },
-    {
-      id: 'harmonizacao',
-      icon: <Syringe className="w-12 h-12 text-blue-600" />,
-      title: 'Harmonização Orofacial',
-      description: 'Rejuvenescimento facial não cirúrgico',
-      shortDescription: 'Beleza natural sem cirurgia',
-      fullDescription: 'Procedimentos estéticos faciais utilizando técnicas avançadas como preenchimento com ácido hialurônico, toxina botulínica e bioestimuladores. Nosso foco é sempre na harmonia e naturalidade dos resultados.',
-      benefits: [
-        'Rejuvenescimento facial natural',
-        'Melhora significativa da autoestima',
-        'Procedimento minimamente invasivo',
-        'Resultados imediatos e naturais',
-        'Sem tempo de recuperação',
-        'Técnicas seguras e aprovadas',
-        'Produtos de alta qualidade',
-        'Resultados harmoniosos'
-      ],
-      process: [
-        'Consulta e análise facial',
-        'Planejamento personalizado',
-        'Aplicação dos produtos',
-        'Acompanhamento pós-procedimento',
-        'Manutenção conforme necessário'
-      ]
-    }
-  ];
-
-  const Modal = ({ service, onClose }) => (
-    <div className="fixed inset-0 bg-blue-900/80 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-        <div className="p-8">
-          <div className="flex justify-between items-start mb-6">
-            <div className="flex items-center gap-4">
-              {service.icon}
-              <div>
-                <h2 className="text-3xl font-bold text-gray-800">{service.title}</h2>
-                <p className="text-gray-600">{service.shortDescription}</p>
-              </div>
-            </div>
-            <button 
-              onClick={onClose} 
-              className="text-gray-500 hover:text-gray-700 p-2"
-            >
-              <X size={24} />
-            </button>
-          </div>
-          
-          <div className="space-y-8">
-            {/* Description */}
-            <div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-3">Sobre o Tratamento</h3>
-              <p className="text-gray-600 text-lg leading-relaxed">{service.fullDescription}</p>
-            </div>
-            
-            {/* Benefits */}
-            <div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">Benefícios</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                {service.benefits.map((benefit, index) => (
-                  <div key={index} className="flex items-center gap-3">
-                    <CheckCircle className="text-green-600 flex-shrink-0" size={20} />
-                    <span className="text-gray-600">{benefit}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            
-            {/* Process */}
-            <div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-4">Como Funciona</h3>
-              <div className="space-y-3">
-                {service.process.map((step, index) => (
-                  <div key={index} className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-emerald-600 text-white rounded-full flex items-center justify-center text-sm font-bold">
-                      {index + 1}
-                    </div>
-                    <span className="text-gray-600">{step}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            
-            {/* Call to Action */}
-            <div className="bg-blue-50 p-6 rounded-xl">
-              <h4 className="text-lg font-semibold text-gray-800 mb-3">
-                Interessado neste tratamento?
-              </h4>
-              <p className="text-gray-600 mb-4">
-                Entre em contato para agendar sua consulta e saber mais sobre valores e detalhes do tratamento.
-              </p>
-              <button 
-                onClick={() => window.open('https://wa.me/5549998362864', '_blank')}
-                className="w-full bg-emerald-600 text-white py-4 rounded-lg font-semibold hover:bg-emerald-700 transition-all duration-300 flex items-center justify-center gap-2"
-              >
-                <Phone size={20} />
-                Agendar Consulta via WhatsApp
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+  const close = useCallback(() => setActiveModal(null), []);
 
   return (
-    <section id="servicos" className="py-20 bg-gradient-to-br from-white via-blue-50/30 to-emerald-50/30 relative overflow-hidden">
-      {/* Enhanced Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Orbital Background Animation */}
-        <div className="absolute -top-10 -right-10 w-80 h-80 bg-gradient-to-br from-blue-100/30 to-emerald-100/30 rounded-full animate-orbital opacity-20"></div>
-        <div className="absolute top-1/3 -left-20 w-64 h-64 bg-gradient-to-br from-emerald-100/30 to-blue-100/30 rounded-full animate-wave opacity-20"></div>
-        <div className="absolute bottom-20 right-1/3 w-56 h-56 bg-gradient-to-br from-blue-200/20 to-emerald-200/20 rounded-full animate-light-pulse opacity-20"></div>
-        
-        {/* Moving Gradient Background */}
-        <div className="absolute inset-0 animate-gradient-bg opacity-[0.01]"></div>
-        
-        {/* Floating Particles */}
-        <div className="absolute top-10 left-10 w-2 h-2 bg-blue-400 rounded-full animate-particle opacity-40"></div>
-        <div className="absolute top-1/2 right-20 w-3 h-3 bg-emerald-400 rounded-full animate-float opacity-40 delay-500"></div>
-        <div className="absolute bottom-20 left-1/3 w-2 h-2 bg-blue-300 rounded-full animate-bounce-soft opacity-40 delay-1000"></div>
-      </div>
+    <section id="servicos" className="section bg-white">
       <div className="container mx-auto px-4">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 font-bold mb-4 inline-block text-lg">
-            🦷 NOSSOS SERVIÇOS
-          </span>
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-emerald-600 rounded-full animate-pulse-soft"></div>
-            <h2 className="text-4xl lg:text-6xl font-bold text-gray-900">
-              Tratamentos 
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600">
-                Especializados
-              </span>
-            </h2>
-            <div className="w-8 h-8 bg-gradient-to-r from-emerald-600 to-blue-600 rounded-full animate-pulse-soft delay-500"></div>
-          </div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Oferecemos uma gama completa de tratamentos para sua saúde bucal e estética facial, 
-            sempre com tecnologia de ponta e atendimento humanizado.
+        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+          <span className="section-eyebrow">Especialidades</span>
+          <h2 className="section-title mt-5">
+            Cuidado completo para o seu{' '}
+            <span className="text-primary-700">sorriso e a sua autoestima</span>
+          </h2>
+          <p className="section-subtitle mt-5">
+            Da saúde bucal à estética facial: tratamentos com tecnologia atual,
+            planejamento individual e atendimento humanizado.
           </p>
         </div>
 
-        {/* Enhanced 3D Magnetic Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 perspective-1000">
-          {services.map((service) => (
-            <ServiceCard
-              key={service.id}
-              service={service}
-              onModalOpen={setActiveModal}
-            />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+          {SERVICES.map((service) => (
+            <article key={service.id} className="card card-lift p-7 flex flex-col">
+              <span className={`inline-flex self-start p-3.5 rounded-2xl mb-5 ${service.color}`}>
+                <service.Icon size={28} aria-hidden="true" />
+              </span>
+              <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-2">{service.title}</h3>
+              <p className="text-slate-600 text-sm md:text-base leading-relaxed flex-1">
+                {service.description}
+              </p>
+              <button
+                onClick={() => setActiveModal(service)}
+                className="inline-flex items-center gap-2 text-primary-700 font-semibold mt-6 hover:gap-3.5 transition-all text-sm md:text-base"
+              >
+                Saiba mais
+                <ArrowRight size={17} aria-hidden="true" />
+              </button>
+            </article>
           ))}
         </div>
 
-        {/* Bottom CTA */}
-        <div className="text-center mt-16">
-          <div className="bg-gray-100 p-8 rounded-2xl max-w-4xl mx-auto">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">
-              Não encontrou o que procura?
-            </h3>
-            <p className="text-gray-600 mb-6">
-              Entre em contato conosco para saber sobre outros tratamentos disponíveis 
-              ou para esclarecer suas dúvidas.
+        <div className="text-center mt-12 md:mt-16">
+          <div className="inline-flex flex-col sm:flex-row items-center gap-4 bg-slate-50 border border-slate-100 rounded-2xl px-8 py-6">
+            <p className="text-slate-700 font-medium">
+              Dúvidas sobre qual tratamento é ideal para você?
             </p>
-            <button 
-              onClick={() => window.open('https://wa.me/5549998362864', '_blank')}
-              className="bg-emerald-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-emerald-700 transition-all duration-300 flex items-center gap-2 mx-auto"
+            <a
+              href={whatsapp('Olá, Dr. Adriano! Gostaria de uma orientação sobre os tratamentos.')}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-dark !py-3 text-sm md:text-base whitespace-nowrap"
             >
-              <Phone size={20} />
-              Falar com Dr. Adriano
-            </button>
+              <Phone size={17} aria-hidden="true" />
+              Falar com o Dr. Adriano
+            </a>
           </div>
         </div>
       </div>
 
-      {/* Modal */}
-      {activeModal && (
-        <Modal service={activeModal} onClose={() => setActiveModal(null)} />
-      )}
+      {activeModal && <ServiceModal service={activeModal} onClose={close} />}
     </section>
   );
 };

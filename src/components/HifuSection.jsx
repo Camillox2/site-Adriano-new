@@ -1,350 +1,314 @@
-import React, { useState, memo, useCallback } from 'react';
-import { CheckCircle, ArrowRight, Video, Play, X, Clock, Award, Sparkles } from 'lucide-react';
+import React, { useState, useCallback, memo } from 'react';
+import { Link } from 'react-router-dom';
+import {
+  CheckCircle,
+  ArrowRight,
+  Play,
+  X,
+  Zap,
+  Timer,
+  TrendingUp,
+  ShieldCheck,
+} from 'lucide-react';
 import { videos, images } from '../assets';
-import { useIntersectionObserver, useLazyImage } from '../utils/hooks';
+import { WHATSAPP_HIFU } from '../utils/constants';
 
-// Componente VideoCard otimizado com skeleton loading
-const VideoCard = memo(({ video, index, onClick }) => {
-  const { targetRef: imageRef, imageSrc, isLoaded, hasError } = useLazyImage(video.thumbnail);
+// ---------- dados ----------
+export const HIFU_VIDEOS = [
+  {
+    id: 'hifu',
+    title: 'O procedimento HIFU na prática',
+    description: 'Veja como a aplicação do ultrassom microfocado é realizada no consultório.',
+    duration: '0:09',
+    poster: images.posterHifu,
+    video: videos.hifu,
+  },
+  {
+    id: 'hifuTres',
+    title: 'Aplicação com o equipamento Ultramed',
+    description: 'Detalhe da ponteira e da técnica de aplicação nas áreas tratadas.',
+    duration: '0:11',
+    poster: images.posterHifuTres,
+    video: videos.hifuTres,
+  },
+  {
+    id: 'hifuAtendimento',
+    title: 'Atendimento e avaliação',
+    description: 'Como funciona o atendimento personalizado antes do procedimento.',
+    duration: '0:16',
+    poster: images.posterHifuAtendimento,
+    video: videos.hifuAtendimento,
+  },
+  {
+    id: 'hifuDois',
+    title: 'Tecnologia em movimento',
+    description: 'O equipamento de ultrassom microfocado em funcionamento.',
+    duration: '0:05',
+    poster: images.posterHifuDois,
+    video: videos.hifuDois,
+  },
+];
 
-  return (
-    <div 
-      ref={imageRef}
-      className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer transform hover:-translate-y-8 hover:scale-105 hover:rotate-1 card-professional magnetic-3d"
-      onClick={onClick}
-      style={{
-        animationDelay: `${index * 150}ms`,
-      }}
-    >
-      <div className="relative">
-        {/* Image Skeleton */}
-        {!isLoaded && !hasError && (
-          <div className="w-full h-48 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 animate-shimmer flex items-center justify-center">
-            <div className="flex flex-col items-center space-y-3">
-              <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
-              <div className="text-gray-500 text-sm font-medium">Carregando...</div>
-            </div>
-          </div>
-        )}
-        
-        {/* Error State */}
-        {hasError && (
-          <div className="w-full h-48 bg-gray-100 flex items-center justify-center border-2 border-dashed border-gray-300">
-            <div className="text-center text-gray-500">
-              <Video size={40} className="mx-auto mb-2 opacity-50" />
-              <p className="text-sm">Imagem não disponível</p>
-            </div>
-          </div>
-        )}
+const BENEFITS = [
+  'Lifting facial sem cortes e sem agulhas',
+  'Estimula o colágeno natural da sua pele',
+  'Sessão única na maioria dos casos',
+  'Sem afastamento das atividades',
+  'Resultados progressivos por até 6 meses',
+  'Tecnologia consolidada mundialmente',
+];
 
-        {/* Actual Image */}
-        {imageSrc && (
-          <img 
-            src={imageSrc} 
-            alt={video.title}
-            className={`w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500 ${
-              isLoaded ? 'opacity-100' : 'opacity-0'
-            }`}
-            loading="lazy"
+const HIGHLIGHTS = [
+  {
+    icon: Zap,
+    title: 'Energia focada e precisa',
+    text: 'O ultrassom microfocado atinge as camadas profundas da pele (SMAS) — as mesmas tratadas em um lifting cirúrgico — sem danificar a superfície.',
+  },
+  {
+    icon: TrendingUp,
+    title: 'Colágeno novo, resultado natural',
+    text: 'O calor controlado estimula a produção natural de colágeno. A pele fica mais firme de forma gradual, sem aspecto artificial.',
+  },
+  {
+    icon: Timer,
+    title: 'Rotina preservada',
+    text: 'Procedimento realizado em consultório, sem internação e sem tempo de recuperação. Você volta às suas atividades no mesmo dia.',
+  },
+];
+
+// ---------- card de vídeo ----------
+const VideoCard = memo(({ video, onClick }) => (
+  <button
+    onClick={onClick}
+    className="card card-lift group overflow-hidden text-left w-full focus:outline-none focus-visible:ring-4 focus-visible:ring-primary-300"
+    aria-label={`Assistir: ${video.title}`}
+  >
+    <div className="relative">
+      <img
+        src={video.poster}
+        alt={video.title}
+        loading="lazy"
+        width="640"
+        height="360"
+        className="w-full h-44 md:h-48 object-cover group-hover:scale-105 transition-transform duration-500"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent"></div>
+      <div className="absolute inset-0 flex items-center justify-center">
+        <span className="bg-white/95 rounded-full p-3.5 shadow-lg group-hover:scale-110 group-hover:bg-primary-600 transition-all duration-300">
+          <Play
+            className="text-primary-700 group-hover:text-white transition-colors"
+            size={26}
+            fill="currentColor"
+            aria-hidden="true"
           />
-        )}
-        
-        {isLoaded && !hasError && (
-          <>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="bg-white/90 backdrop-blur-sm rounded-full p-4 group-hover:scale-125 group-hover:bg-blue-600 transition-all duration-500 group-hover:animate-bounce shadow-lg">
-                <Play className="text-blue-600 group-hover:text-white" size={32} fill="currentColor" />
-              </div>
-            </div>
-            <div className="absolute top-4 right-4 bg-blue-600/90 text-white px-3 py-1 rounded-full text-sm flex items-center gap-1">
-              <Clock size={14} />
-              {video.duration}
-            </div>
-            <div className="absolute bottom-4 left-4 p-2 bg-white/90 backdrop-blur-sm rounded-full">
-              {video.icon}
-            </div>
-          </>
-        )}
+        </span>
       </div>
-      <div className="p-6">
-        <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-blue-600 transition-colors">
-          {video.title}
-        </h3>
-        <p className="text-gray-600 text-sm leading-relaxed">
-          {video.description}
-        </p>
-        <div className="mt-4 flex items-center text-blue-600 font-semibold text-sm group-hover:translate-x-3 group-hover:scale-110 transition-all duration-300">
-          Assistir Vídeo <ArrowRight size={16} className="ml-1 group-hover:animate-bounce" />
-        </div>
-      </div>
+      <span className="absolute top-3 right-3 bg-slate-900/80 text-white px-2.5 py-1 rounded-full text-xs font-medium">
+        {video.duration}
+      </span>
     </div>
-  );
-});
+    <div className="p-5">
+      <h3 className="font-bold text-slate-900 group-hover:text-primary-700 transition-colors leading-snug">
+        {video.title}
+      </h3>
+      <p className="text-sm text-slate-600 mt-1.5 leading-relaxed">{video.description}</p>
+    </div>
+  </button>
+));
 
 VideoCard.displayName = 'VideoCard';
 
-const HifuSection = memo(() => {
-  const [activeVideo, setActiveVideo] = useState(null);
-  const { targetRef } = useIntersectionObserver();
-
-  const openVideoModal = useCallback((video) => {
-    setActiveVideo(video);
-  }, []);
-
-  const closeVideoModal = useCallback(() => {
-    setActiveVideo(null);
-  }, []);
-
-  const hifuBenefits = [
-    'Lifting facial não invasivo',
-    'Estimula produção natural de colágeno',
-    'Sem tempo de recuperação',
-    'Resultados progressivos e duradouros',
-    'Tecnologia FDA aprovada',
-    'Procedimento seguro e eficaz'
-  ];
-
-  const videoOptions = [
-    {
-      id: 'hifu',
-      title: 'Demonstração Completa HIFU',
-      description: 'Veja passo a passo como o procedimento HIFU é realizado',
-      duration: '3:45',
-      thumbnail: images.consultorio1,
-      video: videos.hifu,
-      icon: <Video className="text-blue-500" size={24} />
-    },
-    {
-      id: 'hifuAtendimento',
-      title: 'Atendimento e Consulta',
-      description: 'Conheça como é o atendimento personalizado',
-      duration: '2:30',
-      thumbnail: images.pai,
-      video: videos.hifuAtendimento,
-      icon: <Award className="text-emerald-500" size={24} />
-    },
-    {
-      id: 'hifuDois',
-      title: 'Resultados e Depoimentos',
-      description: 'Veja os resultados reais dos nossos pacientes',
-      duration: '4:15',
-      thumbnail: images.consultorio2,
-      video: videos.hifuDois,
-      icon: <Sparkles className="text-purple-500" size={24} />
-    }
-  ];
-
-  return (
-    <section ref={targetRef} id="hifu" className="py-20 bg-gradient-to-br from-slate-50 via-gray-50 to-slate-100 relative overflow-hidden">
-      {/* Enhanced Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        {/* Floating Particles */}
-        <div className="absolute -top-10 -right-10 w-80 h-80 bg-gradient-to-br from-slate-200/30 to-gray-300/30 rounded-full animate-float opacity-40"></div>
-        <div className="absolute top-1/3 -left-20 w-64 h-64 bg-gradient-to-br from-gray-300/30 to-slate-300/30 rounded-full animate-bounce-soft opacity-40 delay-500"></div>
-        <div className="absolute bottom-20 right-1/3 w-56 h-56 bg-gradient-to-br from-slate-300/30 to-gray-200/30 rounded-full animate-pulse-soft opacity-40 delay-1000"></div>
-        <div className="absolute top-20 left-1/4 w-40 h-40 bg-gradient-to-br from-gray-200/30 to-slate-200/30 rounded-full animate-particle opacity-30 delay-700"></div>
-        
-        {/* Moving Grid Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="grid grid-cols-12 gap-4 h-full">
-            {Array.from({length: 60}).map((_, i) => (
-              <div key={i} className={`bg-slate-400 rounded-full w-2 h-2 animate-pulse`} style={{animationDelay: `${i * 0.1}s`}}></div>
-            ))}
-          </div>
+// ---------- modal de vídeo ----------
+export const VideoModal = ({ video, onClose }) => (
+  <div
+    className="fixed inset-0 bg-slate-950/85 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-fade-in"
+    onClick={onClose}
+    role="dialog"
+    aria-modal="true"
+    aria-label={video.title}
+  >
+    <div className="relative w-full max-w-4xl" onClick={(e) => e.stopPropagation()}>
+      <button
+        onClick={onClose}
+        className="absolute -top-12 right-0 text-white/80 hover:text-white bg-white/10 hover:bg-white/20 rounded-full p-2.5 transition-colors"
+        aria-label="Fechar vídeo"
+      >
+        <X size={24} />
+      </button>
+      <div className="bg-slate-900 rounded-2xl overflow-hidden shadow-2xl">
+        <video
+          className="w-full aspect-video bg-black"
+          controls
+          autoPlay
+          playsInline
+          poster={video.poster}
+          src={video.video}
+        >
+          Seu navegador não suporta o elemento de vídeo.
+        </video>
+        <div className="p-5 md:p-6">
+          <h3 className="text-lg md:text-xl font-bold text-white">{video.title}</h3>
+          <p className="text-slate-300 text-sm md:text-base mt-1">{video.description}</p>
         </div>
       </div>
+    </div>
+  </div>
+);
 
-      <div className="container mx-auto px-4 relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-700 to-slate-600 font-bold mb-4 inline-block text-lg">
-            ⚡ TECNOLOGIA REVOLUCIONÁRIA
+// ---------- seção ----------
+const HifuSection = () => {
+  const [activeVideo, setActiveVideo] = useState(null);
+  const close = useCallback(() => setActiveVideo(null), []);
+
+  return (
+    <section id="hifu" className="section bg-slate-50">
+      <div className="container mx-auto px-4">
+        {/* Cabeçalho */}
+        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+          <span className="section-eyebrow">
+            <Zap size={14} aria-hidden="true" />
+            Ultrassom Microfocado
           </span>
-          <h2 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-            HIFU - Ultrassom 
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-700 to-slate-600">
-              {" "}Microfocado
-            </span>
+          <h2 className="section-title mt-5">
+            HIFU: lifting facial{' '}
+            <span className="text-primary-700">sem cirurgia</span>
           </h2>
-          <p className="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
-            Tecnologia revolucionária para lifting facial não invasivo. 
-            O futuro do rejuvenescimento está aqui com resultados comprovados e aprovação científica!
+          <p className="section-subtitle mt-5">
+            O HIFU (High Intensity Focused Ultrasound) é o tratamento de eleição
+            para quem deseja combater a flacidez facial, definir o contorno do
+            rosto e rejuvenescer — tudo isso sem cortes, sem agulhas e sem
+            afastamento da rotina.
           </p>
         </div>
 
-        {/* Enhanced Video Gallery with Skeleton Loading */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {videoOptions.map((video, index) => (
-            <VideoCard 
-              key={video.id}
-              video={video}
-              index={index}
-              onClick={() => openVideoModal(video)}
-            />
+        {/* Como funciona */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14 md:mb-20">
+          {HIGHLIGHTS.map(({ icon: Icon, title, text }) => (
+            <div key={title} className="card card-lift p-7">
+              <span className="inline-flex p-3 rounded-2xl bg-primary-50 text-primary-700 mb-5">
+                <Icon size={26} aria-hidden="true" />
+              </span>
+              <h3 className="text-lg font-bold text-slate-900 mb-2">{title}</h3>
+              <p className="text-slate-600 leading-relaxed text-sm md:text-base">{text}</p>
+            </div>
           ))}
         </div>
 
-        {/* Benefits Section with Dr. Adriano */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
-          {/* Dr. Adriano Photo */}
+        {/* Equipamento + benefícios */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center mb-14 md:mb-20">
           <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-slate-600 to-slate-700 rounded-3xl transform rotate-3 opacity-20"></div>
-            <div className="relative bg-white p-6 rounded-3xl shadow-xl">
-              <div className="relative overflow-hidden rounded-2xl">
-                <img 
-                  src={images.paidois} 
-                  alt="Dr. Adriano Camillo - Especialista HIFU" 
-                  className="w-full h-96 object-cover object-center rounded-2xl shadow-lg transform hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl"></div>
-              </div>
-              <div className="mt-4 text-center">
-                <h3 className="text-xl font-bold text-gray-800 mb-1">Dr. Adriano Camillo</h3>
-                <p className="text-slate-600 font-medium">Especialista em HIFU</p>
-              </div>
-              <div className="absolute -bottom-4 -right-4 bg-gradient-to-r from-slate-700 to-slate-800 text-white p-4 rounded-2xl shadow-lg">
-                <div className="text-center">
-                  <div className="text-2xl font-bold">500+</div>
-                  <div className="text-sm">Procedimentos</div>
-                </div>
-              </div>
+            <div className="grid grid-cols-2 gap-4">
+              <img
+                src={images.hifuEquipamento}
+                alt="Dr. Adriano Camillo com o equipamento de HIFU Ultramed"
+                loading="lazy"
+                width="480"
+                height="640"
+                className="rounded-2xl shadow-lg object-cover w-full h-64 md:h-80"
+              />
+              <img
+                src={images.consultorio3}
+                alt="Dr. Adriano Camillo ao lado do equipamento Ultramed HIFU no consultório"
+                loading="lazy"
+                width="480"
+                height="640"
+                className="rounded-2xl shadow-lg object-cover w-full h-64 md:h-80 mt-8"
+              />
+            </div>
+            <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 bg-white shadow-xl rounded-2xl px-6 py-3.5 flex items-center gap-3 border border-slate-100">
+              <ShieldCheck className="text-emerald-600 shrink-0" size={26} aria-hidden="true" />
+              <span className="text-sm font-semibold text-slate-800 whitespace-nowrap">
+                Equipamento Ultramed HIFU
+                <span className="block text-xs font-normal text-slate-500">
+                  Tecnologia profissional de consultório
+                </span>
+              </span>
             </div>
           </div>
 
-          {/* Benefits */}
-          <div className="space-y-6">
-            <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300">
-              <h4 className="text-2xl font-bold text-gray-800 mb-6 flex items-center gap-3">
-                <Video size={32} className="text-blue-600" />
-                O que é o HIFU?
-              </h4>
-              <p className="text-gray-600 leading-relaxed text-lg mb-6">
-                Tecnologia de Ultrassom Microfocado que promove lifting facial não invasivo, 
-                estimulando a produção natural de colágeno nas camadas profundas da pele.
-              </p>
-              
-              <div className="grid grid-cols-2 gap-4">
-                {hifuBenefits.map((benefit, index) => (
-                  <div key={index} className="flex items-start gap-3 p-3 bg-gradient-to-r from-blue-50 to-emerald-50 rounded-lg hover:from-blue-100 hover:to-emerald-100 transition-colors">
-                    <CheckCircle size={20} className="text-emerald-500 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-700 text-sm font-medium">{benefit}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
+          <div>
+            <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
+              Por que escolher o HIFU?
+            </h3>
+            <p className="text-slate-600 leading-relaxed mb-7">
+              Indicado para flacidez leve a moderada na face, pescoço e papada, o
+              ultrassom microfocado devolve firmeza à pele estimulando o que ela
+              tem de melhor: o seu próprio colágeno.
+            </p>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {BENEFITS.map((benefit) => (
+                <li
+                  key={benefit}
+                  className="flex items-start gap-3 bg-white border border-slate-100 rounded-xl p-3.5"
+                >
+                  <CheckCircle
+                    size={20}
+                    className="text-emerald-600 shrink-0 mt-0.5"
+                    aria-hidden="true"
+                  />
+                  <span className="text-slate-700 text-sm font-medium">{benefit}</span>
+                </li>
+              ))}
+            </ul>
+            <Link
+              to="/hifu"
+              className="inline-flex items-center gap-2 text-primary-700 font-semibold mt-7 hover:gap-3.5 transition-all"
+            >
+              Saiba tudo sobre o Ultrassom Microfocado
+              <ArrowRight size={18} aria-hidden="true" />
+            </Link>
           </div>
         </div>
 
-        {/* Enhanced CTA */}
-        <div className="relative">
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-700 via-slate-600 to-slate-800 rounded-3xl transform rotate-1 opacity-20"></div>
-          <div className="relative bg-gradient-to-r from-slate-700 to-slate-800 text-white p-12 rounded-3xl shadow-2xl text-center overflow-hidden">
-            <div className="absolute inset-0 bg-black/10"></div>
-            <div className="absolute top-0 left-0 w-full h-full opacity-30">
-              <div className="absolute top-10 left-10 w-20 h-20 bg-white/20 rounded-full animate-pulse"></div>
-              <div className="absolute bottom-10 right-10 w-16 h-16 bg-white/20 rounded-full animate-bounce delay-1000"></div>
-              <div className="absolute top-1/2 right-1/4 w-12 h-12 bg-white/20 rounded-full animate-ping delay-500"></div>
-              <div className="absolute bottom-1/3 left-1/4 w-14 h-14 bg-white/20 rounded-full animate-float delay-300"></div>
-            </div>
-            <div className="relative z-10">
-              <div className="flex items-center justify-center gap-3 mb-6">
-                <Sparkles className="text-yellow-300 animate-pulse" size={32} />
-                <h3 className="text-3xl font-bold animate-gradient-text">
-                  Pronto para transformar sua aparência?
-                </h3>
-                <Sparkles className="text-yellow-300 animate-pulse" size={32} />
-              </div>
-              <p className="text-slate-200 mb-8 text-lg max-w-3xl mx-auto leading-relaxed">
-                Agende sua consulta e descubra como o HIFU pode rejuvenescer seu rosto 
-                de forma natural e sem cirurgia. Resultados visíveis em uma única sessão!
-              </p>
-              <button 
-                onClick={() => window.open('https://wa.me/5549998362864', '_blank')}
-                className="bg-white text-slate-700 px-12 py-6 rounded-full font-bold text-xl hover:shadow-2xl hover:scale-110 hover:-translate-y-2 transition-all duration-500 inline-flex items-center gap-3 group professional-hover animate-glow"
-              >
-                <span className="group-hover:animate-pulse">Agendar Consulta HIFU</span>
-                <ArrowRight size={24} className="group-hover:translate-x-3 group-hover:scale-125 transition-all duration-300" />
-              </button>
-            </div>
+        {/* Vídeos */}
+        <div className="mb-14 md:mb-16">
+          <h3 className="text-2xl md:text-3xl font-bold text-slate-900 text-center mb-8">
+            Veja o HIFU de perto
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {HIFU_VIDEOS.map((video) => (
+              <VideoCard key={video.id} video={video} onClick={() => setActiveVideo(video)} />
+            ))}
+          </div>
+        </div>
+
+        {/* CTA */}
+        <div className="bg-slate-900 rounded-3xl px-6 py-12 md:p-14 text-center relative overflow-hidden">
+          <div
+            className="absolute -top-24 -right-24 w-72 h-72 bg-primary-600/20 rounded-full blur-3xl"
+            aria-hidden="true"
+          ></div>
+          <div
+            className="absolute -bottom-24 -left-24 w-72 h-72 bg-emerald-600/20 rounded-full blur-3xl"
+            aria-hidden="true"
+          ></div>
+          <div className="relative z-10 max-w-2xl mx-auto">
+            <h3 className="text-2xl md:text-4xl font-bold text-white leading-tight">
+              Será que o HIFU é para você?
+            </h3>
+            <p className="text-slate-300 mt-4 mb-8 text-base md:text-lg leading-relaxed">
+              Cada rosto é único. Agende uma avaliação personalizada com o Dr.
+              Adriano e descubra, sem compromisso, o plano ideal para o seu caso.
+            </p>
+            <a
+              href={WHATSAPP_HIFU}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary text-base md:text-lg"
+            >
+              Agendar Avaliação HIFU
+              <ArrowRight size={20} aria-hidden="true" />
+            </a>
+            <p className="text-slate-400 text-sm mt-5">
+              Atendimento em São Lourenço do Oeste, Realeza, Ampére e Curitiba
+            </p>
           </div>
         </div>
       </div>
 
-      {/* Enhanced Video Modal with Loading State */}
-      {activeVideo && (
-        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4 animate-fade-in">
-          <div className="relative w-full max-w-5xl">
-            <button 
-              onClick={closeVideoModal}
-              className="absolute -top-16 right-0 text-white hover:text-red-400 hover:scale-125 transition-all duration-300 bg-red-600/80 rounded-full p-3 hover:bg-red-500"
-            >
-              <X size={28} />
-            </button>
-            <div className="bg-gradient-to-br from-white to-gray-50 rounded-3xl overflow-hidden shadow-2xl border border-gray-200">
-              {/* Video Loading Skeleton */}
-              <div className="aspect-video relative bg-gray-200">
-                <div className="absolute inset-0 bg-gradient-to-r from-gray-300 via-gray-200 to-gray-300 animate-shimmer opacity-50"></div>
-                <video 
-                  className="w-full h-full relative z-10 bg-gray-100"
-                  controls 
-                  autoPlay
-                  src={activeVideo.video}
-                  onLoadStart={() => {
-                    // Show skeleton while loading
-                    const skeleton = document.querySelector('.video-skeleton');
-                    if (skeleton) skeleton.classList.remove('hidden');
-                  }}
-                  onCanPlay={() => {
-                    // Hide skeleton when ready
-                    const skeleton = document.querySelector('.video-skeleton');
-                    if (skeleton) skeleton.classList.add('hidden');
-                  }}
-                >
-                  Seu navegador não suporta o elemento de vídeo.
-                </video>
-                {/* Video Loading Skeleton Overlay */}
-                <div className="video-skeleton absolute inset-0 flex items-center justify-center bg-gradient-to-br from-blue-100 to-emerald-100">
-                  <div className="text-center space-y-4">
-                    <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-full animate-spin mx-auto flex items-center justify-center">
-                      <div className="w-6 h-6 bg-white rounded-full"></div>
-                    </div>
-                    <p className="text-gray-600 font-medium">Carregando vídeo...</p>
-                    <div className="flex space-x-1 justify-center">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce"></div>
-                      <div className="w-2 h-2 bg-emerald-500 rounded-full animate-bounce delay-100"></div>
-                      <div className="w-2 h-2 bg-blue-500 rounded-full animate-bounce delay-200"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="p-8 bg-gradient-to-r from-blue-50 to-emerald-50">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-full text-white">
-                    {activeVideo.icon}
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-gray-800 mb-2">{activeVideo.title}</h3>
-                    <p className="text-gray-600 text-lg leading-relaxed">{activeVideo.description}</p>
-                    <div className="mt-4 flex items-center gap-2 text-sm text-gray-500">
-                      <div className="flex items-center gap-1">
-                        <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-                        <span>Ao vivo</span>
-                      </div>
-                      <span>•</span>
-                      <span>Duração: {activeVideo.duration}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      {activeVideo && <VideoModal video={activeVideo} onClose={close} />}
     </section>
   );
-});
-
-HifuSection.displayName = 'HifuSection';
+};
 
 export default HifuSection;

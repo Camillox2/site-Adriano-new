@@ -13,7 +13,7 @@
     "realeza",
     "ampére"
   ],
-  "homepage": ".",
+  "homepage": "https://dradrianocamillo.com/",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",

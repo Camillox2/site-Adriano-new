@@ -1,207 +1,182 @@
-import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, Star, Quote } from 'lucide-react';
+import React, { useState, useEffect, useCallback } from 'react';
+import { ChevronLeft, ChevronRight, Star, Quote, Instagram } from 'lucide-react';
+import { SITE, WHATSAPP_DEFAULT } from '../utils/constants';
+
+const TESTIMONIALS = [
+  {
+    name: 'Maria S.',
+    treatment: 'HIFU',
+    text: 'Resultado incrível! O Dr. Adriano é muito profissional e o procedimento HIFU superou minhas expectativas. Minha pele ficou mais firme e jovem de forma natural.',
+    location: 'São Lourenço do Oeste',
+  },
+  {
+    name: 'João S.',
+    treatment: 'Implantes',
+    text: 'Excelente profissional! Meu implante ficou perfeito e o atendimento foi excepcional. Voltei a sorrir com confiança.',
+    location: 'Realeza',
+  },
+  {
+    name: 'Ana C.',
+    treatment: 'Harmonização Orofacial',
+    text: 'Resultado natural e lindo! O Dr. Adriano tem um olhar clínico incrível. Me sinto muito mais confiante.',
+    location: 'Ampére',
+  },
+  {
+    name: 'Carlos R.',
+    treatment: 'Ortodontia',
+    text: 'Tratamento ortodôntico perfeito! O Dr. Adriano foi muito atencioso durante todo o processo. Meu sorriso ficou exatamente como eu sonhava.',
+    location: 'São Lourenço do Oeste',
+  },
+  {
+    name: 'Fernanda L.',
+    treatment: 'Ozonioterapia',
+    text: 'A ozonioterapia me ajudou muito na recuperação pós-cirúrgica. Técnica inovadora e o Dr. Adriano sempre explicando tudo com detalhes.',
+    location: 'Realeza',
+  },
+  {
+    name: 'Roberto O.',
+    treatment: 'HIFU',
+    text: 'Incrível como o HIFU pode rejuvenescer sem cirurgia! Resultado surpreendente e natural.',
+    location: 'Ampére',
+  },
+];
+
+const STATS = [
+  { value: '15+', label: 'anos de experiência' },
+  { value: '4', label: 'cidades atendidas' },
+  { value: 'Milhares', label: 'de pacientes atendidos' },
+  { value: '4', label: 'especialidades integradas' },
+];
 
 const TestimonialsSection = () => {
-  const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
+  const [index, setIndex] = useState(0);
 
-  const testimonials = [
-    {
-      name: 'Maria Silva',
-      age: 45,
-      treatment: 'HIFU',
-      rating: 5,
-      text: 'Resultado incrível! O Dr. Adriano é muito profissional e o procedimento HIFU superou minhas expectativas. Minha pele ficou mais firme e jovem de forma natural. Recomendo!',
-      location: 'São Lourenço do Oeste'
-    },
-    {
-      name: 'João Santos',
-      age: 52,
-      treatment: 'Implantes',
-      rating: 5,
-      text: 'Excelente profissional! Meu implante ficou perfeito e o atendimento foi excepcional. Voltei a sorrir com confiança. Muito obrigado, Dr. Adriano!',
-      location: 'Realeza'
-    },
-    {
-      name: 'Ana Costa',
-      age: 38,
-      treatment: 'Harmonização Orofacial',
-      rating: 5,
-      text: 'Resultado natural e lindo! O Dr. Adriano tem um olhar clínico incrível. Super indico seus serviços. Me sinto muito mais confiante!',
-      location: 'Ampére'
-    },
-    {
-      name: 'Carlos Rodrigues',
-      age: 28,
-      treatment: 'Ortodontia',
-      rating: 5,
-      text: 'Tratamento ortodôntico perfeito! O Dr. Adriano foi muito atencioso durante todo o processo. Meu sorriso ficou exatamente como eu sonhava.',
-      location: 'São Lourenço do Oeste'
-    },
-    {
-      name: 'Fernanda Lima',
-      age: 35,
-      treatment: 'Ozonioterapia',
-      rating: 5,
-      text: 'A ozonioterapia me ajudou muito na recuperação pós-cirúrgica. Técnica inovadora e Dr. Adriano sempre explicando tudo com detalhes.',
-      location: 'Realeza'
-    },
-    {
-      name: 'Roberto Oliveira',
-      age: 48,
-      treatment: 'HIFU',
-      rating: 5,
-      text: 'Incrível como o HIFU pode rejuvenescer sem cirurgia! Dr. Adriano é um profissional excepcional. Resultado surpreendente e natural.',
-      location: 'Ampére'
-    }
-  ];
+  const next = useCallback(
+    () => setIndex((prev) => (prev + 1) % TESTIMONIALS.length),
+    []
+  );
+  const prev = () =>
+    setIndex((current) => (current === 0 ? TESTIMONIALS.length - 1 : current - 1));
 
-  // Auto-rotate testimonials
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTestimonialIndex((prev) => (prev + 1) % testimonials.length);
-    }, 6000);
+    const interval = setInterval(next, 7000);
     return () => clearInterval(interval);
-  }, [testimonials.length]);
+  }, [next]);
 
-  const nextTestimonial = () => {
-    setCurrentTestimonialIndex((prev) => (prev + 1) % testimonials.length);
-  };
-
-  const prevTestimonial = () => {
-    setCurrentTestimonialIndex((prev) => prev === 0 ? testimonials.length - 1 : prev - 1);
-  };
+  const current = TESTIMONIALS[index];
 
   return (
-    <section className="py-20 bg-gradient-to-r from-emerald-600 to-slate-600 relative overflow-hidden">
-      {/* Background Decorations */}
-      <div className="absolute top-0 left-0 w-full h-full opacity-10">
-        <div className="absolute top-10 left-10 w-20 h-20 bg-white rounded-full animate-pulse"></div>
-        <div className="absolute bottom-10 right-10 w-16 h-16 bg-white rounded-full animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/4 w-12 h-12 bg-white rounded-full animate-bounce"></div>
-      </div>
+    <section id="depoimentos" className="section bg-slate-900 relative overflow-hidden">
+      <div
+        className="absolute -top-32 -right-32 w-96 h-96 bg-primary-600/15 rounded-full blur-3xl"
+        aria-hidden="true"
+      ></div>
+      <div
+        className="absolute -bottom-32 -left-32 w-96 h-96 bg-emerald-600/15 rounded-full blur-3xl"
+        aria-hidden="true"
+      ></div>
 
       <div className="container mx-auto px-4 relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-12">
-          <span className="bg-white bg-opacity-20 text-white px-6 py-2 rounded-full text-sm font-semibold mb-4 inline-block">
-            ⭐ DEPOIMENTOS
-          </span>
-          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
-            O que nossos pacientes dizem
-          </h2>
-          <p className="text-emerald-100 text-xl max-w-3xl mx-auto">
-            A satisfação e confiança dos nossos pacientes são nossa maior conquista
-          </p>
-        </div>
-        
-        {/* Main Testimonial */}
-        <div className="relative max-w-5xl mx-auto mb-12">
-          <div className="bg-white rounded-2xl p-8 lg:p-12 shadow-2xl">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
-              {/* Quote Icon */}
-              <div className="lg:col-span-1 text-center lg:text-left">
-                <Quote className="text-emerald-600 mx-auto lg:mx-0 mb-4" size={64} />
-                <div className="flex justify-center lg:justify-start mb-4">
-                  {[...Array(testimonials[currentTestimonialIndex].rating)].map((_, i) => (
-                    <Star key={i} className="text-yellow-500 fill-current" size={24} />
-                  ))}
-                </div>
-              </div>
-              
-              {/* Testimonial Content */}
-              <div className="lg:col-span-2">
-                <p className="text-xl lg:text-2xl text-gray-700 mb-6 italic leading-relaxed">
-                  "{testimonials[currentTestimonialIndex].text}"
-                </p>
-                <div className="border-t border-gray-200 pt-6">
-                  <h4 className="text-lg font-bold text-gray-800">
-                    {testimonials[currentTestimonialIndex].name}
-                  </h4>
-                  <div className="flex flex-wrap gap-4 text-gray-600 mt-2">
-                    <span>📍 {testimonials[currentTestimonialIndex].location}</span>
-                    <span>🦷 {testimonials[currentTestimonialIndex].treatment}</span>
-                    <span>👤 {testimonials[currentTestimonialIndex].age} anos</span>
-                  </div>
-                </div>
-              </div>
+        {/* Números que geram confiança */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-14 md:mb-20">
+          {STATS.map(({ value, label }) => (
+            <div
+              key={label}
+              className="text-center bg-white/5 border border-white/10 rounded-2xl py-6 px-4"
+            >
+              <span className="block text-3xl md:text-4xl font-bold text-emerald-400">
+                {value}
+              </span>
+              <span className="block text-sm text-slate-300 mt-1.5">{label}</span>
             </div>
-          </div>
-          
-          {/* Navigation Buttons */}
-          <button 
-            onClick={prevTestimonial}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white text-gray-800 rounded-full p-4 shadow-lg hover:shadow-xl transition-all hover:scale-110"
+          ))}
+        </div>
+
+        <div className="text-center max-w-2xl mx-auto mb-10 md:mb-14">
+          <span className="inline-flex items-center gap-2 bg-white/10 border border-white/15 text-emerald-300 px-4 py-1.5 rounded-full text-xs md:text-sm font-semibold tracking-widest uppercase">
+            Depoimentos
+          </span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mt-5 leading-tight">
+            Quem confia, recomenda
+          </h2>
+        </div>
+
+        {/* Depoimento em destaque */}
+        <div className="relative max-w-3xl mx-auto">
+          <figure className="bg-white rounded-3xl p-8 md:p-12 shadow-2xl text-center">
+            <Quote className="text-primary-200 mx-auto mb-5" size={44} aria-hidden="true" />
+            <div className="flex justify-center gap-1 mb-6" aria-label="Avaliação 5 de 5 estrelas">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="text-amber-400 fill-current" size={20} aria-hidden="true" />
+              ))}
+            </div>
+            <blockquote className="text-lg md:text-xl text-slate-700 leading-relaxed">
+              “{current.text}”
+            </blockquote>
+            <figcaption className="mt-7 pt-6 border-t border-slate-100">
+              <span className="block font-bold text-slate-900">{current.name}</span>
+              <span className="block text-sm text-slate-500 mt-1">
+                {current.treatment} • {current.location}
+              </span>
+            </figcaption>
+          </figure>
+
+          <button
+            onClick={prev}
+            className="absolute left-0 sm:-left-6 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-slate-800 rounded-full p-3 shadow-lg transition-all hover:scale-105"
+            aria-label="Depoimento anterior"
           >
-            <ChevronLeft size={24} />
+            <ChevronLeft size={22} />
           </button>
-          
-          <button 
-            onClick={nextTestimonial}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white text-gray-800 rounded-full p-4 shadow-lg hover:shadow-xl transition-all hover:scale-110"
+          <button
+            onClick={next}
+            className="absolute right-0 sm:-right-6 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-slate-800 rounded-full p-3 shadow-lg transition-all hover:scale-105"
+            aria-label="Próximo depoimento"
           >
-            <ChevronRight size={24} />
+            <ChevronRight size={22} />
           </button>
         </div>
 
-        {/* Dots Indicator */}
-        <div className="flex justify-center space-x-3 mb-12">
-          {testimonials.map((_, index) => (
+        {/* Indicadores */}
+        <div className="flex justify-center gap-2.5 mt-8" role="tablist" aria-label="Depoimentos">
+          {TESTIMONIALS.map((testimonial, i) => (
             <button
-              key={index}
-              onClick={() => setCurrentTestimonialIndex(index)}
-              className={`w-3 h-3 rounded-full transition-all ${
-                index === currentTestimonialIndex 
-                  ? 'bg-white w-8' 
-                  : 'bg-white bg-opacity-50 hover:bg-opacity-75'
+              key={testimonial.name}
+              onClick={() => setIndex(i)}
+              role="tab"
+              aria-selected={i === index}
+              aria-label={`Depoimento de ${testimonial.name}`}
+              className={`h-2.5 rounded-full transition-all duration-300 ${
+                i === index ? 'bg-emerald-400 w-8' : 'bg-white/30 w-2.5 hover:bg-white/50'
               }`}
             />
           ))}
         </div>
 
-        {/* All Testimonials Preview */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {testimonials.map((testimonial, index) => (
-            <div 
-              key={index}
-              onClick={() => setCurrentTestimonialIndex(index)}
-              className={`bg-white bg-opacity-10 backdrop-blur-sm p-6 rounded-xl cursor-pointer transition-all duration-300 ${
-                index === currentTestimonialIndex 
-                  ? 'bg-opacity-20 border-2 border-white' 
-                  : 'hover:bg-opacity-15'
-              }`}
+        {/* CTA */}
+        <div className="text-center mt-14">
+          <p className="text-slate-300 mb-6 max-w-xl mx-auto">
+            Veja mais resultados e o dia a dia do consultório no Instagram — ou
+            agende agora a sua avaliação.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
+            <a
+              href={WHATSAPP_DEFAULT}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary"
             >
-              <div className="flex mb-3">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="text-yellow-400 fill-current" size={16} />
-                ))}
-              </div>
-              <p className="text-white text-sm mb-4 line-clamp-3">
-                "{testimonial.text.substring(0, 100)}..."
-              </p>
-              <div>
-                <h5 className="text-white font-semibold text-sm">{testimonial.name}</h5>
-                <p className="text-emerald-200 text-xs">{testimonial.treatment} • {testimonial.location}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Call to Action */}
-        <div className="text-center mt-16">
-          <div className="bg-white bg-opacity-10 backdrop-blur-sm p-8 rounded-2xl max-w-3xl mx-auto">
-            <h3 className="text-2xl font-bold text-white mb-4">
-              Seja nosso próximo paciente satisfeito!
-            </h3>
-            <p className="text-emerald-100 mb-6">
-              Junte-se aos centenas de pacientes que já transformaram seus sorrisos 
-              e autoestima conosco. Agende sua consulta hoje mesmo!
-            </p>
-            <button 
-              onClick={() => window.open('https://wa.me/5549998362864', '_blank')}
-              className="bg-white text-emerald-600 px-8 py-4 rounded-full font-semibold hover:shadow-xl transition-all duration-300 inline-flex items-center gap-2"
+              Quero agendar minha avaliação
+            </a>
+            <a
+              href={SITE.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-outline-light"
             >
-              📱 Quero ser o próximo!
-            </button>
+              <Instagram size={18} aria-hidden="true" />
+              Ver no Instagram
+            </a>
           </div>
         </div>
       </div>
