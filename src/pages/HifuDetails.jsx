@@ -15,6 +15,8 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import WhatsAppButton from '../components/WhatsAppButton';
 import Seo from '../components/Seo';
+import Reveal from '../components/Reveal';
+import SkinDiagram from '../components/SkinDiagram';
 import { HIFU_VIDEOS, VideoModal } from '../components/HifuSection';
 import { images } from '../assets';
 import { WHATSAPP_HIFU } from '../utils/constants';
@@ -298,8 +300,27 @@ const HifuDetails = () => {
           </div>
         </section>
 
-        {/* Benefícios */}
+        {/* Diagrama interativo das camadas da pele */}
         <section className="section bg-slate-50">
+          <div className="container mx-auto px-4">
+            <Reveal className="text-center max-w-2xl mx-auto mb-10">
+              <span className="section-eyebrow">Interativo</span>
+              <h2 className="section-title mt-5">
+                Veja a tecnologia <span className="text-primary-700">por dentro</span>
+              </h2>
+              <p className="section-subtitle mt-5">
+                Diferente de cremes e tratamentos superficiais, o HIFU age em
+                profundidades precisas. Explore abaixo:
+              </p>
+            </Reveal>
+            <Reveal delay={150} className="max-w-5xl mx-auto">
+              <SkinDiagram />
+            </Reveal>
+          </div>
+        </section>
+
+        {/* Benefícios */}
+        <section className="section bg-white">
           <div className="container mx-auto px-4">
             <div className="text-center max-w-2xl mx-auto mb-12">
               <span className="section-eyebrow">Benefícios</span>
@@ -320,7 +341,7 @@ const HifuDetails = () => {
         </section>
 
         {/* Vídeos */}
-        <section id="videos-hifu" className="section bg-white">
+        <section id="videos-hifu" className="section bg-slate-50">
           <div className="container mx-auto px-4">
             <div className="text-center max-w-2xl mx-auto mb-12">
               <span className="section-eyebrow">Transparência total</span>
@@ -368,31 +389,45 @@ const HifuDetails = () => {
           </div>
         </section>
 
-        {/* Etapas */}
-        <section className="section bg-slate-50">
+        {/* Etapas — linha do tempo */}
+        <section className="section bg-white">
           <div className="container mx-auto px-4">
-            <div className="text-center max-w-2xl mx-auto mb-12">
+            <Reveal className="text-center max-w-2xl mx-auto mb-12">
               <span className="section-eyebrow">Passo a passo</span>
               <h2 className="section-title mt-5">Como funciona o tratamento</h2>
-            </div>
-            <div className="max-w-3xl mx-auto space-y-4">
-              {STEPS.map((step, index) => (
-                <div key={step.title} className="card p-6 md:p-7 flex items-start gap-5">
-                  <span className="w-11 h-11 shrink-0 bg-primary-600 text-white rounded-2xl flex items-center justify-center font-bold text-lg">
-                    {index + 1}
-                  </span>
-                  <div>
-                    <h3 className="font-bold text-slate-900 text-lg">{step.title}</h3>
-                    <p className="text-slate-600 mt-1.5 leading-relaxed">{step.description}</p>
-                  </div>
-                </div>
-              ))}
+            </Reveal>
+            <div className="max-w-3xl mx-auto relative">
+              {/* Linha vertical conectando as etapas */}
+              <div
+                className="absolute left-[21px] top-6 bottom-6 w-0.5 bg-gradient-to-b from-primary-500 via-secondary-500 to-emerald-400 hidden sm:block"
+                aria-hidden="true"
+              ></div>
+              <div className="space-y-5">
+                {STEPS.map((step, index) => (
+                  <Reveal key={step.title} delay={index * 120}>
+                    <div className="relative sm:pl-16">
+                      <span className="hidden sm:flex absolute left-0 top-5 w-11 h-11 bg-primary-600 text-white rounded-full items-center justify-center font-bold text-lg ring-4 ring-white shadow-lg z-10">
+                        {index + 1}
+                      </span>
+                      <div className="card p-6 md:p-7">
+                        <h3 className="font-bold text-slate-900 text-lg flex items-center gap-3">
+                          <span className="sm:hidden inline-flex w-8 h-8 shrink-0 bg-primary-600 text-white rounded-full items-center justify-center font-bold text-sm">
+                            {index + 1}
+                          </span>
+                          {step.title}
+                        </h3>
+                        <p className="text-slate-600 mt-1.5 leading-relaxed">{step.description}</p>
+                      </div>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
             </div>
           </div>
         </section>
 
         {/* FAQ */}
-        <section className="section bg-white">
+        <section className="section bg-slate-50">
           <div className="container mx-auto px-4">
             <div className="text-center max-w-2xl mx-auto mb-12">
               <span className="section-eyebrow">Dúvidas frequentes</span>

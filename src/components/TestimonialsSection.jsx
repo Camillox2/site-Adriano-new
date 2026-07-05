@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { ChevronLeft, ChevronRight, Star, Quote, Instagram } from 'lucide-react';
 import { SITE, WHATSAPP_DEFAULT } from '../utils/constants';
+import CountUp from './CountUp';
+import Reveal from './Reveal';
 
 const TESTIMONIALS = [
   {
@@ -42,10 +44,10 @@ const TESTIMONIALS = [
 ];
 
 const STATS = [
-  { value: '15+', label: 'anos de experiência' },
-  { value: '4', label: 'cidades atendidas' },
+  { end: 30, suffix: '+', label: 'anos de experiência' },
+  { end: 4, suffix: '', label: 'cidades atendidas' },
   { value: 'Milhares', label: 'de pacientes atendidos' },
-  { value: '4', label: 'especialidades integradas' },
+  { end: 5, suffix: '', label: 'especialidades integradas' },
 ];
 
 const TestimonialsSection = () => {
@@ -79,16 +81,23 @@ const TestimonialsSection = () => {
       <div className="container mx-auto px-4 relative z-10">
         {/* Números que geram confiança */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-14 md:mb-20">
-          {STATS.map(({ value, label }) => (
-            <div
-              key={label}
-              className="text-center bg-white/5 border border-white/10 rounded-2xl py-6 px-4"
-            >
-              <span className="block text-3xl md:text-4xl font-bold text-emerald-400">
-                {value}
-              </span>
-              <span className="block text-sm text-slate-300 mt-1.5">{label}</span>
-            </div>
+          {STATS.map(({ value, end, suffix, label }, index) => (
+            <Reveal key={label} delay={index * 100}>
+              <div className="text-center bg-white/5 border border-white/10 rounded-2xl py-6 px-4 h-full">
+                {value ? (
+                  <span className="block text-3xl md:text-4xl font-bold text-emerald-400">
+                    {value}
+                  </span>
+                ) : (
+                  <CountUp
+                    end={end}
+                    suffix={suffix}
+                    className="block text-3xl md:text-4xl font-bold text-emerald-400"
+                  />
+                )}
+                <span className="block text-sm text-slate-300 mt-1.5">{label}</span>
+              </div>
+            </Reveal>
           ))}
         </div>
 
@@ -103,22 +112,25 @@ const TestimonialsSection = () => {
 
         {/* Depoimento em destaque */}
         <div className="relative max-w-3xl mx-auto">
-          <figure className="bg-white rounded-3xl p-8 md:p-12 shadow-2xl text-center">
+          <figure className="bg-white rounded-3xl p-8 md:p-12 shadow-2xl text-center overflow-hidden">
             <Quote className="text-primary-200 mx-auto mb-5" size={44} aria-hidden="true" />
             <div className="flex justify-center gap-1 mb-6" aria-label="Avaliação 5 de 5 estrelas">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="text-amber-400 fill-current" size={20} aria-hidden="true" />
               ))}
             </div>
-            <blockquote className="text-lg md:text-xl text-slate-700 leading-relaxed">
-              “{current.text}”
-            </blockquote>
-            <figcaption className="mt-7 pt-6 border-t border-slate-100">
-              <span className="block font-bold text-slate-900">{current.name}</span>
-              <span className="block text-sm text-slate-500 mt-1">
-                {current.treatment} • {current.location}
-              </span>
-            </figcaption>
+            {/* key força o crossfade a cada troca de depoimento */}
+            <div key={index} className="animate-fade-in">
+              <blockquote className="text-lg md:text-xl text-slate-700 leading-relaxed">
+                “{current.text}”
+              </blockquote>
+              <figcaption className="mt-7 pt-6 border-t border-slate-100">
+                <span className="block font-bold text-slate-900">{current.name}</span>
+                <span className="block text-sm text-slate-500 mt-1">
+                  {current.treatment} • {current.location}
+                </span>
+              </figcaption>
+            </div>
           </figure>
 
           <button

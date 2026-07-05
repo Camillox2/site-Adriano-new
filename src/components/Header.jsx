@@ -14,6 +14,7 @@ const NAV_ITEMS = [
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [progress, setProgress] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
@@ -22,7 +23,11 @@ const Header = () => {
   const solid = scrolled || location.pathname !== '/' || menuOpen;
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 40);
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      setProgress(max > 0 ? Math.min((window.scrollY / max) * 100, 100) : 0);
+    };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
@@ -152,6 +157,13 @@ const Header = () => {
           </nav>
         </div>
       )}
+
+      {/* Barra de progresso da leitura */}
+      <div
+        className="absolute bottom-0 left-0 h-[3px] bg-gradient-to-r from-primary-600 via-secondary-500 to-emerald-400 transition-[width] duration-150 ease-out"
+        style={{ width: `${progress}%`, opacity: solid ? 1 : 0 }}
+        aria-hidden="true"
+      ></div>
     </header>
   );
 };

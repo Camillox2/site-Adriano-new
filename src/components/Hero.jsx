@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Phone, Instagram, ShieldCheck, MapPin, Star } from 'lucide-react';
-import { images } from '../assets';
+import { images, videos } from '../assets';
 import { SITE, WHATSAPP_DEFAULT } from '../utils/constants';
-
-const TRUST_ITEMS = [
-  { icon: Star, value: '15+', label: 'anos de experiência' },
-  { icon: MapPin, value: '4', label: 'cidades atendidas' },
-  { icon: ShieldCheck, value: '100%', label: 'atendimento personalizado' },
-];
+import CountUp from './CountUp';
 
 const Hero = () => {
+  const [showVideo, setShowVideo] = useState(false);
+
+  // Vídeo de fundo só para quem aceita movimento (acessibilidade)
+  useEffect(() => {
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setShowVideo(true);
+    }
+  }, []);
+
   const scrollToHifu = () => {
     document.getElementById('hifu')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -19,15 +23,28 @@ const Hero = () => {
       id="inicio"
       className="relative min-h-[100svh] flex flex-col justify-center overflow-hidden bg-slate-900"
     >
-      {/* Foto do consultório ao fundo */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${images.consultorio1})` }}
-        role="img"
-        aria-label="Consultório do Dr. Adriano Camillo"
-      ></div>
-      <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-900/80 to-slate-900/60"></div>
-      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-slate-950/80 to-transparent"></div>
+      {/* Fundo: vídeo do equipamento em loop (0,5 MB) com foto de fallback */}
+      <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
+        {showVideo ? (
+          <video
+            className="w-full h-full object-cover"
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster={images.consultorio1}
+            src={videos.hifuDois}
+            tabIndex={-1}
+          />
+        ) : (
+          <div
+            className="w-full h-full bg-cover bg-center animate-kenburns"
+            style={{ backgroundImage: `url(${images.consultorio1})` }}
+          ></div>
+        )}
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-900/85 to-slate-900/60"></div>
+      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-slate-950/90 to-transparent"></div>
 
       <div className="container mx-auto px-4 relative z-10 pt-28 pb-16 lg:pt-32">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
@@ -47,7 +64,7 @@ const Hero = () => {
             <p className="text-lg md:text-xl text-slate-200 leading-relaxed max-w-2xl mx-auto lg:mx-0">
               HIFU (Ultrassom Microfocado), Ortodontia, Implantes e Harmonização
               Orofacial com o Dr. Adriano Camillo — tecnologia de ponta e mais de
-              15 anos de experiência cuidando de você.
+              30 anos de experiência cuidando de você.
             </p>
 
             {/* CTAs */}
@@ -111,20 +128,29 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Barra de confiança */}
+        {/* Barra de confiança com números animados */}
         <div className="mt-16 lg:mt-20 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto lg:mx-0">
-          {TRUST_ITEMS.map(({ icon: Icon, value, label }) => (
-            <div
-              key={label}
-              className="flex items-center justify-center lg:justify-start gap-4 bg-white/5 border border-white/10 backdrop-blur-sm rounded-2xl px-6 py-4"
-            >
-              <Icon className="text-emerald-400 shrink-0" size={28} aria-hidden="true" />
-              <span>
-                <span className="block text-2xl font-bold text-white">{value}</span>
-                <span className="block text-sm text-slate-300">{label}</span>
-              </span>
-            </div>
-          ))}
+          <div className="flex items-center justify-center lg:justify-start gap-4 bg-white/5 border border-white/10 backdrop-blur-sm rounded-2xl px-6 py-4">
+            <Star className="text-emerald-400 shrink-0" size={28} aria-hidden="true" />
+            <span>
+              <CountUp end={30} suffix="+" className="block text-2xl font-bold text-white" />
+              <span className="block text-sm text-slate-300">anos de experiência</span>
+            </span>
+          </div>
+          <div className="flex items-center justify-center lg:justify-start gap-4 bg-white/5 border border-white/10 backdrop-blur-sm rounded-2xl px-6 py-4">
+            <MapPin className="text-emerald-400 shrink-0" size={28} aria-hidden="true" />
+            <span>
+              <CountUp end={4} className="block text-2xl font-bold text-white" />
+              <span className="block text-sm text-slate-300">cidades atendidas</span>
+            </span>
+          </div>
+          <div className="flex items-center justify-center lg:justify-start gap-4 bg-white/5 border border-white/10 backdrop-blur-sm rounded-2xl px-6 py-4">
+            <ShieldCheck className="text-emerald-400 shrink-0" size={28} aria-hidden="true" />
+            <span>
+              <CountUp end={100} suffix="%" className="block text-2xl font-bold text-white" />
+              <span className="block text-sm text-slate-300">atendimento personalizado</span>
+            </span>
+          </div>
         </div>
       </div>
     </section>

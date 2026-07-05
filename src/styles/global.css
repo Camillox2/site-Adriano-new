@@ -61,7 +61,26 @@
   }
 
   .btn-primary {
-    @apply btn bg-secondary-600 text-white px-6 py-3.5 md:px-8 md:py-4 shadow-lg shadow-secondary-600/25 hover:bg-secondary-700 hover:shadow-xl hover:shadow-secondary-600/30 hover:-translate-y-0.5 active:translate-y-0;
+    @apply btn bg-secondary-600 text-white px-6 py-3.5 md:px-8 md:py-4 shadow-lg shadow-secondary-600/25 hover:bg-secondary-700 hover:shadow-xl hover:shadow-secondary-600/30 hover:-translate-y-0.5 active:translate-y-0 relative overflow-hidden;
+  }
+
+  /* Brilho que atravessa o botão no hover */
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 40%,
+      rgba(255, 255, 255, 0.35) 50%,
+      transparent 60%
+    );
+    transform: translateX(-160%);
+    transition: transform 0.65s ease;
+    pointer-events: none;
+  }
+  .btn-primary:hover::after {
+    transform: translateX(160%);
   }
 
   .btn-dark {
@@ -142,6 +161,26 @@
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
+}
+
+/* Zoom lento e sutil no fundo do hero (efeito Ken Burns) */
+@keyframes kenburns {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
+}
+
+.animate-kenburns {
+  animation: kenburns 22s ease-in-out infinite alternate;
+}
+
+/* Pontos de foco pulsando no diagrama da pele */
+@keyframes focalPulse {
+  0%, 100% { opacity: 0.9; r: 5; }
+  50% { opacity: 0.35; r: 9; }
+}
+
+.focal-point {
+  animation: focalPulse 2.2s ease-in-out infinite;
 }
 
 /* Acessibilidade: respeita usuários que preferem menos movimento */

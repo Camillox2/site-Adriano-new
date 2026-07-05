@@ -12,6 +12,7 @@ import {
 } from 'lucide-react';
 import { videos, images } from '../assets';
 import { WHATSAPP_HIFU } from '../utils/constants';
+import Reveal from './Reveal';
 
 // ---------- dados ----------
 export const HIFU_VIDEOS = [
@@ -164,7 +165,7 @@ const HifuSection = () => {
     <section id="hifu" className="section bg-slate-50">
       <div className="container mx-auto px-4">
         {/* Cabeçalho */}
-        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+        <Reveal className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
           <span className="section-eyebrow">
             <Zap size={14} aria-hidden="true" />
             Ultrassom Microfocado
@@ -179,18 +180,20 @@ const HifuSection = () => {
             rosto e rejuvenescer — tudo isso sem cortes, sem agulhas e sem
             afastamento da rotina.
           </p>
-        </div>
+        </Reveal>
 
         {/* Como funciona */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14 md:mb-20">
-          {HIGHLIGHTS.map(({ icon: Icon, title, text }) => (
-            <div key={title} className="card card-lift p-7">
-              <span className="inline-flex p-3 rounded-2xl bg-primary-50 text-primary-700 mb-5">
-                <Icon size={26} aria-hidden="true" />
-              </span>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">{title}</h3>
-              <p className="text-slate-600 leading-relaxed text-sm md:text-base">{text}</p>
-            </div>
+          {HIGHLIGHTS.map(({ icon: Icon, title, text }, index) => (
+            <Reveal key={title} delay={index * 130}>
+              <div className="card card-lift p-7 h-full">
+                <span className="inline-flex p-3 rounded-2xl bg-primary-50 text-primary-700 mb-5">
+                  <Icon size={26} aria-hidden="true" />
+                </span>
+                <h3 className="text-lg font-bold text-slate-900 mb-2">{title}</h3>
+                <p className="text-slate-600 leading-relaxed text-sm md:text-base">{text}</p>
+              </div>
+            </Reveal>
           ))}
         </div>
 
@@ -204,7 +207,7 @@ const HifuSection = () => {
                 loading="lazy"
                 width="480"
                 height="640"
-                className="rounded-2xl shadow-lg object-cover w-full h-64 md:h-80"
+                className="rounded-2xl shadow-lg object-cover object-top w-full h-80 md:h-[26rem]"
               />
               <img
                 src={images.consultorio3}
@@ -212,7 +215,7 @@ const HifuSection = () => {
                 loading="lazy"
                 width="480"
                 height="640"
-                className="rounded-2xl shadow-lg object-cover w-full h-64 md:h-80 mt-8"
+                className="rounded-2xl shadow-lg object-cover object-top w-full h-80 md:h-[26rem] mt-8"
               />
             </div>
             <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 bg-white shadow-xl rounded-2xl px-6 py-3.5 flex items-center gap-3 border border-slate-100">
@@ -266,8 +269,10 @@ const HifuSection = () => {
             Veja o HIFU de perto
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {HIFU_VIDEOS.map((video) => (
-              <VideoCard key={video.id} video={video} onClick={() => setActiveVideo(video)} />
+            {HIFU_VIDEOS.map((video, index) => (
+              <Reveal key={video.id} delay={index * 110}>
+                <VideoCard video={video} onClick={() => setActiveVideo(video)} />
+              </Reveal>
             ))}
           </div>
         </div>

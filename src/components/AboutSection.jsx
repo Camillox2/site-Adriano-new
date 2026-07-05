@@ -16,7 +16,7 @@ const ACHIEVEMENTS = [
   },
   {
     Icon: Star,
-    title: '15+ anos de experiência',
+    title: '30+ anos de experiência',
     description: 'Milhares de pacientes atendidos com cuidado e dedicação',
   },
 ];
@@ -64,7 +64,7 @@ const AboutSection = () => (
             Experiência que gera confiança
           </h3>
           <p className="text-slate-600 leading-relaxed md:text-lg">
-            Com mais de 15 anos de atuação, o Dr. Adriano Camillo é referência
+            Com mais de 30 anos de atuação, o Dr. Adriano Camillo é referência
             regional em tratamentos odontológicos e estéticos avançados.
             Graduado pela Universidade Federal de Santa Catarina (UFSC), possui
             especialização em Ortodontia e certificações em Harmonização
