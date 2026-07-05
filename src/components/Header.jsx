@@ -55,7 +55,7 @@ const Header = () => {
       className={`fixed top-0 inset-x-0 z-40 transition-all duration-300 ${
         solid
           ? 'bg-white/95 backdrop-blur-md shadow-md py-2'
-          : 'bg-gradient-to-b from-slate-900/60 to-transparent py-4'
+          : 'bg-transparent py-4'
       }`}
     >
       <div className="container mx-auto px-4 flex items-center justify-between gap-4">
