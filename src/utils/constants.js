@@ -33,6 +33,10 @@ export const WHATSAPP_HIFU = whatsapp(
   'Olá, Dr. Adriano! Gostaria de agendar uma avaliação para o HIFU (Ultrassom Microfocado).'
 );
 
+export const WHATSAPP_ALUGAR_HIFU = whatsapp(
+  'Olá! Gostaria de mais informações sobre a locação do equipamento HIFU Ultramed.'
+);
+
 export const WHATSAPP_EMERGENCY = whatsapp(
   'Olá! Tenho uma urgência odontológica e preciso de atendimento.'
 );

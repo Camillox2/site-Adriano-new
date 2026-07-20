@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Phone, Menu, X } from 'lucide-react';
 import { images } from '../assets';
-import { WHATSAPP_DEFAULT } from '../utils/constants';
+import { WHATSAPP_DEFAULT, WHATSAPP_ALUGAR_HIFU } from '../utils/constants';
 
 const NAV_ITEMS = [
   { label: 'Início', target: 'inicio' },
@@ -12,12 +12,25 @@ const NAV_ITEMS = [
   { label: 'Contato', target: 'contato' },
 ];
 
+const NAV_ITEMS_RENTAL = [
+  { label: 'Início', target: 'inicio-locacao' },
+  { label: 'O Aparelho', target: 'aparelho-locacao' },
+  { label: 'Simulador 3D', target: 'simulador-locacao' },
+  { label: 'Ponteiras', target: 'ponteiras-locacao' },
+  { label: 'Vantagens', target: 'vantagens-locacao' },
+];
+
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [progress, setProgress] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+
+  const isRentalPage = location.pathname === '/alugar_hifu';
+  const currentItems = isRentalPage ? NAV_ITEMS_RENTAL : NAV_ITEMS;
+  const whatsappLink = isRentalPage ? WHATSAPP_ALUGAR_HIFU : WHATSAPP_DEFAULT;
+  const ctaLabel = isRentalPage ? 'Alugar HIFU' : 'Agendar Avaliação';
 
   // No topo da home o header é transparente; fora dela, sempre sólido
   const solid = scrolled || location.pathname !== '/' || menuOpen;
@@ -43,6 +56,14 @@ const Header = () => {
 
   const goToSection = (id) => {
     setMenuOpen(false);
+    if (isRentalPage) {
+      if (id === 'inicio-locacao') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+      }
+      return;
+    }
     if (location.pathname !== '/') {
       navigate('/', { state: { scrollTo: id } });
       return;
@@ -61,7 +82,7 @@ const Header = () => {
       <div className="container mx-auto px-4 flex items-center justify-between gap-4">
         {/* Logo */}
         <button
-          onClick={() => goToSection('inicio')}
+          onClick={() => goToSection(isRentalPage ? 'inicio-locacao' : 'inicio')}
           className="flex items-center gap-3 text-left focus:outline-none"
           aria-label="Voltar ao início"
         >
@@ -92,7 +113,7 @@ const Header = () => {
 
         {/* Navegação desktop */}
         <nav className="hidden md:flex items-center gap-1 lg:gap-2" aria-label="Navegação principal">
-          {NAV_ITEMS.map((item) => (
+          {currentItems.map((item) => (
             <button
               key={item.target}
               onClick={() => goToSection(item.target)}
@@ -110,13 +131,13 @@ const Header = () => {
         {/* CTA + menu mobile */}
         <div className="flex items-center gap-2">
           <a
-            href={WHATSAPP_DEFAULT}
+            href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
             className="hidden sm:inline-flex btn-primary !px-5 !py-2.5 md:!px-6 md:!py-3 text-sm md:text-base"
           >
             <Phone size={16} aria-hidden="true" />
-            Agendar Avaliação
+            {ctaLabel}
           </a>
 
           <button
@@ -136,7 +157,7 @@ const Header = () => {
       {menuOpen && (
         <div className="md:hidden bg-white border-t border-slate-100 shadow-xl animate-fade-in">
           <nav className="container mx-auto px-4 py-4 flex flex-col" aria-label="Menu móvel">
-            {NAV_ITEMS.map((item) => (
+            {currentItems.map((item) => (
               <button
                 key={item.target}
                 onClick={() => goToSection(item.target)}
@@ -146,13 +167,13 @@ const Header = () => {
               </button>
             ))}
             <a
-              href={WHATSAPP_DEFAULT}
+              href={whatsappLink}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary w-full mt-4 text-base"
             >
               <Phone size={18} aria-hidden="true" />
-              Agendar Avaliação no WhatsApp
+              {ctaLabel} no WhatsApp
             </a>
           </nav>
         </div>
