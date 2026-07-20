@@ -3,6 +3,9 @@ name: Build HostGator Package
 on:
   push:
     branches:
+      - feature/landing-alugar-hifu
+  pull_request:
+    branches:
       - master
   workflow_dispatch:
 
@@ -14,44 +17,44 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
-      - name: Build and publish HostGator package
+      - name: Build and publish output without external actions
         shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
           REPOSITORY: ${{ github.repository }}
-          SOURCE_SHA: ${{ github.sha }}
+          SOURCE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
         run: |
           set +e
-          git clone --depth=1 "https://x-access-token:${GH_TOKEN}@github.com/${REPOSITORY}.git" source
-          clone_code=$?
+          git init .
+          git remote add origin "https://x-access-token:${GH_TOKEN}@github.com/${REPOSITORY}.git"
+          git fetch --depth=1 origin "${SOURCE_SHA}"
+          git checkout --detach FETCH_HEAD
+
+          {
+            echo "SOURCE_SHA=${SOURCE_SHA}"
+            echo "Node: $(node --version)"
+            echo "npm: $(npm --version)"
+          } | tee build.log
+
+          npm ci 2>&1 | tee -a build.log
+          install_code=${PIPESTATUS[0]}
+          build_code=99
+
+          if [ "$install_code" -eq 0 ]; then
+            CI=true npm run build 2>&1 | tee -a build.log
+            build_code=${PIPESTATUS[0]}
+          fi
+
+          echo "INSTALL_EXIT=${install_code}" | tee -a build.log
+          echo "BUILD_EXIT=${build_code}" | tee -a build.log
+
           mkdir -p /tmp/hostgator-output
+          cp build.log /tmp/hostgator-output/build.log
 
-          if [ "$clone_code" -ne 0 ]; then
-            echo "CLONE_EXIT=$clone_code" > /tmp/hostgator-output/build.log
-          else
-            cd source
-            {
-              echo "SOURCE_SHA=${SOURCE_SHA}"
-              echo "Node: $(node --version)"
-              echo "npm: $(npm --version)"
-            } | tee /tmp/hostgator-output/build.log
-
-            npm ci 2>&1 | tee -a /tmp/hostgator-output/build.log
-            install_code=${PIPESTATUS[0]}
-            build_code=99
-
-            if [ "$install_code" -eq 0 ]; then
-              CI=true npm run build 2>&1 | tee -a /tmp/hostgator-output/build.log
-              build_code=${PIPESTATUS[0]}
-            fi
-
-            echo "INSTALL_EXIT=${install_code}" | tee -a /tmp/hostgator-output/build.log
-            echo "BUILD_EXIT=${build_code}" | tee -a /tmp/hostgator-output/build.log
-
-            if [ "$build_code" -eq 0 ]; then
-              mkdir -p hostgator-package
-              cp -R build/. hostgator-package/
-              cat > hostgator-package/.htaccess <<'HTACCESS'
+          if [ "$build_code" -eq 0 ]; then
+            mkdir -p hostgator-package
+            cp -R build/. hostgator-package/
+            cat > hostgator-package/.htaccess <<'HTACCESS'
           Options -MultiViews
           RewriteEngine On
           RewriteBase /
@@ -60,17 +63,12 @@ jobs:
           RewriteRule ^ - [L]
           RewriteRule ^ index.html [L]
           HTACCESS
-              test -f hostgator-package/index.html
-              test -f hostgator-package/.htaccess
-              (cd hostgator-package && zip -r -q /tmp/hostgator-output/dradrianocamillo-hostgator-build.zip .)
-              sha256sum /tmp/hostgator-output/dradrianocamillo-hostgator-build.zip > /tmp/hostgator-output/SHA256SUMS.txt
-            fi
-            cd ..
+            test -f hostgator-package/index.html
+            test -f hostgator-package/.htaccess
+            (cd hostgator-package && zip -r -q /tmp/hostgator-output/dradrianocamillo-hostgator-build.zip .)
+            sha256sum /tmp/hostgator-output/dradrianocamillo-hostgator-build.zip > /tmp/hostgator-output/SHA256SUMS.txt
           fi
 
-          rm -rf publish
-          git clone "https://x-access-token:${GH_TOKEN}@github.com/${REPOSITORY}.git" publish
-          cd publish
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git checkout --orphan hostgator-build-output
@@ -80,3 +78,7 @@ jobs:
           git add -f .
           git commit -m "build: HostGator package for ${SOURCE_SHA}"
           git push --force origin HEAD:hostgator-build-output
+
+          if [ "$build_code" -ne 0 ]; then
+            exit 1
+          fi
