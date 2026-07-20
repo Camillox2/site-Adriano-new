@@ -1,0 +1,61 @@
+name: Build HostGator Package
+
+on:
+  push:
+    branches:
+      - feature/landing-alugar-hifu
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build production bundle
+        env:
+          CI: "true"
+        run: npm run build
+
+      - name: Prepare HostGator package
+        shell: bash
+        run: |
+          mkdir -p hostgator-package
+          cp -R build/. hostgator-package/
+          cat > hostgator-package/.htaccess <<'HTACCESS'
+          Options -MultiViews
+          RewriteEngine On
+          RewriteBase /
+          RewriteCond %{REQUEST_FILENAME} -f [OR]
+          RewriteCond %{REQUEST_FILENAME} -d
+          RewriteRule ^ - [L]
+          RewriteRule ^ index.html [L]
+          HTACCESS
+          test -f hostgator-package/index.html
+          test -f hostgator-package/.htaccess
+
+      - name: Upload HostGator build
+        uses: actions/upload-artifact@v4
+        with:
+          name: dradrianocamillo-hostgator-build
+          path: hostgator-package
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 7
