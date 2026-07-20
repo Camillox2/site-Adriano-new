@@ -79,7 +79,9 @@ setRotation(startRotation.current + (event.clientX - startX.current) * 0.55);
 };
 const endDrag = (event) => {
 setDragging(false);
-event.currentTarget.releasePointerCapture?.(event.pointerId);
+if (event.currentTarget.hasPointerCapture?.(event.pointerId)) {
+event.currentTarget.releasePointerCapture(event.pointerId);
+}
 };
 return (
 <div className="rounded-[2rem] border border-white/10 bg-slate-950 p-4 sm:p-6 shadow-2xl overflow-hidden">
@@ -117,7 +119,7 @@ onPointerDown={onPointerDown}
 onPointerMove={onPointerMove}
 onPointerUp={endDrag}
 onPointerCancel={endDrag}
-role="application"
+role="img"
 aria-label="Modelo tridimensional ilustrativo do equipamento HIFU. Arraste horizontalmente para girar."
 >
 <div className="absolute inset-x-8 bottom-8 h-8 bg-cyan-400/20 blur-2xl rounded-full" aria-hidden="true"></div>
@@ -148,8 +150,8 @@ style={{ transform: 'translateZ(42px)' }}
 </div>
 <div className="absolute left-7 right-7 top-44 h-px bg-slate-300"></div>
 <div className="absolute left-7 top-48 right-7 grid grid-cols-2 gap-3">
-<div className="h-16 rounded-xl bg-white/65 border border-white shadow-inner"></div>
-<div className="h-16 rounded-xl bg-white/65 border border-white shadow-inner"></div>
+<div className="h-16 rounded-xl bg-white/60 border border-white shadow-inner"></div>
+<div className="h-16 rounded-xl bg-white/60 border border-white shadow-inner"></div>
 </div>
 <div className="absolute left-1/2 -translate-x-1/2 bottom-7 w-20 h-20 rounded-full border-[9px] border-slate-300 bg-slate-700 shadow-inner">
 <div className="absolute inset-3 rounded-full bg-cyan-400/80 shadow-[0_0_20px_rgba(34,211,238,0.7)]"></div>
@@ -200,20 +202,20 @@ Representação tridimensional ilustrativa baseada no equipamento real. Consulte
 </div>
 );
 };
-const TreatmentSurface = ({ area, firing, handpiece, onPointerDown, onPointerMove, onPointerUp, containerRef }) => (
+const TreatmentSurface = ({ area, firing, handpiece, onPointerDown, onPointerMove, onPointerUp, onActivate, containerRef }) => (
 <div ref={containerRef} className="relative h-[23rem] sm:h-[29rem] overflow-hidden rounded-3xl bg-gradient-to-b from-slate-100 to-slate-200 border border-white shadow-inner touch-none">
 <div className="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_50%_25%,white,transparent_42%)]"></div>
 {area === 'face' ? (
-<div className="absolute left-1/2 top-7 -translate-x-1/2 w-52 sm:w-64 h-[19rem] sm:h-[24rem] rounded-[48%_48%_44%_44%/38%_38%_60%_60%] bg-gradient-to-br from-[#f8d5c4] via-[#eabda7] to-[#c98d77] shadow-2xl border border-white/50">
-<div className="absolute left-[28%] top-[35%] w-7 h-2 rounded-full bg-slate-700/55"></div>
-<div className="absolute right-[28%] top-[35%] w-7 h-2 rounded-full bg-slate-700/55"></div>
+<div className="absolute left-1/2 top-7 -translate-x-1/2 w-52 sm:w-64 h-[19rem] sm:h-[24rem] bg-gradient-to-br from-[#f8d5c4] via-[#eabda7] to-[#c98d77] shadow-2xl border border-white/50" style={{ borderRadius: '48% 48% 44% 44% / 38% 38% 60% 60%' }}>
+<div className="absolute left-[28%] top-[35%] w-7 h-2 rounded-full bg-slate-700/50"></div>
+<div className="absolute right-[28%] top-[35%] w-7 h-2 rounded-full bg-slate-700/50"></div>
 <div className="absolute left-1/2 -translate-x-1/2 top-[42%] w-5 h-16 rounded-full border-r border-amber-900/20"></div>
 <div className="absolute left-1/2 -translate-x-1/2 bottom-[21%] w-20 h-7 rounded-[50%] border-b-2 border-rose-900/35"></div>
 <div className="absolute -left-3 top-[38%] w-7 h-20 rounded-full bg-[#dca68f]"></div>
 <div className="absolute -right-3 top-[38%] w-7 h-20 rounded-full bg-[#dca68f]"></div>
 </div>
 ) : (
-<div className="absolute left-1/2 top-7 -translate-x-1/2 w-64 sm:w-80 h-[20rem] sm:h-[25rem] rounded-[42%_42%_32%_32%/28%_28%_45%_45%] bg-gradient-to-br from-[#f4cfbd] via-[#eab8a0] to-[#c98772] shadow-2xl border border-white/50">
+<div className="absolute left-1/2 top-7 -translate-x-1/2 w-64 sm:w-80 h-[20rem] sm:h-[25rem] bg-gradient-to-br from-[#f4cfbd] via-[#eab8a0] to-[#c98772] shadow-2xl border border-white/50" style={{ borderRadius: '42% 42% 32% 32% / 28% 28% 45% 45%' }}>
 <div className="absolute left-1/2 -translate-x-1/2 top-[18%] w-28 h-20 rounded-full border-b border-amber-900/15"></div>
 <div className="absolute left-1/2 -translate-x-1/2 top-[52%] w-2.5 h-2.5 rounded-full bg-amber-900/25"></div>
 <div className="absolute inset-x-10 bottom-[20%] h-px bg-amber-900/10"></div>
@@ -229,6 +231,12 @@ onPointerCancel={onPointerUp}
 role="button"
 tabIndex={0}
 aria-label="Ponteira interativa. Arraste sobre a área de tratamento."
+onKeyDown={(event) => {
+if (event.key === 'Enter' || event.key === ' ') {
+event.preventDefault();
+onActivate();
+}
+}}
 >
 <div className="absolute left-8 top-0 w-10 h-24 rounded-full bg-gradient-to-b from-white to-slate-400 border border-white shadow-xl"></div>
 <div className="absolute left-4 top-20 w-16 h-12 rounded-xl bg-gradient-to-b from-slate-100 to-slate-400 border border-white shadow-xl">
@@ -241,7 +249,7 @@ aria-label="Ponteira interativa. Arraste sobre a área de tratamento."
 </>
 )}
 </div>
-<div className="absolute left-3 bottom-3 right-3 sm:left-5 sm:right-auto rounded-2xl bg-slate-950/85 backdrop-blur px-4 py-3 text-white text-xs sm:text-sm flex items-center gap-3 border border-white/10">
+<div className="absolute left-3 bottom-3 right-3 sm:left-5 sm:right-auto rounded-2xl bg-slate-950/80 backdrop-blur px-4 py-3 text-white text-xs sm:text-sm flex items-center gap-3 border border-white/10">
 <Move3D size={18} className="text-cyan-300 shrink-0" aria-hidden="true" />
 Arraste a ponteira sobre {area === 'face' ? 'o rosto' : 'a área corporal'}
 </div>
@@ -343,7 +351,9 @@ event.currentTarget.setPointerCapture?.(event.pointerId);
 const endDrag = (event) => {
 if (!dragging) return;
 setDragging(false);
-event.currentTarget.releasePointerCapture?.(event.pointerId);
+if (event.currentTarget.hasPointerCapture?.(event.pointerId)) {
+event.currentTarget.releasePointerCapture(event.pointerId);
+}
 fire();
 };
 const selectCartridge = (cartridge) => {
@@ -432,6 +442,7 @@ handpiece={handpiece}
 onPointerDown={startDrag}
 onPointerMove={moveHandpiece}
 onPointerUp={endDrag}
+onActivate={fire}
 containerRef={surfaceRef}
 />
 <SkinCrossSection active={active} firing={firing} />
