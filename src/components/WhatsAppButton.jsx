@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { WHATSAPP_DEFAULT } from '../utils/constants';
+import { useLocation } from 'react-router-dom';
+import { WHATSAPP_DEFAULT, WHATSAPP_RENTAL } from '../utils/constants';
 
 // Ícone oficial do WhatsApp (SVG inline)
 const WhatsAppIcon = ({ size = 28 }) => (
@@ -14,9 +15,13 @@ const WhatsAppIcon = ({ size = 28 }) => (
   </svg>
 );
 
-const WhatsAppButton = () => {
+const WhatsAppButton = ({ href, label }) => {
   const [visible, setVisible] = useState(false);
   const [showLabel, setShowLabel] = useState(false);
+  const { pathname } = useLocation();
+  const isRentalPage = pathname === '/alugar_hifu';
+  const resolvedHref = href || (isRentalPage ? WHATSAPP_RENTAL : WHATSAPP_DEFAULT);
+  const resolvedLabel = label || (isRentalPage ? 'Consulte a locação pelo WhatsApp' : 'Dúvidas? Fale com a gente!');
 
   // Aparece após um pequeno scroll; balão de convite alguns segundos depois
   useEffect(() => {
@@ -42,11 +47,11 @@ const WhatsAppButton = () => {
     >
       {showLabel && (
         <span className="hidden sm:block bg-white text-slate-800 text-sm font-medium px-4 py-2.5 rounded-2xl rounded-br-sm shadow-xl border border-slate-100 animate-fade-in">
-          Dúvidas? Fale com a gente!
+          {resolvedLabel}
         </span>
       )}
       <a
-        href={WHATSAPP_DEFAULT}
+        href={resolvedHref}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Conversar no WhatsApp"
