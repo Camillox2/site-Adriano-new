@@ -87,9 +87,9 @@ const HifuRental = () => {
             src={images.hifuEquipamentoDois}
             alt="Equipamento Ultramed HIFU"
             className="absolute inset-0 w-full h-full object-cover opacity-25 animate-kenburns"
-            fetchpriority="high"
+            fetchPriority="high"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/95 to-slate-950/55"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/95 to-slate-950/50"></div>
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_30%,rgba(34,211,238,0.22),transparent_34%),radial-gradient(circle_at_20%_80%,rgba(16,185,129,0.17),transparent_30%)]"></div>
           <div className="container mx-auto px-4 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-[1.08fr_0.92fr] gap-10 items-center">
@@ -133,7 +133,7 @@ const HifuRental = () => {
                   alt="Dr. Adriano Camillo ao lado do Ultramed HIFU"
                   width="720"
                   height="960"
-                  className="relative w-full max-h-[39rem] object-cover object-top rounded-[2.4rem] border border-white/15 shadow-2xl"
+                  className="relative w-full max-h-[39rem] object-cover object-top rounded-[2.4rem] border border-white/20 shadow-2xl"
                 />
               </div>
             </div>
@@ -210,7 +210,7 @@ const HifuRental = () => {
             </Reveal>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
               {HIFU_VIDEOS.map((video) => (
-                <button key={video.id} onClick={() => setActiveVideo(video)} className="rounded-2xl overflow-hidden bg-white/5 border border-white/10 text-left group">
+                <button type="button" key={video.id} onClick={() => setActiveVideo(video)} className="rounded-2xl overflow-hidden bg-white/5 border border-white/10 text-left group">
                   <div className="relative">
                     <img src={video.poster} alt={video.title} loading="lazy" className="w-full h-48 object-cover group-hover:scale-105 transition-transform" />
                     <span className="absolute inset-0 flex items-center justify-center bg-slate-950/25"><span className="h-14 w-14 rounded-full bg-white flex items-center justify-center"><Play size={23} fill="currentColor" className="text-primary-700 ml-1" /></span></span>
@@ -235,7 +235,7 @@ const HifuRental = () => {
             <div className="space-y-4">
               {FAQS.map(([question, answer], index) => (
                 <div key={question} className="rounded-2xl border border-slate-200 overflow-hidden">
-                  <button onClick={() => setOpenFaq(openFaq === index ? -1 : index)} className="w-full p-5 flex justify-between gap-4 text-left font-bold text-slate-900" aria-expanded={openFaq === index}>
+                  <button type="button" onClick={() => setOpenFaq(openFaq === index ? -1 : index)} className="w-full p-5 flex justify-between gap-4 text-left font-bold text-slate-900" aria-expanded={openFaq === index}>
                     {question}<ChevronDown className={`shrink-0 text-primary-700 transition-transform ${openFaq === index ? 'rotate-180' : ''}`} size={21} />
                   </button>
                   {openFaq === index && <p className="px-5 pb-5 text-slate-600 leading-relaxed animate-fade-in">{answer}</p>}
