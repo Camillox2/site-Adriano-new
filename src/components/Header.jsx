@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Phone, Menu, X } from 'lucide-react';
 import { images } from '../assets';
-import { WHATSAPP_DEFAULT } from '../utils/constants';
+import { WHATSAPP_DEFAULT, WHATSAPP_RENTAL } from '../utils/constants';
 
 const NAV_ITEMS = [
   { label: 'Início', target: 'inicio' },
@@ -18,6 +18,9 @@ const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const isRentalPage = location.pathname === '/alugar_hifu';
+  const whatsappHref = isRentalPage ? WHATSAPP_RENTAL : WHATSAPP_DEFAULT;
+  const ctaLabel = isRentalPage ? 'Consultar locação' : 'Agendar Avaliação';
 
   // No topo da home o header é transparente; fora dela, sempre sólido
   const solid = scrolled || location.pathname !== '/' || menuOpen;
@@ -110,13 +113,13 @@ const Header = () => {
         {/* CTA + menu mobile */}
         <div className="flex items-center gap-2">
           <a
-            href={WHATSAPP_DEFAULT}
+            href={whatsappHref}
             target="_blank"
             rel="noopener noreferrer"
             className="hidden sm:inline-flex btn-primary !px-5 !py-2.5 md:!px-6 md:!py-3 text-sm md:text-base"
           >
             <Phone size={16} aria-hidden="true" />
-            Agendar Avaliação
+            {ctaLabel}
           </a>
 
           <button
@@ -146,13 +149,13 @@ const Header = () => {
               </button>
             ))}
             <a
-              href={WHATSAPP_DEFAULT}
+              href={whatsappHref}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary w-full mt-4 text-base"
             >
               <Phone size={18} aria-hidden="true" />
-              Agendar Avaliação no WhatsApp
+              {isRentalPage ? 'Consultar locação no WhatsApp' : 'Agendar Avaliação no WhatsApp'}
             </a>
           </nav>
         </div>
