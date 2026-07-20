@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import HifuSection from '../components/HifuSection';
+import HifuRentalBanner from '../components/HifuRentalBanner';
 import ServicesSection from '../components/ServicesSection';
 import AboutSection from '../components/AboutSection';
 import TestimonialsSection from '../components/TestimonialsSection';
@@ -37,6 +38,7 @@ const Home = () => {
       <main>
         <Hero />
         <HifuSection />
+        <HifuRentalBanner />
         <ServicesSection />
         <AboutSection />
         <TestimonialsSection />
