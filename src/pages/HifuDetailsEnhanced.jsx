@@ -61,7 +61,6 @@ const HifuDetailsEnhanced = () => {
     setPortalNode(node);
 
     return () => {
-      setPortalNode(null);
       node.remove();
     };
   }, []);
