@@ -14,7 +14,7 @@ const WhatsAppIcon = ({ size = 28 }) => (
   </svg>
 );
 
-const WhatsAppButton = () => {
+const WhatsAppButton = ({ href = WHATSAPP_DEFAULT, label = 'Dúvidas? Fale com a gente!' }) => {
   const [visible, setVisible] = useState(false);
   const [showLabel, setShowLabel] = useState(false);
 
@@ -42,11 +42,11 @@ const WhatsAppButton = () => {
     >
       {showLabel && (
         <span className="hidden sm:block bg-white text-slate-800 text-sm font-medium px-4 py-2.5 rounded-2xl rounded-br-sm shadow-xl border border-slate-100 animate-fade-in">
-          Dúvidas? Fale com a gente!
+          {label}
         </span>
       )}
       <a
-        href={WHATSAPP_DEFAULT}
+        href={href}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Conversar no WhatsApp"
