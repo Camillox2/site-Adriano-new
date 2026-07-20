@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
-import HifuDetails from './pages/HifuDetails';
+import HifuDetailsEnhanced from './pages/HifuDetailsEnhanced';
+import HifuRental from './pages/HifuRental';
 import './styles/global.css';
 
 // Rola para o topo sempre que a rota muda (exceto navegação com âncora)
@@ -24,7 +25,8 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/hifu" element={<HifuDetails />} />
+          <Route path="/hifu" element={<HifuDetailsEnhanced />} />
+          <Route path="/alugar_hifu" element={<HifuRental />} />
           <Route path="*" element={<Home />} />
         </Routes>
       </div>
