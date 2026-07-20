@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Phone, Instagram, MapPin, Clock, Mail } from 'lucide-react';
 import { images } from '../assets';
-import { SITE, ADDRESS, WHATSAPP_DEFAULT } from '../utils/constants';
+import { SITE, ADDRESS, WHATSAPP_DEFAULT, WHATSAPP_RENTAL } from '../utils/constants';
 
 const QUICK_LINKS = [
   { text: 'Início', target: 'inicio' },
@@ -24,6 +24,7 @@ const Footer = () => {
   const year = new Date().getFullYear();
   const navigate = useNavigate();
   const location = useLocation();
+  const whatsappHref = location.pathname === '/alugar_hifu' ? WHATSAPP_RENTAL : WHATSAPP_DEFAULT;
 
   const goToSection = (id) => {
     if (location.pathname !== '/') {
@@ -59,7 +60,7 @@ const Footer = () => {
             </p>
             <div className="flex gap-3">
               <a
-                href={WHATSAPP_DEFAULT}
+                href={whatsappHref}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-11 h-11 bg-secondary-600 hover:bg-secondary-500 rounded-full flex items-center justify-center transition-colors"
@@ -105,6 +106,11 @@ const Footer = () => {
                   Página completa do HIFU
                 </Link>
               </li>
+              <li>
+                <Link to="/alugar_hifu" className="hover:text-white transition-colors">
+                  Locação do HIFU
+                </Link>
+              </li>
             </ul>
           </nav>
 
@@ -125,7 +131,7 @@ const Footer = () => {
               <li className="flex items-start gap-3">
                 <Phone size={17} className="text-secondary-500 shrink-0 mt-0.5" aria-hidden="true" />
                 <span>
-                  <a href={WHATSAPP_DEFAULT} target="_blank" rel="noopener noreferrer" className="text-white font-semibold hover:underline">
+                  <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="text-white font-semibold hover:underline">
                     {SITE.phone}
                   </a>
                   <span className="block text-slate-400">WhatsApp</span>
