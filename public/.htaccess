@@ -1,7 +1,9 @@
 # ============================================
 # Dr. Adriano Camillo — Apache/HostGator
-# SPA React + performance + segurança
+# SPA React + páginas SEO estáticas + performance + segurança
 # ============================================
+
+Options -MultiViews
 
 # --- Redireciona www -> raiz e força HTTPS ---
 <IfModule mod_rewrite.c>
@@ -12,7 +14,7 @@
   RewriteCond %{HTTP_HOST} ^(?:www\.)?(.+)$ [NC]
   RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
 
-  # --- SPA: rotas do React (ex.: /hifu) caem no index.html ---
+  # Páginas estáticas têm diretórios próprios; as demais rotas caem no React.
   RewriteBase /
   RewriteRule ^index\.html$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f

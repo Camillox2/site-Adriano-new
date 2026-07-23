@@ -1,14 +1,16 @@
 # Dr. Adriano Camillo — Cirurgião-Dentista
 
-> Site oficial do Dr. Adriano Camillo, cirurgião-dentista com mais de 30 anos de experiência, especialista em HIFU (Ultrassom Microfocado), Ortodontia, Implantes Dentários, Harmonização Orofacial e Ozonioterapia. Consultório principal em São Lourenço do Oeste - SC (Rua Coronel Bertaso, 1243 - Sala 206, Centro), com atendimento agendado em Realeza - PR, Ampére - PR e atendimento domiciliar em Curitiba - PR.
+> Site oficial do Dr. Adriano Camillo, cirurgião-dentista com mais de 30 anos de experiência em odontologia estética, HIFU (Ultrassom Microfocado), Ortodontia, Implantes Dentários, Harmonização Orofacial, DTM e Dor Orofacial e Ozonioterapia. Consultório principal em São Lourenço do Oeste - SC (Rua Coronel Bertaso, 1243 - Sala 206, Centro), com atendimento agendado em Realeza - PR, Ampére - PR e atendimento domiciliar em Curitiba - PR.
 
 ## Serviços
 
-- [HIFU — Ultrassom Microfocado](https://dradrianocamillo.com/hifu): Lifting facial não invasivo que estimula a produção natural de colágeno. Trata flacidez facial, papada, pescoço e contorno facial, sem cortes e sem tempo de recuperação. Realizado com equipamento Ultramed HIFU.
-- Ortodontia: correção do posicionamento dos dentes e da mordida, com aparelhos convencionais e estéticos.
-- Implantes Dentários: reposição definitiva de dentes perdidos com materiais biocompatíveis.
-- Harmonização Orofacial: toxina botulínica, preenchimento com ácido hialurônico e bioestimuladores de colágeno.
-- Ozonioterapia: terapia complementar que auxilia na cicatrização e recuperação pós-procedimentos.
+- [Odontologia Estética](https://dradrianocamillo.com/odontologia-estetica-sao-lourenco-do-oeste): avaliação e planejamento individual para estética, saúde e função do sorriso.
+- [HIFU — Ultrassom Microfocado](https://dradrianocamillo.com/hifu): tratamento não invasivo para flacidez facial, papada, pescoço e contorno facial, realizado com equipamento Ultramed HIFU.
+- [Ortodontia](https://dradrianocamillo.com/ortodontia-sao-lourenco-do-oeste): avaliação do posicionamento dos dentes e da mordida, com planejamento e acompanhamento individual.
+- [Implantes Dentários](https://dradrianocamillo.com/implantes-dentarios-sao-lourenco-do-oeste): avaliação, exames e planejamento para reabilitação do sorriso.
+- [Harmonização Orofacial](https://dradrianocamillo.com/harmonizacao-orofacial-sao-lourenco-do-oeste): avaliação facial individual com foco em equilíbrio e naturalidade.
+- [DTM e Dor Orofacial](https://dradrianocamillo.com/dtm-dor-orofacial): avaliação individual de sintomas na face, mandíbula e articulação.
+- Ozonioterapia: terapia complementar que pode auxiliar na cicatrização e recuperação pós-procedimentos, quando indicada.
 
 ## Contato e agendamento
 
@@ -20,10 +22,15 @@
 ## Páginas
 
 - [Página inicial](https://dradrianocamillo.com/): visão geral dos serviços, sobre o profissional, locais de atendimento e contato.
-- [HIFU — página completa](https://dradrianocamillo.com/hifu): o que é o ultrassom microfocado, benefícios, áreas tratadas, etapas do tratamento, vídeos reais do procedimento e perguntas frequentes.
+- [HIFU](https://dradrianocamillo.com/hifu)
+- [Odontologia Estética](https://dradrianocamillo.com/odontologia-estetica-sao-lourenco-do-oeste)
+- [Implantes Dentários](https://dradrianocamillo.com/implantes-dentarios-sao-lourenco-do-oeste)
+- [Ortodontia](https://dradrianocamillo.com/ortodontia-sao-lourenco-do-oeste)
+- [Harmonização Orofacial](https://dradrianocamillo.com/harmonizacao-orofacial-sao-lourenco-do-oeste)
+- [DTM e Dor Orofacial](https://dradrianocamillo.com/dtm-dor-orofacial)
 
 ## Observações
 
 - Conteúdo em português do Brasil (pt-BR).
-- Agendamentos são feitos exclusivamente pelo WhatsApp; o site não possui sistema de agendamento online.
-- Resultados de procedimentos variam de pessoa para pessoa; uma avaliação presencial define a indicação correta.
+- Agendamentos são feitos pelo WhatsApp; o site não possui sistema de agendamento online.
+- Resultados e indicações de tratamentos variam de pessoa para pessoa; a avaliação presencial define a conduta adequada.

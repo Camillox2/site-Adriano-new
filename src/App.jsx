@@ -2,6 +2,9 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import HifuDetails from './pages/HifuDetails';
+import ServiceDetails from './pages/ServiceDetails';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import AnalyticsConsent from './components/AnalyticsConsent';
 import './styles/global.css';
 
 // Rola para o topo sempre que a rota muda (exceto navegação com âncora)
@@ -21,10 +24,17 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
+      <AnalyticsConsent />
       <div className="App">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/hifu" element={<HifuDetails />} />
+          <Route path="/odontologia-estetica-sao-lourenco-do-oeste" element={<ServiceDetails />} />
+          <Route path="/implantes-dentarios-sao-lourenco-do-oeste" element={<ServiceDetails />} />
+          <Route path="/ortodontia-sao-lourenco-do-oeste" element={<ServiceDetails />} />
+          <Route path="/harmonizacao-orofacial-sao-lourenco-do-oeste" element={<ServiceDetails />} />
+          <Route path="/dtm-dor-orofacial" element={<ServiceDetails />} />
+          <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
           <Route path="*" element={<Home />} />
         </Routes>
       </div>

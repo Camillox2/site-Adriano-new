@@ -1,10 +1,12 @@
 import React, { useState, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowRight, X, CheckCircle, Phone, Smile, Heart, Syringe, FlaskConical } from 'lucide-react';
 import { whatsapp } from '../utils/constants';
 
 const SERVICES = [
   {
     id: 'ortodontia',
+    path: '/ortodontia-sao-lourenco-do-oeste',
     Icon: Smile,
     color: 'text-primary-700 bg-primary-50',
     title: 'Ortodontia',
@@ -29,6 +31,7 @@ const SERVICES = [
   },
   {
     id: 'implantes',
+    path: '/implantes-dentarios-sao-lourenco-do-oeste',
     Icon: Heart,
     color: 'text-secondary-700 bg-secondary-50',
     title: 'Implantes Dentários',
@@ -53,6 +56,7 @@ const SERVICES = [
   },
   {
     id: 'harmonizacao',
+    path: '/harmonizacao-orofacial-sao-lourenco-do-oeste',
     Icon: Syringe,
     color: 'text-primary-700 bg-primary-50',
     title: 'Harmonização Orofacial',
@@ -73,6 +77,50 @@ const SERVICES = [
       'Realização do procedimento',
       'Orientações pós-procedimento',
       'Acompanhamento e manutenção',
+    ],
+  },
+  {
+    id: 'odontologia-estetica',
+    path: '/odontologia-estetica-sao-lourenco-do-oeste',
+    Icon: Smile,
+    color: 'text-secondary-700 bg-secondary-50',
+    title: 'Odontologia Estética',
+    description: 'Planejamento individual para cuidar da estética, saúde e função do seu sorriso.',
+    fullDescription:
+      'A odontologia estética começa com uma avaliação cuidadosa, respeitando as características de cada sorriso e as necessidades de saúde bucal.',
+    benefits: [
+      'Planejamento individual',
+      'Foco em naturalidade e função',
+      'Orientações claras antes de qualquer procedimento',
+      'Acompanhamento próximo',
+    ],
+    process: [
+      'Conversa sobre suas expectativas',
+      'Avaliação clínica do sorriso',
+      'Definição das possibilidades indicadas',
+      'Planejamento e acompanhamento',
+    ],
+  },
+  {
+    id: 'dtm',
+    path: '/dtm-dor-orofacial',
+    Icon: Heart,
+    color: 'text-primary-700 bg-primary-50',
+    title: 'DTM e Dor Orofacial',
+    description: 'Avaliação individual para sintomas na face, mandíbula e articulação.',
+    fullDescription:
+      'A investigação de DTM e dor orofacial considera sintomas, hábitos e condições de cada paciente para orientar os próximos passos.',
+    benefits: [
+      'Escuta clínica cuidadosa',
+      'Avaliação individual dos sintomas',
+      'Orientações claras sobre a conduta',
+      'Acompanhamento conforme a necessidade',
+    ],
+    process: [
+      'Conversa sobre sintomas e rotina',
+      'Avaliação clínica',
+      'Definição da conduta indicada',
+      'Acompanhamento e reavaliação',
     ],
   },
   {
@@ -205,13 +253,23 @@ const ServicesSection = () => {
               <p className="text-slate-600 text-sm md:text-base leading-relaxed flex-1">
                 {service.description}
               </p>
-              <button
-                onClick={() => setActiveModal(service)}
-                className="inline-flex items-center gap-2 text-primary-700 font-semibold mt-6 hover:gap-3.5 transition-all text-sm md:text-base"
-              >
-                Saiba mais
-                <ArrowRight size={17} aria-hidden="true" />
-              </button>
+              {service.path ? (
+                <Link
+                  to={service.path}
+                  className="inline-flex items-center gap-2 text-primary-700 font-semibold mt-6 hover:gap-3.5 transition-all text-sm md:text-base"
+                >
+                  Saiba mais
+                  <ArrowRight size={17} aria-hidden="true" />
+                </Link>
+              ) : (
+                <button
+                  onClick={() => setActiveModal(service)}
+                  className="inline-flex items-center gap-2 text-primary-700 font-semibold mt-6 hover:gap-3.5 transition-all text-sm md:text-base"
+                >
+                  Saiba mais
+                  <ArrowRight size={17} aria-hidden="true" />
+                </button>
+              )}
             </article>
           ))}
         </div>
