@@ -29,12 +29,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/hifu" element={<HifuDetails />} />
-          <Route path="/odontologia-estetica-sao-lourenco-do-oeste" element={<ServiceDetails />} />
-          <Route path="/implantes-dentarios-sao-lourenco-do-oeste" element={<ServiceDetails />} />
-          <Route path="/ortodontia-sao-lourenco-do-oeste" element={<ServiceDetails />} />
-          <Route path="/harmonizacao-orofacial-sao-lourenco-do-oeste" element={<ServiceDetails />} />
-          <Route path="/dtm-dor-orofacial" element={<ServiceDetails />} />
           <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
+          <Route path="/:slug" element={<ServiceDetails />} />
           <Route path="*" element={<Home />} />
         </Routes>
       </div>
