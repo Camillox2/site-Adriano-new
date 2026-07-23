@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/static/css/main.28ad33c2.css",
+    "main.js": "/static/js/main.0e2aab86.js",
+    "static/media/hifuatendimento.mp4": "/static/media/hifuatendimento.167f2f169a1046de8289.mp4",
+    "static/media/hifutres.mp4": "/static/media/hifutres.cfa9d7e763b20048d345.mp4",
+    "static/media/hifu.mp4": "/static/media/hifu.e12d90846def5759a8dc.mp4",
+    "static/media/paidois.jpg": "/static/media/paidois.b86d20abf76c1ad3c134.jpg",
+    "static/media/hifudois.mp4": "/static/media/hifudois.0e8f79f497c0548cb8a2.mp4",
+    "static/media/pai.jpg": "/static/media/pai.7d4671adba7ea186543d.jpg",
+    "static/media/Screenshot_20231028_123109_WhatsApp.jpg": "/static/media/Screenshot_20231028_123109_WhatsApp.73f458420acc3d75186a.jpg",
+    "static/media/Screenshot_20241126_094251_Photos.jpg": "/static/media/Screenshot_20241126_094251_Photos.b9380c284a11a1a93ba2.jpg",
+    "static/media/Screenshot_20241104_152125_Photos.jpg": "/static/media/Screenshot_20241104_152125_Photos.1d2c1f2ec4f55b283a1f.jpg",
+    "static/media/20240723_165814.jpg": "/static/media/20240723_165814.9df4b9e96302dacb0207.jpg",
+    "static/media/20240723_165806.jpg": "/static/media/20240723_165806.a90d8b68f845757ee4e8.jpg",
+    "static/media/20240723_165833.jpg": "/static/media/20240723_165833.8f9a99cf326591a893f4.jpg",
+    "static/media/Logotipo Site-02.png": "/static/media/Logotipo Site-02.12897b6854417d277601.png",
+    "static/media/20240723_170110.jpg": "/static/media/20240723_170110.520ef315d7c30658915c.jpg",
+    "static/media/newlogo.png": "/static/media/newlogo.0242dc49416f06b0e6d8.png",
+    "static/media/poster-hifutres.jpg": "/static/media/poster-hifutres.5c477979201364d08919.jpg",
+    "static/media/poster-hifudois.jpg": "/static/media/poster-hifudois.56a55aa1457915795836.jpg",
+    "static/media/poster-hifuatendimento.jpg": "/static/media/poster-hifuatendimento.a02c9b5ca61fb976dc9a.jpg",
+    "static/media/poster-hifu.jpg": "/static/media/poster-hifu.a1f5a86bdbf77f5e0a9a.jpg",
+    "index.html": "/index.html"
+  },
+  "entrypoints": [
+    "static/css/main.28ad33c2.css",
+    "static/js/main.0e2aab86.js"
+  ]
+}
