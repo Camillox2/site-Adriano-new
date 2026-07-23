@@ -1,0 +1,9 @@
+# robots.txt — dradrianocamillo.com
+User-agent: *
+Allow: /
+
+# Não indexar arquivos internos do build
+Disallow: /static/js/
+Disallow: /static/css/
+
+Sitemap: https://dradrianocamillo.com/sitemap.xml
