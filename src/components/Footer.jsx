@@ -20,6 +20,14 @@ const SERVICES = [
   'Ozonioterapia',
 ];
 
+const SERVICE_LINKS = [
+  '/hifu',
+  '/ortodontia-sao-lourenco-do-oeste',
+  '/implantes-dentarios-sao-lourenco-do-oeste',
+  '/harmonizacao-orofacial-sao-lourenco-do-oeste',
+  null,
+];
+
 const Footer = () => {
   const year = new Date().getFullYear();
   const navigate = useNavigate();
@@ -112,9 +120,25 @@ const Footer = () => {
           <div>
             <h3 className="text-white font-bold mb-5">Serviços</h3>
             <ul className="space-y-2.5 text-sm text-slate-400">
-              {SERVICES.map((service) => (
-                <li key={service}>{service}</li>
+              {SERVICES.map((service, index) => (
+                <li key={service}>
+                  {SERVICE_LINKS[index] ? (
+                    <Link to={SERVICE_LINKS[index]} className="hover:text-white transition-colors">
+                      {service}
+                    </Link>
+                  ) : service}
+                </li>
               ))}
+              <li>
+                <Link to="/odontologia-estetica-sao-lourenco-do-oeste" className="hover:text-white transition-colors">
+                  Odontologia Estética
+                </Link>
+              </li>
+              <li>
+                <Link to="/dtm-dor-orofacial" className="hover:text-white transition-colors">
+                  DTM e Dor Orofacial
+                </Link>
+              </li>
             </ul>
           </div>
 

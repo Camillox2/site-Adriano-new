@@ -29,8 +29,8 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-white">
       <Seo
-        title="Dr. Adriano Camillo — HIFU, Ortodontia e Harmonização em São Lourenço do Oeste"
-        description="Cirurgião-dentista em São Lourenço do Oeste - SC. HIFU (Ultrassom Microfocado), Ortodontia, Implantes e Harmonização Orofacial. Atendimento também em Realeza, Ampére e Curitiba. Agende pelo WhatsApp."
+        title="Dr. Adriano Camillo — Odontologia Estética em São Lourenço do Oeste"
+        description="Dentista em São Lourenço do Oeste - SC. Odontologia estética, Ortodontia, Implantes, Harmonização Orofacial, DTM e HIFU. Agende sua avaliação pelo WhatsApp."
         path="/"
       />
       <Header />
