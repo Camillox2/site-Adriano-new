@@ -7,7 +7,7 @@ import { WHATSAPP_DEFAULT } from '../utils/constants';
 const NAV_ITEMS = [
   { label: 'Início', target: 'inicio' },
   { label: 'HIFU', target: 'hifu' },
-  { label: 'Serviços', target: 'servicos' },
+  { label: 'Serviços', path: '/servicos' },
   { label: 'Sobre', target: 'sobre' },
   { label: 'Contato', target: 'contato' },
 ];
@@ -48,6 +48,15 @@ const Header = () => {
       return;
     }
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const goToItem = (item) => {
+    if (item.path) {
+      setMenuOpen(false);
+      navigate(item.path);
+      return;
+    }
+    goToSection(item.target);
   };
 
   return (
@@ -92,19 +101,25 @@ const Header = () => {
 
         {/* Navegação desktop */}
         <nav className="hidden md:flex items-center gap-1 lg:gap-2" aria-label="Navegação principal">
-          {NAV_ITEMS.map((item) => (
-            <button
-              key={item.target}
-              onClick={() => goToSection(item.target)}
-              className={`px-3 lg:px-4 py-2 rounded-full text-sm lg:text-base font-medium transition-colors duration-200 ${
-                solid
-                  ? 'text-slate-700 hover:text-primary-700 hover:bg-primary-50'
-                  : 'text-white/90 hover:text-white hover:bg-white/10'
-              }`}
-            >
-              {item.label}
-            </button>
-          ))}
+          {NAV_ITEMS.map((item) => {
+            const active = item.path && location.pathname === item.path;
+            return (
+              <button
+                key={item.path || item.target}
+                onClick={() => goToItem(item)}
+                aria-current={active ? 'page' : undefined}
+                className={`px-3 lg:px-4 py-2 rounded-full text-sm lg:text-base font-medium transition-colors duration-200 ${
+                  active
+                    ? 'bg-primary-50 text-primary-700'
+                    : solid
+                      ? 'text-slate-700 hover:text-primary-700 hover:bg-primary-50'
+                      : 'text-white/90 hover:text-white hover:bg-white/10'
+                }`}
+              >
+                {item.label}
+              </button>
+            );
+          })}
         </nav>
 
         {/* CTA + menu mobile */}
@@ -136,15 +151,23 @@ const Header = () => {
       {menuOpen && (
         <div className="md:hidden bg-white border-t border-slate-100 shadow-xl animate-fade-in">
           <nav className="container mx-auto px-4 py-4 flex flex-col" aria-label="Menu móvel">
-            {NAV_ITEMS.map((item) => (
-              <button
-                key={item.target}
-                onClick={() => goToSection(item.target)}
-                className="text-left text-slate-800 font-medium text-lg py-3.5 px-2 border-b border-slate-50 rounded-lg hover:bg-primary-50 hover:text-primary-700 transition-colors"
-              >
-                {item.label}
-              </button>
-            ))}
+            {NAV_ITEMS.map((item) => {
+              const active = item.path && location.pathname === item.path;
+              return (
+                <button
+                  key={item.path || item.target}
+                  onClick={() => goToItem(item)}
+                  aria-current={active ? 'page' : undefined}
+                  className={`text-left font-medium text-lg py-3.5 px-2 border-b border-slate-50 rounded-lg transition-colors ${
+                    active
+                      ? 'bg-primary-50 text-primary-700'
+                      : 'text-slate-800 hover:bg-primary-50 hover:text-primary-700'
+                  }`}
+                >
+                  {item.label}
+                </button>
+              );
+            })}
             <a
               href={WHATSAPP_DEFAULT}
               target="_blank"
