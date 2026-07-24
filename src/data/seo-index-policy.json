@@ -1,0 +1,34 @@
+{
+  "primaryCity": "sao-lourenco-do-oeste",
+  "corePaths": [
+    "/",
+    "/servicos",
+    "/hifu",
+    "/politica-de-privacidade"
+  ],
+  "indexableRegionalCities": [],
+  "indexableServiceCities": {
+    "odontologia-estetica": ["sao-lourenco-do-oeste"],
+    "implantes-dentarios": ["sao-lourenco-do-oeste"],
+    "ortodontia": ["sao-lourenco-do-oeste"],
+    "harmonizacao-orofacial": ["sao-lourenco-do-oeste"],
+    "dtm-dor-orofacial": ["sao-lourenco-do-oeste"],
+    "ozonioterapia": ["sao-lourenco-do-oeste"],
+    "aluguel-de-hifu": [
+      "sao-lourenco-do-oeste",
+      "ampere",
+      "realeza",
+      "chapeco",
+      "pato-branco",
+      "curitiba"
+    ],
+    "lipo-de-papada-hifu": [
+      "sao-lourenco-do-oeste",
+      "ampere",
+      "realeza",
+      "chapeco",
+      "pato-branco",
+      "curitiba"
+    ]
+  }
+}
