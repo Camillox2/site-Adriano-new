@@ -100,14 +100,34 @@ const pages = [
     description:
       'Lifting facial sem cirurgia com HIFU (Ultrassom Microfocado) em São Lourenço do Oeste - SC. Veja benefícios, cuidados e agende sua avaliação.',
   },
-  {
-    path: '/politica-de-privacidade',
-    name: 'Política de Privacidade',
-    title: 'Política de Privacidade | Dr. Adriano Camillo',
-    description: 'Política de privacidade do site do Dr. Adriano Camillo.',
-    schema: false,
-  },
 ];
+
+const REGIONAL_CITIES = [
+  { slug: 'sao-lourenco-do-oeste', name: 'São Lourenço do Oeste', state: 'SC' },
+  { slug: 'chapeco', name: 'Chapecó', state: 'SC' },
+  { slug: 'pato-branco', name: 'Pato Branco', state: 'PR' },
+  { slug: 'ampere', name: 'Ampére', state: 'PR' },
+  { slug: 'realeza', name: 'Realeza', state: 'PR' },
+  { slug: 'novo-horizonte', name: 'Novo Horizonte', state: 'SC' },
+  { slug: 'francisco-beltrao', name: 'Francisco Beltrão', state: 'PR' },
+  { slug: 'dois-vizinhos', name: 'Dois Vizinhos', state: 'PR' },
+  { slug: 'palmas', name: 'Palmas', state: 'PR' },
+  { slug: 'xanxere', name: 'Xanxerê', state: 'SC' },
+  { slug: 'maravilha', name: 'Maravilha', state: 'SC' },
+  { slug: 'pinhalzinho', name: 'Pinhalzinho', state: 'SC' },
+  { slug: 'concordia', name: 'Concórdia', state: 'SC' },
+];
+
+REGIONAL_CITIES.forEach((city) => {
+  pages.push({
+    path: `/servicos/${city.slug}`,
+    name: `Serviços Odontológicos (${city.name})`,
+    cityName: city.name,
+    title: `Serviços Odontológicos para pacientes de ${city.name} - ${city.state} | Dr. Adriano Camillo`,
+    description: `Conheça os serviços odontológicos e tratamentos de estética facial do Dr. Adriano Camillo para pacientes de ${city.name} - ${city.state}. Agende pelo WhatsApp.`,
+    schemaType: 'CollectionPage',
+  });
+});
 
 // Gerar todas as combinações de páginas de serviços e cidades
 BASE_SERVICES.forEach((service) => {
