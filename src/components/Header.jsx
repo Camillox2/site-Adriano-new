@@ -82,7 +82,7 @@ const Header = () => {
             </span>
             <span
               className={`block text-xs md:text-sm ${
-                solid ? 'text-slate-500' : 'text-slate-200'
+                solid ? 'text-slate-600' : 'text-slate-200'
               }`}
             >
               Cirurgião-Dentista
