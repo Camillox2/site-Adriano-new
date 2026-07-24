@@ -1,123 +1,33 @@
 const fs = require('fs');
 const path = require('path');
+const policy = require('../src/data/seo-index-policy.json');
 
 const siteUrl = 'https://dradrianocamillo.com';
 
-const CITIES_SUFFIXES = [
-  'sao-lourenco-do-oeste',
-  'chapeco',
-  'pato-branco',
-  'ampere',
-  'realeza',
-  'novo-horizonte',
-  'francisco-beltrao',
-  'dois-vizinhos',
-  'palmas',
-  'xanxere',
-  'maravilha',
-  'pinhalzinho',
-  'curitiba',
-  'sao-jose-dos-pinhais',
-  'pinhais',
-  'araucaria',
-  'colombo',
-  'batel-curitiba',
-  'agua-verde-curitiba',
-  'bigorrilho-curitiba',
-  'efapi-chapeco',
-  'centro-chapeco',
-  'concordia',
-  'cascavel',
-  'toledo',
-  'erechim'
-];
+const urls = [...policy.corePaths];
 
-const REGIONAL_SERVICE_CITIES = [
-  'sao-lourenco-do-oeste',
-  'chapeco',
-  'pato-branco',
-  'ampere',
-  'realeza',
-  'novo-horizonte',
-  'francisco-beltrao',
-  'dois-vizinhos',
-  'palmas',
-  'xanxere',
-  'maravilha',
-  'pinhalzinho',
-  'concordia'
-];
+policy.indexableRegionalCities.forEach((city) => {
+  urls.push(`/servicos/${city}`);
+});
 
-const HIFU_ONLY_SUFFIXES = [
-  'curitiba',
-  'sao-jose-dos-pinhais',
-  'pinhais',
-  'araucaria',
-  'colombo',
-  'batel-curitiba',
-  'agua-verde-curitiba',
-  'bigorrilho-curitiba',
-  'efapi-chapeco',
-  'centro-chapeco'
-];
-
-const BASE_SERVICES = [
-  'odontologia-estetica',
-  'implantes-dentarios',
-  'ortodontia',
-  'harmonizacao-orofacial',
-  'dtm-dor-orofacial',
-  'ozonioterapia',
-  'aluguel-de-hifu',
-  'lipo-de-papada-hifu'
-];
-
-const urls = [
-  { loc: `${siteUrl}/`, priority: '1.0', changefreq: 'monthly' },
-  { loc: `${siteUrl}/servicos`, priority: '0.9', changefreq: 'monthly' },
-  { loc: `${siteUrl}/hifu`, priority: '0.9', changefreq: 'monthly' },
-];
-
-REGIONAL_SERVICE_CITIES.forEach((citySlug) => {
-  urls.push({
-    loc: `${siteUrl}/servicos/${citySlug}`,
-    priority: citySlug === 'sao-lourenco-do-oeste' ? '0.9' : '0.8',
-    changefreq: 'monthly',
+Object.entries(policy.indexableServiceCities).forEach(([service, cities]) => {
+  cities.forEach((city) => {
+    urls.push(city === policy.primaryCity ? `/${service}` : `/${service}-${city}`);
   });
 });
 
-BASE_SERVICES.forEach((service) => {
-  CITIES_SUFFIXES.forEach((citySuffix) => {
-    // REGRA PARA LOCAIS HIFU-ONLY
-    if (HIFU_ONLY_SUFFIXES.includes(citySuffix) && service !== 'aluguel-de-hifu' && service !== 'lipo-de-papada-hifu') return;
-
-    let pagePath = '';
-    // Todos os serviços usam apenas o slug base se for a cidade principal
-    if (citySuffix === 'sao-lourenco-do-oeste') {
-      pagePath = `/${service}`;
-    } else {
-      pagePath = `/${service}-${citySuffix}`;
-    }
-    urls.push({ loc: `${siteUrl}${pagePath}`, priority: '0.8', changefreq: 'monthly' });
-  });
-});
-
-urls.push({ loc: `${siteUrl}/politica-de-privacidade`, priority: '0.3', changefreq: 'yearly' });
-
+const uniqueUrls = [...new Set(urls)];
 const today = new Date().toISOString().split('T')[0];
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-${urls.map(u => `  <url>
-    <loc>${u.loc}</loc>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${uniqueUrls.map((pagePath) => `  <url>
+    <loc>${siteUrl}${pagePath}</loc>
     <lastmod>${today}</lastmod>
-    <changefreq>${u.changefreq}</changefreq>
-    <priority>${u.priority}</priority>
   </url>`).join('\n')}
 </urlset>`;
 
 const sitemapPath = path.join(__dirname, '..', 'public', 'sitemap.xml');
 fs.writeFileSync(sitemapPath, xml, 'utf8');
 
-console.log(`Sitemap gerado com ${urls.length} URLs em ${sitemapPath}`);
+console.log(`Sitemap gerado com ${uniqueUrls.length} URLs indexáveis em ${sitemapPath}`);
