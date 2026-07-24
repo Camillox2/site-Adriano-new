@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.6ccee933.css",
-    "main.js": "/static/js/main.35fdc925.js",
+    "main.css": "/static/css/main.c9c1b132.css",
+    "main.js": "/static/js/main.e2b67d25.js",
     "static/media/hifuatendimento.mp4": "/static/media/hifuatendimento.167f2f169a1046de8289.mp4",
     "static/media/hifutres.mp4": "/static/media/hifutres.cfa9d7e763b20048d345.mp4",
     "static/media/hifu.mp4": "/static/media/hifu.e12d90846def5759a8dc.mp4",
@@ -24,7 +24,7 @@
     "index.html": "/index.html"
   },
   "entrypoints": [
-    "static/css/main.6ccee933.css",
-    "static/js/main.35fdc925.js"
+    "static/css/main.c9c1b132.css",
+    "static/js/main.e2b67d25.js"
   ]
 }

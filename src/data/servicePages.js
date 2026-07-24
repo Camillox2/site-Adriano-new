@@ -60,41 +60,65 @@ const BASE_SERVICES = {
     introPattern: (city) => `Transforme o seu sorriso com planejamento individualizado, tecnologia digital e preservação da saúde bucal ${city.contextText}`,
     sectionTitlePattern: (city) => `Estética Odontológica com Planejamento ${city.locationTitle}`,
     paragraphs: [
-      'A odontologia estética moderna vai muito além da beleza visual. O Dr. Adriano Camillo busca unir a harmonia estética à saúde periodontal e à correta função mastigatória, garantindo tratamentos duradouros e seguros.',
-      'Utilizamos recursos modernos de planejamento para prever o formato, a cor e a proporção ideais dos dentes. Seja através de clareamento dental, facetas de resina ou lentes de contato em cerâmica, cada detalhe é desenhado exclusivamente para o seu formato facial.',
-      'Antes de indicar qualquer procedimento, realizamos uma avaliação criteriosa para entender o que incomoda você e definir a alternativa mais conservadora e eficiente.',
+      'A odontologia estética moderna elevou a transformação do sorriso a um nível de altíssima precisão e previsibilidade. Mais do que simplesmente buscar dentes brancos, focamos na harmonia facial completa, garantindo que o seu novo sorriso complemente e valorize os seus traços naturais de forma autêntica e sofisticada.',
+      'Com o uso do Design Digital do Sorriso, o Dr. Adriano Camillo realiza um planejamento minucioso através de fotografias, vídeos e escaneamento intraoral. Antes mesmo de iniciar qualquer intervenção, você poderá visualizar e até mesmo provar o resultado final através do mockup digital, uma simulação real colocada sobre seus dentes.',
+      'As lentes de contato dental em cerâmica (porcelana) e as facetas em resina composta de alta performance são confeccionadas de maneira artesanal, camada por camada. Elas permitem corrigir assimetrias, diastemas (espaços entre os dentes), formatos irregulares e alterações de cor que não respondem ao clareamento, tudo isso com um preparo minimamente invasivo, que muitas vezes dispensa qualquer desgaste estrutural do dente natural.',
+      'Para quem busca iluminar o sorriso de forma mais simples, nossos protocolos de clareamento dental combinam técnicas de consultório e moldeiras para uso domiciliar. Essa abordagem híbrida não só garante uma cor mais vibrante e duradoura, mas também inclui terapias dessensibilizantes, proporcionando máximo conforto sem a dor e a sensibilidade antigamente associadas ao clareamento.',
+      'Cada detalhe do tratamento estético é pensado para preservar a integridade da sua saúde bucal. Aliamos tecnologia, técnica apurada e materiais biocompatíveis de última geração para entregar não apenas um sorriso deslumbrante, mas uma mastigação funcional, gengivas saudáveis e resultados que resistam belos ao longo dos anos.'
+    ],
+    highlights: [
+      {
+        icon: 'Monitor',
+        title: 'Design Digital do Sorriso',
+        text: 'Planejamento computadorizado que permite prever e ajustar cada detalhe antes do tratamento.'
+      },
+      {
+        icon: 'Sparkles',
+        title: 'Alta Estética',
+        text: 'Materiais translúcidos e resistentes que mimetizam perfeitamente a textura dos dentes naturais.'
+      }
+    ],
+    stats: [
+      { value: '100', suffix: '%', label: 'Planejamento Digital' },
+      { value: '0', suffix: ' Dor', label: 'Procedimentos Confortáveis' },
+      { value: '10+', suffix: ' Anos', label: 'Durabilidade das Lentes' }
     ],
     benefits: [
-      'Planejamento digital personalizado para a anatomia do seu rosto',
-      'Preservação máxima da estrutura dental natural',
-      'Restauração da cor, formato e alinhamento dos dentes',
-      'Uso de materiais estéticos de alta durabilidade',
-      'Clareamento dental seguro e sem hipersensibilidade indesejada',
-      'Acompanhamento próximo em todas as etapas do tratamento',
+      { title: 'Harmonia Facial', description: 'Planejamento que respeita as proporções e assimetrias naturais do seu rosto para um resultado elegante.' },
+      { title: 'Previsibilidade', description: 'Aprovação do novo sorriso através de um test-drive (mockup) antes de qualquer procedimento definitivo.' },
+      { title: 'Mínimo Desgaste', description: 'Preservação máxima do esmalte dental através da utilização de peças ultrafinas e adesão avançada.' },
+      { title: 'Estabilidade de Cor', description: 'Uso de porcelanas e resinas de alta tecnologia que não escurecem ou mancham com o passar do tempo.' },
+      { title: 'Conforto Total', description: 'Clareamento realizado com protocolos que incluem dessensibilizantes, sem incômodo ou choques.' },
+      { title: 'Resultados Rápidos', description: 'Transformações completas que muitas vezes podem ser finalizadas em poucas sessões clínicas.' }
     ],
     steps: [
-      'Consulta inicial e escuta atenta dos seus objetivos',
-      'Avaliação clínica completa e fotografias diagnósticas',
-      'Apresentação do plano estético e simulação do resultado',
-      'Execução dos procedimentos com conforto e precisão',
-      'Polimento, ajustes finais e orientação de manutenção',
+      { title: 'Avaliação e Escaneamento', description: 'Coleta detalhada do seu histórico, expectativas, além de registros fotográficos e escaneamento 3D do seu sorriso atual.' },
+      { title: 'Planejamento Digital', description: 'Criação do desenho ideal dos dentes no computador, avaliando simetria, cor e tamanho perfeitos para a sua face.' },
+      { title: 'Prova do Sorriso (Mockup)', description: 'Impressão 3D e teste prático do novo sorriso diretamente na sua boca, permitindo ajustes antes da confecção final.' },
+      { title: 'Preparo e Moldagem', description: 'Adequação micrométrica e minimamente invasiva dos dentes, seguida de moldagem definitiva e envio ao laboratório.' },
+      { title: 'Instalação e Cimentação', description: 'Adesão cuidadosa de cada lente ou faceta, polimento de alto brilho e orientações completas de manutenção.' }
     ],
     faqs: [
       {
-        question: 'Odontologia estética desgasta muito os dentes?',
-        answer:
-          'Não. Priorizamos técnicas minimamente invasivas. Em muitas situações (como restaurações em resina e facetas diretas), o desgaste é mínimo ou até nulo.',
+        question: 'Qual a diferença entre facetas de resina e lentes de contato dental?',
+        answer: 'As facetas de resina são esculpidas diretamente no consultório em uma única sessão, oferecendo excelente estética e facilidade de reparo. Já as lentes de contato dental são peças finíssimas de porcelana (cerâmica) feitas em laboratório; elas possuem maior durabilidade, resistência superior contra manchas e um brilho que se mantém inalterado por muitos anos.'
       },
       {
-        question: 'Qual a diferença entre facetas de resina e lentes de cerâmica?',
-        answer:
-          'As facetas de resina são confeccionadas diretamente em consultório com alta estética. As lentes de cerâmica/porcelana oferecem maior estabilidade de cor a longo prazo.',
+        question: 'Preciso desgastar muito os dentes para colocar lentes?',
+        answer: 'Não. A odontologia moderna é extremamente conservadora. Em muitos casos, conseguimos instalar as lentes sem desgaste algum. Quando necessário, o preparo é a nível de milímetros (0,2 a 0,5mm), restrito apenas à camada superficial do esmalte, graças ao planejamento digital rigoroso.'
       },
       {
-        question: 'O clareamento dental danifica o esmalte?',
-        answer:
-          'Não. Quando realizado com supervisão profissional e produtos de qualidade comprovada, o clareamento age apenas nos pigmentos internos do dente.',
+        question: 'O clareamento dental enfraquece os dentes?',
+        answer: 'De forma alguma. Os géis clareadores modernos atuam apenas quebrando as moléculas de pigmento no interior do dente, sem alterar a sua estrutura mineral. Com a técnica correta e géis de qualidade, o esmalte permanece intacto e forte.'
       },
+      {
+        question: 'Quanto tempo duram as lentes de contato de porcelana?',
+        answer: 'Com bons hábitos de higiene, escovação correta e visitas regulares ao dentista, as lentes de contato dental podem durar de 10 a 15 anos ou mais, mantendo a mesma cor e textura do dia em que foram instaladas.'
+      },
+      {
+        question: 'Quem tem restaurações antigas pode fazer clareamento?',
+        answer: 'Sim, você pode fazer o clareamento. No entanto, o gel clareador age apenas no dente natural, não alterando a cor de resinas ou coroas. Nesses casos, o protocolo ideal é clarear os dentes naturais primeiro e, depois, trocar as restaurações antigas para igualar a nova cor.'
+      }
     ],
     whatsappMessagePattern: (city) => `Olá, Dr. Adriano! Gostaria de agendar uma avaliação de odontologia estética (${city.name}).`,
   },
@@ -109,41 +133,65 @@ const BASE_SERVICES = {
     introPattern: (city) => `Recupere a mastigação firme, a segurança para falar e a alegria de sorrir ${city.contextText}`,
     sectionTitlePattern: (city) => `Reabilitação Oral Segura e Planejada ${city.locationTitle}`,
     paragraphs: [
-      'A perda de um ou mais dentes afeta diretamente a saúde, a digestão, o alinhamento da arcada e a autoestima. Os implantes dentários representam a solução mais avançada e estável para substituir raízes perdidas.',
-      'Com mais de 30 anos de experiência clínica, o Dr. Adriano Camillo utiliza exames radiográficos e tomográficos para planejar o posicionamento exato de cada implante de titânio.',
-      'Desde reposições unitárias até próteses protocolo sobre implantes (arcada total), o processo é realizado com anestesia eficiente, técnicas humanizadas e acompanhamento dedicado na fase de cicatrização.',
+      'A perda de dentes é uma condição que vai muito além da estética, afetando profundamente a saúde sistêmica, a eficiência da mastigação e o convívio social. Os implantes dentários revolucionaram a odontologia ao oferecer a solução mais definitiva e biologicamente compatível para a substituição de dentes ausentes, atuando como verdadeiras raízes artificiais.',
+      'O sucesso de um implante depende fundamentalmente da osseointegração – o processo biológico pelo qual o osso se funde firmemente à superfície de titânio do implante. No consultório do Dr. Adriano Camillo, utilizamos implantes de altíssima pureza e superfícies tratadas com nanotecnologia, o que acelera a cicatrização e garante uma estabilidade excepcional a longo prazo.',
+      'Nosso planejamento é conduzido de ponta a ponta com recursos de imagem em 3D (tomografia computadorizada). Isso nos permite avaliar a densidade e o volume ósseo de forma milimétrica. Para pacientes que sofreram reabsorção óssea severa ao longo dos anos, realizamos procedimentos avançados de enxerto ósseo e levantamento de seio maxilar, viabilizando a instalação segura dos implantes.',
+      'Uma de nossas grandes especialidades é o Protocolo All-on-4 e All-on-6. Essa técnica permite que pacientes que usam dentaduras removíveis substituam toda a arcada por dentes fixos suportados por apenas 4 ou 6 implantes estratégicos. Em muitos casos, conseguimos aplicar a técnica de "Carga Imediata", instalando os implantes e a prótese fixa no mesmo dia ou em poucos dias.',
+      'Todo procedimento cirúrgico é realizado em um ambiente rigorosamente asséptico, sob anestesia local altamente eficiente, garantindo que você não sinta dor. Com acompanhamento humanizado e prescrição medicamentosa adequada, o período de recuperação é surpreendentemente tranquilo, devolvendo rapidamente a sua segurança para sorrir e mastigar qualquer tipo de alimento.'
+    ],
+    highlights: [
+      {
+        icon: 'ShieldCheck',
+        title: 'Segurança em 3D',
+        text: 'Cirurgias planejadas virtualmente através de tomografias de alta precisão.'
+      },
+      {
+        icon: 'Clock',
+        title: 'Carga Imediata',
+        text: 'Possibilidade de sair com dentes fixos provisórios em poucos dias, após avaliação clínica.'
+      }
+    ],
+    stats: [
+      { value: '30+', suffix: ' Anos', label: 'de Experiência Clínica' },
+      { value: '98', suffix: '%', label: 'Taxa de Sucesso em Implantes' },
+      { value: '100', suffix: '%', label: 'Titânio Biocompatível' }
     ],
     benefits: [
-      'Fixação firme que permite mastigar com total liberdade',
-      'Aparência e sensação idênticas aos dentes naturais',
-      'Preservação da estrutura óssea facial e dos dentes vizinhos',
-      'Materiais de titânio e zircônia de altíssima biocompatibilidade',
-      'Procedimentos planejados com exames tridimensionais',
-      'Maior durabilidade e estabilidade se comparado às próteses removíveis',
+      { title: 'Mastigação Firme e Segura', description: 'Dentes que não se movem, permitindo morder maçãs, carnes e alimentos duros sem medo.' },
+      { title: 'Estética Natural Superior', description: 'Próteses de porcelana ou zircônia desenhadas para imitar perfeitamente a translucidez dos dentes.' },
+      { title: 'Fim das Dentaduras Removíveis', description: 'Diga adeus à insegurança social, ao uso de colas fixadoras e às feridas na gengiva.' },
+      { title: 'Preservação Óssea Facial', description: 'Os implantes estimulam o osso maxilar, prevenindo o aspecto de "rosto afundado" comum no envelhecimento.' },
+      { title: 'Proteção dos Dentes Vizinhos', description: 'Ao contrário de pontes antigas, o implante não exige o desgaste dos dentes saudáveis que ficam ao lado.' },
+      { title: 'Procedimento Indolor', description: 'Técnica cirúrgica refinada, rápida e minimamente invasiva, com medicação pré e pós-operatória eficiente.' }
     ],
     steps: [
-      'Avaliação inicial e anamnese completa',
-      'Exames de imagem (tomografia) para mapeamento ósseo',
-      'Procedimento de instalação do implante com máximo conforto',
-      'Acompanhamento do período de integração óssea (osseointegração)',
-      'Instalação da prótese definitiva e revisão funcional',
+      { title: 'Consulta de Diagnóstico Completo', description: 'Avaliação clínica minuciosa da sua saúde oral e geral, solicitação de tomografia e exames de sangue.' },
+      { title: 'Planejamento Cirúrgico Virtual', description: 'O Dr. Adriano utiliza softwares 3D para determinar a inclinação, tamanho e posição exata de cada implante no osso.' },
+      { title: 'Instalação dos Implantes', description: 'Cirurgia tranquila sob anestesia local. Se necessário, enxertos ósseos são realizados na mesma sessão.' },
+      { title: 'Fase de Osseointegração', description: 'Período de 3 a 6 meses para o osso se fixar ao titânio. Durante este tempo, você utiliza próteses provisórias confortáveis.' },
+      { title: 'Confecção da Prótese Definitiva', description: 'Moldagem final, confecção computadorizada da coroa ou protocolo em zircônia/cerâmica, e instalação definitiva com o máximo de estética.' }
     ],
     faqs: [
       {
-        question: 'O procedimento de implante dentário dói?',
-        answer:
-          'Não. A cirurgia é realizada sob anestesia local eficaz e ambiente controlado. No pós-operatório, indicamos medicação adequada para garantir um processo tranquilo.',
+        question: 'O procedimento de implante dentário dói muito?',
+        answer: 'Não, o procedimento é completamente indolor. Utilizamos anestésicos locais potentes e técnicas suaves. O pós-operatório costuma ser muito tranquilo e as eventuais molestias são facilmente controladas com analgésicos e anti-inflamatórios comuns prescritos na consulta.'
       },
       {
-        question: 'Quem não tem muito osso pode fazer implante?',
-        answer:
-          'Sim. Nesses casos, podemos avaliar a necessidade de enxertos ósseos ou técnicas específicas de reabilitação. A tomografia nos dá o diagnóstico exato.',
+        question: 'Uso dentadura há anos e não tenho osso. Ainda posso colocar implante?',
+        answer: 'Na maioria dos casos, sim. Hoje contamos com técnicas modernas de enxerto ósseo sintético ou autógeno, elevação de seio maxilar e o conceito "All-on-4", que aproveita as regiões onde ainda há osso disponível sem necessidade de grandes enxertos.'
       },
       {
-        question: 'Quanto tempo leva para colocar o dente definitivo?',
-        answer:
-          'O tempo médio de cicatrização varia entre 3 a 6 meses conforme a região e a resposta biológica de cada paciente. Em casos selecionados, é possível utilizar carga imediata.',
+        question: 'O que é a técnica de carga imediata?',
+        answer: 'A carga imediata é um protocolo onde fixamos dentes provisórios sobre os implantes logo após a cirurgia ou em até 72 horas. Assim, o paciente não fica sem dentes durante os meses de osseointegração. A viabilidade técnica depende da qualidade óssea do paciente no momento da cirurgia.'
       },
+      {
+        question: 'Existe rejeição do implante pelo corpo?',
+        answer: 'Não existe rejeição orgânica aos implantes de titânio, pois o material é totalmente biocompatível e inerte (o corpo não o reconhece como corpo estranho). O que pode ocorrer é uma falha na osseointegração por infecção, tabagismo ou falta de qualidade óssea, mas a taxa de sucesso ultrapassa os 97%.'
+      },
+      {
+        question: 'Qual é o preço e como posso parcelar o tratamento?',
+        answer: 'Como cada caso envolve diferentes quantidades de osso, marcas de implante e tipos de prótese, é impossível passar valores sem uma consulta prévia. O Conselho de Odontologia exige avaliação clínica. No entanto, oferecemos condições de pagamento flexíveis e parcelamento adaptado ao seu planejamento financeiro.'
+      }
     ],
     whatsappMessagePattern: (city) => `Olá, Dr. Adriano! Gostaria de agendar uma avaliação para implantes dentários (${city.name}).`,
   },
@@ -158,41 +206,65 @@ const BASE_SERVICES = {
     introPattern: (city) => `Conquiste um sorriso alinhado e melhore a sua saúde bucal ${city.contextText}`,
     sectionTitlePattern: (city) => `Alinhamento Dental e Correção da Mordida ${city.locationTitle}`,
     paragraphs: [
-      'Dentes desalinhados ou problemas na mordida (oclusão) podem causar desgaste anormal do esmalte, dificuldade na higienização, dores de cabeça e tensões na articulação temporomandibular (ATM).',
-      'No consultório do Dr. Adriano Camillo em São Lourenço do Oeste, realizamos o diagnóstico completo por meio de documentação ortodôntica para selecionar o tipo de aparelho mais adequado ao seu estilo de vida.',
-      'Trabalhamos com aparelhos convencionais, estéticos de safira/cerâmica e alinhadores. O acompanhamento periódico garante movimentos suaves, eficientes e seguros para dentes e gengivas.',
+      'A ortodontia moderna deixou de ser um tratamento focado apenas em adolescentes de aparelhos metálicos. Hoje, pacientes de todas as idades buscam não apenas alinhar o sorriso para fins estéticos, mas principalmente corrigir desequilíbrios da mordida (oclusão) que podem causar problemas articulares severos e envelhecimento precoce dos dentes.',
+      'O alinhamento correto dos dentes facilita muito a higienização diária, diminuindo drasticamente os riscos de cáries, gengivite e perda óssea. Além disso, uma mastigação bem distribuída previne retrações gengivais, dores de cabeça tensionais e desgaste nas articulações temporomandibulares (ATM).',
+      'Para garantir precisão milimétrica, o diagnóstico é o pilar central. Realizamos análises faciais detalhadas, avaliações cefalométricas e escaneamento digital para entender a relação entre os seus ossos da face e o posicionamento dos dentes. Só assim podemos planejar os vetores de força corretos para um movimento rápido, eficiente e biologicamente seguro.',
+      'Oferecemos opções ortodônticas inovadoras para se adequar ao seu estilo de vida. Destacamos os Aparelhos Autoligados, que geram menos atrito, eliminam as borrachinhas e aceleram o tratamento, os Aparelhos Estéticos de Safira ou Cerâmica, quase invisíveis, e a grande revolução dos Alinhadores Invisíveis (placas transparentes removíveis) que trazem máximo conforto estético.',
+      'Nosso compromisso é o acompanhamento de excelência. Cada manutenção mensal é focada em aplicar a ativação correta do sistema. E, tão importante quanto mover os dentes, é a fase de contenção ortodôntica fixa e removível que aplicamos ao final, garantindo que o seu novo sorriso alinhado se mantenha estável por toda a vida.'
+    ],
+    highlights: [
+      {
+        icon: 'Layers',
+        title: 'Alinhadores Invisíveis',
+        text: 'Opção de placas removíveis, transparentes e altamente estéticas para o seu tratamento.'
+      },
+      {
+        icon: 'Zap',
+        title: 'Aparelhos Autoligados',
+        text: 'Tecnologia sem borrachinhas, com menos consultas e movimentos mais rápidos.'
+      }
+    ],
+    stats: [
+      { value: '100', suffix: '%', label: 'Planejamento Cefalométrico' },
+      { value: '3', suffix: ' Opções', label: 'de Sistemas Ortodônticos' },
+      { value: '0', suffix: ' Idade Limite', label: 'Tratamentos para Adultos' }
     ],
     benefits: [
-      'Harmonização e alinhamento estético do sorriso',
-      'Correção da mastigação e melhora da articulação da fala',
-      'Facilita a escovação e o uso do fio dental, prevenindo cáries',
-      'Prevenção de dores articulares causadas por mordida cruzada ou aberta',
-      'Opções de aparelhos estéticos e alinhadores discretos',
-      'Atendimento preventivo e corretivo para crianças, jovens e adultos',
+      { title: 'Estética Transparente', description: 'Tratamento altamente discreto com alinhadores invisíveis ou bráquetes translúcidos de safira.' },
+      { title: 'Movimentação Rápida', description: 'Sistemas autoligados de baixo atrito que encurtam o tempo total de tratamento.' },
+      { title: 'Higiene Facilitada', description: 'Dentes alinhados são fáceis de escovar e passar fio dental, promovendo saúde gengival contínua.' },
+      { title: 'Prevenção de Desgastes', description: 'Uma mordida encaixada perfeitamente previne trincas, fraturas e desgastes anormais no esmalte.' },
+      { title: 'Alívio Articular (ATM)', description: 'Correção de contatos prematuros que aliviam a tensão sobre a musculatura facial e pescoço.' },
+      { title: 'Maior Conforto', description: 'Aparelhos modernos exercem forças contínuas e mais suaves, resultando em muito menos dor durante as manutenções.' }
     ],
     steps: [
-      'Consulta e avaliação ortodôntica inicial',
-      'Análise de raio-X, molde e documentação ortodôntica',
-      'Apresentação do plano de tratamento e escolha do aparelho',
-      'Instalação e manutenções periódicas mensais',
-      'Remoção, instalação de contenção e polimento',
+      { title: 'Avaliação Clínica Ortodôntica', description: 'Análise do perfil facial, respiração, fonação e engrenamento inicial dos seus dentes.' },
+      { title: 'Documentação Radiográfica e 3D', description: 'Solicitação de raios-X panorâmicos, teleradiografias, fotos padronizadas e escaneamento das arcadas.' },
+      { title: 'Diagnóstico e Plano de Tratamento', description: 'Apresentação detalhada da mecânica necessária, tempo estimado e escolha do sistema (alinhador, fixo, etc).' },
+      { title: 'Instalação e Manutenções Ativas', description: 'Colagem dos bráquetes ou entrega dos alinhadores, seguidas de visitas periódicas para evolução e controle de força.' },
+      { title: 'Finalização e Contenção Estável', description: 'Remoção do aparelho, polimento cuidadoso do esmalte e instalação das contenções fixas e placas para manter o resultado.' }
     ],
     faqs: [
       {
-        question: 'Existe idade limite para usar aparelho ortodôntico?',
-        answer:
-          'Não! Adultos de qualquer idade podem fazer tratamento ortodôntico, desde que possuam gengivas e estruturas ósseas saudáveis.',
+        question: 'Adultos mais velhos podem usar aparelho ortodôntico?',
+        answer: 'Absolutamente! Não existe limite de idade para corrigir os dentes. Desde que os ossos de suporte e a gengiva estejam saudáveis, adultos e idosos podem se beneficiar imensamente da ortodontia, tanto estética quanto funcionalmente.'
       },
       {
-        question: 'Qual a diferença entre aparelho convencional e estético?',
-        answer:
-          'O convencional utiliza bráquetes metálicos. O estético utiliza peças de cerâmica ou safira transparente, que ficam praticamente imperceptíveis no sorriso.',
+        question: 'Qual é mais rápido: alinhador invisível, autoligado ou convencional?',
+        answer: 'Os aparelhos autoligados e os alinhadores invisíveis costumam ser mais rápidos e confortáveis que o convencional com borrachinhas, pois o sistema mecânico entrega forças mais constantes e com menor atrito. Contudo, o tempo exato depende da complexidade da má oclusão.'
       },
       {
-        question: 'Quanto tempo dura em média um tratamento ortodôntico?',
-        answer:
-          'A duração depende da complexidade da mordida, variando geralmente entre 12 a 36 meses. O cumprimento das consultas de manutenção é fundamental para o prazo.',
+        question: 'Preciso extrair dentes para colocar aparelho?',
+        answer: 'Hoje em dia, a extração de pré-molares é muito menos comum do que no passado, devido ao avanço dos expansores e sistemas autoligados. No entanto, se o apinhamento (falta de espaço) for extremamente severo, extrações estratégicas podem ser indicadas com muito critério.'
       },
+      {
+        question: 'Alinhadores invisíveis funcionam para casos graves?',
+        answer: 'A tecnologia dos alinhadores evoluiu muito. Com planejamento digital profundo e uso de pequenos attachments (pontinhos de resina fixados no dente), os alinhadores modernos conseguem tratar desde desalinhamentos leves até más oclusões bastante complexas.'
+      },
+      {
+        question: 'Os dentes voltam a entortar depois que tira o aparelho?',
+        answer: 'Os dentes têm memória fisiológica e tendem a se mover com a idade (mesmo em quem nunca usou aparelho). Por isso, a fase final de contenção é obrigatória e inegociável. O uso correto das contenções fixas inferiores e placas superiores garante um sorriso reto por toda a vida.'
+      }
     ],
     whatsappMessagePattern: (city) => `Olá, Dr. Adriano! Gostaria de agendar uma avaliação de ortodontia (${city.name}).`,
   },
@@ -207,41 +279,65 @@ const BASE_SERVICES = {
     introPattern: (city) => `Realce seus traços marcantes e previna o envelhecimento precoce com procedimentos faciais seguros ${city.contextText}`,
     sectionTitlePattern: (city) => `Equilíbrio Facial com Indicação Responsável ${city.locationTitle}`,
     paragraphs: [
-      'A Harmonização Orofacial (HOF) une saúde, estética e anatomia para promover a simetria entre o sorriso e a face. Nosso objetivo não é transformar seu rosto, mas sim suavizar marcas do tempo e valorizar a sua beleza natural.',
-      'O Dr. Adriano Camillo realiza uma análise facial criteriosa antes de propor procedimentos como aplicação de toxina botulínica (botox), preenchimento labial/malar com ácido hialurônico e bioestimuladores de colágeno.',
-      'Todos os produtos utilizados possuem registro na ANVISA e são aplicados com técnicas delicadas para garantir conforto, segurança e recuperação rápida.',
+      'A Harmonização Orofacial (HOF) praticada no consultório do Dr. Adriano Camillo é pautada pelo respeito rigoroso à anatomia natural, elegância e segurança. A face é a moldura do sorriso, e nosso objetivo é promover o equilíbrio estético restaurando os volumes perdidos e amenizando as marcas da gravidade e da idade, sem criar aparências artificiais ou exageradas.',
+      'O primeiro passo de qualquer procedimento é a Análise Facial Visagista. Estudamos as proporções, o padrão ósseo, as linhas de tensão e a simetria de cada paciente. Procedimentos como o Preenchimento Labial e Malar (maçãs do rosto) com ácido hialurônico são feitos para devolver a sustentação dos tecidos e contornar a mandíbula, proporcionando um rosto mais firme e definido.',
+      'Para a prevenção de rugas dinâmicas (aquelas formadas pelas expressões), a Toxina Botulínica (Botox) é o tratamento padrão-ouro. Aplicada com precisão nos músculos específicos, ela relaxa as áreas de maior tensão na testa, glabela e pés de galinha, promovendo um semblante descansado. Além disso, utilizamos a toxina de forma terapêutica para auxiliar no alívio de apertamento dentário e correção de sorriso gengival.',
+      'Outra vertente poderosa da nossa harmonização são os Bioestimuladores de Colágeno e os Fios de PDO. Esses tratamentos agem profundamente na derme, obrigando a pele a produzir colágeno novo, melhorando a espessura, a elasticidade e o brilho facial a longo prazo, funcionando como uma verdadeira poupança de juventude estrutural.',
+      'Toda a nossa atuação na Harmonização Orofacial é minimamente invasiva, priorizando o uso de microcânulas flexíveis que não cortam vasos sanguíneos, reduzindo drasticamente as chances de hematomas. Os procedimentos são realizados em ambiente clínico seguro, utilizando apenas substâncias biocompatíveis de marcas premium e alta rastreabilidade (ANVISA).'
+    ],
+    highlights: [
+      {
+        icon: 'Feather',
+        title: 'Resultados Naturais',
+        text: 'Protocolos voltados para embelezamento sutil e gerenciamento do envelhecimento sem excessos.'
+      },
+      {
+        icon: 'Shield',
+        title: 'Segurança Anatômica',
+        text: 'Uso de microcânulas e domínio profundo da anatomia vascular da face para evitar complicações.'
+      }
+    ],
+    stats: [
+      { value: '100', suffix: '%', label: 'Produtos Premium e Homologados' },
+      { value: '3+', suffix: ' Terapias', label: 'Preventivas e Corretivas' },
+      { value: '1', suffix: ' Hora', label: 'Procedimentos Rápidos' }
     ],
     benefits: [
-      'Suavização de rugas dinâmicas na testa, pés de galinha e glabela',
-      'Definição do contorno mandibular, lábios e maçãs do rosto',
-      'Estímulo natural da produção de colágeno pela pele',
-      'Procedimentos rápidos realizados em consultório',
-      'Aspecto descansado, rejuvenescido e muito natural',
-      'Protocolos personalizados respeitando suas proporções anatômicas',
+      { title: 'Rejuvenescimento Global', description: 'Tratamento de rugas de expressão, bigode chinês e reposicionamento das maçãs do rosto.' },
+      { title: 'Lábios Hidratados e Definidos', description: 'Preenchimento que resgata o volume labial de forma sensual, respeitando as proporções naturais.' },
+      { title: 'Pele Firme e Brilhante', description: 'Estímulo intenso de colágeno devolvendo o viço e a elasticidade perdidos com o tempo.' },
+      { title: 'Correção Terapêutica', description: 'Uso de botox para resolver dores de cabeça tensionais, assimetrias faciais e sorriso gengival.' },
+      { title: 'Conforto e Rapidez', description: 'Técnicas modernas com uso de anestésicos tópicos potentes, permitindo retorno imediato à rotina.' },
+      { title: 'Contorno Mandibular', description: 'Projeção do queixo e desenho nítido da mandíbula, reduzindo o aspecto de "papada" e flacidez.' }
     ],
     steps: [
-      'Análise facial minuciosa e escuta das suas queixas',
-      'Mapeamento dos pontos anatômicos de aplicação',
-      'Aplicação dos produtos com anestésico local/tópico',
-      'Orientações pós-procedimento e cuidados imediatos',
-      'Consulta de retorno e reavaliação dos resultados',
+      { title: 'Avaliação Estética e Fotografia', description: 'Estudo do envelhecimento ósseo e de gordura da face através de registros fotográficos profissionais.' },
+      { title: 'Planejamento e Alinhamento de Expectativas', description: 'Definição de quais produtos serão usados e explicação transparente sobre o que é possível alcançar.' },
+      { title: 'Preparo da Pele e Analgesia', description: 'Limpeza rigorosa e assepsia do rosto, seguida da aplicação de anestésico local de longa duração.' },
+      { title: 'Aplicação Suave', description: 'Injeção milimétrica da toxina, ácido hialurônico ou bioestimuladores com técnicas delicadas (microcânulas).' },
+      { title: 'Pós-procedimento e Retorno', description: 'Orientações importantes para as primeiras 48h e consulta de retorno após 15 dias para reavaliação de resultados.' }
     ],
     faqs: [
       {
-        question: 'O resultado da harmonização orofacial fica artificial?',
-        answer:
-          'Não quando planejada com responsabilidade. Respeitamos a anatomia e as proporções individuais para que o resultado seja sutil e natural.',
+        question: 'O meu rosto vai ficar inchado ou artificial?',
+        answer: 'Não. Nossa filosofia é a naturalidade. A dosagem da toxina e a quantidade de preenchedor são calculadas rigorosamente. O edema (inchaço) é leve e natural, desaparecendo em 2 a 3 dias, revelando um rosto descansado, nunca exagerado.'
       },
       {
-        question: 'Quanto tempo dura a aplicação de Botox e Preenchimento?',
-        answer:
-          'A toxina botulínica dura em média de 4 a 6 meses. O preenchimento com ácido hialurônico varia entre 12 a 18 meses, sendo absorvido gradativamente.',
+        question: 'O ácido hialurônico é perigoso?',
+        answer: 'O ácido hialurônico é uma substância que já existe naturalmente no nosso corpo (na pele, articulações e olhos). Por isso, ele é 100% biocompatível e reabsorvível. Além disso, utilizamos uma enzima (hialuronidase) que permite reverter o procedimento caso necessário, oferecendo total segurança.'
       },
       {
-        question: 'Posso voltar às atividades normais após o procedimento?',
-        answer:
-          'Sim. A maioria dos procedimentos permite retorno imediato à rotina, exigindo apenas cuidados básicos nas primeiras 24h.',
+        question: 'Quanto tempo dura o efeito do Botox e do Preenchimento?',
+        answer: 'A Toxina Botulínica (Botox) dura entre 4 e 6 meses. O preenchimento com Ácido Hialurônico de alta densidade pode durar de 12 a 18 meses. Os bioestimuladores de colágeno mostram resultados progressivos que duram até 24 meses.'
       },
+      {
+        question: 'Qual é a idade ideal para começar a fazer harmonização?',
+        answer: 'Não existe idade fixa, mas indica-se iniciar tratamentos preventivos (como pequenas doses de toxina e bioestimuladores) a partir dos 25 a 30 anos, idade em que o corpo diminui drasticamente a produção natural de colágeno.'
+      },
+      {
+        question: 'Quem aplica Botox pode tomar sol?',
+        answer: 'Recomendamos evitar a exposição solar direta nas primeiras 48 horas após a aplicação, especialmente se houver pequenos hematomas, para não manchar a pele. O uso de protetor solar diário é indispensável para preservar os resultados.'
+      }
     ],
     whatsappMessagePattern: (city) => `Olá, Dr. Adriano! Gostaria de agendar uma avaliação de harmonização orofacial (${city.name}).`,
   },
@@ -256,41 +352,65 @@ const BASE_SERVICES = {
     introPattern: (city) => `Alivie dores na mandíbula, estalos articulares e dores de cabeça ${city.contextText}`,
     sectionTitlePattern: (city) => `Diagnóstico Criterioso para o Alívio da Dor ${city.locationTitle}`,
     paragraphs: [
-      'A Disfunção Temporomandibular (DTM) afeta a articulação que liga a mandíbula ao crânio (ATM), além da musculatura da mastigação. Sintomas como estalos ao abrir a boca, zumbidos no ouvido, travamento articular e dores de cabeça frequentes indicam a necessidade de avaliação.',
-      'O Dr. Adriano Camillo realiza uma investigação profunda que envolve análise palpatória muscular, teste de mobilidade articular, avaliação de desgaste dental por bruxismo e histórico de estresse.',
-      'O tratamento pode incluir o uso de placas miorrelaxantes personalizadas, orientações comportamentais, terapias complementares como ozonioterapia e laserterapia para devolver o conforto no seu dia a dia.',
+      'A Disfunção Temporomandibular (DTM) afeta milhares de pessoas silenciosamente. Ela compreende um conjunto de alterações na articulação que liga a mandíbula ao crânio (ATM) e nos músculos responsáveis pela mastigação. Estalos ao abrir ou fechar a boca, limitação de abertura bucal, zumbidos no ouvido, dor na face e cansaço ao mastigar são alertas de que o sistema entrou em colapso mecânico ou inflamatório.',
+      'Muitos pacientes chegam ao nosso consultório sofrendo há anos com enxaquecas crônicas, e dor cervical ou na nuca, sem saber que a verdadeira origem do problema pode estar em um desequilíbrio oclusal ou em sobrecargas tensionais vindas da mandíbula. O bruxismo (ato de ranger os dentes) e o apertamento dental diurno ou noturno são os grandes vilões do século, intimamente ligados a fatores psicológicos, como ansiedade e estresse crônico.',
+      'No consultório do Dr. Adriano Camillo, o tratamento da DTM começa com uma escuta atenta e uma minuciosa anamnese. Realizamos exames palpatórios da musculatura craniofacial e de mobilidade articular, acompanhados de exames de imagem específicos (como tomografias e ressonâncias), para descobrir exatamente qual estrutura anatômica está comprometida, evitando tratamentos superficiais.',
+      'Nossa abordagem é primordialmente conservadora, não invasiva e baseada em evidências científicas. Confeccionamos placas miorrelaxantes lisas e rígidas, calibradas de forma milimétrica para descomprimir a articulação e proteger os dentes de desgastes severos e trincas. Essa simples, porém técnica placa noturna, é capaz de reprogramar a musculatura mastigatória, trazendo alívio imediato a tensões persistentes.',
+      'Além do suporte mecânico, adotamos uma visão integrativa para o alívio da dor. Incorporamos recursos como a terapia fotodinâmica (Laserterapia), termoterapia, agulhamento seco muscular, aplicação de toxina botulínica e, fundamentalmente, orientações de autocuidado e fisioterapia facial. Trabalhamos de forma multidisciplinar para resgatar não apenas a função da sua mordida, mas a sua qualidade de vida diária.'
+    ],
+    highlights: [
+      {
+        icon: 'Activity',
+        title: 'Diagnóstico de Precisão',
+        text: 'Análise minuciosa e palpatória para descobrir a verdadeira causa da dor orofacial.'
+      },
+      {
+        icon: 'ShieldAlert',
+        title: 'Tratamento Conservador',
+        text: 'Priorizamos o alívio de sintomas através de placas de acrílico e laserterapia, evitando cirurgias.'
+      }
+    ],
+    stats: [
+      { value: '90+', suffix: '%', label: 'Eficácia Conservadora' },
+      { value: '1', suffix: ' Placa', label: 'Pode Proteger Contra o Bruxismo' },
+      { value: '100', suffix: '%', label: 'Foco no Alívio da Dor' }
     ],
     benefits: [
-      'Alívio de dores de cabeça tensionais e dores faciais recorrentes',
-      'Redução de estalos, ruídos e desconforto ao mastigar',
-      'Proteção contra desgaste excessivo dos dentes pelo bruxismo',
-      'Placa miorrelaxante ajustada com precisão em articulador',
-      'Melhoria na qualidade do sono e redução da tensão muscular',
-      'Abordagem clínica integrativa e humanizada',
+      { title: 'Fim das Dores de Cabeça', description: 'Redução significativa de cefaleias tensionais e enxaquecas geradas por apertamento dental.' },
+      { title: 'Proteção Estrutural Dental', description: 'Preservação de esmalte, restaurações e implantes contra as forças destrutivas do bruxismo noturno.' },
+      { title: 'Recuperação da Mobilidade', description: 'Aumento da amplitude de abertura bucal sem travamentos ou limitação de movimentos.' },
+      { title: 'Diminuição de Estalos Articulares', description: 'Lubrificação e reposicionamento do disco da ATM diminuindo cliques e ruídos incômodos.' },
+      { title: 'Melhora Profunda no Sono', description: 'Ao relaxar os músculos orofaciais durante a noite, o paciente desperta sem fadiga muscular matinal.' },
+      { title: 'Alívio de Dores Cervicais', description: 'Equilíbrio mastigatório que reduz tensões irradiadas para o pescoço e ombros.' }
     ],
     steps: [
-      'Mapeamento dos pontos de dor, hábitos e histórico de sintomas',
-      'Exame palpatório e teste de movimentação articular',
-      'Moldagem e confecção da placa de bruxismo/DTM se indicada',
-      'Instalação, ajustes de oclusão e orientação de uso',
-      'Acompanhamento da regressão dos sintomas',
+      { title: 'Anamnese e Escuta Detalhada', description: 'Mapeamento profundo do histórico de dor, hábitos posturais, nível de estresse e distúrbios do sono.' },
+      { title: 'Exame Clínico Palpatório', description: 'Teste funcional de abertura bucal, identificação de pontos-gatilho de dor muscular e auscultação da ATM.' },
+      { title: 'Análise Radiológica da Articulação', description: 'Requisição de tomografia ou ressonância magnética, quando necessário, para avaliar as estruturas internas.' },
+      { title: 'Confecção da Placa Miorrelaxante', description: 'Moldagem precisa das arcadas, confecção da placa em acrílico resistente e ajustes oclusais em consultório.' },
+      { title: 'Terapias Combinadas e Monitoramento', description: 'Uso de laserterapia, exercícios para a musculatura orofacial e consultas de retorno para reajuste da placa.' }
     ],
     faqs: [
       {
-        question: 'Aperto os dentes enquanto durmo. Isso é DTM?',
-        answer:
-          'O hábito de apertar ou ranger os dentes é chamado de bruxismo e pode desencadear ou agravar a DTM. Uma placa miorrelaxante personalizada ajuda a proteger dentes e articulações.',
+        question: 'Estalar a mandíbula é sinal de que preciso de cirurgia?',
+        answer: 'Na imensa maioria das vezes, não. Estalos frequentes indicam um desarranjo no disco articular, mas menos de 5% dos casos de DTM exigem intervenções cirúrgicas agressivas. O controle com placas e fisioterapia costuma ser suficiente para gerenciar o problema e eliminar a dor.'
       },
       {
-        question: 'Dores de cabeça frequentes podem ter origem nos dentes?',
-        answer:
-          'Sim. A tensão nos músculos mastigatórios por causa de desequilíbrio na mordida ou DTM é uma causa comum de dores de cabeça tensionais.',
+        question: 'Placas de silicone mole (feitas em casa) ajudam no bruxismo?',
+        answer: 'Muito pelo contrário. Placas flexíveis (de silicone ou farmácia) tendem a estimular ainda mais o músculo a apertar durante a noite (como um chiclete). Para o bruxismo, a placa correta e segura deve ser de acrílico rígido, lisa, perfeitamente plana e com ajuste micrométrico pelo dentista.'
       },
       {
-        question: 'O tratamento de DTM exige cirurgia?',
-        answer:
-          'Na grande maioria dos casos (mais de 90%), o tratamento é conservador e não cirúrgico, envolvendo placas, fisioterapia muscular e terapias de suporte.',
+        question: 'Qual a relação entre DTM e o meu estresse/ansiedade?',
+        answer: 'Fatores emocionais não causam a DTM mecânica, mas são poderosos "gatilhos" e agravantes. Sob estresse, o sistema nervoso sobrecarrega involuntariamente os músculos mastigatórios (gerando o apertamento). Por isso, o tratamento engloba conscientização e controle da tensão.'
       },
+      {
+        question: 'Zumbido no ouvido pode ter a ver com os meus dentes?',
+        answer: 'Sim, existe uma íntima proximidade anatômica e nervosa entre a ATM (articulação) e as estruturas do ouvido. Inflamações articulares ou contraturas musculares profundas podem, frequentemente, se manifestar na forma de zumbidos, tonturas ou sensação de ouvido tampado.'
+      },
+      {
+        question: 'O Botox realmente ajuda em dores faciais?',
+        answer: 'Sim, a aplicação terapêutica de toxina botulínica relaxa especificamente os feixes musculares hipertrofiados do masseter e do temporal, quebrando o ciclo vicioso de dor e apertamento crônico intenso, oferecendo alívio por meses consecutivos.'
+      }
     ],
     whatsappMessagePattern: (city) => `Olá, Dr. Adriano! Gostaria de agendar uma avaliação para DTM e dor orofacial (${city.name}).`,
   },
@@ -305,41 +425,65 @@ const BASE_SERVICES = {
     introPattern: (city) => `Acelere a recuperação pós-operatória e previna infecções com o poder da Ozonioterapia medicinal ${city.contextText}`,
     sectionTitlePattern: (city) => `Tecnologia Biológica para a Saúde Bucal ${city.locationTitle}`,
     paragraphs: [
-      'A Ozonioterapia é uma modalidade terapêutica avançada que utiliza a mistura de oxigênio e ozônio medicinal (O3) para promover potente ação germicida, imunomoduladora e estimuladora de reparo tecidual.',
-      'Na odontologia, a ozonioterapia é aplicada pelo Dr. Adriano Camillo como um excelente recurso complementar em procedimentos cirúrgicos (como implantes e extrações), tratamentos de canal, afecções gengivais, aftas e herpes.',
-      'O procedimento é totalmente indolor, rápido e sem efeitos colaterais químicos, melhorando a oxigenação celular e diminuindo significativamente a dor e o inchaço pós-operatório.',
+      'A Odontologia contemporânea busca métodos cada vez mais eficientes, seguros e que utilizem os recursos biológicos do próprio organismo para curar. A Ozonioterapia, baseada na aplicação da mistura gasosa de oxigênio e ozônio medicinal (O3), representa um salto gigante nessa direção, proporcionando tratamentos com menos efeitos colaterais químicos e recuperação impressionante.',
+      'O ozônio possui propriedades únicas fundamentais: é um poderoso antimicrobiano (capaz de destruir bactérias, fungos e vírus em segundos), um potente modulador do sistema imunológico local, e o principal responsável pelo aumento significativo da oxigenação dos tecidos celulares, estimulando o crescimento vascular.',
+      'No consultório do Dr. Adriano Camillo, utilizamos geradores de ozônio de alta precisão. Na forma de água ozonizada, irrigamos campos cirúrgicos e bolsas periodontais, promovendo descontaminação absoluta. Na forma de gás (aplicação tópica com campânulas), desinfetamos perfeitamente o interior de raízes dentárias (canais) que apresentavam infecção crônica resistente aos antibióticos tradicionais.',
+      'Em cirurgias complexas, como instalação de múltiplos implantes dentários, remoção de sisos inclusos ou enxertos ósseos, a ozonioterapia brilha na fase pós-operatória. A aplicação indolor atua desligando vias de inflamação exageradas, o que reduz drasticamente o inchaço, minimiza hematomas e alivia a dor nas primeiras horas cruciais, garantindo uma cicatrização até 50% mais rápida.',
+      'Sua atuação biológica é também fantástica no tratamento clínico diário: promove o alívio imediato e a cicatrização de aftas agressivas e herpes labial incipiente. Ao incorporar a ozonioterapia à nossa rotina, oferecemos a você uma odontologia de vanguarda, menos agressiva, mais natural e amplamente ancorada na sustentabilidade da sua saúde integral.'
+    ],
+    highlights: [
+      {
+        icon: 'Target',
+        title: 'Descontaminação Absoluta',
+        text: 'Ação letal contra bactérias e vírus sem utilizar agentes químicos agressivos.'
+      },
+      {
+        icon: 'Zap',
+        title: 'Cicatrização Acelerada',
+        text: 'Aumento da oxigenação nos tecidos para reduzir dor, inchaço e acelerar o fechamento ósseo.'
+      }
+    ],
+    stats: [
+      { value: '100', suffix: '%', label: 'Terapia Natural' },
+      { value: '0', suffix: ' Dor', label: 'Procedimento Indolor' },
+      { value: '2x', suffix: ' Mais Rápido', label: 'Em Processos de Reparo Tecidual' }
     ],
     benefits: [
-      'Potente ação bactericida, fungicida e virucida natural',
-      'Aceleração da cicatrização tecidual em pós-operatórios',
-      'Redução do inchaço, edema e desconforto pós-cirúrgico',
-      'Auxílio no tratamento de sensibilidade dentária e aftas',
-      'Terapia 100% biológica sem resíduos tóxicos no organismo',
-      'Aplicação rápida, segura e indolor no próprio consultório',
+      { title: 'Ação Bactericida Potente', description: 'Eliminação imediata de microorganismos difíceis em canais radiculares e tecidos gengivais infectados.' },
+      { title: 'Pós-operatório Tranquilo', description: 'Atua cortando vias inflamatórias, prevenindo dores intensas e edemas severos após cirurgias.' },
+      { title: 'Combate à Sensibilidade', description: 'O gás atua selando a dentina dos dentes com alta sensibilidade ao frio, trazendo alívio instantâneo.' },
+      { title: 'Imunomodulação Biológica', description: 'Desperta a resposta natural de defesa da região afetada sem dependência excessiva de antibióticos orais.' },
+      { title: 'Tratamento de Aftas e Herpes', description: 'Secagem ultrarrápida de lesões herpéticas com apenas algumas sessões isoladas e indolores.' },
+      { title: 'Biocompatibilidade Total', description: 'Sendo o ozônio transformado rapidamente em oxigênio puro pelo corpo, não deixa quaisquer resíduos tóxicos.' }
     ],
     steps: [
-      'Avaliação da indicação da terapia conforme o procedimento realizado',
-      'Definição da concentração e forma de aplicação (gás ou água ozonizada)',
-      'Aplicação tópica ou irrigação no local afetado',
-      'Orientação sobre o protocolo de sessões complementares',
-      'Acompanhamento do processo de regeneração tecidual',
+      { title: 'Análise da Indicação Clínica', description: 'Avaliação criteriosa da fase de tratamento (pré, trans ou pós-operatória) em que o ozônio será benéfico.' },
+      { title: 'Determinação da Concentração', description: 'Ajuste eletrônico no gerador de acordo com o objetivo: bactericida (alta dose) ou bioestimuladora (baixa dose).' },
+      { title: 'Preparo do Veículo (Água ou Gás)', description: 'Ozonização na hora da água bidestilada para bochecho/irrigação, ou preparo do gás por sistema a vácuo fechado.' },
+      { title: 'Aplicação Tópica Cuidadosa', description: 'Contato do ozônio diretamente com o tecido afetado (através de seringas, bolsas de sucção ou pontas aplicadoras).' },
+      { title: 'Retorno para Reavaliação', description: 'Análise visual do progresso de fechamento do tecido e da evolução de desaparecimento da dor e inflamação.' }
     ],
     faqs: [
       {
-        question: 'A aplicação de ozonioterapia dói?',
-        answer:
-          'Não. A aplicação é totalmente indolora e muito bem tolerada pelos pacientes.',
+        question: 'Dói ou arde ao receber a ozonioterapia na boca?',
+        answer: 'O gás em si, nas dosagens controladas e medicinais utilizadas na odontologia, é totalmente indolor, sem gosto forte ou sensação de queimação, sendo extremamente bem aceito desde crianças a idosos.'
       },
       {
-        question: 'Em quais procedimentos a ozonioterapia é recomendada?',
-        answer:
-          'Ela é indicada como coadjuvante na cicatrização de implantes, cirurgias de sisos, descontaminação de canais, tratamento de periodontite, aftas e feridas bucais.',
+        question: 'O ozônio faz mal ao pulmão se eu respirar?',
+        answer: 'Se o ozônio puro for diretamente aspirado em grandes volumes, sim, é tóxico para as vias aéreas. No entanto, utilizamos aparelhos específicos e sugadores de alta potência. A técnica na boca é 100% isolada e segura; o paciente jamais o respira.'
       },
       {
-        question: 'A ozonioterapia substitui o tratamento odontológico tradicional?',
-        answer:
-          'Não. Trata-se de uma terapia complementar integrada que otimiza e potencializa os resultados dos tratamentos odontológicos tradicionais.',
+        question: 'Qualquer procedimento de dente pode utilizar ozônio?',
+        answer: 'Nem todos necessitam. Sua principal indicação é em procedimentos que envolvem infecção prévia (endodontia, periodontite), necessidade de desinfecção aguda, e para estimular a rápida vascularização em cirurgias de enxertos e implantes ósseos.'
       },
+      {
+        question: 'Se eu tratar com ozônio não precisarei de antibiótico de farmácia?',
+        answer: 'A ozonioterapia é uma terapia complementar extraordinária, e embora ela reduza drasticamente a carga bacteriana, não exclui protocolos antibióticos convencionais em casos de infecções sistêmicas agudas, mas os potencializa.'
+      },
+      {
+        question: 'O uso de água ozonizada ajuda em inflamação de gengiva?',
+        answer: 'É excelente! Bochechar ou realizar a irrigação de bolsas periodontais com água recém-ozonizada no consultório elimina placa bacteriana, sangramentos crônicos e reduz rapidamente a inflamação gengival e o mau hálito.'
+      }
     ],
     whatsappMessagePattern: (city) => `Olá, Dr. Adriano! Gostaria de agendar uma avaliação de ozonioterapia (${city.name}).`,
   },
@@ -372,6 +516,8 @@ Object.values(BASE_SERVICES).forEach((service) => {
       benefits: service.benefits,
       steps: service.steps,
       faqs: service.faqs,
+      stats: service.stats,
+      highlights: service.highlights,
       whatsappMessage: service.whatsappMessagePattern(city),
     };
   });
