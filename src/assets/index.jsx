@@ -2,23 +2,23 @@
 import React from 'react';
 
 // Imagens
-import logo from './images/newlogo.png';
-import logotipoSite from './images/Logotipo Site-02.png';
-import pai from './images/pai.jpg';
-import paidois from './images/paidois.jpg';
-import consultorio1 from './images/20240723_165806.jpg';
-import consultorio2 from './images/20240723_165833.jpg';
-import consultorio3 from './images/20240723_170110.jpg';
-import hifuEquipamento from './images/20240723_165814.jpg';
-import hifuEquipamentoDois from './images/Screenshot_20241104_152125_Photos.jpg';
-import whatsappScreenshot from './images/Screenshot_20231028_123109_WhatsApp.jpg';
-import photosScreenshot from './images/Screenshot_20241126_094251_Photos.jpg';
+import logo from './images/newlogo.webp';
+import logotipoSite from './images/Logotipo Site-02.webp';
+import pai from './images/pai.webp';
+import paidois from './images/paidois.webp';
+import consultorio1 from './images/20240723_165806.webp';
+import consultorio2 from './images/20240723_165833.webp';
+import consultorio3 from './images/20240723_170110.webp';
+import hifuEquipamento from './images/20240723_165814.webp';
+import hifuEquipamentoDois from './images/Screenshot_20241104_152125_Photos.webp';
+import whatsappScreenshot from './images/Screenshot_20231028_123109_WhatsApp.webp';
+import photosScreenshot from './images/Screenshot_20241126_094251_Photos.webp';
 
 // Posters (thumbnails reais extraídos dos vídeos)
-import posterHifu from './images/poster-hifu.jpg';
-import posterHifuAtendimento from './images/poster-hifuatendimento.jpg';
-import posterHifuDois from './images/poster-hifudois.jpg';
-import posterHifuTres from './images/poster-hifutres.jpg';
+import posterHifu from './images/poster-hifu.webp';
+import posterHifuAtendimento from './images/poster-hifuatendimento.webp';
+import posterHifuDois from './images/poster-hifudois.webp';
+import posterHifuTres from './images/poster-hifutres.webp';
 
 // Vídeos (comprimidos para web — 1080p)
 import hifuVideo from './videos/hifu.mp4';
