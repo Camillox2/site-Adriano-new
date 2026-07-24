@@ -582,7 +582,6 @@ const BASE_SERVICES = {
       { title: 'Protocolos de Sucesso', description: 'Acesso às técnicas de disparo que entregam o melhor efeito lifting para seus pacientes.' },
       { title: 'Material de Apoio', description: 'Termos de consentimento livre e esclarecido, fichas de avaliação e dicas de pós-procedimento.' },
       { title: 'Apoio no Marketing', description: 'Vídeos e imagens do aparelho para você fazer campanhas no Instagram e atrair o público.' },
-      { title: 'Flexibilidade de Agenda', description: 'Agende a data da sua locação conforme a demanda prévia de pacientes da sua clínica.' }
     ],
     steps: [
       { title: 'Contato e Verificação', description: 'Você entra em contato, verificamos a viabilidade técnica, disponibilidade e documentação do seu conselho de classe.' },
@@ -615,6 +614,78 @@ const BASE_SERVICES = {
     ],
     whatsappMessagePattern: (city) => `Olá! Sou profissional da área de saúde/estética e gostaria de mais informações sobre a locação do aparelho HIFU para minha clínica (${city.name}).`,
   },
+  'lipo-de-papada-hifu': {
+    baseSlug: 'lipo-de-papada-hifu',
+    label: 'Lipo de Papada sem Cortes (HIFU)',
+    eyebrow: 'Ultrassom Microfocado para Eliminação de Papada',
+    titlePattern: (city) => `Lipo de Papada com HIFU ${city.locationTitle} | Dr. Adriano Camillo`,
+    descriptionPattern: (city) => `Lipo de papada sem cortes ${city.locationTitle} com Ultrassom Microfocado (HIFU). Elimine a gordura submentoniana e firme a pele sem agulhas ou cirurgia.`,
+    headingPattern: (city) => `Lipo de Papada com HIFU ${city.locationTitle}`,
+    introPattern: (city) => `Elimine o queixo duplo e recupere o contorno jovem da sua mandíbula com a tecnologia de Ultrassom Microfocado de Alta Intensidade ${city.contextText}`,
+    sectionTitlePattern: (city) => `Lipo de Papada sem Cortes e sem Cirurgia ${city.locationTitle}`,
+    paragraphs: [
+      'A gordura submentoniana, popularmente conhecida como papada, é uma das maiores queixas estéticas tanto de homens quanto de mulheres. Frequentemente resistente a dietas e exercícios físicos, essa gordura acumulada abaixo do queixo compromete o ângulo da mandíbula e traz uma aparência envelhecida ou de excesso de peso ao rosto.',
+      'O tratamento de Lipo de Papada com HIFU (Ultrassom Microfocado) revolucionou a harmonização facial ao oferecer uma solução 100% não invasiva, livre de agulhas, cortes ou aspiração cirúrgica. Através de ondas de ultrassom concentradas, atingimos com precisão milimétrica a camada de gordura profunda e a musculatura facial (SMAS).',
+      'As ondas térmicas geradas pelo equipamento Ultramed HIFU causam a apoptose (destruição natural e definitiva) das células de gordura submentoniana, que são gradualmente eliminadas pelo próprio sistema linfático do organismo ao longo das semanas seguintes ao procedimento.',
+      'Diferente da lipoaspiração tradicional ou das enzimas injetáveis — que muitas vezes deixam a pele flácida após a remoção da gordura —, o HIFU estimula uma intensa neocolagênese (produção de novo colágeno e elastina). Isso significa que, enquanto a gordura é eliminada, a pele do pescoço e do queixo se retrai e fica visivelmente mais firme e colada.',
+      'Com o Dr. Adriano Camillo, todo o protocolo é personalizado após uma análise facial computadorizada. O procedimento é realizado no consultório de forma rápida, segura e praticamente indolor, permitindo que você retorne às suas atividades diárias e de trabalho imediatamente após a sessão, sem necessidade de repouso ou ataduras.'
+    ],
+    highlights: [
+      {
+        icon: 'Zap',
+        title: 'Sem Agulhas ou Cirurgia',
+        text: 'Tratamento 100% não invasivo sem necessidade de anestesia invasiva, cortes ou cicatrizes.'
+      },
+      {
+        icon: 'Shield',
+        title: 'Efeito Lifting Simultâneo',
+        text: 'Destrói a gordura acumulada ao mesmo tempo em que enrijece a pele do pescoço, evitando a flacidez.'
+      }
+    ],
+    stats: [
+      { value: '1', suffix: 'ª Sessão', label: 'Início dos Resultados' },
+      { value: '0', suffix: ' Cortes', label: 'Procedimento Não Invasivo' },
+      { value: '100', suffix: '%', label: 'Retorno Imediato às Atividades' }
+    ],
+    benefits: [
+      { title: 'Eliminação Definitiva', description: 'Destruição das células de gordura submentoniana com eliminação natural pelo organismo.' },
+      { title: 'Definição da Mandíbula', description: 'Recuperação do contorno e do ângulo cervicofacial, proporcionando um perfil mais magro e jovem.' },
+      { title: 'Firmeza e Colágeno', description: 'Estímulo profundo de colágeno no SMAS para evitar a flacidez decorrente da perda de gordura.' },
+      { title: 'Procedimento Rápido', description: 'Sessões clínicas de aproximadamente 45 minutos com aplicação segura e confortável.' },
+      { title: 'Sem Tempo de Repouso', description: 'Zero necessidade de afastamento do trabalho, curativos pesados ou faixa mentoniana.' },
+      { title: 'Resultados Progressivos', description: 'Evolução contínua da melhora ao longo de 30 a 90 dias conforme o colágeno se renova.' }
+    ],
+    steps: [
+      { title: 'Mapeamento Facial', description: 'Avaliação da espessura do tecido adiposo e marcação precisa das zonas de aplicação com cartilhas exclusivas.' },
+      { title: 'Aplicação de Gel Condutor', description: 'Higienização da pele e uso de gel neutro para facilitar a transmissão das ondas de ultrassom.' },
+      { title: 'Disparo de Cartuchos Profundos', description: 'Aplicação do HIFU nas ponteiras focadas na gordura profunda e na camada SMAS do pescoço.' },
+      { title: 'Reforço Superficial de Colágeno', description: 'Passagem de ponteiras dermocosméticas para garantir a firmeza da derme superior.' },
+      { title: 'Finalização e Orientações', description: 'Aplicação de protetor solar e envio de recomendações pós-procedimento para potencializar os resultados.' }
+    ],
+    faqs: [
+      {
+        question: 'A Lipo de Papada com HIFU dói?',
+        answer: 'O procedimento é extremamente tolerável. O paciente sente apenas aquecimento leve e pequenos impulsos nas camadas mais profundas da pele. Não há dor aguda nem necessidade de anestesia injetável.'
+      },
+      {
+        question: 'Quantas sessões de Lipo de Papada com HIFU são necessárias?',
+        answer: 'Na grande maioria dos casos, de 1 a 3 sessões são suficientes para atingir uma redução expressiva e duradoura da papada. O intervalo médio entre cada sessão é de 30 a 60 dias.'
+      },
+      {
+        question: 'Em quanto tempo vejo os resultados da Lipo de Papada?',
+        answer: 'Alguns pacientes notam um leve efeito lifting de imediato. Porém, os resultados mais significativos aparecem entre 30 e 90 dias, conforme o corpo metaboliza a gordura e produz novas fibras de colágeno.'
+      },
+      {
+        question: 'A gordura da papada volta depois do tratamento?',
+        answer: 'As células de gordura destruídas pelo HIFU não se regeneram. No entanto, para manter os resultados a longo prazo, é recomendado manter um estilo de vida saudável e peso corporal estável.'
+      },
+      {
+        question: 'Qual a vantagem do HIFU em relação às enzimas ou lipo mecânica?',
+        answer: 'Diferente das enzimas (que podem causar inchaços intensos) e da lipoaspiração mecânica (cirurgia com cortes e dor), o HIFU não tem agulhas, não exige repouso e trata simultaneamente a flacidez da pele.'
+      }
+    ],
+    whatsappMessagePattern: (city) => `Olá, Dr. Adriano! Gostaria de agendar uma avaliação para Lipo de Papada com HIFU (${city.name}).`,
+  },
 };
 
 // Gera dinamicamente todas as combinações de Serviço + Cidade
@@ -622,8 +693,8 @@ const generatedPages = {};
 
 Object.values(BASE_SERVICES).forEach((service) => {
   Object.values(CITIES).forEach((city) => {
-    // REGRA DE CURITIBA: Apenas gera página para 'aluguel-de-hifu'
-    if (city.name === 'Curitiba' && service.baseSlug !== 'aluguel-de-hifu') {
+    // REGRA DE CURITIBA: Apenas gera página para 'aluguel-de-hifu' e 'lipo-de-papada-hifu'
+    if (city.name === 'Curitiba' && service.baseSlug !== 'aluguel-de-hifu' && service.baseSlug !== 'lipo-de-papada-hifu') {
       return;
     }
 
