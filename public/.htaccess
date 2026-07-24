@@ -1,16 +1,24 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
+
+  # Slugs antigos da cidade principal: preservar sinais e acessos com 301.
+  RewriteRule ^(odontologia-estetica|implantes-dentarios|ortodontia|harmonizacao-orofacial|dtm-dor-orofacial|ozonioterapia|aluguel-de-hifu|lipo-de-papada-hifu)-sao-lourenco-do-oeste/?$ /$1 [R=301,L,NE]
+
   RewriteRule ^index\.html$ - [L]
+
+  # Entrega primeiro arquivos e diretórios estáticos gerados no build.
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_FILENAME} !-l
+
+  # Fallback necessário para as rotas válidas do React na HostGator.
   RewriteRule . /index.html [L]
 </IfModule>
 
 <IfModule mod_expires.c>
   ExpiresActive On
-  
+
   # Images
   ExpiresByType image/jpeg "access plus 1 year"
   ExpiresByType image/gif "access plus 1 year"
@@ -18,20 +26,20 @@
   ExpiresByType image/webp "access plus 1 year"
   ExpiresByType image/svg+xml "access plus 1 year"
   ExpiresByType image/x-icon "access plus 1 year"
-  
+
   # Video
   ExpiresByType video/mp4 "access plus 1 year"
   ExpiresByType video/mpeg "access plus 1 year"
-  
+
   # CSS, JavaScript
   ExpiresByType text/css "access plus 1 year"
   ExpiresByType text/javascript "access plus 1 year"
   ExpiresByType application/javascript "access plus 1 year"
-  
+
   # Fonts
   ExpiresByType font/woff2 "access plus 1 year"
   ExpiresByType font/woff "access plus 1 year"
-  
+
   # Others
   ExpiresByType application/pdf "access plus 1 month"
   ExpiresByType text/html "access plus 0 seconds"
