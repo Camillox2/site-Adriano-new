@@ -304,7 +304,7 @@ const HifuSection = () => {
               Agendar Avaliação HIFU
               <ArrowRight size={20} aria-hidden="true" />
             </a>
-            <p className="text-slate-400 text-sm mt-5">
+            <p className="text-slate-300 text-sm mt-5">
               Atendimento em São Lourenço do Oeste, Realeza, Ampére e Curitiba
             </p>
           </div>

@@ -170,7 +170,7 @@ const ServiceModal = ({ service, onClose }) => (
         </div>
         <button
           onClick={onClose}
-          className="p-2.5 rounded-full text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition-colors"
+          className="p-2.5 rounded-full text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors"
           aria-label="Fechar"
         >
           <X size={22} />

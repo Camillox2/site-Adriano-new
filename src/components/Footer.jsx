@@ -58,10 +58,10 @@ const Footer = () => {
               />
               <div>
                 <p className="text-lg font-bold text-white leading-tight">Dr. Adriano Camillo</p>
-                <p className="text-sm text-slate-400">Cirurgião-Dentista</p>
+                <p className="text-sm text-slate-300">Cirurgião-Dentista</p>
               </div>
             </div>
-            <p className="text-sm leading-relaxed text-slate-400 mb-6">
+            <p className="text-sm leading-relaxed text-slate-300 mb-6">
               Odontologia e estética facial avançada com tecnologia de ponta e
               atendimento humanizado em São Lourenço do Oeste e região.
             </p>
@@ -119,7 +119,7 @@ const Footer = () => {
           {/* Serviços */}
           <div>
             <h3 className="text-white font-bold mb-5">Serviços</h3>
-            <ul className="space-y-2.5 text-sm text-slate-400">
+            <ul className="space-y-2.5 text-sm text-slate-300">
               {SERVICES.map((service, index) => (
                 <li key={service}>
                   {SERVICE_LINKS[index] ? (
@@ -152,14 +152,14 @@ const Footer = () => {
                   <a href={WHATSAPP_DEFAULT} target="_blank" rel="noopener noreferrer" className="text-white font-semibold hover:underline">
                     {SITE.phone}
                   </a>
-                  <span className="block text-slate-400">WhatsApp</span>
+                  <span className="block text-slate-300">WhatsApp</span>
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin size={17} className="text-primary-500 shrink-0 mt-0.5" aria-hidden="true" />
                 <span>
                   {ADDRESS.street}
-                  <span className="block text-slate-400">
+                  <span className="block text-slate-300">
                     {ADDRESS.city} — {ADDRESS.state}
                   </span>
                 </span>
@@ -168,7 +168,7 @@ const Footer = () => {
                 <Clock size={17} className="text-secondary-500 shrink-0 mt-0.5" aria-hidden="true" />
                 <span>
                   Seg a sex: 8h às 18h
-                  <span className="block text-slate-400">Sábado: 8h às 12h</span>
+                  <span className="block text-slate-300">Sábado: 8h às 12h</span>
                 </span>
               </li>
             </ul>
@@ -176,7 +176,7 @@ const Footer = () => {
         </div>
 
         {/* Barra final */}
-        <div className="py-6 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-3 text-sm text-slate-500">
+        <div className="py-6 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-3 text-sm text-slate-400">
           <p>
             © {year} Dr. Adriano Camillo — Todos os direitos reservados.
           </p>

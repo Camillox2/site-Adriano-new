@@ -126,7 +126,7 @@ const TestimonialsSection = () => {
               </blockquote>
               <figcaption className="mt-7 pt-6 border-t border-slate-100">
                 <span className="block font-bold text-slate-900">{current.name}</span>
-                <span className="block text-sm text-slate-500 mt-1">
+                <span className="block text-sm text-slate-600 mt-1">
                   {current.treatment} • {current.location}
                 </span>
               </figcaption>
