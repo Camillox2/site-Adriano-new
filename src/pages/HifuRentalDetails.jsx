@@ -19,36 +19,22 @@ import SkinDiagram from '../components/SkinDiagram';
 
 const HifuRentalDetails = ({ data }) => {
   const [activeFaq, setActiveFaq] = useState(null);
-  const [showVideo, setShowVideo] = useState(false);
-
-  useEffect(() => {
-    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      setShowVideo(true);
-    }
-  }, []);
 
   return (
     <main className="min-h-screen bg-slate-50 pt-20">
       {/* Hero Section Premium com Vídeo/Foto do HIFU */}
       <section className="relative min-h-[90vh] flex items-center pt-16 pb-24 md:pt-24 md:pb-32 overflow-hidden bg-slate-900 text-white">
         <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
-          {showVideo ? (
-            <video
-              className="w-full h-full object-cover opacity-60"
-              autoPlay
-              muted
-              loop
-              playsInline
-              poster={images.consultorio1}
-              src={videos.hifuDois}
-              tabIndex={-1}
-            />
-          ) : (
-            <div
-              className="w-full h-full bg-cover bg-center animate-kenburns opacity-60"
-              style={{ backgroundImage: `url(${images.consultorio1})` }}
-            ></div>
-          )}
+          <video
+            className="w-full h-full object-cover opacity-60"
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster={images.consultorio1}
+            src={videos.hifuDois}
+            tabIndex={-1}
+          />
           {/* Gradients para dar contraste ao texto */}
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-900/70 to-transparent"></div>
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent"></div>

@@ -53,7 +53,7 @@ const AboutSection = () => (
             />
             <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 bg-white shadow-xl rounded-2xl px-6 py-3 text-center border border-slate-100 whitespace-nowrap">
               <span className="block font-bold text-slate-900">Dr. Adriano Camillo</span>
-              <span className="block text-sm text-slate-500">Cirurgião-Dentista</span>
+              <span className="block text-sm text-slate-600">Cirurgião-Dentista</span>
             </div>
           </div>
         </div>
@@ -133,7 +133,7 @@ const AboutSection = () => (
               )}
               <h4 className="font-bold text-slate-900">{location.city}</h4>
               {!location.main && (
-                <p className="text-sm text-slate-500 mb-2">{location.type}</p>
+                <p className="text-sm text-slate-600 mb-2">{location.type}</p>
               )}
               <p className="text-sm text-slate-700 mb-4">{location.address}</p>
               <div className="flex flex-wrap gap-3 text-sm font-semibold">

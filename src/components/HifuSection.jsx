@@ -222,7 +222,7 @@ const HifuSection = () => {
               <ShieldCheck className="text-emerald-600 shrink-0" size={26} aria-hidden="true" />
               <span className="text-sm font-semibold text-slate-800 whitespace-nowrap">
                 Equipamento Ultramed HIFU
-                <span className="block text-xs font-normal text-slate-500">
+                <span className="block text-xs font-normal text-slate-600">
                   Tecnologia profissional de consultório
                 </span>
               </span>

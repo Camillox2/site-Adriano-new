@@ -5,15 +5,6 @@ import { SITE, WHATSAPP_DEFAULT } from '../utils/constants';
 import CountUp from './CountUp';
 
 const Hero = () => {
-  const [showVideo, setShowVideo] = useState(false);
-
-  // Vídeo de fundo só para quem aceita movimento (acessibilidade)
-  useEffect(() => {
-    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      setShowVideo(true);
-    }
-  }, []);
-
   const scrollToHifu = () => {
     document.getElementById('hifu')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -25,23 +16,16 @@ const Hero = () => {
     >
       {/* Fundo: vídeo do equipamento em loop (0,5 MB) com foto de fallback */}
       <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
-        {showVideo ? (
-          <video
-            className="w-full h-full object-cover"
-            autoPlay
-            muted
-            loop
-            playsInline
-            poster={images.consultorio1}
-            src={videos.hifuDois}
-            tabIndex={-1}
-          />
-        ) : (
-          <div
-            className="w-full h-full bg-cover bg-center animate-kenburns"
-            style={{ backgroundImage: `url(${images.consultorio1})` }}
-          ></div>
-        )}
+        <video
+          className="w-full h-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster={images.consultorio1}
+          src={videos.hifuDois}
+          tabIndex={-1}
+        />
       </div>
       <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-900/85 to-slate-900/60"></div>
       <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-slate-950/90 to-transparent"></div>
@@ -119,7 +103,7 @@ const Hero = () => {
                 <ShieldCheck className="text-emerald-600 shrink-0" size={24} aria-hidden="true" />
                 <span className="text-sm font-semibold leading-tight whitespace-nowrap">
                   Especialista em HIFU
-                  <span className="block text-xs font-normal text-slate-500 whitespace-nowrap">
+                  <span className="block text-xs font-normal text-slate-600 whitespace-nowrap">
                     e Harmonização Orofacial
                   </span>
                 </span>

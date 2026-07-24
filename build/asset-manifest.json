@@ -1,30 +1,30 @@
 {
   "files": {
     "main.css": "/static/css/main.a13314f9.css",
-    "main.js": "/static/js/main.a20be42c.js",
+    "main.js": "/static/js/main.46d48664.js",
     "static/media/hifuatendimento.mp4": "/static/media/hifuatendimento.167f2f169a1046de8289.mp4",
     "static/media/hifutres.mp4": "/static/media/hifutres.cfa9d7e763b20048d345.mp4",
     "static/media/hifu.mp4": "/static/media/hifu.e12d90846def5759a8dc.mp4",
     "static/media/hifudois.mp4": "/static/media/hifudois.0e8f79f497c0548cb8a2.mp4",
-    "static/media/paidois.webp": "/static/media/paidois.0a6cbef2b1375cc902c0.webp",
-    "static/media/20240723_165814.webp": "/static/media/20240723_165814.6575fca626063a2b8806.webp",
-    "static/media/20240723_165806.webp": "/static/media/20240723_165806.52c62e23a2cafd9258b7.webp",
-    "static/media/20240723_165833.webp": "/static/media/20240723_165833.2d5bd704c2389477ca68.webp",
-    "static/media/pai.webp": "/static/media/pai.e8fcc598d32cccc9578e.webp",
-    "static/media/20240723_170110.webp": "/static/media/20240723_170110.33cfe005e670109077a1.webp",
     "static/media/Screenshot_20241104_152125_Photos.webp": "/static/media/Screenshot_20241104_152125_Photos.96ac6a8e8f631e956c06.webp",
     "static/media/poster-hifutres.webp": "/static/media/poster-hifutres.38e9b092e93b44974f1b.webp",
     "static/media/Screenshot_20241126_094251_Photos.webp": "/static/media/Screenshot_20241126_094251_Photos.a5982b66723c14e41c46.webp",
     "static/media/Screenshot_20231028_123109_WhatsApp.webp": "/static/media/Screenshot_20231028_123109_WhatsApp.eed6235bce427689b3c9.webp",
+    "static/media/20240723_165814.webp": "/static/media/20240723_165814.82700bc5a736d188c8c9.webp",
+    "static/media/20240723_165833.webp": "/static/media/20240723_165833.f2f1358dc312f28dcae3.webp",
+    "static/media/pai.webp": "/static/media/pai.daec3c62260547571e2b.webp",
+    "static/media/20240723_165806.webp": "/static/media/20240723_165806.7dc568271d06df8edaad.webp",
     "static/media/Logotipo Site-02.webp": "/static/media/Logotipo Site-02.d212aa44164726d444f1.webp",
     "static/media/poster-hifudois.webp": "/static/media/poster-hifudois.db6fa54416dcff8262a8.webp",
     "static/media/poster-hifuatendimento.webp": "/static/media/poster-hifuatendimento.dd8ec90f635294c2a095.webp",
+    "static/media/20240723_170110.webp": "/static/media/20240723_170110.67f5aab184b241f0ee23.webp",
     "static/media/newlogo.webp": "/static/media/newlogo.0927dfdfe59ad61c5c34.webp",
+    "static/media/paidois.webp": "/static/media/paidois.8de03b7264fb24cff2d0.webp",
     "static/media/poster-hifu.webp": "/static/media/poster-hifu.d860950fc48a23d1b413.webp",
     "index.html": "/index.html"
   },
   "entrypoints": [
     "static/css/main.a13314f9.css",
-    "static/js/main.a20be42c.js"
+    "static/js/main.46d48664.js"
   ]
 }
