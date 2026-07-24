@@ -7,25 +7,19 @@ import { SITE, ADDRESS, WHATSAPP_DEFAULT } from '../utils/constants';
 const QUICK_LINKS = [
   { text: 'Início', target: 'inicio' },
   { text: 'HIFU', target: 'hifu' },
-  { text: 'Serviços', target: 'servicos' },
+  { text: 'Serviços', path: '/servicos' },
   { text: 'Sobre', target: 'sobre' },
   { text: 'Contato', target: 'contato' },
 ];
 
 const SERVICES = [
-  'HIFU — Ultrassom Microfocado',
-  'Ortodontia',
-  'Implantes Dentários',
-  'Harmonização Orofacial',
-  'Ozonioterapia',
-];
-
-const SERVICE_LINKS = [
-  '/hifu',
-  '/ortodontia-sao-lourenco-do-oeste',
-  '/implantes-dentarios-sao-lourenco-do-oeste',
-  '/harmonizacao-orofacial-sao-lourenco-do-oeste',
-  '/ozonioterapia-sao-lourenco-do-oeste',
+  { label: 'HIFU — Ultrassom Microfocado', path: '/hifu' },
+  { label: 'Ortodontia', path: '/ortodontia' },
+  { label: 'Implantes Dentários', path: '/implantes-dentarios' },
+  { label: 'Harmonização Orofacial', path: '/harmonizacao-orofacial' },
+  { label: 'Odontologia Estética', path: '/odontologia-estetica' },
+  { label: 'DTM e Dor Orofacial', path: '/dtm-dor-orofacial' },
+  { label: 'Ozonioterapia', path: '/ozonioterapia' },
 ];
 
 const Footer = () => {
@@ -62,7 +56,7 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-sm leading-relaxed text-slate-300 mb-6">
-              Odontologia e estética facial avançada com tecnologia de ponta e
+              Odontologia e estética facial avançada com tecnologia atual e
               atendimento humanizado em São Lourenço do Oeste e região.
             </p>
             <div className="flex gap-3">
@@ -99,13 +93,19 @@ const Footer = () => {
             <h3 className="text-white font-bold mb-5">Navegação</h3>
             <ul className="space-y-2.5 text-sm">
               {QUICK_LINKS.map((link) => (
-                <li key={link.target}>
-                  <button
-                    onClick={() => goToSection(link.target)}
-                    className="hover:text-white transition-colors"
-                  >
-                    {link.text}
-                  </button>
+                <li key={link.path || link.target}>
+                  {link.path ? (
+                    <Link to={link.path} className="hover:text-white transition-colors">
+                      {link.text}
+                    </Link>
+                  ) : (
+                    <button
+                      onClick={() => goToSection(link.target)}
+                      className="hover:text-white transition-colors"
+                    >
+                      {link.text}
+                    </button>
+                  )}
                 </li>
               ))}
               <li>
@@ -120,23 +120,16 @@ const Footer = () => {
           <div>
             <h3 className="text-white font-bold mb-5">Serviços</h3>
             <ul className="space-y-2.5 text-sm text-slate-300">
-              {SERVICES.map((service, index) => (
-                <li key={service}>
-                  {SERVICE_LINKS[index] ? (
-                    <Link to={SERVICE_LINKS[index]} className="hover:text-white transition-colors">
-                      {service}
-                    </Link>
-                  ) : service}
+              {SERVICES.map((service) => (
+                <li key={service.path}>
+                  <Link to={service.path} className="hover:text-white transition-colors">
+                    {service.label}
+                  </Link>
                 </li>
               ))}
               <li>
-                <Link to="/odontologia-estetica-sao-lourenco-do-oeste" className="hover:text-white transition-colors">
-                  Odontologia Estética
-                </Link>
-              </li>
-              <li>
-                <Link to="/dtm-dor-orofacial" className="hover:text-white transition-colors">
-                  DTM e Dor Orofacial
+                <Link to="/servicos" className="font-semibold text-emerald-400 hover:text-emerald-300 transition-colors">
+                  Ver todos os serviços
                 </Link>
               </li>
             </ul>
