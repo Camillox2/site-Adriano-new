@@ -114,7 +114,7 @@ const TestimonialsSection = () => {
         <div className="relative max-w-3xl mx-auto">
           <figure className="bg-white rounded-3xl p-8 md:p-12 shadow-2xl text-center overflow-hidden">
             <Quote className="text-primary-200 mx-auto mb-5" size={44} aria-hidden="true" />
-            <div className="flex justify-center gap-1 mb-6" aria-label="Avaliação 5 de 5 estrelas">
+            <div className="flex justify-center gap-1 mb-6" role="img" aria-label="Avaliação 5 de 5 estrelas">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="text-amber-400 fill-current" size={20} aria-hidden="true" />
               ))}
@@ -135,14 +135,14 @@ const TestimonialsSection = () => {
 
           <button
             onClick={prev}
-            className="absolute left-0 sm:-left-6 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-slate-800 rounded-full p-3 shadow-lg transition-all hover:scale-105"
+            className="absolute left-0 sm:-left-6 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-slate-800 rounded-full p-4 shadow-lg transition-all hover:scale-105"
             aria-label="Depoimento anterior"
           >
             <ChevronLeft size={22} />
           </button>
           <button
             onClick={next}
-            className="absolute right-0 sm:-right-6 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-slate-800 rounded-full p-3 shadow-lg transition-all hover:scale-105"
+            className="absolute right-0 sm:-right-6 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-slate-800 rounded-full p-4 shadow-lg transition-all hover:scale-105"
             aria-label="Próximo depoimento"
           >
             <ChevronRight size={22} />
@@ -150,7 +150,7 @@ const TestimonialsSection = () => {
         </div>
 
         {/* Indicadores */}
-        <div className="flex justify-center gap-2.5 mt-8" role="tablist" aria-label="Depoimentos">
+        <div className="flex justify-center gap-2 mt-8" role="tablist" aria-label="Depoimentos">
           {TESTIMONIALS.map((testimonial, i) => (
             <button
               key={testimonial.name}
@@ -158,10 +158,14 @@ const TestimonialsSection = () => {
               role="tab"
               aria-selected={i === index}
               aria-label={`Depoimento de ${testimonial.name}`}
-              className={`h-2.5 rounded-full transition-all duration-300 ${
-                i === index ? 'bg-emerald-400 w-8' : 'bg-white/30 w-2.5 hover:bg-white/50'
-              }`}
-            />
+              className="p-2 outline-none group"
+            >
+              <div
+                className={`h-2.5 rounded-full transition-all duration-300 ${
+                  i === index ? 'bg-emerald-400 w-8' : 'bg-white/30 w-2.5 group-hover:bg-white/50'
+                }`}
+              />
+            </button>
           ))}
         </div>
 

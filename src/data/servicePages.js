@@ -95,6 +95,14 @@ export const CITIES = {
     locationTitle: 'para pacientes de Pinhalzinho - SC',
     contextText: 'transformação de sorrisos com segurança e conforto para a população de Pinhalzinho - SC.',
   },
+  'curitiba': {
+    name: 'Curitiba',
+    state: 'PR',
+    slugSuffix: 'curitiba',
+    isPrimary: false,
+    locationTitle: 'para clínicas de Curitiba - PR',
+    contextText: 'locação de equipamentos de alta tecnologia e suporte premium para profissionais de Curitiba - PR e região metropolitana.',
+  },
 };
 
 const BASE_SERVICES = {
@@ -535,6 +543,80 @@ const BASE_SERVICES = {
     ],
     whatsappMessagePattern: (city) => `Olá, Dr. Adriano! Gostaria de agendar uma avaliação de ozonioterapia (${city.name}).`,
   },
+
+  'aluguel-de-hifu': {
+    baseSlug: 'aluguel-de-hifu',
+    label: 'Locação de HIFU',
+    eyebrow: 'Locação & Treinamento B2B',
+    isRental: true, // flag para usar o layout B2B
+    titlePattern: (city) => `Locação de Aparelho HIFU ${city.locationTitle} | Dr. Adriano Camillo`,
+    descriptionPattern: (city) => `Aluguel de máquina HIFU ${city.locationTitle}. Equipamento calibrado, treinamento completo e material de marketing para sua clínica lucrar mais.`,
+    headingPattern: (city) => `Locação de HIFU ${city.locationTitle}`,
+    introPattern: (city) => `Eleve o faturamento da sua clínica oferecendo o Lifting Sem Cortes com total segurança e suporte ${city.contextText}`,
+    sectionTitlePattern: (city) => `Modelo de Locação Premium ${city.locationTitle}`,
+    paragraphs: [
+      'Oferecer a tecnologia de Ultrassom Microfocado (HIFU) na sua clínica é o caminho mais rápido para aumentar o ticket médio e atrair pacientes interessados no padrão ouro de rejuvenescimento não cirúrgico. No entanto, o custo de aquisição de um equipamento de alta performance e homologado pela ANVISA é extremamente alto, além dos rápidos ciclos de depreciação tecnológica.',
+      'A Locação Inteligente de HIFU do Dr. Adriano Camillo foi desenhada para resolver exatamente esse problema para profissionais da área da saúde e estética. Você não paga a depreciação, a manutenção ou o seguro da máquina. Você paga apenas pelas diárias ou pacotes que utilizar, maximizando o seu lucro líquido sem imobilizar capital.',
+      'Nosso compromisso vai muito além de apenas "entregar a máquina". Entregamos um Modelo de Negócio Completo. Nossa locação inclui treinamento clínico rigoroso para garantir que você e sua equipe saibam extrair os melhores resultados dos cartuchos faciais e corporais, com protocolos seguros e que evitam intercorrências. Queremos que você se sinta 100% seguro durante a aplicação.',
+      'Sabemos que a venda do procedimento é tão importante quanto a aplicação. Por isso, oferecemos um Pack de Marketing com fotos de antes e depois autorizadas, sugestões de campanhas e vídeos demonstrativos para você captar pacientes semanas antes do "HIFU Day" na sua clínica. Além disso, fornecemos modelos de termos de consentimento e fichas de anamnese.',
+      'Os equipamentos são revisados periodicamente, entregues no horário marcado, e acompanham suporte técnico à distância durante todo o dia da sua locação. Se você atua nas áreas de odontologia estética, biomedicina, dermatologia ou estética avançada, este é o momento de revolucionar os resultados da sua clínica.'
+    ],
+    highlights: [
+      {
+        icon: 'TrendingUp',
+        title: 'Alto Retorno (ROI)',
+        text: 'Custo de locação fixo que permite margens de lucro superiores a 400% no "HIFU Day".'
+      },
+      {
+        icon: 'ShieldCheck',
+        title: 'Aparelho Certificado',
+        text: 'Máquinas homologadas pela ANVISA, com disparos precisos e calibração aferida antes de cada envio.'
+      }
+    ],
+    stats: [
+      { value: '100', suffix: '%', label: 'Suporte Clínico' },
+      { value: '3', suffix: ' Cartuchos', label: 'Inclusos para Face e Corpo' },
+      { value: 'R$', suffix: ' Alto Ticket', label: 'Aumente o faturamento' }
+    ],
+    benefits: [
+      { title: 'Treinamento Operacional', description: 'Instruções completas de uso do software, troca de cartuchos e marcação facial.' },
+      { title: 'Zero Manutenção', description: 'Esqueça custos com assistência técnica, seguro ou reposição de peças.' },
+      { title: 'Protocolos de Sucesso', description: 'Acesso às técnicas de disparo que entregam o melhor efeito lifting para seus pacientes.' },
+      { title: 'Material de Apoio', description: 'Termos de consentimento livre e esclarecido, fichas de avaliação e dicas de pós-procedimento.' },
+      { title: 'Apoio no Marketing', description: 'Vídeos e imagens do aparelho para você fazer campanhas no Instagram e atrair o público.' },
+      { title: 'Flexibilidade de Agenda', description: 'Agende a data da sua locação conforme a demanda prévia de pacientes da sua clínica.' }
+    ],
+    steps: [
+      { title: 'Contato e Verificação', description: 'Você entra em contato, verificamos a viabilidade técnica, disponibilidade e documentação do seu conselho de classe.' },
+      { title: 'Reserva da Data (HIFU Day)', description: 'Agendamos a data para a sua clínica. Você recebe o material de marketing para começar a vender as sessões.' },
+      { title: 'Treinamento e Setup', description: 'Você recebe acesso ao treinamento rápido sobre as especificações, mapeamento facial e riscos.' },
+      { title: 'Entrega e Calibração', description: 'O aparelho chega à sua clínica perfeitamente testado, higienizado e pronto para os disparos.' },
+      { title: 'Suporte Durante o Uso', description: 'Nossa equipe fica de plantão via WhatsApp para tirar dúvidas rápidas no dia do seu atendimento.' }
+    ],
+    faqs: [
+      {
+        question: 'Preciso ter alguma formação específica para alugar?',
+        answer: 'Sim, a locação e o uso de equipamentos de Ultrassom Microfocado de alta potência são restritos a profissionais habilitados por seus respectivos conselhos de classe (Dentistas, Biomédicos, Médicos, Farmacêuticos Estetas, etc).'
+      },
+      {
+        question: 'O gel condutor e os insumos estão inclusos?',
+        answer: 'Sim! Para facilitar a sua rotina, o equipamento já acompanha o gel condutor de alta densidade apropriado e quantidade de disparos combinada em contrato, sem surpresas no meio do atendimento.'
+      },
+      {
+        question: 'Como funciona o treinamento? É pago à parte?',
+        answer: 'O treinamento operacional do equipamento e a sugestão de protocolos seguros não têm custo adicional, já fazem parte do pacote de locação. Queremos que você faça procedimentos de excelência.'
+      },
+      {
+        question: 'E se a máquina apresentar defeito no dia da minha locação?',
+        answer: 'Todos os equipamentos são duplamente checados. Mas caso ocorra uma falha de hardware imprevista que o suporte não resolva remotamente, repomos a máquina ou reagendamos a locação imediatamente sem custo.'
+      },
+      {
+        question: 'Posso alugar para usar em pacientes no corpo (corporal)?',
+        answer: 'Sim. Nossos equipamentos podem vir com cartuchos de diferentes profundidades (1.5mm, 3.0mm, 4.5mm facial; e opções de 8.0mm e 13.0mm corporal), ideais para tratamento de flacidez corporal e gordura localizada.'
+      }
+    ],
+    whatsappMessagePattern: (city) => `Olá! Sou profissional da área de saúde/estética e gostaria de mais informações sobre a locação do aparelho HIFU para minha clínica (${city.name}).`,
+  },
 };
 
 // Gera dinamicamente todas as combinações de Serviço + Cidade
@@ -542,6 +624,11 @@ const generatedPages = {};
 
 Object.values(BASE_SERVICES).forEach((service) => {
   Object.values(CITIES).forEach((city) => {
+    // REGRA DE CURITIBA: Apenas gera página para 'aluguel-de-hifu'
+    if (city.name === 'Curitiba' && service.baseSlug !== 'aluguel-de-hifu') {
+      return;
+    }
+
     let slug = '';
     if (service.baseSlug === 'dtm-dor-orofacial') {
       slug = city.isPrimary ? 'dtm-dor-orofacial' : `dtm-dor-orofacial-${city.slugSuffix}`;

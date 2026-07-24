@@ -28,6 +28,7 @@ import WhatsAppButton from '../components/WhatsAppButton';
 import Seo from '../components/Seo';
 import Reveal from '../components/Reveal';
 import CountUp from '../components/CountUp';
+import HifuRentalDetails from './HifuRentalDetails';
 import { SERVICE_PAGES } from '../data/servicePages';
 import { ADDRESS, SITE, whatsapp } from '../utils/constants';
 import { images } from '../assets';
@@ -124,6 +125,23 @@ const ServiceDetails = () => {
   const highlights = page.highlights || [];
   const hasBenefitObjects = page.benefits?.[0]?.title !== undefined;
   const hasStepObjects = page.steps?.[0]?.title !== undefined;
+
+  if (page.isRental) {
+    return (
+      <div className="min-h-screen bg-white">
+        <Seo
+          title={page.title}
+          description={page.description}
+          path={`/${page.slug}`}
+          jsonLd={jsonLd}
+        />
+        <Header />
+        <HifuRentalDetails data={page} />
+        <Footer />
+        <WhatsAppButton />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-white">

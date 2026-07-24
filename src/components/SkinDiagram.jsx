@@ -137,7 +137,7 @@ const SkinDiagram = () => {
           <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-2">
             Escolha a profundidade e veja onde o HIFU atua
           </h3>
-          <p className="text-slate-500 text-sm mb-6">
+          <p className="text-slate-600 text-sm mb-6">
             O mesmo equipamento trata três profundidades diferentes — é isso que
             torna o resultado completo.
           </p>
@@ -149,10 +149,10 @@ const SkinDiagram = () => {
                 onClick={() => setActive(depth)}
                 role="tab"
                 aria-selected={active.id === depth.id}
-                className={`px-5 py-2.5 rounded-full font-semibold text-sm transition-all duration-300 ${
+                className={`px-5 py-3 rounded-full font-semibold text-sm transition-all duration-300 ${
                   active.id === depth.id
                     ? 'bg-primary-600 text-white shadow-lg shadow-primary-600/25 scale-105'
-                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
                 }`}
               >
                 {depth.label}
