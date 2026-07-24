@@ -86,10 +86,12 @@ const Hero = () => {
           </div>
 
           {/* Foto do Dr. Adriano + Formulário Desktop */}
-          <div className="flex flex-col gap-6 items-center lg:items-end animate-fade-in-right order-first lg:order-last">
-            <DesktopWhatsAppForm title="Agendar Avaliação Rápida" />
-            
-            <div className="relative lg:hidden">
+          <div className="flex flex-col lg:flex-row gap-8 items-center justify-center lg:justify-end animate-fade-in-right order-first lg:order-last">
+            <div className="w-full max-w-sm hidden lg:block">
+              <DesktopWhatsAppForm title="Agendar Avaliação Rápida" />
+            </div>
+
+            <div className="relative">
               <div
                 className="absolute -inset-4 bg-gradient-to-tr from-emerald-500/30 to-primary-500/30 rounded-[2rem] blur-2xl"
                 aria-hidden="true"
@@ -100,9 +102,9 @@ const Hero = () => {
                 width="480"
                 height="480"
                 fetchpriority="high"
-                className="relative w-60 sm:w-72 lg:w-[22rem] h-auto object-contain rounded-[2rem] shadow-2xl ring-1 ring-white/20"
+                className="relative w-60 sm:w-72 lg:w-[18rem] xl:w-[20rem] h-auto object-contain rounded-[2rem] shadow-2xl ring-1 ring-white/20"
               />
-              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-white text-slate-900 px-5 py-3 rounded-2xl shadow-xl flex items-center gap-3 w-max max-w-[90vw]">
+              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 lg:left-auto lg:-translate-x-0 lg:-right-4 bg-white text-slate-900 px-5 py-3 rounded-2xl shadow-xl flex items-center gap-3 w-max max-w-[90vw]">
                 <ShieldCheck className="text-emerald-600 shrink-0" size={24} aria-hidden="true" />
                 <span className="text-sm font-semibold leading-tight whitespace-nowrap">
                   Especialista em HIFU
