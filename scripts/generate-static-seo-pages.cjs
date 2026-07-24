@@ -16,7 +16,7 @@ const CITIES = {
   'palmas': { name: 'Palmas', state: 'PR', suffix: 'palmas', isPrimary: false, locTitle: 'para pacientes de Palmas - PR' },
   'xanxere': { name: 'Xanxerê', state: 'SC', suffix: 'xanxere', isPrimary: false, locTitle: 'para pacientes de Xanxerê - SC' },
   'maravilha': { name: 'Maravilha', state: 'SC', suffix: 'maravilha', isPrimary: false, locTitle: 'para pacientes de Maravilha - SC' },
-  'pinhalzinho': { name: 'Pinhalzinho', state: 'SC', suffix: 'pinhalzinho', isPrimary: false, locTitle: 'para pacientes de Pinhalzinho - SC' },
+  'pinhalzinho': { name: 'Pinhalzinho', state: 'PR', suffix: 'pinhalzinho', isPrimary: false, locTitle: 'para pacientes de Pinhalzinho - SC' },
   'curitiba': { name: 'Curitiba', state: 'PR', suffix: 'curitiba', isPrimary: false, locTitle: 'para clínicas de Curitiba - PR', isHifuOnly: true },
   'sao-jose-dos-pinhais': { name: 'São José dos Pinhais', state: 'PR', suffix: 'sao-jose-dos-pinhais', isPrimary: false, locTitle: 'em São José dos Pinhais - PR', isHifuOnly: true },
   'pinhais': { name: 'Pinhais', state: 'PR', suffix: 'pinhais', isPrimary: false, locTitle: 'em Pinhais - PR', isHifuOnly: true },
@@ -86,6 +86,14 @@ const BASE_SERVICES = [
 
 const pages = [
   {
+    path: '/servicos',
+    name: 'Serviços Odontológicos e Estética Facial',
+    title: 'Serviços Odontológicos em São Lourenço do Oeste | Dr. Adriano Camillo',
+    description:
+      'Conheça os serviços do Dr. Adriano Camillo em São Lourenço do Oeste: HIFU, implantes, ortodontia, estética, harmonização, DTM e ozonioterapia.',
+    schemaType: 'CollectionPage',
+  },
+  {
     path: '/hifu',
     name: 'HIFU — Ultrassom Microfocado',
     title: 'HIFU em São Lourenço do Oeste — Ultrassom Microfocado | Dr. Adriano Camillo',
@@ -147,15 +155,36 @@ const createPage = (baseHtml, page) => {
   html = replaceMeta(html, /<meta name="twitter:description" content="[^"]*"\s*\/?\s*>/i, `<meta name="twitter:description" content="${page.description}" />`);
 
   const cityName = page.cityName || 'São Lourenço do Oeste';
-  const staticSchema = page.schema === false ? '' : `\n  <script id="static-route-jsonld" type="application/ld+json">${escapeJson({
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    name: page.name,
-    description: page.description,
-    url,
-    provider: { '@id': `${siteUrl}/#clinica` },
-    areaServed: { '@type': 'City', name: cityName },
-  })}</script>`;
+  const schemaData = page.schemaType === 'CollectionPage'
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'CollectionPage',
+        name: page.name,
+        description: page.description,
+        url,
+        mainEntity: {
+          '@type': 'ItemList',
+          itemListElement: BASE_SERVICES.map((service, index) => ({
+            '@type': 'ListItem',
+            position: index + 1,
+            name: service.name,
+            url: `${siteUrl}/${service.baseSlug}`,
+          })),
+        },
+      }
+    : {
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        name: page.name,
+        description: page.description,
+        url,
+        provider: { '@id': `${siteUrl}/#clinica` },
+        areaServed: { '@type': 'City', name: cityName },
+      };
+
+  const staticSchema = page.schema === false
+    ? ''
+    : `\n  <script id="static-route-jsonld" type="application/ld+json">${escapeJson(schemaData)}</script>`;
   html = html.replace('</head>', `${staticSchema}\n</head>`);
 
   const noscript = `<noscript><main><h1>${page.name}</h1><p>${page.description}</p><p>Agende sua avaliação pelo WhatsApp: <a href="https://wa.me/5549998362864">(49) 9 9836-2864</a>.</p></main></noscript>`;
