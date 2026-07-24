@@ -23,6 +23,7 @@ const Hero = () => {
           muted
           loop
           playsInline
+          preload="metadata"
           poster={images.consultorio1}
           src={videos.hifuDois}
           tabIndex={-1}
@@ -101,7 +102,9 @@ const Hero = () => {
                 alt="Dr. Adriano Camillo em seu consultório"
                 width="480"
                 height="480"
+                loading="eager"
                 fetchpriority="high"
+                decoding="async"
                 className="relative w-60 sm:w-72 lg:w-[18rem] xl:w-[20rem] h-auto object-contain rounded-[2rem] shadow-2xl ring-1 ring-white/20"
               />
               <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 lg:left-auto lg:-translate-x-0 lg:-right-4 bg-white text-slate-900 px-5 py-3 rounded-2xl shadow-xl flex items-center gap-3 w-max max-w-[90vw]">
