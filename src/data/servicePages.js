@@ -555,11 +555,9 @@ const BASE_SERVICES = {
     introPattern: (city) => `Eleve o faturamento da sua clínica oferecendo o Lifting Sem Cortes com total segurança e suporte ${city.contextText}`,
     sectionTitlePattern: (city) => `Modelo de Locação Premium ${city.locationTitle}`,
     paragraphs: [
-      'Oferecer a tecnologia de Ultrassom Microfocado (HIFU) na sua clínica é o caminho mais rápido para aumentar o ticket médio e atrair pacientes interessados no padrão ouro de rejuvenescimento não cirúrgico. No entanto, o custo de aquisição de um equipamento de alta performance e homologado pela ANVISA é extremamente alto, além dos rápidos ciclos de depreciação tecnológica.',
-      'A Locação Inteligente de HIFU do Dr. Adriano Camillo foi desenhada para resolver exatamente esse problema para profissionais da área da saúde e estética. Você não paga a depreciação, a manutenção ou o seguro da máquina. Você paga apenas pelas diárias ou pacotes que utilizar, maximizando o seu lucro líquido sem imobilizar capital.',
-      'Nosso compromisso vai muito além de apenas "entregar a máquina". Entregamos um Modelo de Negócio Completo. Nossa locação inclui treinamento clínico rigoroso para garantir que você e sua equipe saibam extrair os melhores resultados dos cartuchos faciais e corporais, com protocolos seguros e que evitam intercorrências. Queremos que você se sinta 100% seguro durante a aplicação.',
-      'Sabemos que a venda do procedimento é tão importante quanto a aplicação. Por isso, oferecemos um Pack de Marketing com fotos de antes e depois autorizadas, sugestões de campanhas e vídeos demonstrativos para você captar pacientes semanas antes do "HIFU Day" na sua clínica. Além disso, fornecemos modelos de termos de consentimento e fichas de anamnese.',
-      'Os equipamentos são revisados periodicamente, entregues no horário marcado, e acompanham suporte técnico à distância durante todo o dia da sua locação. Se você atua nas áreas de odontologia estética, biomedicina, dermatologia ou estética avançada, este é o momento de revolucionar os resultados da sua clínica.'
+      'Alavancar o faturamento da sua clínica agora é possível sem imobilizar capital em equipamentos caros e que depreciam rapidamente. Ofereça a tecnologia premium de Ultrassom Microfocado (HIFU) pagando apenas pelas diárias que utilizar.',
+      'Diferente de outras locações, nós entregamos um modelo de negócio completo: aparelho rigorosamente calibrado e homologado pela ANVISA, treinamento clínico com protocolos avançados para resultados máximos, e todo o suporte necessário durante o seu dia de atendimentos.',
+      'Para facilitar a sua venda, disponibilizamos um pacote de marketing com fotos autorizadas, vídeos e modelos de anamnese. Basta agendar o seu "HIFU Day", captar os pacientes e maximizar o seu lucro líquido de forma segura e inteligente.'
     ],
     highlights: [
       {
@@ -630,14 +628,15 @@ Object.values(BASE_SERVICES).forEach((service) => {
     }
 
     let slug = '';
-    if (service.baseSlug === 'dtm-dor-orofacial') {
-      slug = city.isPrimary ? 'dtm-dor-orofacial' : `dtm-dor-orofacial-${city.slugSuffix}`;
+    if (city.isPrimary) {
+      slug = service.baseSlug;
     } else {
       slug = `${service.baseSlug}-${city.slugSuffix}`;
     }
 
     generatedPages[slug] = {
       slug,
+      isRental: service.isRental,
       cityName: city.name,
       cityState: city.state,
       label: service.label,

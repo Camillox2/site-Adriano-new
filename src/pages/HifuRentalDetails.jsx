@@ -91,33 +91,6 @@ const ROICalculator = () => {
 const HifuRentalDetails = ({ data }) => {
   const [activeFaq, setActiveFaq] = useState(null);
 
-  // Schema Markup para Serviço B2B
-  const schema = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    name: data.title,
-    provider: {
-      '@type': 'LocalBusiness',
-      name: 'Dr. Adriano Camillo',
-      image: 'https://dradrianocamillo.com/logo512.png',
-      telephone: SITE.phone,
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: SITE.address.street,
-        addressLocality: SITE.address.city,
-        addressRegion: SITE.address.state,
-        postalCode: SITE.address.zip,
-        addressCountry: 'BR',
-      },
-    },
-    description: data.description,
-    areaServed: {
-      '@type': 'City',
-      name: data.cityData.name,
-    },
-    category: 'Equipment Rental',
-  };
-
   return (
     <main className="min-h-screen bg-slate-50 pt-20">
       {/* Hero Section B2B */}
@@ -169,14 +142,16 @@ const HifuRentalDetails = ({ data }) => {
       <section className="py-12 bg-white border-b border-slate-100 relative z-30 -mt-8 mx-4 md:mx-auto max-w-6xl rounded-3xl shadow-xl">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-8">
           {data.stats.map((stat, i) => (
-            <div key={i} className="text-center">
-              <span className="block text-3xl md:text-4xl font-bold text-primary-700 mb-1">
-                {stat.value}{stat.suffix}
-              </span>
-              <span className="text-sm font-medium text-slate-500 uppercase tracking-wider">
-                {stat.label}
-              </span>
-            </div>
+            <Reveal key={i} delay={i * 150}>
+              <div className="text-center">
+                <span className="block text-3xl md:text-4xl font-bold text-primary-700 mb-1">
+                  {stat.value}{stat.suffix}
+                </span>
+                <span className="text-sm font-medium text-slate-500 uppercase tracking-wider">
+                  {stat.label}
+                </span>
+              </div>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -188,75 +163,85 @@ const HifuRentalDetails = ({ data }) => {
             
             {/* Texto e Benefícios */}
             <div className="lg:col-span-7 space-y-12">
-              <div>
-                <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
-                  {data.sectionTitle}
-                </h2>
-                <div className="prose prose-lg prose-slate max-w-none text-slate-600">
-                  {data.paragraphs.map((p, i) => (
-                    <p key={i} className="mb-4 leading-relaxed">{p}</p>
-                  ))}
+              <Reveal>
+                <div>
+                  <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
+                    {data.sectionTitle}
+                  </h2>
+                  <div className="prose prose-lg prose-slate max-w-none text-slate-600">
+                    {data.paragraphs.map((p, i) => (
+                      <p key={i} className="mb-4 leading-relaxed">{p}</p>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              </Reveal>
 
               <div className="grid sm:grid-cols-2 gap-6">
                 {data.highlights.map((h, i) => {
                   const Icon = h.icon === 'TrendingUp' ? TrendingUp : ShieldCheck;
                   return (
-                    <div key={i} className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex gap-4 items-start">
-                      <div className="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center shrink-0">
-                        <Icon className="text-emerald-600" size={24} aria-hidden="true" />
+                    <Reveal key={i} delay={i * 100}>
+                      <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex gap-4 items-start h-full">
+                        <div className="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center shrink-0">
+                          <Icon className="text-emerald-600" size={24} aria-hidden="true" />
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-slate-900 mb-1">{h.title}</h4>
+                          <p className="text-sm text-slate-600 leading-relaxed">{h.text}</p>
+                        </div>
                       </div>
-                      <div>
-                        <h4 className="font-bold text-slate-900 mb-1">{h.title}</h4>
-                        <p className="text-sm text-slate-600 leading-relaxed">{h.text}</p>
-                      </div>
-                    </div>
+                    </Reveal>
                   );
                 })}
               </div>
 
-              <div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-6">Como funciona a locação?</h3>
-                <div className="space-y-4">
-                  {data.steps.map((step, i) => (
-                    <div key={i} className="flex gap-4">
-                      <div className="w-8 h-8 rounded-full bg-primary-100 text-primary-700 font-bold flex items-center justify-center shrink-0">
-                        {i + 1}
+              <Reveal>
+                <div>
+                  <h3 className="text-2xl font-bold text-slate-900 mb-6">Como funciona a locação?</h3>
+                  <div className="space-y-4">
+                    {data.steps.map((step, i) => (
+                      <div key={i} className="flex gap-4">
+                        <div className="w-8 h-8 rounded-full bg-primary-100 text-primary-700 font-bold flex items-center justify-center shrink-0">
+                          {i + 1}
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-slate-900 mb-1">{step.title}</h4>
+                          <p className="text-slate-600 text-sm">{step.description}</p>
+                        </div>
                       </div>
-                      <div>
-                        <h4 className="font-bold text-slate-900 mb-1">{step.title}</h4>
-                        <p className="text-slate-600 text-sm">{step.description}</p>
-                      </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
-              </div>
+              </Reveal>
             </div>
 
             {/* Sidebar B2B (ROI Calculator & Included) */}
             <div className="lg:col-span-5 space-y-8 lg:sticky lg:top-24">
-              <ROICalculator />
+              <Reveal delay={200}>
+                <ROICalculator />
+              </Reveal>
 
-              <div className="bg-primary-900 text-white rounded-3xl p-6 md:p-8 shadow-xl">
-                <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-                  <Zap className="text-emerald-400" size={24} aria-hidden="true" />
-                  O que está incluso
-                </h3>
-                <ul className="space-y-4">
-                  {data.benefits.map((benefit, i) => (
-                    <li key={i} className="flex gap-3">
-                      <CheckCircle className="text-emerald-400 shrink-0 mt-1" size={20} aria-hidden="true" />
-                      <div>
-                        <span className="block font-semibold text-white">{benefit.title}</span>
-                        <span className="block text-sm text-primary-200 mt-0.5 leading-relaxed">
-                          {benefit.description}
-                        </span>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <Reveal delay={300}>
+                <div className="bg-primary-900 text-white rounded-3xl p-6 md:p-8 shadow-xl">
+                  <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
+                    <Zap className="text-emerald-400" size={24} aria-hidden="true" />
+                    O que está incluso
+                  </h3>
+                  <ul className="space-y-4">
+                    {data.benefits.map((benefit, i) => (
+                      <li key={i} className="flex gap-3">
+                        <CheckCircle className="text-emerald-400 shrink-0 mt-1" size={20} aria-hidden="true" />
+                        <div>
+                          <span className="block font-semibold text-white">{benefit.title}</span>
+                          <span className="block text-sm text-primary-200 mt-0.5 leading-relaxed">
+                            {benefit.description}
+                          </span>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Reveal>
             </div>
 
           </div>
@@ -266,31 +251,38 @@ const HifuRentalDetails = ({ data }) => {
       {/* Como o HIFU age na pele (Skin Diagram) */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              Tecnologia de Ponta na sua Clínica
-            </h2>
-            <p className="text-lg text-slate-600">
-              O Ultrassom Microfocado (HIFU) atinge as camadas mais profundas da pele, incluindo o SMAS, promovendo lifting não cirúrgico real.
-            </p>
-          </div>
+          <Reveal>
+            <div className="text-center max-w-2xl mx-auto mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+                Tecnologia de Ponta na sua Clínica
+              </h2>
+              <p className="text-lg text-slate-600">
+                O Ultrassom Microfocado (HIFU) atinge as camadas mais profundas da pele, incluindo o SMAS, promovendo lifting não cirúrgico real.
+              </p>
+            </div>
+          </Reveal>
           
-          <div className="max-w-5xl mx-auto">
-            <SkinDiagram />
-          </div>
+          <Reveal delay={200}>
+            <div className="max-w-5xl mx-auto">
+              <SkinDiagram />
+            </div>
+          </Reveal>
         </div>
       </section>
 
       {/* FAQ B2B */}
       <section className="py-20 bg-slate-50 border-t border-slate-100">
         <div className="container mx-auto px-4">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              Dúvidas Frequentes sobre a Locação
-            </h2>
-          </div>
+          <Reveal>
+            <div className="text-center max-w-2xl mx-auto mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+                Dúvidas Frequentes sobre a Locação
+              </h2>
+            </div>
+          </Reveal>
 
-          <div className="max-w-3xl mx-auto space-y-4">
+          <Reveal delay={200}>
+            <div className="max-w-3xl mx-auto space-y-4">
             {data.faqs.map((faq, index) => {
               const isOpen = activeFaq === index;
               return (
@@ -324,7 +316,8 @@ const HifuRentalDetails = ({ data }) => {
                 </div>
               );
             })}
-          </div>
+            </div>
+          </Reveal>
         </div>
       </section>
     </main>
