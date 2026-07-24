@@ -6,6 +6,7 @@ import './styles/global.css';
 
 // Code splitting (carrega apenas quando necessário)
 const HifuDetails = React.lazy(() => import('./pages/HifuDetails'));
+const ServicesPage = React.lazy(() => import('./pages/ServicesPage'));
 const ServiceDetails = React.lazy(() => import('./pages/ServiceDetails'));
 const PrivacyPolicy = React.lazy(() => import('./pages/PrivacyPolicy'));
 
@@ -32,6 +33,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/hifu" element={<HifuDetails />} />
+            <Route path="/servicos" element={<ServicesPage />} />
             <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
             <Route path="/:slug" element={<ServiceDetails />} />
             <Route path="*" element={<Home />} />
