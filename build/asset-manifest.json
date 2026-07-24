@@ -1,9 +1,9 @@
 {
   "files": {
-    "main.css": "/static/css/main.1201e44d.css",
-    "main.js": "/static/js/main.f8bfb6f5.js",
+    "main.css": "/static/css/main.164454e2.css",
+    "main.js": "/static/js/main.81462865.js",
     "static/js/771.b97cdfa9.chunk.js": "/static/js/771.b97cdfa9.chunk.js",
-    "static/js/82.4321bbf1.chunk.js": "/static/js/82.4321bbf1.chunk.js",
+    "static/js/784.6702262a.chunk.js": "/static/js/784.6702262a.chunk.js",
     "static/js/524.e52c4e78.chunk.js": "/static/js/524.e52c4e78.chunk.js",
     "static/media/hifuatendimento.mp4": "/static/media/hifuatendimento.167f2f169a1046de8289.mp4",
     "static/media/hifutres.mp4": "/static/media/hifutres.cfa9d7e763b20048d345.mp4",
@@ -27,7 +27,7 @@
     "index.html": "/index.html"
   },
   "entrypoints": [
-    "static/css/main.1201e44d.css",
-    "static/js/main.f8bfb6f5.js"
+    "static/css/main.164454e2.css",
+    "static/js/main.81462865.js"
   ]
 }

@@ -29,6 +29,7 @@ import Seo from '../components/Seo';
 import Reveal from '../components/Reveal';
 import CountUp from '../components/CountUp';
 import HifuRentalDetails from './HifuRentalDetails';
+import DesktopWhatsAppForm from '../components/DesktopWhatsAppForm';
 import { SERVICE_PAGES } from '../data/servicePages';
 import { ADDRESS, SITE, whatsapp } from '../utils/constants';
 import { images } from '../assets';
@@ -213,8 +214,12 @@ const ServiceDetails = () => {
                 </p>
               </div>
 
-              {/* Foto do Dr. Adriano */}
-              <div className="flex justify-center lg:justify-end animate-fade-in-right order-first lg:order-last">
+              {/* Foto do Dr. Adriano + Formulário Desktop */}
+              <div className="flex flex-col gap-6 items-center lg:items-end animate-fade-in-right order-first lg:order-last">
+                <div className="hidden lg:block w-full max-w-md">
+                  <DesktopWhatsAppForm defaultService={page.label} defaultCity={page.cityName} title={`Agendar em ${page.cityName}`} />
+                </div>
+                
                 <div className="relative">
                   <div
                     className="absolute -inset-4 bg-gradient-to-tr from-emerald-500/30 to-primary-500/30 rounded-[2rem] blur-2xl"

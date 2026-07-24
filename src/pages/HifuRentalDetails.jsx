@@ -10,12 +10,16 @@ import {
   ChevronDown,
   Sparkles,
   Award,
-  Play
+  Play,
+  Shield,
+  ChevronUp,
+  Star
 } from 'lucide-react';
 import { SITE, WHATSAPP_DEFAULT } from '../utils/constants';
 import { images, videos } from '../assets';
 import Reveal from '../components/Reveal';
 import SkinDiagram from '../components/SkinDiagram';
+import DesktopWhatsAppForm from '../components/DesktopWhatsAppForm';
 
 const HifuRentalDetails = ({ data }) => {
   const [activeFaq, setActiveFaq] = useState(null);
@@ -41,46 +45,54 @@ const HifuRentalDetails = ({ data }) => {
         </div>
 
         <div className="container mx-auto px-4 relative z-20">
-          <div className="max-w-3xl">
-            <Reveal>
-              <div className="inline-flex items-center gap-2 bg-emerald-500/10 backdrop-blur-md border border-emerald-500/20 text-emerald-400 px-4 py-2 rounded-full text-sm font-semibold tracking-widest uppercase mb-8">
-                <Target size={16} aria-hidden="true" />
-                {data.eyebrow}
-              </div>
-            </Reveal>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-7">
+              <Reveal>
+                <div className="inline-flex items-center gap-2 bg-emerald-500/10 backdrop-blur-md border border-emerald-500/20 text-emerald-400 px-4 py-2 rounded-full text-sm font-semibold tracking-widest uppercase mb-8">
+                  <Target size={16} aria-hidden="true" />
+                  {data.eyebrow}
+                </div>
+              </Reveal>
 
-            <Reveal delay={100}>
-              <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-8 leading-tight tracking-tight">
-                {data.heading}
-              </h1>
-            </Reveal>
+              <Reveal delay={100}>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight tracking-tight">
+                  {data.heading}
+                </h1>
+              </Reveal>
 
-            <Reveal delay={200}>
-              <p className="text-xl md:text-2xl text-slate-300 mb-10 leading-relaxed font-light">
-                {data.intro}
-              </p>
-            </Reveal>
+              <Reveal delay={200}>
+                <p className="text-xl text-slate-300 mb-10 leading-relaxed font-light">
+                  {data.intro}
+                </p>
+              </Reveal>
 
-            <Reveal delay={300}>
-              <div className="flex flex-col sm:flex-row items-center gap-4">
-                <a
-                  href={`https://wa.me/5549998362864?text=${encodeURIComponent(data.whatsappMessage)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full sm:w-auto btn-primary bg-emerald-500 hover:bg-emerald-600 text-white border-none text-lg px-8 py-4 shadow-lg shadow-emerald-500/30 group flex items-center justify-center"
-                >
-                  <Phone size={20} className="mr-2 group-hover:animate-wiggle" aria-hidden="true" />
-                  Reservar Equipamento
-                </a>
-                <a
-                  href="#beneficios"
-                  className="w-full sm:w-auto btn-outline-light text-lg px-8 py-4 flex items-center justify-center"
-                >
-                  Ver Benefícios
-                  <ArrowRight size={20} className="ml-2" aria-hidden="true" />
-                </a>
-              </div>
-            </Reveal>
+              <Reveal delay={300}>
+                <div className="flex flex-col sm:flex-row items-center gap-4">
+                  <a
+                    href={`https://wa.me/5549998362864?text=${encodeURIComponent(data.whatsappMessage)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full sm:w-auto btn-primary bg-emerald-500 hover:bg-emerald-600 text-white border-none text-lg px-8 py-4 shadow-lg shadow-emerald-500/30 group flex items-center justify-center"
+                  >
+                    <Phone size={20} className="mr-2 group-hover:animate-wiggle" aria-hidden="true" />
+                    Reservar Equipamento
+                  </a>
+                  <a
+                    href="#beneficios"
+                    className="w-full sm:w-auto btn-outline-light text-lg px-8 py-4 flex items-center justify-center"
+                  >
+                    Ver Benefícios
+                    <ArrowRight size={20} className="ml-2" aria-hidden="true" />
+                  </a>
+                </div>
+              </Reveal>
+            </div>
+
+            <div className="lg:col-span-5 hidden lg:block">
+              <Reveal delay={400}>
+                <DesktopWhatsAppForm defaultService="Aluguel de Equipamento HIFU (B2B)" defaultCity={data.cityName} title={`Alugar HIFU em ${data.cityName}`} />
+              </Reveal>
+            </div>
           </div>
         </div>
       </section>
