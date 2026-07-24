@@ -1,15 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense } from 'react';
 import { useLocation } from 'react-router-dom';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
-import HifuSection from '../components/HifuSection';
-import ServicesSection from '../components/ServicesSection';
-import AboutSection from '../components/AboutSection';
-import TestimonialsSection from '../components/TestimonialsSection';
-import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
 import WhatsAppButton from '../components/WhatsAppButton';
 import Seo from '../components/Seo';
+
+const HifuSection = React.lazy(() => import('../components/HifuSection'));
+const ServicesSection = React.lazy(() => import('../components/ServicesSection'));
+const AboutSection = React.lazy(() => import('../components/AboutSection'));
+const TestimonialsSection = React.lazy(() => import('../components/TestimonialsSection'));
+const ContactSection = React.lazy(() => import('../components/ContactSection'));
 
 const Home = () => {
   const location = useLocation();
@@ -36,11 +37,13 @@ const Home = () => {
       <Header />
       <main>
         <Hero />
-        <HifuSection />
-        <ServicesSection />
-        <AboutSection />
-        <TestimonialsSection />
-        <ContactSection />
+        <Suspense fallback={<div className="min-h-[50vh]" />}>
+          <HifuSection />
+          <ServicesSection />
+          <AboutSection />
+          <TestimonialsSection />
+          <ContactSection />
+        </Suspense>
       </main>
       <Footer />
       <WhatsAppButton />

@@ -1,10 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.1201e44d.css",
-    "main.js": "/static/js/main.b7e35060.js",
-    "static/js/771.b97cdfa9.chunk.js": "/static/js/771.b97cdfa9.chunk.js",
-    "static/js/82.57402067.chunk.js": "/static/js/82.57402067.chunk.js",
+    "main.css": "/static/css/main.efbcba00.css",
+    "main.js": "/static/js/main.6e4812eb.js",
+    "static/js/771.042217a8.chunk.js": "/static/js/771.042217a8.chunk.js",
+    "static/js/82.0e1fa92c.chunk.js": "/static/js/82.0e1fa92c.chunk.js",
     "static/js/524.e52c4e78.chunk.js": "/static/js/524.e52c4e78.chunk.js",
+    "static/js/473.489a8f27.chunk.js": "/static/js/473.489a8f27.chunk.js",
+    "static/js/9.ae038784.chunk.js": "/static/js/9.ae038784.chunk.js",
+    "static/js/900.56e4d219.chunk.js": "/static/js/900.56e4d219.chunk.js",
+    "static/js/811.85e7ec00.chunk.js": "/static/js/811.85e7ec00.chunk.js",
+    "static/js/519.ef0bcdcc.chunk.js": "/static/js/519.ef0bcdcc.chunk.js",
     "static/media/hifuatendimento.mp4": "/static/media/hifuatendimento.167f2f169a1046de8289.mp4",
     "static/media/hifutres.mp4": "/static/media/hifutres.cfa9d7e763b20048d345.mp4",
     "static/media/hifu.mp4": "/static/media/hifu.e12d90846def5759a8dc.mp4",
@@ -27,7 +32,7 @@
     "index.html": "/index.html"
   },
   "entrypoints": [
-    "static/css/main.1201e44d.css",
-    "static/js/main.b7e35060.js"
+    "static/css/main.efbcba00.css",
+    "static/js/main.6e4812eb.js"
   ]
 }
