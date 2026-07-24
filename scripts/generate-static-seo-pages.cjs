@@ -6,81 +6,81 @@ const buildDirectory = path.join(__dirname, '..', 'build');
 
 const CITIES = {
   'sao-lourenco-do-oeste': { name: 'São Lourenço do Oeste', state: 'SC', suffix: 'sao-lourenco-do-oeste', isPrimary: true, locTitle: 'em São Lourenço do Oeste - SC' },
-  'chapeco': { name: 'Chapecó', state: 'SC', suffix: 'chapeco', isPrimary: false, locTitle: 'para pacientes de Chapecó - SC' },
-  'pato-branco': { name: 'Pato Branco', state: 'PR', suffix: 'pato-branco', isPrimary: false, locTitle: 'para pacientes de Pato Branco - PR' },
-  'ampere': { name: 'Ampére', state: 'PR', suffix: 'ampere', isPrimary: false, locTitle: 'para pacientes de Ampére - PR' },
-  'realeza': { name: 'Realeza', state: 'PR', suffix: 'realeza', isPrimary: false, locTitle: 'para pacientes de Realeza - PR' },
+  chapeco: { name: 'Chapecó', state: 'SC', suffix: 'chapeco', isPrimary: false, locTitle: 'para pacientes e clínicas de Chapecó - SC' },
+  'pato-branco': { name: 'Pato Branco', state: 'PR', suffix: 'pato-branco', isPrimary: false, locTitle: 'para pacientes e clínicas de Pato Branco - PR' },
+  ampere: { name: 'Ampére', state: 'PR', suffix: 'ampere', isPrimary: false, locTitle: 'para pacientes e clínicas de Ampére - PR' },
+  realeza: { name: 'Realeza', state: 'PR', suffix: 'realeza', isPrimary: false, locTitle: 'para pacientes e clínicas de Realeza - PR' },
   'novo-horizonte': { name: 'Novo Horizonte', state: 'SC', suffix: 'novo-horizonte', isPrimary: false, locTitle: 'para pacientes de Novo Horizonte - SC' },
   'francisco-beltrao': { name: 'Francisco Beltrão', state: 'PR', suffix: 'francisco-beltrao', isPrimary: false, locTitle: 'para pacientes de Francisco Beltrão - PR' },
   'dois-vizinhos': { name: 'Dois Vizinhos', state: 'PR', suffix: 'dois-vizinhos', isPrimary: false, locTitle: 'para pacientes de Dois Vizinhos - PR' },
-  'palmas': { name: 'Palmas', state: 'PR', suffix: 'palmas', isPrimary: false, locTitle: 'para pacientes de Palmas - PR' },
-  'xanxere': { name: 'Xanxerê', state: 'SC', suffix: 'xanxere', isPrimary: false, locTitle: 'para pacientes de Xanxerê - SC' },
-  'maravilha': { name: 'Maravilha', state: 'SC', suffix: 'maravilha', isPrimary: false, locTitle: 'para pacientes de Maravilha - SC' },
-  'pinhalzinho': { name: 'Pinhalzinho', state: 'PR', suffix: 'pinhalzinho', isPrimary: false, locTitle: 'para pacientes de Pinhalzinho - SC' },
-  'curitiba': { name: 'Curitiba', state: 'PR', suffix: 'curitiba', isPrimary: false, locTitle: 'para clínicas de Curitiba - PR', isHifuOnly: true },
+  palmas: { name: 'Palmas', state: 'PR', suffix: 'palmas', isPrimary: false, locTitle: 'para pacientes de Palmas - PR' },
+  xanxere: { name: 'Xanxerê', state: 'SC', suffix: 'xanxere', isPrimary: false, locTitle: 'para pacientes de Xanxerê - SC' },
+  maravilha: { name: 'Maravilha', state: 'SC', suffix: 'maravilha', isPrimary: false, locTitle: 'para pacientes de Maravilha - SC' },
+  pinhalzinho: { name: 'Pinhalzinho', state: 'SC', suffix: 'pinhalzinho', isPrimary: false, locTitle: 'para pacientes de Pinhalzinho - SC' },
+  curitiba: { name: 'Curitiba', state: 'PR', suffix: 'curitiba', isPrimary: false, locTitle: 'para pacientes e clínicas de Curitiba - PR', isHifuOnly: true },
   'sao-jose-dos-pinhais': { name: 'São José dos Pinhais', state: 'PR', suffix: 'sao-jose-dos-pinhais', isPrimary: false, locTitle: 'em São José dos Pinhais - PR', isHifuOnly: true },
-  'pinhais': { name: 'Pinhais', state: 'PR', suffix: 'pinhais', isPrimary: false, locTitle: 'em Pinhais - PR', isHifuOnly: true },
-  'araucaria': { name: 'Araucária', state: 'PR', suffix: 'araucaria', isPrimary: false, locTitle: 'em Araucária - PR', isHifuOnly: true },
-  'colombo': { name: 'Colombo', state: 'PR', suffix: 'colombo', isPrimary: false, locTitle: 'em Colombo - PR', isHifuOnly: true },
+  pinhais: { name: 'Pinhais', state: 'PR', suffix: 'pinhais', isPrimary: false, locTitle: 'em Pinhais - PR', isHifuOnly: true },
+  araucaria: { name: 'Araucária', state: 'PR', suffix: 'araucaria', isPrimary: false, locTitle: 'em Araucária - PR', isHifuOnly: true },
+  colombo: { name: 'Colombo', state: 'PR', suffix: 'colombo', isPrimary: false, locTitle: 'em Colombo - PR', isHifuOnly: true },
   'batel-curitiba': { name: 'Batel (Curitiba)', state: 'PR', suffix: 'batel-curitiba', isPrimary: false, locTitle: 'no Batel em Curitiba - PR', isHifuOnly: true },
   'agua-verde-curitiba': { name: 'Água Verde (Curitiba)', state: 'PR', suffix: 'agua-verde-curitiba', isPrimary: false, locTitle: 'no Água Verde em Curitiba - PR', isHifuOnly: true },
   'bigorrilho-curitiba': { name: 'Bigorrilho (Curitiba)', state: 'PR', suffix: 'bigorrilho-curitiba', isPrimary: false, locTitle: 'no Bigorrilho em Curitiba - PR', isHifuOnly: true },
   'efapi-chapeco': { name: 'Efapi (Chapecó)', state: 'SC', suffix: 'efapi-chapeco', isPrimary: false, locTitle: 'no bairro Efapi em Chapecó - SC', isHifuOnly: true },
   'centro-chapeco': { name: 'Centro (Chapecó)', state: 'SC', suffix: 'centro-chapeco', isPrimary: false, locTitle: 'no Centro de Chapecó - SC', isHifuOnly: true },
-  'concordia': { name: 'Concórdia', state: 'SC', suffix: 'concordia', isPrimary: false, locTitle: 'para pacientes de Concórdia - SC', isHifuOnly: false },
-  'cascavel': { name: 'Cascavel', state: 'PR', suffix: 'cascavel', isPrimary: false, locTitle: 'para pacientes e clínicas de Cascavel - PR', isHifuOnly: false },
-  'toledo': { name: 'Toledo', state: 'PR', suffix: 'toledo', isPrimary: false, locTitle: 'para pacientes e clínicas de Toledo - PR', isHifuOnly: false },
-  'erechim': { name: 'Erechim', state: 'RS', suffix: 'erechim', isPrimary: false, locTitle: 'para pacientes e clínicas de Erechim - RS', isHifuOnly: false },
+  concordia: { name: 'Concórdia', state: 'SC', suffix: 'concordia', isPrimary: false, locTitle: 'para pacientes de Concórdia - SC', isHifuOnly: false },
+  cascavel: { name: 'Cascavel', state: 'PR', suffix: 'cascavel', isPrimary: false, locTitle: 'para pacientes e clínicas de Cascavel - PR', isHifuOnly: false },
+  toledo: { name: 'Toledo', state: 'PR', suffix: 'toledo', isPrimary: false, locTitle: 'para pacientes e clínicas de Toledo - PR', isHifuOnly: false },
+  erechim: { name: 'Erechim', state: 'RS', suffix: 'erechim', isPrimary: false, locTitle: 'para pacientes e clínicas de Erechim - RS', isHifuOnly: false },
 };
 
 const BASE_SERVICES = [
   {
     baseSlug: 'odontologia-estetica',
     name: 'Odontologia Estética',
-    title: (c) => `Odontologia Estética ${c.locTitle} | Dr. Adriano Camillo`,
-    desc: (c) => `Odontologia estética ${c.locTitle}. Lentes de contato dental, facetas de resina, clareamento e planejamento digital do sorriso.`
+    title: (city) => `Odontologia Estética ${city.locTitle} | Dr. Adriano Camillo`,
+    desc: (city) => `Odontologia estética ${city.locTitle}. Facetas, lentes, clareamento e planejamento individual do sorriso.`
   },
   {
     baseSlug: 'implantes-dentarios',
     name: 'Implantes Dentários',
-    title: (c) => `Implantes Dentários ${c.locTitle} | Dr. Adriano Camillo`,
-    desc: (c) => `Implantes dentários ${c.locTitle}. Reabilitação oral fixa com máxima segurança, estética natural e planejamento guiado.`
+    title: (city) => `Implantes Dentários ${city.locTitle} | Dr. Adriano Camillo`,
+    desc: (city) => `Implantes dentários ${city.locTitle}. Avaliação, exames de imagem e planejamento individual para reabilitação oral.`
   },
   {
     baseSlug: 'ortodontia',
     name: 'Ortodontia',
-    title: (c) => `Ortodontia ${c.locTitle} | Dr. Adriano Camillo`,
-    desc: (c) => `Ortodontia ${c.locTitle}. Aparelhos estéticos, alinhadores transparentes e aparelhos fixos com acompanhamento próximo.`
+    title: (city) => `Ortodontia ${city.locTitle} | Dr. Adriano Camillo`,
+    desc: (city) => `Ortodontia ${city.locTitle}. Aparelhos estéticos, alinhadores transparentes e aparelhos fixos conforme avaliação.`
   },
   {
     baseSlug: 'harmonizacao-orofacial',
     name: 'Harmonização Orofacial',
-    title: (c) => `Harmonização Orofacial ${c.locTitle} | Dr. Adriano Camillo`,
-    desc: (c) => `Harmonização orofacial ${c.locTitle}. Toxina botulínica, preenchimento com ácido hialurônico e bioestimuladores com resultados naturais.`
+    title: (city) => `Harmonização Orofacial ${city.locTitle} | Dr. Adriano Camillo`,
+    desc: (city) => `Harmonização orofacial ${city.locTitle}. Planejamento facial individual com foco em equilíbrio e naturalidade.`
   },
   {
     baseSlug: 'dtm-dor-orofacial',
     name: 'DTM e Dor Orofacial',
-    title: (c) => `DTM e Dor Orofacial ${c.locTitle} | Dr. Adriano Camillo`,
-    desc: (c) => `Tratamento de DTM e dor orofacial ${c.locTitle}. Diagnóstico de bruxismo, estalos na mandíbula, dores na ATM e dores de cabeça.`
+    title: (city) => `DTM e Dor Orofacial ${city.locTitle} | Dr. Adriano Camillo`,
+    desc: (city) => `Avaliação de DTM e dor orofacial ${city.locTitle}, incluindo sintomas relacionados à ATM, bruxismo e limitação de abertura.`
   },
   {
     baseSlug: 'ozonioterapia',
     name: 'Ozonioterapia',
-    title: (c) => `Ozonioterapia Odontológica ${c.locTitle} | Dr. Adriano Camillo`,
-    desc: (c) => `Ozonioterapia odontológica ${c.locTitle}. Terapia biológica com ação bactericida e aceleradora da cicatrização pós-operatória.`
+    title: (city) => `Ozonioterapia Odontológica ${city.locTitle} | Dr. Adriano Camillo`,
+    desc: (city) => `Ozonioterapia odontológica ${city.locTitle}. Terapia complementar utilizada em protocolos selecionados, quando indicada.`
   },
   {
     baseSlug: 'aluguel-de-hifu',
     name: 'Locação de HIFU',
-    title: (c) => `Locação de Aparelho HIFU ${c.locTitle} | Dr. Adriano Camillo`,
-    desc: (c) => `Aluguel de máquina HIFU ${c.locTitle}. Equipamento calibrado, treinamento completo e material de marketing.`
+    title: (city) => `Locação de Aparelho HIFU ${city.locTitle} | Dr. Adriano Camillo`,
+    desc: (city) => `Locação de equipamento HIFU ${city.locTitle}, com organização do transporte, orientação operacional e suporte conforme o serviço contratado.`
   },
   {
     baseSlug: 'lipo-de-papada-hifu',
     name: 'Lipo de Papada com HIFU',
-    title: (c) => `Lipo de Papada com HIFU ${c.locTitle} | Dr. Adriano Camillo`,
-    desc: (c) => `Lipo de papada sem cortes ${c.locTitle} com Ultrassom Microfocado (HIFU). Elimine a gordura submentoniana e firme a pele sem agulhas ou cirurgia.`
+    title: (city) => `Lipo de Papada com HIFU ${city.locTitle} | Dr. Adriano Camillo`,
+    desc: (city) => `Protocolo de HIFU para a região da papada ${city.locTitle}, indicado após avaliação individual.`
   }
 ];
 
@@ -89,16 +89,14 @@ const pages = [
     path: '/servicos',
     name: 'Serviços Odontológicos e Estética Facial',
     title: 'Serviços Odontológicos em São Lourenço do Oeste | Dr. Adriano Camillo',
-    description:
-      'Conheça os serviços do Dr. Adriano Camillo em São Lourenço do Oeste: HIFU, implantes, ortodontia, estética, harmonização, DTM e ozonioterapia.',
+    description: 'Conheça os serviços do Dr. Adriano Camillo em São Lourenço do Oeste: HIFU, implantes, ortodontia, estética, harmonização, DTM e ozonioterapia.',
     schemaType: 'CollectionPage',
   },
   {
     path: '/hifu',
     name: 'HIFU — Ultrassom Microfocado',
     title: 'HIFU em São Lourenço do Oeste — Ultrassom Microfocado | Dr. Adriano Camillo',
-    description:
-      'Lifting facial sem cirurgia com HIFU (Ultrassom Microfocado) em São Lourenço do Oeste - SC. Veja benefícios, cuidados e agende sua avaliação.',
+    description: 'HIFU em São Lourenço do Oeste - SC. Conheça a tecnologia, indicações, cuidados e agende uma avaliação individual.',
   },
 ];
 
@@ -118,36 +116,39 @@ const REGIONAL_CITIES = [
   { slug: 'concordia', name: 'Concórdia', state: 'SC' },
 ];
 
+const servicePathForCity = (service, citySlug) =>
+  citySlug === 'sao-lourenco-do-oeste' ? `/${service}` : `/${service}-${citySlug}`;
+
 REGIONAL_CITIES.forEach((city) => {
   pages.push({
     path: `/servicos/${city.slug}`,
-    name: `Serviços Odontológicos (${city.name})`,
+    name: `HIFU em ${city.name} — atendimento e locação`,
     cityName: city.name,
-    title: `Serviços Odontológicos para pacientes de ${city.name} - ${city.state} | Dr. Adriano Camillo`,
-    description: `Conheça os serviços odontológicos e tratamentos de estética facial do Dr. Adriano Camillo para pacientes de ${city.name} - ${city.state}. Agende pelo WhatsApp.`,
+    title: `HIFU em ${city.name} — Atendimento e Locação | Dr. Adriano Camillo`,
+    description: `Informações sobre atendimento com HIFU e locação do equipamento para ${city.name} - ${city.state}, mediante agenda e disponibilidade.`,
     schemaType: 'CollectionPage',
+    items: [
+      { name: 'HIFU — Ultrassom Microfocado', path: '/hifu' },
+      { name: 'Lipo de Papada com HIFU', path: servicePathForCity('lipo-de-papada-hifu', city.slug) },
+      { name: 'Locação de HIFU', path: servicePathForCity('aluguel-de-hifu', city.slug) },
+    ],
   });
 });
 
-// Gerar todas as combinações de páginas de serviços e cidades
 BASE_SERVICES.forEach((service) => {
   Object.values(CITIES).forEach((city) => {
-    // REGRA PARA LOCAIS HIFU-ONLY
     if (city.isHifuOnly && service.baseSlug !== 'aluguel-de-hifu' && service.baseSlug !== 'lipo-de-papada-hifu') return;
 
-    let pagePath = '';
-    if (city.isPrimary) {
-      pagePath = `/${service.baseSlug}`;
-    } else {
-      pagePath = `/${service.baseSlug}-${city.suffix}`;
-    }
+    const pagePath = city.isPrimary
+      ? `/${service.baseSlug}`
+      : `/${service.baseSlug}-${city.suffix}`;
 
     pages.push({
       path: pagePath,
       name: `${service.name} (${city.name})`,
       cityName: city.name,
       title: service.title(city),
-      description: service.desc(city)
+      description: service.desc(city),
     });
   });
 });
@@ -175,6 +176,11 @@ const createPage = (baseHtml, page) => {
   html = replaceMeta(html, /<meta name="twitter:description" content="[^"]*"\s*\/?\s*>/i, `<meta name="twitter:description" content="${page.description}" />`);
 
   const cityName = page.cityName || 'São Lourenço do Oeste';
+  const collectionItems = page.items || BASE_SERVICES.map((service) => ({
+    name: service.name,
+    path: `/${service.baseSlug}`,
+  }));
+
   const schemaData = page.schemaType === 'CollectionPage'
     ? {
         '@context': 'https://schema.org',
@@ -184,11 +190,11 @@ const createPage = (baseHtml, page) => {
         url,
         mainEntity: {
           '@type': 'ItemList',
-          itemListElement: BASE_SERVICES.map((service, index) => ({
+          itemListElement: collectionItems.map((item, index) => ({
             '@type': 'ListItem',
             position: index + 1,
-            name: service.name,
-            url: `${siteUrl}/${service.baseSlug}`,
+            name: item.name,
+            url: `${siteUrl}${item.path}`,
           })),
         },
       }
