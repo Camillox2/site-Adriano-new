@@ -142,7 +142,7 @@ const ContactSection = () => (
             </li>
             <li className="flex justify-between gap-4">
               <span>Domingo</span>
-              <span className="font-semibold text-slate-400">Fechado</span>
+              <span className="font-semibold text-slate-500">Fechado</span>
             </li>
           </ul>
           <a
