@@ -32,6 +32,22 @@ const CITIES_SUFFIXES = [
   'erechim'
 ];
 
+const REGIONAL_SERVICE_CITIES = [
+  'sao-lourenco-do-oeste',
+  'chapeco',
+  'pato-branco',
+  'ampere',
+  'realeza',
+  'novo-horizonte',
+  'francisco-beltrao',
+  'dois-vizinhos',
+  'palmas',
+  'xanxere',
+  'maravilha',
+  'pinhalzinho',
+  'concordia'
+];
+
 const HIFU_ONLY_SUFFIXES = [
   'curitiba',
   'sao-jose-dos-pinhais',
@@ -61,6 +77,14 @@ const urls = [
   { loc: `${siteUrl}/servicos`, priority: '0.9', changefreq: 'monthly' },
   { loc: `${siteUrl}/hifu`, priority: '0.9', changefreq: 'monthly' },
 ];
+
+REGIONAL_SERVICE_CITIES.forEach((citySlug) => {
+  urls.push({
+    loc: `${siteUrl}/servicos/${citySlug}`,
+    priority: citySlug === 'sao-lourenco-do-oeste' ? '0.9' : '0.8',
+    changefreq: 'monthly',
+  });
+});
 
 BASE_SERVICES.forEach((service) => {
   CITIES_SUFFIXES.forEach((citySuffix) => {
