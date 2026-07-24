@@ -58,6 +58,7 @@ const BASE_SERVICES = [
 
 const urls = [
   { loc: `${siteUrl}/`, priority: '1.0', changefreq: 'monthly' },
+  { loc: `${siteUrl}/servicos`, priority: '0.9', changefreq: 'monthly' },
   { loc: `${siteUrl}/hifu`, priority: '0.9', changefreq: 'monthly' },
 ];
 
