@@ -9,7 +9,14 @@ const CITIES_SUFFIXES = [
   'pato-branco',
   'ampere',
   'realeza',
-  'novo-horizonte'
+  'novo-horizonte',
+  'francisco-beltrao',
+  'dois-vizinhos',
+  'palmas',
+  'xanxere',
+  'maravilha',
+  'pinhalzinho',
+  'curitiba'
 ];
 
 const BASE_SERVICES = [
@@ -18,7 +25,8 @@ const BASE_SERVICES = [
   'ortodontia',
   'harmonizacao-orofacial',
   'dtm-dor-orofacial',
-  'ozonioterapia'
+  'ozonioterapia',
+  'aluguel-de-hifu'
 ];
 
 const urls = [
@@ -28,9 +36,13 @@ const urls = [
 
 BASE_SERVICES.forEach((service) => {
   CITIES_SUFFIXES.forEach((citySuffix) => {
+    // REGRA DE CURITIBA
+    if (citySuffix === 'curitiba' && service !== 'aluguel-de-hifu') return;
+
     let pagePath = '';
-    if (service === 'dtm-dor-orofacial') {
-      pagePath = citySuffix === 'sao-lourenco-do-oeste' ? '/dtm-dor-orofacial' : `/dtm-dor-orofacial-${citySuffix}`;
+    // Todos os serviços usam apenas o slug base se for a cidade principal
+    if (citySuffix === 'sao-lourenco-do-oeste') {
+      pagePath = `/${service}`;
     } else {
       pagePath = `/${service}-${citySuffix}`;
     }

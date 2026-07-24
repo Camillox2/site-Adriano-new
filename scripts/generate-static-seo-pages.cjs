@@ -11,6 +11,13 @@ const CITIES = {
   'ampere': { name: 'Ampére', state: 'PR', suffix: 'ampere', isPrimary: false, locTitle: 'para pacientes de Ampére - PR' },
   'realeza': { name: 'Realeza', state: 'PR', suffix: 'realeza', isPrimary: false, locTitle: 'para pacientes de Realeza - PR' },
   'novo-horizonte': { name: 'Novo Horizonte', state: 'SC', suffix: 'novo-horizonte', isPrimary: false, locTitle: 'para pacientes de Novo Horizonte - SC' },
+  'francisco-beltrao': { name: 'Francisco Beltrão', state: 'PR', suffix: 'francisco-beltrao', isPrimary: false, locTitle: 'para pacientes de Francisco Beltrão - PR' },
+  'dois-vizinhos': { name: 'Dois Vizinhos', state: 'PR', suffix: 'dois-vizinhos', isPrimary: false, locTitle: 'para pacientes de Dois Vizinhos - PR' },
+  'palmas': { name: 'Palmas', state: 'PR', suffix: 'palmas', isPrimary: false, locTitle: 'para pacientes de Palmas - PR' },
+  'xanxere': { name: 'Xanxerê', state: 'SC', suffix: 'xanxere', isPrimary: false, locTitle: 'para pacientes de Xanxerê - SC' },
+  'maravilha': { name: 'Maravilha', state: 'SC', suffix: 'maravilha', isPrimary: false, locTitle: 'para pacientes de Maravilha - SC' },
+  'pinhalzinho': { name: 'Pinhalzinho', state: 'SC', suffix: 'pinhalzinho', isPrimary: false, locTitle: 'para pacientes de Pinhalzinho - SC' },
+  'curitiba': { name: 'Curitiba', state: 'PR', suffix: 'curitiba', isPrimary: false, locTitle: 'para clínicas de Curitiba - PR' },
 };
 
 const BASE_SERVICES = [
@@ -49,6 +56,12 @@ const BASE_SERVICES = [
     name: 'Ozonioterapia',
     title: (c) => `Ozonioterapia Odontológica ${c.locTitle} | Dr. Adriano Camillo`,
     desc: (c) => `Ozonioterapia odontológica ${c.locTitle}. Terapia biológica com ação bactericida e aceleradora da cicatrização pós-operatória.`
+  },
+  {
+    baseSlug: 'aluguel-de-hifu',
+    name: 'Locação de HIFU',
+    title: (c) => `Locação de Aparelho HIFU ${c.locTitle} | Dr. Adriano Camillo`,
+    desc: (c) => `Aluguel de máquina HIFU ${c.locTitle}. Equipamento calibrado, treinamento completo e material de marketing.`
   }
 ];
 
@@ -72,9 +85,12 @@ const pages = [
 // Gerar todas as combinações de páginas de serviços e cidades
 BASE_SERVICES.forEach((service) => {
   Object.values(CITIES).forEach((city) => {
+    // REGRA DE CURITIBA
+    if (city.name === 'Curitiba' && service.baseSlug !== 'aluguel-de-hifu') return;
+
     let pagePath = '';
-    if (service.baseSlug === 'dtm-dor-orofacial') {
-      pagePath = city.isPrimary ? '/dtm-dor-orofacial' : `/dtm-dor-orofacial-${city.suffix}`;
+    if (city.isPrimary) {
+      pagePath = `/${service.baseSlug}`;
     } else {
       pagePath = `/${service.baseSlug}-${city.suffix}`;
     }
