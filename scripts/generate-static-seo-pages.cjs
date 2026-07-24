@@ -62,6 +62,12 @@ const BASE_SERVICES = [
     name: 'Locação de HIFU',
     title: (c) => `Locação de Aparelho HIFU ${c.locTitle} | Dr. Adriano Camillo`,
     desc: (c) => `Aluguel de máquina HIFU ${c.locTitle}. Equipamento calibrado, treinamento completo e material de marketing.`
+  },
+  {
+    baseSlug: 'lipo-de-papada-hifu',
+    name: 'Lipo de Papada com HIFU',
+    title: (c) => `Lipo de Papada com HIFU ${c.locTitle} | Dr. Adriano Camillo`,
+    desc: (c) => `Lipo de papada sem cortes ${c.locTitle} com Ultrassom Microfocado (HIFU). Elimine a gordura submentoniana e firme a pele sem agulhas ou cirurgia.`
   }
 ];
 
@@ -86,7 +92,7 @@ const pages = [
 BASE_SERVICES.forEach((service) => {
   Object.values(CITIES).forEach((city) => {
     // REGRA DE CURITIBA
-    if (city.name === 'Curitiba' && service.baseSlug !== 'aluguel-de-hifu') return;
+    if (city.name === 'Curitiba' && service.baseSlug !== 'aluguel-de-hifu' && service.baseSlug !== 'lipo-de-papada-hifu') return;
 
     let pagePath = '';
     if (city.isPrimary) {

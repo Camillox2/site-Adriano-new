@@ -26,7 +26,8 @@ const BASE_SERVICES = [
   'harmonizacao-orofacial',
   'dtm-dor-orofacial',
   'ozonioterapia',
-  'aluguel-de-hifu'
+  'aluguel-de-hifu',
+  'lipo-de-papada-hifu'
 ];
 
 const urls = [
@@ -37,7 +38,7 @@ const urls = [
 BASE_SERVICES.forEach((service) => {
   CITIES_SUFFIXES.forEach((citySuffix) => {
     // REGRA DE CURITIBA
-    if (citySuffix === 'curitiba' && service !== 'aluguel-de-hifu') return;
+    if (citySuffix === 'curitiba' && service !== 'aluguel-de-hifu' && service !== 'lipo-de-papada-hifu') return;
 
     let pagePath = '';
     // Todos os serviços usam apenas o slug base se for a cidade principal
