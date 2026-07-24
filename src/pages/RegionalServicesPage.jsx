@@ -3,16 +3,12 @@ import { Link, Navigate, useParams } from 'react-router-dom';
 import {
   ArrowRight,
   CheckCircle,
-  FlaskConical,
-  Heart,
   MapPin,
   Phone,
   ShieldCheck,
-  Smile,
   Sparkles,
-  Stethoscope,
-  Syringe,
   Target,
+  Truck,
   Zap,
 } from 'lucide-react';
 import Header from '../components/Header';
@@ -28,74 +24,6 @@ import {
 } from '../data/regionalServiceCities';
 
 const DesktopWhatsAppForm = React.lazy(() => import('../components/DesktopWhatsAppForm'));
-
-const SERVICES = [
-  {
-    title: 'HIFU — Ultrassom Microfocado',
-    baseSlug: null,
-    path: '/hifu',
-    Icon: Zap,
-    description:
-      'Tecnologia não invasiva para estimular colágeno e auxiliar no cuidado da flacidez facial e corporal.',
-    topics: ['Estímulo de colágeno', 'Contorno facial', 'Sem cortes'],
-  },
-  {
-    title: 'Odontologia Estética',
-    baseSlug: 'odontologia-estetica',
-    Icon: Sparkles,
-    description:
-      'Planejamento do sorriso com foco em naturalidade, saúde bucal, proporção e função.',
-    topics: ['Clareamento', 'Facetas e lentes', 'Planejamento do sorriso'],
-  },
-  {
-    title: 'Implantes Dentários',
-    baseSlug: 'implantes-dentarios',
-    Icon: Heart,
-    description:
-      'Reabilitação de dentes ausentes para recuperar mastigação, estabilidade e estética.',
-    topics: ['Dentes fixos', 'Exames de imagem', 'Próteses sobre implantes'],
-  },
-  {
-    title: 'Ortodontia',
-    baseSlug: 'ortodontia',
-    Icon: Smile,
-    description:
-      'Correção do alinhamento dos dentes e da mordida com opções definidas para cada caso.',
-    topics: ['Aparelho fixo', 'Opções estéticas', 'Correção da mordida'],
-  },
-  {
-    title: 'Harmonização Orofacial',
-    baseSlug: 'harmonizacao-orofacial',
-    Icon: Syringe,
-    description:
-      'Procedimentos planejados para equilibrar proporções faciais e preservar a naturalidade.',
-    topics: ['Toxina botulínica', 'Preenchimento', 'Bioestimuladores'],
-  },
-  {
-    title: 'DTM e Dor Orofacial',
-    baseSlug: 'dtm-dor-orofacial',
-    Icon: Stethoscope,
-    description:
-      'Avaliação de dores na face, mandíbula, articulação, estalos e sinais de bruxismo.',
-    topics: ['Dor na ATM', 'Bruxismo', 'Avaliação funcional'],
-  },
-  {
-    title: 'Ozonioterapia Odontológica',
-    baseSlug: 'ozonioterapia',
-    Icon: FlaskConical,
-    description:
-      'Terapia complementar utilizada em protocolos odontológicos selecionados.',
-    topics: ['Terapia complementar', 'Pós-operatório', 'Aplicação em consultório'],
-  },
-  {
-    title: 'Lipo de Papada com HIFU',
-    baseSlug: 'lipo-de-papada-hifu',
-    Icon: Target,
-    description:
-      'Protocolo não cirúrgico para auxiliar no contorno abaixo do queixo e no estímulo de firmeza.',
-    topics: ['Sem cirurgia', 'Contorno mandibular', 'Firmeza da pele'],
-  },
-];
 
 const useDesktopViewport = () => {
   const [isDesktop, setIsDesktop] = useState(false);
@@ -116,12 +44,38 @@ const RegionalServicesPage = () => {
   const city = REGIONAL_SERVICE_CITIES[citySlug];
   const isDesktop = useDesktopViewport();
 
-  const serviceItems = useMemo(() => {
+  const services = useMemo(() => {
     if (!city) return [];
-    return SERVICES.map((service) => ({
-      ...service,
-      path: service.baseSlug ? getRegionalServicePath(service.baseSlug, city) : service.path,
-    }));
+
+    return [
+      {
+        title: 'HIFU — Ultrassom Microfocado',
+        path: '/hifu',
+        Icon: Zap,
+        description:
+          'Tecnologia não invasiva para estímulo de colágeno, firmeza da pele e protocolos faciais e corporais definidos após avaliação.',
+        topics: ['Equipamento levado até a região', 'Protocolos personalizados', 'Sem cortes'],
+        cta: 'Conhecer o HIFU',
+      },
+      {
+        title: 'Lipo de Papada com HIFU',
+        path: getRegionalServicePath('lipo-de-papada-hifu', city),
+        Icon: Target,
+        description:
+          'Protocolo com ultrassom microfocado para auxiliar no contorno da região abaixo do queixo e no estímulo de firmeza.',
+        topics: ['Sem cirurgia', 'Contorno mandibular', 'Resultados progressivos'],
+        cta: 'Ver tratamento',
+      },
+      {
+        title: 'Locação de Equipamento HIFU',
+        path: getRegionalServicePath('aluguel-de-hifu', city),
+        Icon: Truck,
+        description:
+          'Locação do equipamento para clínicas e profissionais, com organização do atendimento e suporte conforme o serviço contratado.',
+        topics: ['Equipamento levado até a clínica', 'Atendimento regional', 'Locação para profissionais'],
+        cta: 'Conhecer a locação',
+      },
+    ];
   }, [city]);
 
   const jsonLd = useMemo(() => {
@@ -134,13 +88,9 @@ const RegionalServicesPage = () => {
         {
           '@type': 'CollectionPage',
           '@id': `${pageUrl}#pagina`,
-          name: `Serviços odontológicos ${city.titleLocation}`,
-          description: city.intro,
+          name: `HIFU em ${city.name} — atendimento e locação`,
+          description: `Serviços de HIFU para ${city.name} e região, incluindo atendimento com ultrassom microfocado e locação do equipamento para clínicas e profissionais.`,
           url: pageUrl,
-          about: {
-            '@type': 'Dentist',
-            '@id': 'https://dradrianocamillo.com/#clinica',
-          },
           areaServed: {
             '@type': 'City',
             name: city.name,
@@ -152,7 +102,7 @@ const RegionalServicesPage = () => {
           },
           mainEntity: {
             '@type': 'ItemList',
-            itemListElement: serviceItems.map((service, index) => ({
+            itemListElement: services.map((service, index) => ({
               '@type': 'ListItem',
               position: index + 1,
               name: service.title,
@@ -178,20 +128,20 @@ const RegionalServicesPage = () => {
             {
               '@type': 'ListItem',
               position: 3,
-              name: city.name,
+              name: `HIFU em ${city.name}`,
               item: pageUrl,
             },
           ],
         },
       ],
     };
-  }, [city, serviceItems]);
+  }, [city, services]);
 
   if (!city) return <Navigate to="/servicos" replace />;
 
-  const title = `Serviços Odontológicos ${city.titleLocation} | Dr. Adriano Camillo`;
-  const description = `${city.intro} Conheça HIFU, implantes, ortodontia, estética, harmonização, DTM e ozonioterapia.`;
-  const message = `Olá, Dr. Adriano! Sou de ${city.name} - ${city.state}, vi a página de serviços e gostaria de agendar uma avaliação.`;
+  const title = `HIFU em ${city.name} — Atendimento e Locação | Dr. Adriano Camillo`;
+  const description = `HIFU em ${city.name} e região. Levamos o equipamento para atendimentos e também realizamos locação para clínicas e profissionais. Fale pelo WhatsApp.`;
+  const message = `Olá, Dr. Adriano! Sou de ${city.name} - ${city.state} e gostaria de informações sobre HIFU e locação do equipamento.`;
 
   return (
     <div className="min-h-screen bg-white">
@@ -207,7 +157,7 @@ const RegionalServicesPage = () => {
         <section className="relative min-h-[76svh] flex items-center overflow-hidden bg-slate-950">
           <img
             src={images.consultorio1}
-            alt="Consultório do Dr. Adriano Camillo em São Lourenço do Oeste"
+            alt="Equipamento e estrutura do Dr. Adriano Camillo"
             width="1920"
             height="1080"
             fetchPriority="high"
@@ -222,23 +172,17 @@ const RegionalServicesPage = () => {
               <div className="text-white text-center lg:text-left max-w-3xl">
                 <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-emerald-300 backdrop-blur-sm">
                   <MapPin size={17} aria-hidden="true" />
-                  {city.badge}
+                  HIFU para {city.name} e região
                 </span>
 
                 <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.08] tracking-tight">
-                  Serviços odontológicos{' '}
-                  <span className="text-emerald-400">{city.titleLocation}</span>
+                  HIFU em {city.name}:{' '}
+                  <span className="text-emerald-400">atendimento e locação</span>
                 </h1>
 
                 <p className="mt-6 text-lg md:text-xl text-slate-200 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                  {city.intro}
+                  Levamos o equipamento HIFU até a região para atendimentos programados e também realizamos a locação para clínicas e profissionais.
                 </p>
-
-                {!city.isPrimary && (
-                  <p className="mt-4 text-sm md:text-base text-slate-300 max-w-2xl mx-auto lg:mx-0">
-                    O atendimento clínico é realizado em São Lourenço do Oeste — SC. Pelo WhatsApp, você pode tirar dúvidas e organizar a avaliação antes do deslocamento.
-                  </p>
-                )}
 
                 <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
                   <a
@@ -248,24 +192,25 @@ const RegionalServicesPage = () => {
                     className="btn-primary text-base md:text-lg"
                   >
                     <Phone size={20} aria-hidden="true" />
-                    Falar no WhatsApp
+                    Consultar disponibilidade
                   </a>
-                  <Link to="/servicos" className="hidden lg:inline-flex btn-outline-light text-base md:text-lg">
-                    Página geral de serviços
+                  <Link to="/hifu" className="hidden lg:inline-flex btn-outline-light text-base md:text-lg">
+                    Como funciona o HIFU
                   </Link>
                 </div>
 
                 <p className="mt-6 text-sm text-slate-300 flex items-center justify-center lg:justify-start gap-2">
                   <ShieldCheck size={17} className="text-emerald-400" aria-hidden="true" />
-                  Avaliação individual • Orientações claras • Atendimento com hora marcada
+                  Atendimento mediante agenda • Locação para profissionais • Suporte pelo WhatsApp
                 </p>
               </div>
 
               {isDesktop && (
                 <React.Suspense fallback={<div className="hidden lg:block min-h-[430px]" aria-hidden="true" />}>
                   <DesktopWhatsAppForm
+                    defaultService="Aluguel de Equipamento HIFU (B2B)"
                     defaultCity={city.name}
-                    title={`Agendar para ${city.name}`}
+                    title={`HIFU em ${city.name}`}
                   />
                 </React.Suspense>
               )}
@@ -276,17 +221,15 @@ const RegionalServicesPage = () => {
         <section className="section bg-white">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
-              <span className="section-eyebrow">Tratamentos disponíveis</span>
-              <h2 className="section-title mt-5">
-                Conheça os serviços para pacientes de {city.name}
-              </h2>
+              <span className="section-eyebrow">Serviços disponíveis</span>
+              <h2 className="section-title mt-5">HIFU para {city.name} e região</h2>
               <p className="section-subtitle mt-5">
-                Cada tratamento depende de avaliação clínica. Acesse a página completa para entender benefícios, etapas, cuidados e dúvidas frequentes.
+                Escolha entre atendimento com o equipamento ou locação para sua clínica. A disponibilidade é confirmada pelo WhatsApp.
               </p>
             </div>
 
-            <div className="mt-12 md:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
-              {serviceItems.map(({ title: serviceTitle, path, Icon, description: serviceDescription, topics }) => (
+            <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 max-w-6xl mx-auto">
+              {services.map(({ title: serviceTitle, path, Icon, description: serviceDescription, topics, cta }) => (
                 <article key={path} className="card card-lift p-6 md:p-7 flex flex-col">
                   <span className="inline-flex self-start p-3.5 rounded-2xl bg-primary-50 text-primary-700">
                     <Icon size={28} aria-hidden="true" />
@@ -306,9 +249,8 @@ const RegionalServicesPage = () => {
                   <Link
                     to={path}
                     className="mt-6 inline-flex items-center gap-2 text-primary-700 font-semibold hover:gap-3 transition-all"
-                    aria-label={`Ver ${serviceTitle} para pacientes de ${city.name}`}
                   >
-                    Ver detalhes
+                    {cta}
                     <ArrowRight size={18} aria-hidden="true" />
                   </Link>
                 </article>
@@ -324,10 +266,10 @@ const RegionalServicesPage = () => {
                 <div className="relative max-w-md mx-auto">
                   <div className="absolute -inset-3 bg-gradient-to-tr from-primary-200 to-emerald-200 rounded-[2rem] blur-xl opacity-70" aria-hidden="true" />
                   <img
-                    src={images.drAdriano}
-                    alt="Dr. Adriano Camillo, cirurgião-dentista"
+                    src={images.hifuEquipamento}
+                    alt="Equipamento HIFU levado para atendimentos e locação"
                     width="480"
-                    height="480"
+                    height="640"
                     loading="lazy"
                     decoding="async"
                     className="relative w-full h-auto rounded-[2rem] shadow-xl object-cover"
@@ -337,13 +279,13 @@ const RegionalServicesPage = () => {
 
               <div className="lg:col-span-3">
                 <span className="section-eyebrow">Como funciona</span>
-                <h2 className="section-title mt-5">Do primeiro contato ao acompanhamento</h2>
+                <h2 className="section-title mt-5">Organização simples para atendimento ou locação</h2>
                 <ol className="mt-8 space-y-5">
                   {[
-                    ['1', 'Converse pelo WhatsApp', `Informe que você é de ${city.name}, explique sua necessidade e tire as primeiras dúvidas.`],
-                    ['2', 'Agende a avaliação', 'A equipe ajuda a escolher o horário e orienta sobre exames ou informações importantes.'],
-                    ['3', 'Receba o planejamento', 'Após a avaliação clínica, o Dr. Adriano apresenta as opções, etapas e cuidados indicados.'],
-                    ['4', 'Realize o tratamento', 'O atendimento é acompanhado de orientações e retornos definidos de acordo com o caso.'],
+                    ['1', 'Entre em contato', `Informe que você é de ${city.name} e diga se procura atendimento ou locação do equipamento.`],
+                    ['2', 'Confirme a agenda', 'A equipe verifica disponibilidade, formato do serviço e detalhes necessários para o deslocamento.'],
+                    ['3', 'Defina o atendimento', 'Para pacientes, é feita a avaliação do protocolo. Para clínicas, são alinhadas as condições da locação.'],
+                    ['4', 'Equipamento na região', 'O HIFU é levado conforme o agendamento combinado e as condições do serviço contratado.'],
                   ].map(([number, stepTitle, text]) => (
                     <li key={number} className="card p-5 md:p-6 flex items-start gap-4">
                       <span className="w-10 h-10 shrink-0 rounded-full bg-primary-700 text-white flex items-center justify-center font-bold">
@@ -361,17 +303,17 @@ const RegionalServicesPage = () => {
           </div>
         </section>
 
-        <section className="section bg-white" style={{ contentVisibility: 'auto', containIntrinsicSize: '650px' }}>
+        <section className="section bg-white" style={{ contentVisibility: 'auto', containIntrinsicSize: '600px' }}>
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
-              <span className="section-eyebrow">Cidades da região</span>
-              <h2 className="section-title mt-5">Veja a página de serviços da sua cidade</h2>
+              <span className="section-eyebrow">Região atendida</span>
+              <h2 className="section-title mt-5">HIFU em outras cidades próximas</h2>
               <p className="section-subtitle mt-5">
-                Criamos páginas específicas para facilitar a consulta dos tratamentos e o contato de pacientes da região.
+                Consulte a página da sua cidade para abrir o WhatsApp com a localização já informada.
               </p>
             </div>
 
-            <nav className="mt-10 max-w-5xl mx-auto flex flex-wrap justify-center gap-3" aria-label="Serviços por cidade">
+            <nav className="mt-10 max-w-5xl mx-auto flex flex-wrap justify-center gap-3" aria-label="HIFU por cidade">
               {REGIONAL_SERVICE_CITY_LIST.map((regionalCity) => (
                 <Link
                   key={regionalCity.slug}
@@ -394,12 +336,12 @@ const RegionalServicesPage = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto text-center rounded-[2rem] border border-white/10 bg-white/5 px-6 py-12 md:px-12 md:py-16">
               <span className="inline-flex items-center gap-2 text-emerald-400 font-semibold">
-                <ShieldCheck size={20} aria-hidden="true" />
-                Atendimento para {city.name} e região
+                <Sparkles size={20} aria-hidden="true" />
+                HIFU para {city.name} e região
               </span>
-              <h2 className="mt-4 text-3xl md:text-5xl font-bold">Converse sobre o seu caso</h2>
+              <h2 className="mt-4 text-3xl md:text-5xl font-bold">Consulte agenda e condições de locação</h2>
               <p className="mt-5 text-slate-300 text-lg max-w-2xl mx-auto leading-relaxed">
-                Envie uma mensagem, informe sua cidade e receba orientação para organizar a avaliação no consultório.
+                Envie uma mensagem informando sua cidade e se o interesse é em atendimento ou locação do equipamento.
               </p>
               <a
                 href={whatsapp(message)}
