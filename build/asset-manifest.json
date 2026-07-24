@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.css": "/static/css/main.301d53b6.css",
-    "main.js": "/static/js/main.d4bb8310.js",
-    "static/js/771.b97cdfa9.chunk.js": "/static/js/771.b97cdfa9.chunk.js",
-    "static/js/377.bbd5389e.chunk.js": "/static/js/377.bbd5389e.chunk.js",
-    "static/js/483.df8df29e.chunk.js": "/static/js/483.df8df29e.chunk.js",
-    "static/js/237.731e1f1f.chunk.js": "/static/js/237.731e1f1f.chunk.js",
+    "main.css": "/static/css/main.7c173a1c.css",
+    "main.js": "/static/js/main.e880b934.js",
+    "static/js/771.cf7f0000.chunk.js": "/static/js/771.cf7f0000.chunk.js",
+    "static/js/377.65b278cf.chunk.js": "/static/js/377.65b278cf.chunk.js",
+    "static/js/483.d1de5a90.chunk.js": "/static/js/483.d1de5a90.chunk.js",
+    "static/js/237.9e85f7af.chunk.js": "/static/js/237.9e85f7af.chunk.js",
     "static/js/524.e52c4e78.chunk.js": "/static/js/524.e52c4e78.chunk.js",
     "static/media/hifuatendimento.mp4": "/static/media/hifuatendimento.167f2f169a1046de8289.mp4",
     "static/media/hifutres.mp4": "/static/media/hifutres.cfa9d7e763b20048d345.mp4",
@@ -29,7 +29,7 @@
     "index.html": "/index.html"
   },
   "entrypoints": [
-    "static/css/main.301d53b6.css",
-    "static/js/main.d4bb8310.js"
+    "static/css/main.7c173a1c.css",
+    "static/js/main.e880b934.js"
   ]
 }

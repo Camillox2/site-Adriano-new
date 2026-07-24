@@ -9,6 +9,8 @@ import {
   Timer,
   TrendingUp,
   ShieldCheck,
+  Sparkles,
+  Target,
 } from 'lucide-react';
 import { videos, images } from '../assets';
 import { WHATSAPP_HIFU } from '../utils/constants';
@@ -51,12 +53,36 @@ export const HIFU_VIDEOS = [
 ];
 
 const BENEFITS = [
-  'Lifting facial sem cortes e sem agulhas',
-  'Estimula o colágeno natural da sua pele',
-  'Sessão única na maioria dos casos',
-  'Sem afastamento das atividades',
-  'Resultados progressivos por até 6 meses',
-  'Tecnologia consolidada mundialmente',
+  {
+    icon: Zap,
+    title: 'Lifting Facial sem Cortes',
+    description: 'Atinge a camada profunda SMAS (a mesma da cirurgia plástica) com ultrassom, promovendo efeito lifting imediato sem cortes ou agulhas.'
+  },
+  {
+    icon: Sparkles,
+    title: 'Estímulo Profundo de Colágeno',
+    description: 'Gera micropontos de coagulação que ativam a neocolagênese natural da pele, produzindo colágeno novo e denso por até 6 meses.'
+  },
+  {
+    icon: Target,
+    title: 'Redução de Papada e Gordura',
+    description: 'Destrói as células de gordura submentoniana (queixo duplo) e enrijece o tecido ao mesmo tempo, evitando a flacidez pós-tratamento.'
+  },
+  {
+    icon: Timer,
+    title: 'Zero Tempo de Repouso',
+    description: 'Procedimento não invasivo de consultório. Retorne ao trabalho, maquiagem e rotina diária imediatamente após a aplicação.'
+  },
+  {
+    icon: TrendingUp,
+    title: 'Resultados Progressivos',
+    description: 'A firmeza da pele evolui dia a dia de forma sutil e natural, atingindo o pico de beleza e definição entre 30 e 90 dias.'
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Segurança Comprovada ANVISA',
+    description: 'Realizado com o equipamento profissional Ultramed HIFU, calibrado e manuseado com técnica clínica apurada.'
+  }
 ];
 
 const HIGHLIGHTS = [
@@ -238,21 +264,25 @@ const HifuSection = () => {
               ultrassom microfocado devolve firmeza à pele estimulando o que ela
               tem de melhor: o seu próprio colágeno.
             </p>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {BENEFITS.map((benefit) => (
-                <li
-                  key={benefit}
-                  className="flex items-start gap-3 bg-white border border-slate-100 rounded-xl p-3.5"
-                >
-                  <CheckCircle
-                    size={20}
-                    className="text-emerald-600 shrink-0 mt-0.5"
-                    aria-hidden="true"
-                  />
-                  <span className="text-slate-700 text-sm font-medium">{benefit}</span>
-                </li>
-              ))}
-            </ul>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {BENEFITS.map((b) => {
+                const IconComponent = b.icon;
+                return (
+                  <div
+                    key={b.title}
+                    className="flex items-start gap-3.5 bg-white border border-slate-100 rounded-2xl p-4 shadow-sm hover:border-emerald-200 transition-colors"
+                  >
+                    <div className="p-2.5 bg-emerald-50 text-emerald-600 rounded-xl shrink-0 mt-0.5">
+                      <IconComponent size={20} aria-hidden="true" />
+                    </div>
+                    <div>
+                      <h4 className="text-slate-900 font-semibold text-sm mb-1">{b.title}</h4>
+                      <p className="text-slate-600 text-xs leading-relaxed">{b.description}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
             <Link
               to="/hifu"
               className="inline-flex items-center gap-2 text-primary-700 font-semibold mt-7 hover:gap-3.5 transition-all"
