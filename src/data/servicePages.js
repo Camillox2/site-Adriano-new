@@ -2,237 +2,313 @@ export const SERVICE_PAGES = {
   'odontologia-estetica-sao-lourenco-do-oeste': {
     slug: 'odontologia-estetica-sao-lourenco-do-oeste',
     label: 'Odontologia Estética',
-    eyebrow: 'Estética odontológica',
+    eyebrow: 'Estética odontológica & Harmonia do Sorriso',
     title: 'Odontologia Estética em São Lourenço do Oeste | Dr. Adriano Camillo',
     description:
-      'Odontologia estética em São Lourenço do Oeste - SC, com avaliação individual e planejamento que respeita saúde, função e naturalidade do sorriso.',
-    heading: 'Odontologia estética em São Lourenço do Oeste',
+      'Odontologia estética em São Lourenço do Oeste - SC. Lentes de contato dental, facetas de resina, clareamento e planejamento digital do sorriso com naturalidade.',
+    heading: 'Odontologia Estética em São Lourenço do Oeste',
     intro:
-      'Cuidado estético começa com uma avaliação responsável. O planejamento é individual, considera a saúde bucal, a função e as características de cada sorriso.',
-    sectionTitle: 'Estética com planejamento e naturalidade',
+      'Transforme o seu sorriso com planejamento individualizado, tecnologia digital e preservação da saúde bucal. Resultados harmoniosos que valorizam a sua beleza natural.',
+    sectionTitle: 'Estética Odontológica com Planejamento e Naturalidade',
     paragraphs: [
-      'A odontologia estética busca valorizar o sorriso sem perder de vista a saúde bucal e a função mastigatória. Antes de indicar qualquer procedimento, o Dr. Adriano avalia as necessidades, expectativas e condições clínicas de cada paciente.',
-      'A consulta é o momento para entender o que incomoda você, discutir possibilidades e definir um plano coerente com o seu caso. Cada indicação depende de avaliação presencial e de um acompanhamento cuidadoso.',
+      'A odontologia estética moderna vai muito além da beleza visual. O Dr. Adriano Camillo busca unir a harmonia estética à saúde periodontal e à correta função mastigatória, garantindo tratamentos duradouros e seguros.',
+      'Utilizamos recursos modernos de planejamento para prever o formato, a cor e a proporção ideais dos dentes. Seja através de clareamento dental, facetas de resina ou lentes de contato em cerâmica, cada detalhe é desenhado exclusivamente para o seu formato facial.',
+      'Antes de indicar qualquer procedimento, realizamos uma avaliação criteriosa para entender o que incomoda você e definir a alternativa mais conservadora e eficiente.',
     ],
     benefits: [
-      'Planejamento individual para o seu sorriso',
-      'Cuidado que une estética, função e saúde bucal',
-      'Orientações claras antes de qualquer procedimento',
-      'Acompanhamento próximo em cada etapa',
+      'Planejamento digital personalizado para a anatomia do seu rosto',
+      'Preservação máxima da estrutura dental natural',
+      'Restauração da cor, formato e alinhamento dos dentes',
+      'Uso de materiais estéticos de alta durabilidade',
+      'Clareamento dental seguro e sem hipersensibilidade indesejada',
+      'Acompanhamento próximo em todas as etapas do tratamento',
     ],
     steps: [
-      'Conversa inicial sobre suas expectativas',
-      'Avaliação clínica e análise do sorriso',
-      'Apresentação das possibilidades indicadas',
-      'Planejamento e acompanhamento do tratamento',
+      'Consulta inicial e escuta atenta dos seus objetivos',
+      'Avaliação clínica completa e fotografias diagnósticas',
+      'Apresentação do plano estético e simulação do resultado',
+      'Execução dos procedimentos com conforto e precisão',
+      'Polimento, ajustes finais e orientação de manutenção',
     ],
     faqs: [
       {
-        question: 'Odontologia estética é só aparência?',
+        question: 'Odontologia estética desgasta muito os dentes?',
         answer:
-          'Não. Um bom planejamento também considera saúde bucal, função e harmonia do sorriso. A indicação correta depende de avaliação presencial.',
+          'Não. Priorizamos técnicas minimamente invasivas. Em muitas situações (como restaurações em resina e facetas diretas), o desgaste é mínimo ou até nulo.',
       },
       {
-        question: 'Como saber qual procedimento é indicado para mim?',
+        question: 'Qual a diferença entre facetas de resina e lentes de cerâmica?',
         answer:
-          'A avaliação permite entender suas necessidades e explicar as opções adequadas para o seu caso, sempre com expectativas realistas.',
+          'As facetas de resina são confeccionadas diretamente em consultório, oferecendo agilidade e excelente resultado estético. As lentes de cerâmica/porcelana oferecem maior estabilidade de cor a longo prazo e alta resistência.',
       },
       {
-        question: 'Posso tirar dúvidas antes de decidir?',
+        question: 'O clareamento dental danifica o esmalte?',
         answer:
-          'Sim. A consulta é justamente o momento para conversar sobre objetivos, alternativas, cuidados e etapas do planejamento.',
+          'Não. Quando realizado com supervisão profissional e produtos de qualidade comprovada, o clareamento age apenas nos pigmentos internos do dente sem enfraquecer o esmalte.',
       },
     ],
     whatsappMessage:
-      'Olá, Dr. Adriano! Gostaria de agendar uma avaliação de odontologia estética.',
+      'Olá, Dr. Adriano! Gostaria de agendar uma avaliação de odontologia estética em São Lourenço do Oeste.',
   },
+
   'implantes-dentarios-sao-lourenco-do-oeste': {
     slug: 'implantes-dentarios-sao-lourenco-do-oeste',
     label: 'Implantes Dentários',
-    eyebrow: 'Implantodontia',
+    eyebrow: 'Implantodontia & Reabilitação Oral',
     title: 'Implantes Dentários em São Lourenço do Oeste | Dr. Adriano Camillo',
     description:
-      'Implantes dentários em São Lourenço do Oeste - SC, com avaliação clínica, exames e planejamento individual para reabilitação do sorriso.',
-    heading: 'Implantes dentários em São Lourenço do Oeste',
+      'Implantes dentários em São Lourenço do Oeste - SC. Reabilitação oral fixa com máxima segurança, estética natural e tecnologia guiada para dentes perdidos.',
+    heading: 'Implantes Dentários em São Lourenço do Oeste',
     intro:
-      'A perda de um ou mais dentes pode afetar mastigação, fala e confiança ao sorrir. O implante é avaliado como uma alternativa de reabilitação conforme as condições de cada paciente.',
-    sectionTitle: 'Reabilitação planejada para o seu caso',
+      'Recupere a mastigação firme, a segurança para falar e a alegria de sorrir. Tratamento de implantodontia com avaliação clínica detalhada e materiais biocompatíveis.',
+    sectionTitle: 'Reabilitação Oral Segura e Planejada',
     paragraphs: [
-      'O tratamento com implantes exige diagnóstico, planejamento e acompanhamento. A indicação considera saúde geral, condição da gengiva, estrutura óssea e objetivos do paciente.',
-      'Com exames e uma avaliação completa, o Dr. Adriano explica as etapas possíveis, os cuidados necessários e o plano mais adequado para recuperar a função e a estética do sorriso.',
+      'A perda de um ou mais dentes afeta diretamente a saúde, a digestão, o alinhamento da arcada e a autoestima. Os implantes dentários representam a solução mais avançada e estável para substituir raízes perdidas.',
+      'Com mais de 30 anos de experiência clínica em São Lourenço do Oeste, o Dr. Adriano Camillo utiliza exames radiográficos e tomográficos para planejar o posicionamento exato de cada implante de titânio.',
+      'Desde reposições unitárias até próteses protocolo sobre implantes (arcada total), o processo é realizado com anestesia eficiente, técnicas humanizadas e acompanhamento dedicado na fase de cicatrização.',
     ],
     benefits: [
-      'Avaliação clínica e exames para um planejamento seguro',
-      'Plano individual de reabilitação do sorriso',
-      'Explicação transparente das etapas do tratamento',
-      'Acompanhamento antes, durante e após o procedimento',
+      'Fixação firme que permite mastigar com total liberdade',
+      'Aparência e sensação idênticas aos dentes naturais',
+      'Preservação da estrutura óssea facial e dos dentes vizinhos',
+      'Materiais de titânio e zircônia de altíssima biocompatibilidade',
+      'Procedimentos planejados com exames tridimensionais',
+      'Maior durabilidade e estabilidade se comparado às próteses removíveis',
     ],
     steps: [
-      'Consulta e avaliação clínica',
-      'Exames e planejamento do tratamento',
-      'Definição das etapas indicadas para o caso',
-      'Acompanhamento da reabilitação e dos cuidados',
+      'Avaliação inicial e anamnese completa',
+      'Exames de imagem (tomografia) para mapeamento ósseo',
+      'Procedimento de instalação do implante com máximo conforto',
+      'Acompanhamento do período de integração óssea (osseointegração)',
+      'Instalação da prótese definitiva e revisão funcional',
     ],
     faqs: [
       {
-        question: 'Todo mundo pode fazer implante dentário?',
+        question: 'O procedimento de implante dentário dói?',
         answer:
-          'A indicação é individual. A avaliação clínica e os exames permitem verificar as condições de saúde e definir a alternativa mais adequada.',
+          'Não. A cirurgia é realizada sob anestesia local eficaz e ambiente controlado. No pós-operatório, indicamos medicação adequada para garantir um processo tranquilo.',
       },
       {
-        question: 'Quanto tempo leva o tratamento com implantes?',
+        question: 'Quem não tem muito osso pode fazer implante?',
         answer:
-          'O tempo varia conforme o planejamento e a resposta de cada paciente. Na consulta, as etapas e a previsão do caso são explicadas com clareza.',
+          'Sim. Nesses casos, podemos avaliar a necessidade de enxertos ósseos ou técnicas específicas de reabilitação. A tomografia nos dá o diagnóstico exato.',
       },
       {
-        question: 'Implante substitui um dente perdido?',
+        question: 'Quanto tempo leva para colocar a dente definitivo?',
         answer:
-          'O implante pode fazer parte de uma reabilitação para substituir dentes perdidos. A solução indicada depende da avaliação individual.',
+          'O tempo médio de cicatrização varia entre 3 a 6 meses conforme a região e a resposta biológica de cada paciente. Em casos selecionados, é possível utilizar carga imediata.',
       },
     ],
     whatsappMessage:
-      'Olá, Dr. Adriano! Gostaria de agendar uma avaliação para implantes dentários.',
+      'Olá, Dr. Adriano! Gostaria de agendar uma avaliação para implantes dentários em São Lourenço do Oeste.',
   },
+
   'ortodontia-sao-lourenco-do-oeste': {
     slug: 'ortodontia-sao-lourenco-do-oeste',
     label: 'Ortodontia',
-    eyebrow: 'Ortodontia',
+    eyebrow: 'Ortodontia & Alinhamento Dental',
     title: 'Ortodontia em São Lourenço do Oeste | Dr. Adriano Camillo',
     description:
-      'Ortodontia em São Lourenço do Oeste - SC para avaliação do alinhamento dental e da mordida, com planejamento individual e acompanhamento próximo.',
+      'Ortodontia em São Lourenço do Oeste - SC. Aparelhos estéticos, alinhadores transparentes e aparelhos fixos para crianças, jovens e adultos.',
     heading: 'Ortodontia em São Lourenço do Oeste',
     intro:
-      'O tratamento ortodôntico busca alinhar dentes e corrigir alterações de mordida com planejamento individual, respeitando o momento e as necessidades de cada paciente.',
-    sectionTitle: 'Alinhamento e função com acompanhamento',
+      'Conquiste um sorriso alinhado e melhore a sua saúde bucal. Tratamento ortodôntico moderno com aparelhos estéticos, convencionais e alinhadores.',
+    sectionTitle: 'Alinhamento Dental e Correção da Mordida',
     paragraphs: [
-      'A ortodontia pode ser indicada para diferentes fases da vida. A avaliação identifica como estão o alinhamento dos dentes, a mordida e a saúde bucal antes de definir qualquer tratamento.',
-      'O plano é explicado de forma clara, com orientação sobre alternativas, rotina de acompanhamento e cuidados para que o processo seja conduzido com segurança.',
+      'Dentes desalinhados ou problemas na mordida (oclusão) podem causar desgaste anormal do esmalte, dificuldade na higienização, dores de cabeça e tensões na articulação temporomandibular (ATM).',
+      'No consultório do Dr. Adriano Camillo em São Lourenço do Oeste, realizamos o diagnóstico completo por meio de documentação ortodôntica para selecionar o tipo de aparelho mais adequado ao seu estilo de vida.',
+      'Trabalhamos com aparelhos convencionais, estéticos de safira/cerâmica e alinhadores. O acompanhamento periódico garante movimentos suaves, eficientes e seguros para dentes e gengivas.',
     ],
     benefits: [
-      'Avaliação do alinhamento dental e da mordida',
-      'Planejamento individual para cada fase do tratamento',
-      'Orientações sobre higiene e cuidados com o aparelho',
-      'Acompanhamento periódico e próximo',
+      'Harmonização e alinhamento estético do sorriso',
+      'Correção da mastigação e melhora da articulação da fala',
+      'Facilita a escovação e o uso do fio dental, prevenindo cáries',
+      'Prevenção de dores articulares causadas por mordida cruzada ou aberta',
+      'Opções de aparelhos estéticos e alinhadores discretos',
+      'Atendimento preventivo e corretivo para crianças, jovens e adultos',
     ],
     steps: [
-      'Avaliação clínica e documentação ortodôntica',
-      'Planejamento individual do caso',
-      'Início do tratamento indicado',
-      'Acompanhamentos e fase de contenção quando necessária',
+      'Consulta e avaliação ortodôntica inicial',
+      'Análise de raio-X, molde e documentação ortodôntica',
+      'Apresentação do plano de tratamento e escolha do aparelho',
+      'Instalação e manutenções periódicas mensais',
+      'Remoção, instalação de contenção e polimento',
     ],
     faqs: [
       {
-        question: 'Em que idade é possível fazer avaliação ortodôntica?',
+        question: 'Existe idade limite para usar aparelho ortodôntico?',
         answer:
-          'A avaliação pode ser feita em diferentes idades. O momento e a abordagem dependem do desenvolvimento e das necessidades de cada paciente.',
+          'Não! Adultos de qualquer idade podem fazer tratamento ortodôntico, desde que possuam gengivas e estruturas ósseas saudáveis.',
       },
       {
-        question: 'Todo tratamento ortodôntico é igual?',
+        question: 'Qual a diferença entre aparelho convencional e estético?',
         answer:
-          'Não. O planejamento considera a posição dos dentes, a mordida, a saúde bucal e os objetivos do paciente.',
+          'O convencional utiliza bráquetes metálicos. O estético utiliza peças de cerâmica ou safira transparente, que ficam praticamente imperceptíveis no sorriso.',
       },
       {
-        question: 'É preciso acompanhar o tratamento regularmente?',
+        question: 'Quanto tempo dura em média um tratamento ortodôntico?',
         answer:
-          'Sim. As consultas periódicas permitem acompanhar a evolução, orientar cuidados e fazer os ajustes previstos no planejamento.',
+          'A duração depende da complexidade da mordida, variando geralmente entre 12 a 36 meses. O cumprimento das consultas de manutenção é fundamental para o prazo.',
       },
     ],
     whatsappMessage:
-      'Olá, Dr. Adriano! Gostaria de agendar uma avaliação de ortodontia.',
+      'Olá, Dr. Adriano! Gostaria de agendar uma avaliação de ortodontia em São Lourenço do Oeste.',
   },
+
   'harmonizacao-orofacial-sao-lourenco-do-oeste': {
     slug: 'harmonizacao-orofacial-sao-lourenco-do-oeste',
     label: 'Harmonização Orofacial',
-    eyebrow: 'Estética facial',
+    eyebrow: 'Estética Facial & Rejuvenescimento',
     title: 'Harmonização Orofacial em São Lourenço do Oeste | Dr. Adriano Camillo',
     description:
-      'Harmonização orofacial em São Lourenço do Oeste - SC, com avaliação facial individual, orientação responsável e foco em resultados naturais.',
-    heading: 'Harmonização orofacial em São Lourenço do Oeste',
+      'Harmonização orofacial em São Lourenço do Oeste - SC. Toxina botulínica, preenchimento com ácido hialurônico e bioestimuladores com resultados naturais.',
+    heading: 'Harmonização Orofacial em São Lourenço do Oeste',
     intro:
-      'A harmonização orofacial parte de uma análise individual da face, das proporções e das expectativas de cada pessoa. O objetivo é buscar equilíbrio e naturalidade, nunca padronizar rostos.',
-    sectionTitle: 'Avaliação facial com indicação responsável',
+      'Realce seus traços marcantes e previna o envelhecimento precoce com procedimentos faciais seguros, guiados por quem entende de anatomia orofacial.',
+    sectionTitle: 'Equilíbrio Facial com Indicação Responsável',
     paragraphs: [
-      'Cada rosto possui características próprias. Por isso, a consulta é indispensável para conversar sobre objetivos, entender o histórico de saúde e definir se algum procedimento é indicado.',
-      'O planejamento privilegia informação clara, escolha consciente e acompanhamento. Resultados e indicações variam de pessoa para pessoa.',
+      'A Harmonização Orofacial (HOF) une saúde, estética e anatomia para promover a simetria entre o sorriso e a face. Nosso objetivo não é transformar seu rosto, mas sim suavizar marcas do tempo e valorizar a sua beleza natural.',
+      'O Dr. Adriano Camillo realiza uma análise facial criteriosa antes de propor procedimentos como aplicação de toxina botulínica (botox), preenchimento labial/malar com ácido hialurônico e bioestimuladores de colágeno.',
+      'Todos os produtos utilizados possuem registro na ANVISA e são aplicados com técnicas delicadas para garantir conforto, segurança e recuperação rápida.',
     ],
     benefits: [
-      'Análise individual de proporções e objetivos',
-      'Foco em equilíbrio e naturalidade',
-      'Explicação cuidadosa de possibilidades e cuidados',
-      'Acompanhamento conforme o planejamento definido',
+      'Suavização de rugas dinâmicas na testa, pés de galinha e glabela',
+      'Definição do contorno mandibular, lábios e maçãs do rosto',
+      'Estímulo natural da produção de colágeno pela pele',
+      'Procedimentos rápidos realizados em consultório',
+      'Aspecto descansado, rejuvenescido e muito natural',
+      'Protocolos personalizados respeitando suas proporções anatômicas',
     ],
     steps: [
-      'Consulta e análise facial individual',
-      'Conversa sobre objetivos e histórico de saúde',
-      'Definição de um plano quando houver indicação',
-      'Orientações e acompanhamento pós-procedimento',
+      'Análise facial minuciosa e escuta das suas queixas',
+      'Mapeamento dos pontos anatômicos de aplicação',
+      'Aplicação dos produtos com anestésico local/tópico',
+      'Orientações pós-procedimento e cuidados imediatos',
+      'Consulta de retorno e reavaliação dos resultados',
     ],
     faqs: [
       {
-        question: 'O que é harmonização orofacial?',
+        question: 'O resultado da harmonização orofacial fica artificial?',
         answer:
-          'É uma área que avalia a harmonia entre estruturas faciais e pode indicar procedimentos compatíveis com o objetivo e as condições de cada pessoa.',
+          'Não quando planejada com responsabilidade. Respeitamos a anatomia e as proporções individuais para que o resultado seja sutil e natural.',
       },
       {
-        question: 'Os resultados ficam naturais?',
+        question: 'Quanto tempo dura a aplicação de Botox e Preenchimento?',
         answer:
-          'O planejamento busca respeitar as características individuais. A indicação e a expectativa são conversadas na avaliação.',
+          'A toxina botulínica dura em média de 4 a 6 meses. O preenchimento com ácido hialurônico varia entre 12 a 18 meses, sendo absorvido gradativamente pelo organismo.',
       },
       {
-        question: 'Posso fazer uma avaliação antes de decidir?',
+        question: 'Posso voltar às atividades normais após o procedimento?',
         answer:
-          'Sim. A avaliação é o passo essencial para esclarecer dúvidas, possíveis indicações, cuidados e limites de cada procedimento.',
+          'Sim. A maioria dos procedimentos permite retorno imediato à rotina, exigindo apenas cuidados básicos como evitar exercícios físicos intensos nas primeiras 24h.',
       },
     ],
     whatsappMessage:
-      'Olá, Dr. Adriano! Gostaria de agendar uma avaliação de harmonização orofacial.',
+      'Olá, Dr. Adriano! Gostaria de agendar uma avaliação de harmonização orofacial em São Lourenço do Oeste.',
   },
+
   'dtm-dor-orofacial': {
     slug: 'dtm-dor-orofacial',
     label: 'DTM e Dor Orofacial',
-    eyebrow: 'Dor orofacial',
+    eyebrow: 'Tratamento de Articulação (ATM) & Dores Faciais',
     title: 'DTM e Dor Orofacial em São Lourenço do Oeste | Dr. Adriano Camillo',
     description:
-      'Avaliação de DTM e dor orofacial em São Lourenço do Oeste - SC, com escuta clínica, investigação individual e orientação para cada caso.',
-    heading: 'DTM e dor orofacial em São Lourenço do Oeste',
+      'Tratamento de DTM e dor orofacial em São Lourenço do Oeste - SC. Diagnóstico de bruxismo, estalos na mandíbula, dores na ATM e dores de cabeça tensionais.',
+    heading: 'DTM e Dor Orofacial em São Lourenço do Oeste',
     intro:
-      'Dor na região da face, mandíbula ou articulação pode ter diferentes causas. A avaliação individual é o primeiro passo para entender os sinais, o histórico e as necessidades de cada paciente.',
-    sectionTitle: 'Escuta clínica e plano individual',
+      'Alivie dores na mandíbula, estalos articulares e dores de cabeça. Diagnóstico clínico especializado para disfunções da ATM e bruxismo.',
+    sectionTitle: 'Diagnóstico Criterioso para o Alívio da Dor',
     paragraphs: [
-      'A disfunção temporomandibular (DTM) e a dor orofacial exigem uma investigação cuidadosa. O atendimento considera sintomas, hábitos, rotina e condições odontológicas para orientar a conduta adequada.',
-      'Não existe uma resposta única para todos os casos. Após a avaliação, o paciente recebe explicações claras sobre os próximos passos e os cuidados indicados.',
+      'A Disfunção Temporomandibular (DTM) afeta a articulação que liga a mandíbula ao crânio (ATM), além da musculatura da mastigação. Sintomas como estalos ao abrir a boca, zumbidos no ouvido, travamento articular e dores de cabeça frequentes indicam a necessidade de avaliação.',
+      'O Dr. Adriano Camillo realiza uma investigação profunda que envolve análise palpatória muscular, teste de mobilidade articular, avaliação de desgaste dental por bruxismo e histórico de estresse.',
+      'O tratamento pode incluir o uso de placas miorrelaxantes personalizadas, orientações comportamentais, terapias complementares como ozonioterapia e laserterapia para devolver o conforto no seu dia a dia.',
     ],
     benefits: [
-      'Avaliação cuidadosa dos sintomas e do histórico',
-      'Investigação individual das necessidades do caso',
-      'Orientações claras sobre os próximos passos',
-      'Acompanhamento conforme a conduta indicada',
+      'Alívio de dores de cabeça tensionais e dores faciais recorrentes',
+      'Redução de estalos, ruídos e desconforto ao mastigar',
+      'Proteção contra desgaste excessivo dos dentes pelo bruxismo',
+      'Placa miorrelaxante ajustada com precisão em articulador',
+      'Melhoria na qualidade do sono e redução da tensão muscular',
+      'Abordagem clínica integrativa e humanizada',
     ],
     steps: [
-      'Conversa inicial sobre sintomas e rotina',
-      'Avaliação clínica da face, mandíbula e mordida',
-      'Definição da conduta ou encaminhamento quando indicado',
-      'Acompanhamento e reavaliação do caso',
+      'Mapeamento dos pontos de dor, hábitos e histórico de sintomas',
+      'Exame palpatório e teste de movimentação articular',
+      'Moldagem e confecção da placa de bruxismo/DTM se indicada',
+      'Instalação, ajustes de oclusão e orientação de uso',
+      'Acompanhamento da regressão dos sintomas',
     ],
     faqs: [
       {
-        question: 'O que é DTM?',
+        question: 'Aperto os dentes enquanto durmo. Isso é DTM?',
         answer:
-          'DTM é a sigla usada para disfunções temporomandibulares, que podem envolver a articulação da mandíbula, músculos e estruturas relacionadas.',
+          'O hábito de apertar ou ranger os dentes é chamado de bruxismo e pode desencadear ou agravar a DTM. Uma placa miorrelaxante personalizada ajuda a proteger dentes e articulações.',
       },
       {
-        question: 'Estalos na mandíbula sempre significam DTM?',
+        question: 'Dores de cabeça frequentes podem ter origem nos dentes?',
         answer:
-          'Não necessariamente. Estalos e outros sintomas devem ser avaliados junto com o histórico e o exame clínico.',
+          'Sim. A tensão nos músculos mastigatórios por causa de desequilíbrio na mordida ou DTM é uma causa comum de dores de cabeça conhecidas como cefaleia tensional.',
       },
       {
-        question: 'Quando devo procurar avaliação?',
+        question: 'O tratamento de DTM exige cirurgia?',
         answer:
-          'Se houver dor recorrente na face ou mandíbula, limitação de abertura, desconforto ao mastigar, travamentos ou outros sintomas persistentes, uma avaliação pode orientar os próximos passos.',
+          'Na grande maioria dos casos (mais de 90%), o tratamento é conservador e não cirúrgico, envolvendo placas, fisioterapia muscular e terapias de suporte.',
       },
     ],
     whatsappMessage:
-      'Olá, Dr. Adriano! Gostaria de agendar uma avaliação para DTM e dor orofacial.',
+      'Olá, Dr. Adriano! Gostaria de agendar uma avaliação para DTM e dor orofacial em São Lourenço do Oeste.',
+  },
+
+  'ozonioterapia-sao-lourenco-do-oeste': {
+    slug: 'ozonioterapia-sao-lourenco-do-oeste',
+    label: 'Ozonioterapia',
+    eyebrow: 'Terapia Bioestimulante & Cicatrização',
+    title: 'Ozonioterapia Odontológica em São Lourenço do Oeste | Dr. Adriano Camillo',
+    description:
+      'Ozonioterapia odontológica em São Lourenço do Oeste - SC. Terapia complementar com ação bactericida, anti-inflamatória e aceleradora de cicatrização.',
+    heading: 'Ozonioterapia Odontológica em São Lourenço do Oeste',
+    intro:
+      'Acelere a recuperação pós-operatória e previna infecções com o poder da Ozonioterapia medicinal. Tratamento biológico, seguro e indolor.',
+    sectionTitle: 'Tecnologia Biológica para a Saúde Bucal',
+    paragraphs: [
+      'A Ozonioterapia é uma modalidade terapêutica avançada que utiliza a mistura de oxigênio e ozônio medicinal (O3) para promover potente ação germicida, imunomoduladora e estimuladora de reparo tecidual.',
+      'Na odontologia, a ozonioterapia é aplicada pelo Dr. Adriano Camillo como um excelente recurso complementar em procedimentos cirúrgicos (como implantes e extrações), tratamentos de canal, afecções gengivais, aftas e herpes.',
+      'O procedimento é totalmente indolor, rápido e sem efeitos colaterais químicos, melhorando a oxigenação celular e diminuindo significativamente a dor e o inchaço pós-operatório.',
+    ],
+    benefits: [
+      'Potente ação bactericida, fungicida e virucida natural',
+      'Aceleração da cicatrização tecidual em pós-operatórios',
+      'Redução do inchaço, edema e desconforto pós-cirúrgico',
+      'Auxílio no tratamento de sensibilidade dentária e aftas',
+      'Terapia 100% biológica sem resíduos tóxicos no organismo',
+      'Aplicação rápida, segura e indolor no próprio consultório',
+    ],
+    steps: [
+      'Avaliação da indicação da terapia conforme o procedimento realizado',
+      'Definição da concentração e forma de aplicação (gás ou água ozonizada)',
+      'Aplicação tópica ou irrigação no local afetado',
+      'Orientação sobre o protocolo de sessões complementares',
+      'Acompanhamento do processo de regeneração tecidual',
+    ],
+    faqs: [
+      {
+        question: 'A aplicação de ozonioterapia dói?',
+        answer:
+          'Não. A aplicação é totalmente indolora e muito bem tolerada pelos pacientes.',
+      },
+      {
+        question: 'Em quais procedimentos a ozonioterapia é recomendada?',
+        answer:
+          'Ela é indicada como coadjuvante na cicatrização de implantes, cirurgias de sisos, descontaminação de canais, tratamento de periodontite, aftas e feridas bucais.',
+      },
+      {
+        question: 'A ozonioterapia substitui o tratamento odontológico tradicional?',
+        answer:
+          'Não. Trata-se de uma terapia complementar integrada que otimiza e potencializa os resultados dos tratamentos odontológicos tradicionais.',
+      },
+    ],
+    whatsappMessage:
+      'Olá, Dr. Adriano! Gostaria de agendar uma avaliação de ozonioterapia em São Lourenço do Oeste.',
   },
 };
 

@@ -125,6 +125,7 @@ const SERVICES = [
   },
   {
     id: 'ozonioterapia',
+    path: '/ozonioterapia-sao-lourenco-do-oeste',
     Icon: FlaskConical,
     color: 'text-secondary-700 bg-secondary-50',
     title: 'Ozonioterapia',

@@ -48,6 +48,13 @@ const pages = [
       'Avaliação de DTM e dor orofacial em São Lourenço do Oeste - SC, com escuta clínica, investigação individual e orientação para cada caso.',
   },
   {
+    path: '/ozonioterapia-sao-lourenco-do-oeste',
+    name: 'Ozonioterapia',
+    title: 'Ozonioterapia em São Lourenço do Oeste | Dr. Adriano Camillo',
+    description:
+      'Ozonioterapia odontológica em São Lourenço do Oeste - SC. Terapia biológica com ação bactericida e aceleradora da cicatrização pós-operatória.',
+  },
+  {
     path: '/politica-de-privacidade',
     name: 'Política de Privacidade',
     title: 'Política de Privacidade | Dr. Adriano Camillo',
