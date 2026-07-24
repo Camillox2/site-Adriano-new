@@ -17,7 +17,20 @@ const CITIES = {
   'xanxere': { name: 'Xanxerê', state: 'SC', suffix: 'xanxere', isPrimary: false, locTitle: 'para pacientes de Xanxerê - SC' },
   'maravilha': { name: 'Maravilha', state: 'SC', suffix: 'maravilha', isPrimary: false, locTitle: 'para pacientes de Maravilha - SC' },
   'pinhalzinho': { name: 'Pinhalzinho', state: 'SC', suffix: 'pinhalzinho', isPrimary: false, locTitle: 'para pacientes de Pinhalzinho - SC' },
-  'curitiba': { name: 'Curitiba', state: 'PR', suffix: 'curitiba', isPrimary: false, locTitle: 'para clínicas de Curitiba - PR' },
+  'curitiba': { name: 'Curitiba', state: 'PR', suffix: 'curitiba', isPrimary: false, locTitle: 'para clínicas de Curitiba - PR', isHifuOnly: true },
+  'sao-jose-dos-pinhais': { name: 'São José dos Pinhais', state: 'PR', suffix: 'sao-jose-dos-pinhais', isPrimary: false, locTitle: 'em São José dos Pinhais - PR', isHifuOnly: true },
+  'pinhais': { name: 'Pinhais', state: 'PR', suffix: 'pinhais', isPrimary: false, locTitle: 'em Pinhais - PR', isHifuOnly: true },
+  'araucaria': { name: 'Araucária', state: 'PR', suffix: 'araucaria', isPrimary: false, locTitle: 'em Araucária - PR', isHifuOnly: true },
+  'colombo': { name: 'Colombo', state: 'PR', suffix: 'colombo', isPrimary: false, locTitle: 'em Colombo - PR', isHifuOnly: true },
+  'batel-curitiba': { name: 'Batel (Curitiba)', state: 'PR', suffix: 'batel-curitiba', isPrimary: false, locTitle: 'no Batel em Curitiba - PR', isHifuOnly: true },
+  'agua-verde-curitiba': { name: 'Água Verde (Curitiba)', state: 'PR', suffix: 'agua-verde-curitiba', isPrimary: false, locTitle: 'no Água Verde em Curitiba - PR', isHifuOnly: true },
+  'bigorrilho-curitiba': { name: 'Bigorrilho (Curitiba)', state: 'PR', suffix: 'bigorrilho-curitiba', isPrimary: false, locTitle: 'no Bigorrilho em Curitiba - PR', isHifuOnly: true },
+  'efapi-chapeco': { name: 'Efapi (Chapecó)', state: 'SC', suffix: 'efapi-chapeco', isPrimary: false, locTitle: 'no bairro Efapi em Chapecó - SC', isHifuOnly: true },
+  'centro-chapeco': { name: 'Centro (Chapecó)', state: 'SC', suffix: 'centro-chapeco', isPrimary: false, locTitle: 'no Centro de Chapecó - SC', isHifuOnly: true },
+  'concordia': { name: 'Concórdia', state: 'SC', suffix: 'concordia', isPrimary: false, locTitle: 'para pacientes de Concórdia - SC', isHifuOnly: false },
+  'cascavel': { name: 'Cascavel', state: 'PR', suffix: 'cascavel', isPrimary: false, locTitle: 'para pacientes e clínicas de Cascavel - PR', isHifuOnly: false },
+  'toledo': { name: 'Toledo', state: 'PR', suffix: 'toledo', isPrimary: false, locTitle: 'para pacientes e clínicas de Toledo - PR', isHifuOnly: false },
+  'erechim': { name: 'Erechim', state: 'RS', suffix: 'erechim', isPrimary: false, locTitle: 'para pacientes e clínicas de Erechim - RS', isHifuOnly: false },
 };
 
 const BASE_SERVICES = [
@@ -91,8 +104,8 @@ const pages = [
 // Gerar todas as combinações de páginas de serviços e cidades
 BASE_SERVICES.forEach((service) => {
   Object.values(CITIES).forEach((city) => {
-    // REGRA DE CURITIBA
-    if (city.name === 'Curitiba' && service.baseSlug !== 'aluguel-de-hifu' && service.baseSlug !== 'lipo-de-papada-hifu') return;
+    // REGRA PARA LOCAIS HIFU-ONLY
+    if (city.isHifuOnly && service.baseSlug !== 'aluguel-de-hifu' && service.baseSlug !== 'lipo-de-papada-hifu') return;
 
     let pagePath = '';
     if (city.isPrimary) {

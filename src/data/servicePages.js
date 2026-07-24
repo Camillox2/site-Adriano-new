@@ -100,8 +100,126 @@ export const CITIES = {
     state: 'PR',
     slugSuffix: 'curitiba',
     isPrimary: false,
-    locationTitle: 'para clínicas de Curitiba - PR',
+    locationTitle: 'para clínicas e pacientes de Curitiba - PR',
     contextText: 'locação de equipamentos de alta tecnologia e suporte premium para profissionais de Curitiba - PR e região metropolitana.',
+    isHifuOnly: true,
+  },
+  'sao-jose-dos-pinhais': {
+    name: 'São José dos Pinhais',
+    state: 'PR',
+    slugSuffix: 'sao-jose-dos-pinhais',
+    isPrimary: false,
+    locationTitle: 'em São José dos Pinhais - PR',
+    contextText: 'locação de equipamentos de alta tecnologia e atendimento HIFU para São José dos Pinhais - PR.',
+    isHifuOnly: true,
+  },
+  'pinhais': {
+    name: 'Pinhais',
+    state: 'PR',
+    slugSuffix: 'pinhais',
+    isPrimary: false,
+    locationTitle: 'em Pinhais - PR',
+    contextText: 'tecnologia em HIFU e estética avançada para moradores e clínicas de Pinhais - PR.',
+    isHifuOnly: true,
+  },
+  'araucaria': {
+    name: 'Araucária',
+    state: 'PR',
+    slugSuffix: 'araucaria',
+    isPrimary: false,
+    locationTitle: 'em Araucária - PR',
+    contextText: 'locação de equipamentos e tratamentos estéticos para Araucária - PR.',
+    isHifuOnly: true,
+  },
+  'colombo': {
+    name: 'Colombo',
+    state: 'PR',
+    slugSuffix: 'colombo',
+    isPrimary: false,
+    locationTitle: 'em Colombo - PR',
+    contextText: 'tecnologia em HIFU e estética de alta performance para a região de Colombo - PR.',
+    isHifuOnly: true,
+  },
+  'batel-curitiba': {
+    name: 'Batel (Curitiba)',
+    state: 'PR',
+    slugSuffix: 'batel-curitiba',
+    isPrimary: false,
+    locationTitle: 'no Batel em Curitiba - PR',
+    contextText: 'locação de HIFU premium e tratamentos estéticos de alta performance no bairro Batel em Curitiba.',
+    isHifuOnly: true,
+  },
+  'agua-verde-curitiba': {
+    name: 'Água Verde (Curitiba)',
+    state: 'PR',
+    slugSuffix: 'agua-verde-curitiba',
+    isPrimary: false,
+    locationTitle: 'no Água Verde em Curitiba - PR',
+    contextText: 'tecnologia avançada de HIFU e estética facial no bairro Água Verde em Curitiba.',
+    isHifuOnly: true,
+  },
+  'bigorrilho-curitiba': {
+    name: 'Bigorrilho (Curitiba)',
+    state: 'PR',
+    slugSuffix: 'bigorrilho-curitiba',
+    isPrimary: false,
+    locationTitle: 'no Bigorrilho / Champagnat em Curitiba - PR',
+    contextText: 'atendimento e locação de equipamentos HIFU no bairro Bigorrilho em Curitiba.',
+    isHifuOnly: true,
+  },
+  'efapi-chapeco': {
+    name: 'Efapi (Chapecó)',
+    state: 'SC',
+    slugSuffix: 'efapi-chapeco',
+    isPrimary: false,
+    locationTitle: 'no bairro Efapi em Chapecó - SC',
+    contextText: 'atendimento odontológico e tecnologia HIFU para moradores do bairro Efapi em Chapecó.',
+    isHifuOnly: true,
+  },
+  'centro-chapeco': {
+    name: 'Centro (Chapecó)',
+    state: 'SC',
+    slugSuffix: 'centro-chapeco',
+    isPrimary: false,
+    locationTitle: 'no Centro de Chapecó - SC',
+    contextText: 'referência em procedimentos estéticos e locação de HIFU no Centro de Chapecó - SC.',
+    isHifuOnly: true,
+  },
+  'concordia': {
+    name: 'Concórdia',
+    state: 'SC',
+    slugSuffix: 'concordia',
+    isPrimary: false,
+    locationTitle: 'para pacientes de Concórdia - SC',
+    contextText: 'odontologia de alta precisão e tecnologia HIFU para moradores de Concórdia - SC.',
+    isHifuOnly: false,
+  },
+  'cascavel': {
+    name: 'Cascavel',
+    state: 'PR',
+    slugSuffix: 'cascavel',
+    isPrimary: false,
+    locationTitle: 'para pacientes e clínicas de Cascavel - PR',
+    contextText: 'excelência em estética facial, odontologia e locação de HIFU para a região de Cascavel - PR.',
+    isHifuOnly: false,
+  },
+  'toledo': {
+    name: 'Toledo',
+    state: 'PR',
+    slugSuffix: 'toledo',
+    isPrimary: false,
+    locationTitle: 'para pacientes e clínicas de Toledo - PR',
+    contextText: 'tecnologia e atendimento especializado para a população e profissionais de Toledo - PR.',
+    isHifuOnly: false,
+  },
+  'erechim': {
+    name: 'Erechim',
+    state: 'RS',
+    slugSuffix: 'erechim',
+    isPrimary: false,
+    locationTitle: 'para pacientes e clínicas de Erechim - RS',
+    contextText: 'referência em odontologia estética e locação de HIFU para moradores e clínicas de Erechim - RS.',
+    isHifuOnly: false,
   },
 };
 
@@ -693,8 +811,8 @@ const generatedPages = {};
 
 Object.values(BASE_SERVICES).forEach((service) => {
   Object.values(CITIES).forEach((city) => {
-    // REGRA DE CURITIBA: Apenas gera página para 'aluguel-de-hifu' e 'lipo-de-papada-hifu'
-    if (city.name === 'Curitiba' && service.baseSlug !== 'aluguel-de-hifu' && service.baseSlug !== 'lipo-de-papada-hifu') {
+    // REGRA PARA LOCAIS HIFU-ONLY (Curitiba, RMC, Bairros)
+    if (city.isHifuOnly && service.baseSlug !== 'aluguel-de-hifu' && service.baseSlug !== 'lipo-de-papada-hifu') {
       return;
     }
 

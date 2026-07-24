@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/static/css/main.0eb5cbed.css",
-    "main.js": "/static/js/main.a7a36ed1.js",
+    "main.js": "/static/js/main.ae1cbc09.js",
     "static/js/771.b97cdfa9.chunk.js": "/static/js/771.b97cdfa9.chunk.js",
-    "static/js/784.6702262a.chunk.js": "/static/js/784.6702262a.chunk.js",
+    "static/js/784.b47196c3.chunk.js": "/static/js/784.b47196c3.chunk.js",
     "static/js/524.e52c4e78.chunk.js": "/static/js/524.e52c4e78.chunk.js",
     "static/media/hifuatendimento.mp4": "/static/media/hifuatendimento.167f2f169a1046de8289.mp4",
     "static/media/hifutres.mp4": "/static/media/hifutres.cfa9d7e763b20048d345.mp4",
@@ -28,6 +28,6 @@
   },
   "entrypoints": [
     "static/css/main.0eb5cbed.css",
-    "static/js/main.a7a36ed1.js"
+    "static/js/main.ae1cbc09.js"
   ]
 }

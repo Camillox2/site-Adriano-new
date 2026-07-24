@@ -16,7 +16,33 @@ const CITIES_SUFFIXES = [
   'xanxere',
   'maravilha',
   'pinhalzinho',
-  'curitiba'
+  'curitiba',
+  'sao-jose-dos-pinhais',
+  'pinhais',
+  'araucaria',
+  'colombo',
+  'batel-curitiba',
+  'agua-verde-curitiba',
+  'bigorrilho-curitiba',
+  'efapi-chapeco',
+  'centro-chapeco',
+  'concordia',
+  'cascavel',
+  'toledo',
+  'erechim'
+];
+
+const HIFU_ONLY_SUFFIXES = [
+  'curitiba',
+  'sao-jose-dos-pinhais',
+  'pinhais',
+  'araucaria',
+  'colombo',
+  'batel-curitiba',
+  'agua-verde-curitiba',
+  'bigorrilho-curitiba',
+  'efapi-chapeco',
+  'centro-chapeco'
 ];
 
 const BASE_SERVICES = [
@@ -37,8 +63,8 @@ const urls = [
 
 BASE_SERVICES.forEach((service) => {
   CITIES_SUFFIXES.forEach((citySuffix) => {
-    // REGRA DE CURITIBA
-    if (citySuffix === 'curitiba' && service !== 'aluguel-de-hifu' && service !== 'lipo-de-papada-hifu') return;
+    // REGRA PARA LOCAIS HIFU-ONLY
+    if (HIFU_ONLY_SUFFIXES.includes(citySuffix) && service !== 'aluguel-de-hifu' && service !== 'lipo-de-papada-hifu') return;
 
     let pagePath = '';
     // Todos os serviços usam apenas o slug base se for a cidade principal
