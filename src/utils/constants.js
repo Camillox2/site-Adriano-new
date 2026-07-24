@@ -4,6 +4,7 @@
 export const SITE = {
   name: 'Dr. Adriano Camillo',
   title: 'Cirurgião-Dentista',
+  cro: 'CRO-SC 4011',
   url: 'https://dradrianocamillo.com',
   phone: '(49) 9 9836-2864',
   phoneRaw: '5549998362864',
