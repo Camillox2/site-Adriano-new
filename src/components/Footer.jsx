@@ -25,7 +25,7 @@ const SERVICE_LINKS = [
   '/ortodontia-sao-lourenco-do-oeste',
   '/implantes-dentarios-sao-lourenco-do-oeste',
   '/harmonizacao-orofacial-sao-lourenco-do-oeste',
-  null,
+  '/ozonioterapia-sao-lourenco-do-oeste',
 ];
 
 const Footer = () => {
@@ -181,7 +181,7 @@ const Footer = () => {
             © {year} Dr. Adriano Camillo — Todos os direitos reservados.
           </p>
           <p>
-            Atendimento em São Lourenço do Oeste • Realeza • Ampére • Curitiba
+            Atendimento para São Lourenço do Oeste • Chapecó • Pato Branco • Ampére • Realeza • Novo Horizonte
           </p>
         </div>
       </div>

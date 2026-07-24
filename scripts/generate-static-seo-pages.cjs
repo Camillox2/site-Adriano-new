@@ -4,6 +4,54 @@ const path = require('path');
 const siteUrl = 'https://dradrianocamillo.com';
 const buildDirectory = path.join(__dirname, '..', 'build');
 
+const CITIES = {
+  'sao-lourenco-do-oeste': { name: 'São Lourenço do Oeste', state: 'SC', suffix: 'sao-lourenco-do-oeste', isPrimary: true, locTitle: 'em São Lourenço do Oeste - SC' },
+  'chapeco': { name: 'Chapecó', state: 'SC', suffix: 'chapeco', isPrimary: false, locTitle: 'para pacientes de Chapecó - SC' },
+  'pato-branco': { name: 'Pato Branco', state: 'PR', suffix: 'pato-branco', isPrimary: false, locTitle: 'para pacientes de Pato Branco - PR' },
+  'ampere': { name: 'Ampére', state: 'PR', suffix: 'ampere', isPrimary: false, locTitle: 'para pacientes de Ampére - PR' },
+  'realeza': { name: 'Realeza', state: 'PR', suffix: 'realeza', isPrimary: false, locTitle: 'para pacientes de Realeza - PR' },
+  'novo-horizonte': { name: 'Novo Horizonte', state: 'SC', suffix: 'novo-horizonte', isPrimary: false, locTitle: 'para pacientes de Novo Horizonte - SC' },
+};
+
+const BASE_SERVICES = [
+  {
+    baseSlug: 'odontologia-estetica',
+    name: 'Odontologia Estética',
+    title: (c) => `Odontologia Estética ${c.locTitle} | Dr. Adriano Camillo`,
+    desc: (c) => `Odontologia estética ${c.locTitle}. Lentes de contato dental, facetas de resina, clareamento e planejamento digital do sorriso.`
+  },
+  {
+    baseSlug: 'implantes-dentarios',
+    name: 'Implantes Dentários',
+    title: (c) => `Implantes Dentários ${c.locTitle} | Dr. Adriano Camillo`,
+    desc: (c) => `Implantes dentários ${c.locTitle}. Reabilitação oral fixa com máxima segurança, estética natural e planejamento guiado.`
+  },
+  {
+    baseSlug: 'ortodontia',
+    name: 'Ortodontia',
+    title: (c) => `Ortodontia ${c.locTitle} | Dr. Adriano Camillo`,
+    desc: (c) => `Ortodontia ${c.locTitle}. Aparelhos estéticos, alinhadores transparentes e aparelhos fixos com acompanhamento próximo.`
+  },
+  {
+    baseSlug: 'harmonizacao-orofacial',
+    name: 'Harmonização Orofacial',
+    title: (c) => `Harmonização Orofacial ${c.locTitle} | Dr. Adriano Camillo`,
+    desc: (c) => `Harmonização orofacial ${c.locTitle}. Toxina botulínica, preenchimento com ácido hialurônico e bioestimuladores com resultados naturais.`
+  },
+  {
+    baseSlug: 'dtm-dor-orofacial',
+    name: 'DTM e Dor Orofacial',
+    title: (c) => `DTM e Dor Orofacial ${c.locTitle} | Dr. Adriano Camillo`,
+    desc: (c) => `Tratamento de DTM e dor orofacial ${c.locTitle}. Diagnóstico de bruxismo, estalos na mandíbula, dores na ATM e dores de cabeça.`
+  },
+  {
+    baseSlug: 'ozonioterapia',
+    name: 'Ozonioterapia',
+    title: (c) => `Ozonioterapia Odontológica ${c.locTitle} | Dr. Adriano Camillo`,
+    desc: (c) => `Ozonioterapia odontológica ${c.locTitle}. Terapia biológica com ação bactericida e aceleradora da cicatrização pós-operatória.`
+  }
+];
+
 const pages = [
   {
     path: '/hifu',
@@ -13,48 +61,6 @@ const pages = [
       'Lifting facial sem cirurgia com HIFU (Ultrassom Microfocado) em São Lourenço do Oeste - SC. Veja benefícios, cuidados e agende sua avaliação.',
   },
   {
-    path: '/odontologia-estetica-sao-lourenco-do-oeste',
-    name: 'Odontologia Estética',
-    title: 'Odontologia Estética em São Lourenço do Oeste | Dr. Adriano Camillo',
-    description:
-      'Odontologia estética em São Lourenço do Oeste - SC, com avaliação individual e planejamento que respeita saúde, função e naturalidade do sorriso.',
-  },
-  {
-    path: '/implantes-dentarios-sao-lourenco-do-oeste',
-    name: 'Implantes Dentários',
-    title: 'Implantes Dentários em São Lourenço do Oeste | Dr. Adriano Camillo',
-    description:
-      'Implantes dentários em São Lourenço do Oeste - SC, com avaliação clínica, exames e planejamento individual para reabilitação do sorriso.',
-  },
-  {
-    path: '/ortodontia-sao-lourenco-do-oeste',
-    name: 'Ortodontia',
-    title: 'Ortodontia em São Lourenço do Oeste | Dr. Adriano Camillo',
-    description:
-      'Ortodontia em São Lourenço do Oeste - SC para avaliação do alinhamento dental e da mordida, com planejamento individual e acompanhamento próximo.',
-  },
-  {
-    path: '/harmonizacao-orofacial-sao-lourenco-do-oeste',
-    name: 'Harmonização Orofacial',
-    title: 'Harmonização Orofacial em São Lourenço do Oeste | Dr. Adriano Camillo',
-    description:
-      'Harmonização orofacial em São Lourenço do Oeste - SC, com avaliação facial individual, orientação responsável e foco em resultados naturais.',
-  },
-  {
-    path: '/dtm-dor-orofacial',
-    name: 'DTM e Dor Orofacial',
-    title: 'DTM e Dor Orofacial em São Lourenço do Oeste | Dr. Adriano Camillo',
-    description:
-      'Avaliação de DTM e dor orofacial em São Lourenço do Oeste - SC, com escuta clínica, investigação individual e orientação para cada caso.',
-  },
-  {
-    path: '/ozonioterapia-sao-lourenco-do-oeste',
-    name: 'Ozonioterapia',
-    title: 'Ozonioterapia em São Lourenço do Oeste | Dr. Adriano Camillo',
-    description:
-      'Ozonioterapia odontológica em São Lourenço do Oeste - SC. Terapia biológica com ação bactericida e aceleradora da cicatrização pós-operatória.',
-  },
-  {
     path: '/politica-de-privacidade',
     name: 'Política de Privacidade',
     title: 'Política de Privacidade | Dr. Adriano Camillo',
@@ -62,6 +68,26 @@ const pages = [
     schema: false,
   },
 ];
+
+// Gerar todas as combinações de páginas de serviços e cidades
+BASE_SERVICES.forEach((service) => {
+  Object.values(CITIES).forEach((city) => {
+    let pagePath = '';
+    if (service.baseSlug === 'dtm-dor-orofacial') {
+      pagePath = city.isPrimary ? '/dtm-dor-orofacial' : `/dtm-dor-orofacial-${city.suffix}`;
+    } else {
+      pagePath = `/${service.baseSlug}-${city.suffix}`;
+    }
+
+    pages.push({
+      path: pagePath,
+      name: `${service.name} (${city.name})`,
+      cityName: city.name,
+      title: service.title(city),
+      description: service.desc(city)
+    });
+  });
+});
 
 const escapeJson = (value) => JSON.stringify(value).replace(/</g, '\\u003c');
 
@@ -85,6 +111,7 @@ const createPage = (baseHtml, page) => {
   html = replaceMeta(html, /<meta name="twitter:title" content="[^"]*"\s*\/?\s*>/i, `<meta name="twitter:title" content="${page.title}" />`);
   html = replaceMeta(html, /<meta name="twitter:description" content="[^"]*"\s*\/?\s*>/i, `<meta name="twitter:description" content="${page.description}" />`);
 
+  const cityName = page.cityName || 'São Lourenço do Oeste';
   const staticSchema = page.schema === false ? '' : `\n  <script id="static-route-jsonld" type="application/ld+json">${escapeJson({
     '@context': 'https://schema.org',
     '@type': 'Service',
@@ -92,11 +119,11 @@ const createPage = (baseHtml, page) => {
     description: page.description,
     url,
     provider: { '@id': `${siteUrl}/#clinica` },
-    areaServed: { '@type': 'City', name: 'São Lourenço do Oeste' },
+    areaServed: { '@type': 'City', name: cityName },
   })}</script>`;
   html = html.replace('</head>', `${staticSchema}\n</head>`);
 
-  const noscript = `<noscript><main><h1>${page.name} em São Lourenço do Oeste</h1><p>${page.description}</p><p>Agende sua avaliação pelo WhatsApp: <a href="https://wa.me/5549998362864">(49) 9 9836-2864</a>.</p></main></noscript>`;
+  const noscript = `<noscript><main><h1>${page.name}</h1><p>${page.description}</p><p>Agende sua avaliação pelo WhatsApp: <a href="https://wa.me/5549998362864">(49) 9 9836-2864</a>.</p></main></noscript>`;
   html = html.replace(/<noscript>[\s\S]*?<\/noscript>/i, noscript);
 
   return html;
@@ -111,4 +138,4 @@ for (const page of pages) {
   fs.writeFileSync(path.join(outputDirectory, 'index.html'), createPage(baseHtml, page), 'utf8');
 }
 
-console.log(`Páginas SEO estáticas geradas: ${pages.length}`);
+console.log(`Páginas SEO estáticas geradas com sucesso: ${pages.length}`);

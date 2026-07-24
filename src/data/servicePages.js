@@ -1,15 +1,64 @@
-export const SERVICE_PAGES = {
-  'odontologia-estetica-sao-lourenco-do-oeste': {
-    slug: 'odontologia-estetica-sao-lourenco-do-oeste',
+export const CITIES = {
+  'sao-lourenco-do-oeste': {
+    name: 'São Lourenço do Oeste',
+    state: 'SC',
+    slugSuffix: 'sao-lourenco-do-oeste',
+    isPrimary: true,
+    locationTitle: 'em São Lourenço do Oeste - SC',
+    contextText: 'no consultório do Dr. Adriano Camillo em São Lourenço do Oeste - SC.',
+  },
+  'chapeco': {
+    name: 'Chapecó',
+    state: 'SC',
+    slugSuffix: 'chapeco',
+    isPrimary: false,
+    locationTitle: 'para pacientes de Chapecó - SC',
+    contextText: 'atendimento odontológico especializado para pacientes de Chapecó no consultório em São Lourenço do Oeste - SC.',
+  },
+  'pato-branco': {
+    name: 'Pato Branco',
+    state: 'PR',
+    slugSuffix: 'pato-branco',
+    isPrimary: false,
+    locationTitle: 'para pacientes de Pato Branco - PR',
+    contextText: 'atendimento odontológico de referência para pacientes de Pato Branco - PR no consultório em São Lourenço do Oeste - SC.',
+  },
+  'ampere': {
+    name: 'Ampére',
+    state: 'PR',
+    slugSuffix: 'ampere',
+    isPrimary: false,
+    locationTitle: 'para pacientes de Ampére - PR',
+    contextText: 'atendimento odontológico de alta precisão para moradores de Ampére - PR com fácil acesso em São Lourenço do Oeste - SC.',
+  },
+  'realeza': {
+    name: 'Realeza',
+    state: 'PR',
+    slugSuffix: 'realeza',
+    isPrimary: false,
+    locationTitle: 'para pacientes de Realeza - PR',
+    contextText: 'excelência em tratamentos odontológicos para a população de Realeza - PR no consultório em São Lourenço do Oeste - SC.',
+  },
+  'novo-horizonte': {
+    name: 'Novo Horizonte',
+    state: 'SC',
+    slugSuffix: 'novo-horizonte',
+    isPrimary: false,
+    locationTitle: 'para pacientes de Novo Horizonte - SC',
+    contextText: 'atendimento personalizado e acolhedor para moradores de Novo Horizonte - SC no consultório em São Lourenço do Oeste.',
+  },
+};
+
+const BASE_SERVICES = {
+  'odontologia-estetica': {
+    baseSlug: 'odontologia-estetica',
     label: 'Odontologia Estética',
-    eyebrow: 'Estética odontológica & Harmonia do Sorriso',
-    title: 'Odontologia Estética em São Lourenço do Oeste | Dr. Adriano Camillo',
-    description:
-      'Odontologia estética em São Lourenço do Oeste - SC. Lentes de contato dental, facetas de resina, clareamento e planejamento digital do sorriso com naturalidade.',
-    heading: 'Odontologia Estética em São Lourenço do Oeste',
-    intro:
-      'Transforme o seu sorriso com planejamento individualizado, tecnologia digital e preservação da saúde bucal. Resultados harmoniosos que valorizam a sua beleza natural.',
-    sectionTitle: 'Estética Odontológica com Planejamento e Naturalidade',
+    eyebrow: 'Estética Odontológica & Harmonia do Sorriso',
+    titlePattern: (city) => `Odontologia Estética ${city.locationTitle} | Dr. Adriano Camillo`,
+    descriptionPattern: (city) => `Odontologia estética ${city.locationTitle}. Lentes de contato dental, facetas de resina, clareamento e planejamento digital do sorriso.`,
+    headingPattern: (city) => `Odontologia Estética ${city.locationTitle}`,
+    introPattern: (city) => `Transforme o seu sorriso com planejamento individualizado, tecnologia digital e preservação da saúde bucal ${city.contextText}`,
+    sectionTitlePattern: (city) => `Estética Odontológica com Planejamento ${city.locationTitle}`,
     paragraphs: [
       'A odontologia estética moderna vai muito além da beleza visual. O Dr. Adriano Camillo busca unir a harmonia estética à saúde periodontal e à correta função mastigatória, garantindo tratamentos duradouros e seguros.',
       'Utilizamos recursos modernos de planejamento para prever o formato, a cor e a proporção ideais dos dentes. Seja através de clareamento dental, facetas de resina ou lentes de contato em cerâmica, cada detalhe é desenhado exclusivamente para o seu formato facial.',
@@ -39,32 +88,29 @@ export const SERVICE_PAGES = {
       {
         question: 'Qual a diferença entre facetas de resina e lentes de cerâmica?',
         answer:
-          'As facetas de resina são confeccionadas diretamente em consultório, oferecendo agilidade e excelente resultado estético. As lentes de cerâmica/porcelana oferecem maior estabilidade de cor a longo prazo e alta resistência.',
+          'As facetas de resina são confeccionadas diretamente em consultório com alta estética. As lentes de cerâmica/porcelana oferecem maior estabilidade de cor a longo prazo.',
       },
       {
         question: 'O clareamento dental danifica o esmalte?',
         answer:
-          'Não. Quando realizado com supervisão profissional e produtos de qualidade comprovada, o clareamento age apenas nos pigmentos internos do dente sem enfraquecer o esmalte.',
+          'Não. Quando realizado com supervisão profissional e produtos de qualidade comprovada, o clareamento age apenas nos pigmentos internos do dente.',
       },
     ],
-    whatsappMessage:
-      'Olá, Dr. Adriano! Gostaria de agendar uma avaliação de odontologia estética em São Lourenço do Oeste.',
+    whatsappMessagePattern: (city) => `Olá, Dr. Adriano! Gostaria de agendar uma avaliação de odontologia estética (${city.name}).`,
   },
 
-  'implantes-dentarios-sao-lourenco-do-oeste': {
-    slug: 'implantes-dentarios-sao-lourenco-do-oeste',
+  'implantes-dentarios': {
+    baseSlug: 'implantes-dentarios',
     label: 'Implantes Dentários',
     eyebrow: 'Implantodontia & Reabilitação Oral',
-    title: 'Implantes Dentários em São Lourenço do Oeste | Dr. Adriano Camillo',
-    description:
-      'Implantes dentários em São Lourenço do Oeste - SC. Reabilitação oral fixa com máxima segurança, estética natural e tecnologia guiada para dentes perdidos.',
-    heading: 'Implantes Dentários em São Lourenço do Oeste',
-    intro:
-      'Recupere a mastigação firme, a segurança para falar e a alegria de sorrir. Tratamento de implantodontia com avaliação clínica detalhada e materiais biocompatíveis.',
-    sectionTitle: 'Reabilitação Oral Segura e Planejada',
+    titlePattern: (city) => `Implantes Dentários ${city.locationTitle} | Dr. Adriano Camillo`,
+    descriptionPattern: (city) => `Implantes dentários ${city.locationTitle}. Reabilitação oral fixa com máxima segurança, estética natural e planejamento guiado.`,
+    headingPattern: (city) => `Implantes Dentários ${city.locationTitle}`,
+    introPattern: (city) => `Recupere a mastigação firme, a segurança para falar e a alegria de sorrir ${city.contextText}`,
+    sectionTitlePattern: (city) => `Reabilitação Oral Segura e Planejada ${city.locationTitle}`,
     paragraphs: [
       'A perda de um ou mais dentes afeta diretamente a saúde, a digestão, o alinhamento da arcada e a autoestima. Os implantes dentários representam a solução mais avançada e estável para substituir raízes perdidas.',
-      'Com mais de 30 anos de experiência clínica em São Lourenço do Oeste, o Dr. Adriano Camillo utiliza exames radiográficos e tomográficos para planejar o posicionamento exato de cada implante de titânio.',
+      'Com mais de 30 anos de experiência clínica, o Dr. Adriano Camillo utiliza exames radiográficos e tomográficos para planejar o posicionamento exato de cada implante de titânio.',
       'Desde reposições unitárias até próteses protocolo sobre implantes (arcada total), o processo é realizado com anestesia eficiente, técnicas humanizadas e acompanhamento dedicado na fase de cicatrização.',
     ],
     benefits: [
@@ -94,26 +140,23 @@ export const SERVICE_PAGES = {
           'Sim. Nesses casos, podemos avaliar a necessidade de enxertos ósseos ou técnicas específicas de reabilitação. A tomografia nos dá o diagnóstico exato.',
       },
       {
-        question: 'Quanto tempo leva para colocar a dente definitivo?',
+        question: 'Quanto tempo leva para colocar o dente definitivo?',
         answer:
           'O tempo médio de cicatrização varia entre 3 a 6 meses conforme a região e a resposta biológica de cada paciente. Em casos selecionados, é possível utilizar carga imediata.',
       },
     ],
-    whatsappMessage:
-      'Olá, Dr. Adriano! Gostaria de agendar uma avaliação para implantes dentários em São Lourenço do Oeste.',
+    whatsappMessagePattern: (city) => `Olá, Dr. Adriano! Gostaria de agendar uma avaliação para implantes dentários (${city.name}).`,
   },
 
-  'ortodontia-sao-lourenco-do-oeste': {
-    slug: 'ortodontia-sao-lourenco-do-oeste',
+  'ortodontia': {
+    baseSlug: 'ortodontia',
     label: 'Ortodontia',
     eyebrow: 'Ortodontia & Alinhamento Dental',
-    title: 'Ortodontia em São Lourenço do Oeste | Dr. Adriano Camillo',
-    description:
-      'Ortodontia em São Lourenço do Oeste - SC. Aparelhos estéticos, alinhadores transparentes e aparelhos fixos para crianças, jovens e adultos.',
-    heading: 'Ortodontia em São Lourenço do Oeste',
-    intro:
-      'Conquiste um sorriso alinhado e melhore a sua saúde bucal. Tratamento ortodôntico moderno com aparelhos estéticos, convencionais e alinhadores.',
-    sectionTitle: 'Alinhamento Dental e Correção da Mordida',
+    titlePattern: (city) => `Ortodontia ${city.locationTitle} | Dr. Adriano Camillo`,
+    descriptionPattern: (city) => `Ortodontia ${city.locationTitle}. Aparelhos estéticos, alinhadores transparentes e aparelhos fixos com acompanhamento próximo.`,
+    headingPattern: (city) => `Ortodontia ${city.locationTitle}`,
+    introPattern: (city) => `Conquiste um sorriso alinhado e melhore a sua saúde bucal ${city.contextText}`,
+    sectionTitlePattern: (city) => `Alinhamento Dental e Correção da Mordida ${city.locationTitle}`,
     paragraphs: [
       'Dentes desalinhados ou problemas na mordida (oclusão) podem causar desgaste anormal do esmalte, dificuldade na higienização, dores de cabeça e tensões na articulação temporomandibular (ATM).',
       'No consultório do Dr. Adriano Camillo em São Lourenço do Oeste, realizamos o diagnóstico completo por meio de documentação ortodôntica para selecionar o tipo de aparelho mais adequado ao seu estilo de vida.',
@@ -151,21 +194,18 @@ export const SERVICE_PAGES = {
           'A duração depende da complexidade da mordida, variando geralmente entre 12 a 36 meses. O cumprimento das consultas de manutenção é fundamental para o prazo.',
       },
     ],
-    whatsappMessage:
-      'Olá, Dr. Adriano! Gostaria de agendar uma avaliação de ortodontia em São Lourenço do Oeste.',
+    whatsappMessagePattern: (city) => `Olá, Dr. Adriano! Gostaria de agendar uma avaliação de ortodontia (${city.name}).`,
   },
 
-  'harmonizacao-orofacial-sao-lourenco-do-oeste': {
-    slug: 'harmonizacao-orofacial-sao-lourenco-do-oeste',
+  'harmonizacao-orofacial': {
+    baseSlug: 'harmonizacao-orofacial',
     label: 'Harmonização Orofacial',
     eyebrow: 'Estética Facial & Rejuvenescimento',
-    title: 'Harmonização Orofacial em São Lourenço do Oeste | Dr. Adriano Camillo',
-    description:
-      'Harmonização orofacial em São Lourenço do Oeste - SC. Toxina botulínica, preenchimento com ácido hialurônico e bioestimuladores com resultados naturais.',
-    heading: 'Harmonização Orofacial em São Lourenço do Oeste',
-    intro:
-      'Realce seus traços marcantes e previna o envelhecimento precoce com procedimentos faciais seguros, guiados por quem entende de anatomia orofacial.',
-    sectionTitle: 'Equilíbrio Facial com Indicação Responsável',
+    titlePattern: (city) => `Harmonização Orofacial ${city.locationTitle} | Dr. Adriano Camillo`,
+    descriptionPattern: (city) => `Harmonização orofacial ${city.locationTitle}. Toxina botulínica, preenchimento com ácido hialurônico e bioestimuladores com resultados naturais.`,
+    headingPattern: (city) => `Harmonização Orofacial ${city.locationTitle}`,
+    introPattern: (city) => `Realce seus traços marcantes e previna o envelhecimento precoce com procedimentos faciais seguros ${city.contextText}`,
+    sectionTitlePattern: (city) => `Equilíbrio Facial com Indicação Responsável ${city.locationTitle}`,
     paragraphs: [
       'A Harmonização Orofacial (HOF) une saúde, estética e anatomia para promover a simetria entre o sorriso e a face. Nosso objetivo não é transformar seu rosto, mas sim suavizar marcas do tempo e valorizar a sua beleza natural.',
       'O Dr. Adriano Camillo realiza uma análise facial criteriosa antes de propor procedimentos como aplicação de toxina botulínica (botox), preenchimento labial/malar com ácido hialurônico e bioestimuladores de colágeno.',
@@ -195,29 +235,26 @@ export const SERVICE_PAGES = {
       {
         question: 'Quanto tempo dura a aplicação de Botox e Preenchimento?',
         answer:
-          'A toxina botulínica dura em média de 4 a 6 meses. O preenchimento com ácido hialurônico varia entre 12 a 18 meses, sendo absorvido gradativamente pelo organismo.',
+          'A toxina botulínica dura em média de 4 a 6 meses. O preenchimento com ácido hialurônico varia entre 12 a 18 meses, sendo absorvido gradativamente.',
       },
       {
         question: 'Posso voltar às atividades normais após o procedimento?',
         answer:
-          'Sim. A maioria dos procedimentos permite retorno imediato à rotina, exigindo apenas cuidados básicos como evitar exercícios físicos intensos nas primeiras 24h.',
+          'Sim. A maioria dos procedimentos permite retorno imediato à rotina, exigindo apenas cuidados básicos nas primeiras 24h.',
       },
     ],
-    whatsappMessage:
-      'Olá, Dr. Adriano! Gostaria de agendar uma avaliação de harmonização orofacial em São Lourenço do Oeste.',
+    whatsappMessagePattern: (city) => `Olá, Dr. Adriano! Gostaria de agendar uma avaliação de harmonização orofacial (${city.name}).`,
   },
 
   'dtm-dor-orofacial': {
-    slug: 'dtm-dor-orofacial',
+    baseSlug: 'dtm-dor-orofacial',
     label: 'DTM e Dor Orofacial',
     eyebrow: 'Tratamento de Articulação (ATM) & Dores Faciais',
-    title: 'DTM e Dor Orofacial em São Lourenço do Oeste | Dr. Adriano Camillo',
-    description:
-      'Tratamento de DTM e dor orofacial em São Lourenço do Oeste - SC. Diagnóstico de bruxismo, estalos na mandíbula, dores na ATM e dores de cabeça tensionais.',
-    heading: 'DTM e Dor Orofacial em São Lourenço do Oeste',
-    intro:
-      'Alivie dores na mandíbula, estalos articulares e dores de cabeça. Diagnóstico clínico especializado para disfunções da ATM e bruxismo.',
-    sectionTitle: 'Diagnóstico Criterioso para o Alívio da Dor',
+    titlePattern: (city) => `DTM e Dor Orofacial ${city.locationTitle} | Dr. Adriano Camillo`,
+    descriptionPattern: (city) => `Tratamento de DTM e dor orofacial ${city.locationTitle}. Diagnóstico de bruxismo, estalos na mandíbula, dores na ATM e dores de cabeça.`,
+    headingPattern: (city) => `DTM e Dor Orofacial ${city.locationTitle}`,
+    introPattern: (city) => `Alivie dores na mandíbula, estalos articulares e dores de cabeça ${city.contextText}`,
+    sectionTitlePattern: (city) => `Diagnóstico Criterioso para o Alívio da Dor ${city.locationTitle}`,
     paragraphs: [
       'A Disfunção Temporomandibular (DTM) afeta a articulação que liga a mandíbula ao crânio (ATM), além da musculatura da mastigação. Sintomas como estalos ao abrir a boca, zumbidos no ouvido, travamento articular e dores de cabeça frequentes indicam a necessidade de avaliação.',
       'O Dr. Adriano Camillo realiza uma investigação profunda que envolve análise palpatória muscular, teste de mobilidade articular, avaliação de desgaste dental por bruxismo e histórico de estresse.',
@@ -247,7 +284,7 @@ export const SERVICE_PAGES = {
       {
         question: 'Dores de cabeça frequentes podem ter origem nos dentes?',
         answer:
-          'Sim. A tensão nos músculos mastigatórios por causa de desequilíbrio na mordida ou DTM é uma causa comum de dores de cabeça conhecidas como cefaleia tensional.',
+          'Sim. A tensão nos músculos mastigatórios por causa de desequilíbrio na mordida ou DTM é uma causa comum de dores de cabeça tensionais.',
       },
       {
         question: 'O tratamento de DTM exige cirurgia?',
@@ -255,21 +292,18 @@ export const SERVICE_PAGES = {
           'Na grande maioria dos casos (mais de 90%), o tratamento é conservador e não cirúrgico, envolvendo placas, fisioterapia muscular e terapias de suporte.',
       },
     ],
-    whatsappMessage:
-      'Olá, Dr. Adriano! Gostaria de agendar uma avaliação para DTM e dor orofacial em São Lourenço do Oeste.',
+    whatsappMessagePattern: (city) => `Olá, Dr. Adriano! Gostaria de agendar uma avaliação para DTM e dor orofacial (${city.name}).`,
   },
 
-  'ozonioterapia-sao-lourenco-do-oeste': {
-    slug: 'ozonioterapia-sao-lourenco-do-oeste',
+  'ozonioterapia': {
+    baseSlug: 'ozonioterapia',
     label: 'Ozonioterapia',
     eyebrow: 'Terapia Bioestimulante & Cicatrização',
-    title: 'Ozonioterapia Odontológica em São Lourenço do Oeste | Dr. Adriano Camillo',
-    description:
-      'Ozonioterapia odontológica em São Lourenço do Oeste - SC. Terapia complementar com ação bactericida, anti-inflamatória e aceleradora de cicatrização.',
-    heading: 'Ozonioterapia Odontológica em São Lourenço do Oeste',
-    intro:
-      'Acelere a recuperação pós-operatória e previna infecções com o poder da Ozonioterapia medicinal. Tratamento biológico, seguro e indolor.',
-    sectionTitle: 'Tecnologia Biológica para a Saúde Bucal',
+    titlePattern: (city) => `Ozonioterapia Odontológica ${city.locationTitle} | Dr. Adriano Camillo`,
+    descriptionPattern: (city) => `Ozonioterapia odontológica ${city.locationTitle}. Terapia biológica com ação bactericida e aceleradora da cicatrização pós-operatória.`,
+    headingPattern: (city) => `Ozonioterapia Odontológica ${city.locationTitle}`,
+    introPattern: (city) => `Acelere a recuperação pós-operatória e previna infecções com o poder da Ozonioterapia medicinal ${city.contextText}`,
+    sectionTitlePattern: (city) => `Tecnologia Biológica para a Saúde Bucal ${city.locationTitle}`,
     paragraphs: [
       'A Ozonioterapia é uma modalidade terapêutica avançada que utiliza a mistura de oxigênio e ozônio medicinal (O3) para promover potente ação germicida, imunomoduladora e estimuladora de reparo tecidual.',
       'Na odontologia, a ozonioterapia é aplicada pelo Dr. Adriano Camillo como um excelente recurso complementar em procedimentos cirúrgicos (como implantes e extrações), tratamentos de canal, afecções gengivais, aftas e herpes.',
@@ -307,9 +341,41 @@ export const SERVICE_PAGES = {
           'Não. Trata-se de uma terapia complementar integrada que otimiza e potencializa os resultados dos tratamentos odontológicos tradicionais.',
       },
     ],
-    whatsappMessage:
-      'Olá, Dr. Adriano! Gostaria de agendar uma avaliação de ozonioterapia em São Lourenço do Oeste.',
+    whatsappMessagePattern: (city) => `Olá, Dr. Adriano! Gostaria de agendar uma avaliação de ozonioterapia (${city.name}).`,
   },
 };
 
+// Gera dinamicamente todas as combinações de Serviço + Cidade
+const generatedPages = {};
+
+Object.values(BASE_SERVICES).forEach((service) => {
+  Object.values(CITIES).forEach((city) => {
+    let slug = '';
+    if (service.baseSlug === 'dtm-dor-orofacial') {
+      slug = city.isPrimary ? 'dtm-dor-orofacial' : `dtm-dor-orofacial-${city.slugSuffix}`;
+    } else {
+      slug = `${service.baseSlug}-${city.slugSuffix}`;
+    }
+
+    generatedPages[slug] = {
+      slug,
+      cityName: city.name,
+      cityState: city.state,
+      label: service.label,
+      eyebrow: service.eyebrow,
+      title: service.titlePattern(city),
+      description: service.descriptionPattern(city),
+      heading: service.headingPattern(city),
+      intro: service.introPattern(city),
+      sectionTitle: service.sectionTitlePattern(city),
+      paragraphs: service.paragraphs,
+      benefits: service.benefits,
+      steps: service.steps,
+      faqs: service.faqs,
+      whatsappMessage: service.whatsappMessagePattern(city),
+    };
+  });
+});
+
+export const SERVICE_PAGES = generatedPages;
 export const SERVICE_PAGE_LIST = Object.values(SERVICE_PAGES);
