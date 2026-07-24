@@ -52,7 +52,7 @@ const Footer = () => {
               />
               <div>
                 <p className="text-lg font-bold text-white leading-tight">Dr. Adriano Camillo</p>
-                <p className="text-sm text-slate-300">Cirurgião-Dentista</p>
+                <p className="text-sm text-slate-300">{SITE.title} • {SITE.cro}</p>
               </div>
             </div>
             <p className="text-sm leading-relaxed text-slate-300 mb-6">
@@ -171,7 +171,7 @@ const Footer = () => {
         {/* Barra final */}
         <div className="py-6 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-3 text-sm text-slate-400">
           <p>
-            © {year} Dr. Adriano Camillo — Todos os direitos reservados.
+            © {year} Dr. Adriano Camillo — {SITE.cro} — Todos os direitos reservados.
           </p>
           <p>
             Atendimento para São Lourenço do Oeste • Chapecó • Pato Branco • Ampére • Realeza • Novo Horizonte
