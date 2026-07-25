@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.f2f9ec63.css",
-    "main.js": "/static/js/main.8f6cdef5.js",
+    "main.js": "/static/js/main.569065cd.js",
     "static/js/771.2e603f4c.chunk.js": "/static/js/771.2e603f4c.chunk.js",
     "static/js/377.9ba463e0.chunk.js": "/static/js/377.9ba463e0.chunk.js",
     "static/js/649.4d453bd5.chunk.js": "/static/js/649.4d453bd5.chunk.js",
@@ -21,11 +21,11 @@
     "static/media/botox_3.png": "/static/media/botox_3.f1f99aebfe62d559635e.png",
     "static/media/preenchimento_labial_3.png": "/static/media/preenchimento_labial_3.423ab82efe14d2a382d5.png",
     "static/media/preenchimento_labial_5.png": "/static/media/preenchimento_labial_5.b7f32557a17bef0a38b3.png",
-    "static/media/implante_dentario_1.png": "/static/media/implante_dentario_1.ccbd1f1072bb53009ab2.png",
     "static/media/preenchimento_mento.png": "/static/media/preenchimento_mento.b360d8b600d5880a608f.png",
     "static/media/lipo_papada.png": "/static/media/lipo_papada.b19b0285791191630d7f.png",
     "static/media/preenchimento_labial_1.png": "/static/media/preenchimento_labial_1.495849e47f7a9d46c6d5.png",
     "static/media/hifudois.mp4": "/static/media/hifudois.0e8f79f497c0548cb8a2.mp4",
+    "static/media/implante_dentario_1.png": "/static/media/implante_dentario_1.6ca39bd2809180a83001.png",
     "static/media/resultado_harmonizacao_3.webp": "/static/media/resultado_harmonizacao_3.0c2bf24486459dbd7620.webp",
     "static/media/harmonizacao_perfil.webp": "/static/media/harmonizacao_perfil.096460bed01eddbccfcf.webp",
     "static/media/resultado_harmonizacao_1.webp": "/static/media/resultado_harmonizacao_1.8368759d149cffb22fc5.webp",
@@ -53,6 +53,6 @@
   },
   "entrypoints": [
     "static/css/main.f2f9ec63.css",
-    "static/js/main.8f6cdef5.js"
+    "static/js/main.569065cd.js"
   ]
 }
