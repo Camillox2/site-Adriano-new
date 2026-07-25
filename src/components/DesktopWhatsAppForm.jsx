@@ -32,19 +32,23 @@ const DesktopWhatsAppForm = ({ defaultService = '', defaultCity = '', title = 'A
         <Sparkles size={16} />
         <span>Atendimento Direto e Rápido</span>
       </div>
-      <h3 className="text-xl font-bold text-white mb-1">{title}</h3>
+      <h2 className="text-xl font-bold text-white mb-1">{title}</h2>
       <p className="text-xs text-slate-300 mb-5">
         Preencha abaixo para abrir o WhatsApp com seu atendimento já priorizado.
       </p>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-xs font-medium text-slate-300 mb-1">Seu Nome</label>
+          <label htmlFor="desktop-form-name" className="block text-xs font-medium text-slate-300 mb-1">
+            Seu Nome
+          </label>
           <div className="relative">
             <User size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
             <input
+              id="desktop-form-name"
               type="text"
               required
+              aria-label="Seu Nome"
               placeholder="Ex: Dra. Juliana ou Marcos"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -55,12 +59,16 @@ const DesktopWhatsAppForm = ({ defaultService = '', defaultCity = '', title = 'A
 
         <div className="grid grid-cols-2 gap-3">
           <div>
-            <label className="block text-xs font-medium text-slate-300 mb-1">Seu WhatsApp</label>
+            <label htmlFor="desktop-form-phone" className="block text-xs font-medium text-slate-300 mb-1">
+              Seu WhatsApp
+            </label>
             <div className="relative">
               <Phone size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
               <input
+                id="desktop-form-phone"
                 type="tel"
                 required
+                aria-label="Seu WhatsApp"
                 placeholder="(00) 90000-0000"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
@@ -70,11 +78,15 @@ const DesktopWhatsAppForm = ({ defaultService = '', defaultCity = '', title = 'A
           </div>
 
           <div>
-            <label className="block text-xs font-medium text-slate-300 mb-1">Sua Cidade</label>
+            <label htmlFor="desktop-form-city" className="block text-xs font-medium text-slate-300 mb-1">
+              Sua Cidade
+            </label>
             <div className="relative">
               <MapPin size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
               <input
+                id="desktop-form-city"
                 type="text"
+                aria-label="Sua Cidade"
                 placeholder="Ex: Chapecó"
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
@@ -85,8 +97,12 @@ const DesktopWhatsAppForm = ({ defaultService = '', defaultCity = '', title = 'A
         </div>
 
         <div>
-          <label className="block text-xs font-medium text-slate-300 mb-1">Assunto de Interesse</label>
+          <label htmlFor="desktop-form-service" className="block text-xs font-medium text-slate-300 mb-1">
+            Assunto de Interesse
+          </label>
           <select
+            id="desktop-form-service"
+            aria-label="Assunto de Interesse"
             value={service}
             onChange={(e) => setService(e.target.value)}
             className="w-full bg-slate-950/80 border border-slate-800 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500 transition-colors"
