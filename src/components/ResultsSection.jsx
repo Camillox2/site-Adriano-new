@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { createPortal } from 'react-dom';
 import { Sparkles, Play, ZoomIn, X, CheckCircle, ArrowRight, ShieldCheck } from 'lucide-react';
 import { WHATSAPP_DEFAULT } from '../utils/constants';
 import Reveal from './Reveal';
@@ -328,18 +329,18 @@ const ResultsSection = () => {
           ))}
         </div>
 
-        {/* Modal de Imagem Ampliada */}
-        {selectedImage && (
+        {/* Modal de Imagem Ampliada com Portal */}
+        {selectedImage && createPortal(
           <div
-            className="fixed inset-0 bg-slate-950/95 backdrop-blur-md flex items-center justify-center z-50 p-3 sm:p-6 animate-fade-in overflow-y-auto"
+            className="fixed inset-0 bg-slate-950/95 backdrop-blur-md flex items-center justify-center z-[99999] p-2 sm:p-6 animate-fade-in overflow-y-auto"
             onClick={() => setSelectedImage(null)}
             role="dialog"
             aria-modal="true"
           >
-            {/* Botão de Fechar Fixo na Tela */}
+            {/* Botão de Fechar Fixo Flutuante */}
             <button
               onClick={() => setSelectedImage(null)}
-              className="fixed top-4 right-4 sm:top-6 sm:right-6 z-[100] bg-emerald-600 hover:bg-emerald-500 text-white rounded-full p-3 shadow-2xl transition-transform active:scale-95 flex items-center gap-1.5 font-bold text-sm border border-white/20 cursor-pointer"
+              className="fixed top-4 right-4 sm:top-6 sm:right-6 z-[100000] bg-emerald-600 hover:bg-emerald-500 text-white rounded-full p-3 shadow-2xl transition-transform active:scale-95 flex items-center gap-1.5 font-bold text-sm border border-white/20 cursor-pointer"
               aria-label="Fechar modal"
             >
               <X size={22} />
@@ -347,30 +348,36 @@ const ResultsSection = () => {
             </button>
 
             <div
-              className="relative max-w-3xl w-full bg-white rounded-3xl overflow-hidden shadow-2xl my-auto border border-slate-100 flex flex-col max-h-[90vh]"
+              className="relative max-w-3xl w-full bg-white rounded-3xl overflow-hidden shadow-2xl my-auto border border-slate-100 flex flex-col max-h-[92vh]"
               onClick={(e) => e.stopPropagation()}
             >
+              {/* Barra de Cabeçalho do Modal com Botão de Fechar Explicito */}
+              <div className="flex items-center justify-between px-5 py-3.5 border-b border-slate-100 bg-slate-50/90 shrink-0">
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                  <span className="text-xs font-bold uppercase text-slate-700 tracking-wider">
+                    {selectedImage.categoryLabel}
+                  </span>
+                </div>
+                <button
+                  onClick={() => setSelectedImage(null)}
+                  className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-3.5 py-1.5 rounded-full text-xs transition-colors flex items-center gap-1 cursor-pointer shadow-sm"
+                >
+                  <span>Fechar</span>
+                  <X size={16} />
+                </button>
+              </div>
+
               {/* Imagem principal */}
               <div className="relative flex-1 min-h-0 bg-black flex items-center justify-center overflow-hidden">
                 <img
                   src={selectedImage.image}
                   alt={selectedImage.title}
-                  className="max-h-[60vh] sm:max-h-[68vh] w-auto object-contain mx-auto"
+                  className="max-h-[55vh] sm:max-h-[65vh] w-auto object-contain mx-auto"
                 />
               </div>
 
               <div className="p-5 sm:p-6 bg-white shrink-0">
-                <div className="flex items-center justify-between mb-1">
-                  <span className="text-xs font-bold uppercase text-emerald-600 tracking-wider">
-                    {selectedImage.categoryLabel}
-                  </span>
-                  <button
-                    onClick={() => setSelectedImage(null)}
-                    className="sm:hidden text-xs text-slate-500 hover:text-slate-800 font-semibold px-2 py-1 bg-slate-100 rounded-lg cursor-pointer"
-                  >
-                    Fechar ✕
-                  </button>
-                </div>
                 <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-1.5">
                   {selectedImage.title}
                 </h3>
@@ -394,13 +401,14 @@ const ResultsSection = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div>,
+          document.body
         )}
 
-        {/* Modal de Vídeo Ampliado */}
-        {isVideoModalOpen && (
+        {/* Modal de Vídeo Ampliado com Portal */}
+        {isVideoModalOpen && createPortal(
           <div
-            className="fixed inset-0 bg-slate-950/95 backdrop-blur-md flex items-center justify-center z-50 p-3 sm:p-6 animate-fade-in overflow-y-auto"
+            className="fixed inset-0 bg-slate-950/95 backdrop-blur-md flex items-center justify-center z-[99999] p-3 sm:p-6 animate-fade-in overflow-y-auto"
             onClick={() => setIsVideoModalOpen(false)}
             role="dialog"
             aria-modal="true"
@@ -408,7 +416,7 @@ const ResultsSection = () => {
             {/* Botão de Fechar Fixo na Tela */}
             <button
               onClick={() => setIsVideoModalOpen(false)}
-              className="fixed top-4 right-4 sm:top-6 sm:right-6 z-[100] bg-emerald-600 hover:bg-emerald-500 text-white rounded-full p-3 shadow-2xl transition-transform active:scale-95 flex items-center gap-1.5 font-bold text-sm border border-white/20 cursor-pointer"
+              className="fixed top-4 right-4 sm:top-6 sm:right-6 z-[100000] bg-emerald-600 hover:bg-emerald-500 text-white rounded-full p-3 shadow-2xl transition-transform active:scale-95 flex items-center gap-1.5 font-bold text-sm border border-white/20 cursor-pointer"
               aria-label="Fechar vídeo"
             >
               <X size={22} />
@@ -419,7 +427,20 @@ const ResultsSection = () => {
               className="relative max-w-2xl w-full bg-slate-900 rounded-3xl overflow-hidden shadow-2xl my-auto border border-slate-800"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="aspect-[9/16] max-h-[75vh] mx-auto bg-black">
+              {/* Top Bar for Video Modal */}
+              <div className="flex items-center justify-between px-5 py-3 border-b border-slate-800 bg-slate-950 shrink-0">
+                <span className="text-xs font-bold uppercase text-emerald-400 tracking-wider">
+                  Vídeo de Paciente Real
+                </span>
+                <button
+                  onClick={() => setIsVideoModalOpen(false)}
+                  className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-3 py-1 rounded-full text-xs transition-colors flex items-center gap-1 cursor-pointer"
+                >
+                  <span>Fechar</span>
+                  <X size={14} />
+                </button>
+              </div>
+              <div className="aspect-[9/16] max-h-[70vh] mx-auto bg-black">
                 <video
                   src={antesEDepoisVideo}
                   controls
@@ -428,7 +449,8 @@ const ResultsSection = () => {
                 />
               </div>
             </div>
-          </div>
+          </div>,
+          document.body
         )}
       </div>
     </section>

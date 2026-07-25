@@ -1,4 +1,5 @@
 import React, { useState, useCallback, memo } from 'react';
+import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
 import {
   CheckCircle,
@@ -146,18 +147,18 @@ const VideoCard = memo(({ video, onClick }) => (
 VideoCard.displayName = 'VideoCard';
 
 // ---------- modal de vídeo ----------
-export const VideoModal = ({ video, onClose }) => (
+export const VideoModal = ({ video, onClose }) => createPortal(
   <div
-    className="fixed inset-0 bg-slate-950/90 backdrop-blur-md flex items-center justify-center z-50 p-4 animate-fade-in overflow-y-auto"
+    className="fixed inset-0 bg-slate-950/95 backdrop-blur-md flex items-center justify-center z-[99999] p-4 animate-fade-in overflow-y-auto"
     onClick={onClose}
     role="dialog"
     aria-modal="true"
     aria-label={video.title}
   >
-    {/* Botão de Fechar Fixo no Canto Superior da Tela (Impossível ficar fora da tela) */}
+    {/* Botão de Fechar Fixo no Canto Superior da Tela */}
     <button
       onClick={onClose}
-      className="fixed top-4 right-4 sm:top-6 sm:right-6 z-[100] bg-emerald-600 hover:bg-emerald-500 text-white rounded-full p-3 shadow-2xl transition-transform active:scale-95 flex items-center gap-1.5 font-bold text-sm border border-white/20 cursor-pointer"
+      className="fixed top-4 right-4 sm:top-6 sm:right-6 z-[100000] bg-emerald-600 hover:bg-emerald-500 text-white rounded-full p-3 shadow-2xl transition-transform active:scale-95 flex items-center gap-1.5 font-bold text-sm border border-white/20 cursor-pointer"
       aria-label="Fechar vídeo"
     >
       <X size={22} />
@@ -183,14 +184,15 @@ export const VideoModal = ({ video, onClose }) => (
           </div>
           <button
             onClick={onClose}
-            className="sm:hidden shrink-0 bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-xl text-xs font-semibold cursor-pointer"
+            className="shrink-0 bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-xl text-xs font-semibold cursor-pointer shadow-md"
           >
             Fechar ✕
           </button>
         </div>
       </div>
     </div>
-  </div>
+  </div>,
+  document.body
 );
 
 // ---------- seção ----------
