@@ -103,6 +103,28 @@ const ResultsSection = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
 
+  // Efeito para travar o scroll e permitir fechar modais via tecla Escape
+  React.useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setSelectedImage(null);
+        setIsVideoModalOpen(false);
+      }
+    };
+
+    if (selectedImage || isVideoModalOpen) {
+      document.body.style.overflow = 'hidden';
+      window.addEventListener('keydown', handleKeyDown);
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [selectedImage, isVideoModalOpen]);
+
   const filteredResults = activeCategory === 'todos'
     ? RESULTS_DATA
     : RESULTS_DATA.filter((r) => r.category === activeCategory);
@@ -213,8 +235,17 @@ const ResultsSection = () => {
           {filteredResults.map((item, idx) => (
             <Reveal key={item.id} delay={idx * 80}>
               <div
+                role="button"
+                tabIndex={0}
                 onClick={() => setSelectedImage(item)}
-                className="group relative bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col h-full"
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setSelectedImage(item);
+                  }
+                }}
+                aria-label={`Ver detalhes do resultado: ${item.title}`}
+                className="group relative bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col h-full focus:outline-none focus-visible:ring-4 focus-visible:ring-emerald-400"
               >
                 <div className="relative aspect-[4/4] overflow-hidden bg-slate-100">
                   <img
