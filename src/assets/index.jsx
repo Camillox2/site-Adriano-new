@@ -14,6 +14,21 @@ import hifuEquipamentoDois from './images/Screenshot_20241104_152125_Photos.webp
 import whatsappScreenshot from './images/Screenshot_20231028_123109_WhatsApp.webp';
 import photosScreenshot from './images/Screenshot_20241126_094251_Photos.webp';
 
+// Novas fotos
+import preenchimento_labial_1 from './novas/preenchimento_labial_1.png';
+import preenchimento_labial_2 from './novas/preenchimento_labial_2.png';
+import preenchimento_labial_3 from './novas/preenchimento_labial_3.png';
+import preenchimento_labial_4 from './novas/preenchimento_labial_4.png';
+import preenchimento_labial_5 from './novas/preenchimento_labial_5.png';
+import lipo_papada from './novas/lipo_papada.png';
+import lifting_facial from './novas/lifting_facial.png';
+import preenchimento_mento from './novas/preenchimento_mento.png';
+import botox_1 from './novas/botox_1.png';
+import botox_2 from './novas/botox_2.png';
+import botox_3 from './novas/botox_3.png';
+import harmonizacao_antes_depois_1 from './novas/harmonizacao_antes_depois_1.png';
+import harmonizacao_antes_depois_2 from './novas/harmonizacao_antes_depois_2.png';
+
 // Posters (thumbnails reais extraídos dos vídeos)
 import posterHifu from './images/poster-hifu.webp';
 import posterHifuAtendimento from './images/poster-hifuatendimento.webp';
@@ -51,6 +66,21 @@ const images = {
   posterHifuAtendimento,
   posterHifuDois,
   posterHifuTres,
+
+  // Novas
+  preenchimento_labial_1,
+  preenchimento_labial_2,
+  preenchimento_labial_3,
+  preenchimento_labial_4,
+  preenchimento_labial_5,
+  lipo_papada,
+  lifting_facial,
+  preenchimento_mento,
+  botox_1,
+  botox_2,
+  botox_3,
+  harmonizacao_antes_depois_1,
+  harmonizacao_antes_depois_2,
 };
 
 const videos = {

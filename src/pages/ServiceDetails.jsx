@@ -20,7 +20,6 @@ import {
   TrendingUp,
   Zap,
   Award,
-  Instagram,
 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -31,8 +30,9 @@ import CountUp from '../components/CountUp';
 import HifuRentalDetails from './HifuRentalDetails';
 import DesktopWhatsAppForm from '../components/DesktopWhatsAppForm';
 import RegionalLocationCard from '../components/RegionalLocationCard';
+import AnimatedServiceContent from '../components/AnimatedServiceContent';
 import { SERVICE_PAGES } from '../data/servicePages';
-import { ADDRESS, SITE, whatsapp } from '../utils/constants';
+import { ADDRESS, whatsapp } from '../utils/constants';
 import { images } from '../assets';
 
 /* ---------- ícones disponíveis ---------- */
@@ -299,61 +299,9 @@ const ServiceDetails = () => {
         )}
 
         {/* ══════════════════════════════════════════════════
-            CONTEÚDO + FOTO CONSULTÓRIO (estilo About)
+            CONTEÚDO DINÂMICO + FOTOS ROTATIVAS
            ══════════════════════════════════════════════════ */}
-        <section className="section bg-slate-50">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-14 items-center">
-              {/* Foto */}
-              <Reveal className="lg:col-span-2 flex justify-center">
-                <div className="relative">
-                  <div
-                    className="absolute -inset-3 bg-gradient-to-tr from-primary-200 to-emerald-200 rounded-[2rem] blur-xl opacity-70"
-                    aria-hidden="true"
-                  />
-                  <img
-                    src={images.consultorio2}
-                    alt="Interior do consultório do Dr. Adriano Camillo em São Lourenço do Oeste"
-                    loading="lazy"
-                    width="440"
-                    height="520"
-                    className="relative w-72 h-80 sm:w-80 sm:h-96 lg:w-[24rem] lg:h-[28rem] object-cover object-center rounded-[2rem] shadow-2xl"
-                  />
-                  <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 bg-white shadow-xl rounded-2xl px-6 py-3 text-center border border-slate-100 whitespace-nowrap">
-                    <span className="block font-bold text-slate-900">{page.label}</span>
-                    <span className="block text-sm text-slate-500">São Lourenço do Oeste - SC</span>
-                  </div>
-                </div>
-              </Reveal>
-
-              {/* Texto */}
-              <div className="lg:col-span-3 space-y-6">
-                <Reveal>
-                  <span className="section-eyebrow">Atendimento personalizado</span>
-                  <h2 className="section-title mt-5">{page.sectionTitle}</h2>
-                </Reveal>
-                <Reveal delay={100}>
-                  <div className="space-y-5 text-slate-600 leading-relaxed md:text-lg">
-                    {page.paragraphs.map((paragraph) => (
-                      <p key={paragraph.substring(0, 40)}>{paragraph}</p>
-                    ))}
-                  </div>
-                </Reveal>
-                <Reveal delay={200}>
-                  <a
-                    href={SITE.instagram}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-primary-700 font-semibold hover:gap-3 transition-all"
-                  >
-                    <Instagram size={18} aria-hidden="true" />
-                    Acompanhe o dia a dia no Instagram
-                  </a>
-                </Reveal>
-              </div>
-            </div>
-          </div>
-        </section>
+        <AnimatedServiceContent page={page} />
 
         {/* ══════════════════════════════════════════════════
             BENEFÍCIOS — grid de cards com ícone e descrição

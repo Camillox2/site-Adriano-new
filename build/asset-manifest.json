@@ -1,16 +1,29 @@
 {
   "files": {
-    "main.css": "/static/css/main.b02ad9dc.css",
-    "main.js": "/static/js/main.8dc06625.js",
-    "static/js/771.f5b043b1.chunk.js": "/static/js/771.f5b043b1.chunk.js",
-    "static/js/377.419b1943.chunk.js": "/static/js/377.419b1943.chunk.js",
-    "static/js/649.9f742228.chunk.js": "/static/js/649.9f742228.chunk.js",
-    "static/js/227.af939cfb.chunk.js": "/static/js/227.af939cfb.chunk.js",
+    "main.css": "/static/css/main.b41d8ddc.css",
+    "main.js": "/static/js/main.b948b382.js",
+    "static/js/771.7b08dff9.chunk.js": "/static/js/771.7b08dff9.chunk.js",
+    "static/js/377.5a1ab9a9.chunk.js": "/static/js/377.5a1ab9a9.chunk.js",
+    "static/js/649.8ee06f0b.chunk.js": "/static/js/649.8ee06f0b.chunk.js",
+    "static/js/430.013d315d.chunk.js": "/static/js/430.013d315d.chunk.js",
     "static/js/524.366a241c.chunk.js": "/static/js/524.366a241c.chunk.js",
     "static/media/antesedepois.mp4": "/static/media/antesedepois.4b9da811f499f79fe9a7.mp4",
+    "static/media/preenchimento_labial_4.png": "/static/media/preenchimento_labial_4.c634eaac0fa46f3befb3.png",
     "static/media/hifuatendimento.mp4": "/static/media/hifuatendimento.167f2f169a1046de8289.mp4",
     "static/media/hifutres.mp4": "/static/media/hifutres.cfa9d7e763b20048d345.mp4",
+    "static/media/harmonizacao_antes_depois_1.png": "/static/media/harmonizacao_antes_depois_1.12cca061a723a34e1156.png",
+    "static/media/harmonizacao_antes_depois_2.png": "/static/media/harmonizacao_antes_depois_2.041142bf99a31b6bb3ec.png",
+    "static/media/lifting_facial.png": "/static/media/lifting_facial.5c354245d76da3e17b11.png",
+    "static/media/preenchimento_labial_2.png": "/static/media/preenchimento_labial_2.a212d052b51cc11ef68e.png",
+    "static/media/botox_1.png": "/static/media/botox_1.13f270064cf2ee97e778.png",
     "static/media/hifu.mp4": "/static/media/hifu.e12d90846def5759a8dc.mp4",
+    "static/media/botox_2.png": "/static/media/botox_2.4824b44783d405ef9ae1.png",
+    "static/media/botox_3.png": "/static/media/botox_3.f1f99aebfe62d559635e.png",
+    "static/media/preenchimento_labial_3.png": "/static/media/preenchimento_labial_3.423ab82efe14d2a382d5.png",
+    "static/media/preenchimento_labial_5.png": "/static/media/preenchimento_labial_5.b7f32557a17bef0a38b3.png",
+    "static/media/preenchimento_mento.png": "/static/media/preenchimento_mento.b360d8b600d5880a608f.png",
+    "static/media/lipo_papada.png": "/static/media/lipo_papada.b19b0285791191630d7f.png",
+    "static/media/preenchimento_labial_1.png": "/static/media/preenchimento_labial_1.495849e47f7a9d46c6d5.png",
     "static/media/hifudois.mp4": "/static/media/hifudois.0e8f79f497c0548cb8a2.mp4",
     "static/media/resultado_harmonizacao_3.webp": "/static/media/resultado_harmonizacao_3.0c2bf24486459dbd7620.webp",
     "static/media/harmonizacao_perfil.webp": "/static/media/harmonizacao_perfil.096460bed01eddbccfcf.webp",
@@ -38,7 +51,7 @@
     "static/media/newlogo.webp": "/static/media/newlogo.cbe39ddb96ce4106f348.webp"
   },
   "entrypoints": [
-    "static/css/main.b02ad9dc.css",
-    "static/js/main.8dc06625.js"
+    "static/css/main.b41d8ddc.css",
+    "static/js/main.b948b382.js"
   ]
 }

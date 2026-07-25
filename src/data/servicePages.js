@@ -235,12 +235,12 @@ const BASE_SERVICES = {
     headingPattern: (city) => `Odontologia Estética ${city.locationTitle}`,
     introPattern: (city) => `Transforme o seu sorriso com planejamento individualizado, tecnologia digital e preservação da saúde bucal ${city.contextText}`,
     sectionTitlePattern: (city) => `Estética Odontológica com Planejamento ${city.locationTitle}`,
-    paragraphs: [
-      'A odontologia estética moderna elevou a transformação do sorriso a um nível de altíssima precisão e previsibilidade. Mais do que simplesmente buscar dentes brancos, focamos na harmonia facial completa, garantindo que o seu novo sorriso complemente e valorize os seus traços naturais de forma autêntica e sofisticada.',
-      'Com o uso do Design Digital do Sorriso, o Dr. Adriano Camillo realiza um planejamento minucioso através de fotografias, vídeos e escaneamento intraoral. Antes mesmo de iniciar qualquer intervenção, você poderá visualizar e até mesmo provar o resultado final através do mockup digital, uma simulação real colocada sobre seus dentes.',
-      'As lentes de contato dental em cerâmica (porcelana) e as facetas em resina composta de alta performance são confeccionadas de maneira artesanal, camada por camada. Elas permitem corrigir assimetrias, diastemas (espaços entre os dentes), formatos irregulares e alterações de cor que não respondem ao clareamento, tudo isso com um preparo minimamente invasivo, que muitas vezes dispensa qualquer desgaste estrutural do dente natural.',
-      'Para quem busca iluminar o sorriso de forma mais simples, nossos protocolos de clareamento dental combinam técnicas de consultório e moldeiras para uso domiciliar. Essa abordagem híbrida não só garante uma cor mais vibrante e duradoura, mas também inclui terapias dessensibilizantes, proporcionando máximo conforto sem a dor e a sensibilidade antigamente associadas ao clareamento.',
-      'Cada detalhe do tratamento estético é pensado para preservar a integridade da sua saúde bucal. Aliamos tecnologia, técnica apurada e materiais biocompatíveis de última geração para entregar não apenas um sorriso deslumbrante, mas uma mastigação funcional, gengivas saudáveis e resultados que resistam belos ao longo dos anos.'
+    shortIntro: 'A odontologia estética moderna eleva a transformação do sorriso a um nível de altíssima precisão. Focamos na harmonia facial completa, garantindo resultados naturais e sofisticados.',
+    topicPoints: [
+      { title: 'Design Digital do Sorriso', text: 'Planejamento minucioso através de fotografias, vídeos e escaneamento intraoral. Visualize e prove o resultado final através do mockup digital antes de iniciar.' },
+      { title: 'Lentes e Facetas Premium', text: 'Confeccionadas de maneira artesanal para corrigir assimetrias, diastemas e formatos irregulares. Preparo minimamente invasivo que preserva a estrutura do dente natural.' },
+      { title: 'Clareamento Confortável', text: 'Protocolos que combinam técnicas de consultório e moldeiras para uso domiciliar. Inclui terapias dessensibilizantes para máximo conforto sem dor e sem sensibilidade.' },
+      { title: 'Saúde e Longevidade', text: 'Aliamos tecnologia e materiais biocompatíveis de última geração. Garantimos não apenas estética, mas mastigação funcional e gengivas saudáveis.' }
     ],
     highlights: [
       {
@@ -308,12 +308,12 @@ const BASE_SERVICES = {
     headingPattern: (city) => `Implantes Dentários ${city.locationTitle}`,
     introPattern: (city) => `Recupere a mastigação firme, a segurança para falar e a alegria de sorrir ${city.contextText}`,
     sectionTitlePattern: (city) => `Reabilitação Oral Segura e Planejada ${city.locationTitle}`,
-    paragraphs: [
-      'A perda de dentes é uma condição que vai muito além da estética, afetando profundamente a saúde sistêmica, a eficiência da mastigação e o convívio social. Os implantes dentários revolucionaram a odontologia ao oferecer a solução mais definitiva e biologicamente compatível para a substituição de dentes ausentes, atuando como verdadeiras raízes artificiais.',
-      'O sucesso de um implante depende fundamentalmente da osseointegração – o processo biológico pelo qual o osso se funde firmemente à superfície de titânio do implante. No consultório do Dr. Adriano Camillo, utilizamos implantes de altíssima pureza e superfícies tratadas com nanotecnologia, o que acelera a cicatrização e garante uma estabilidade excepcional a longo prazo.',
-      'Nosso planejamento é conduzido de ponta a ponta com recursos de imagem em 3D (tomografia computadorizada). Isso nos permite avaliar a densidade e o volume ósseo de forma milimétrica. Para pacientes que sofreram reabsorção óssea severa ao longo dos anos, realizamos procedimentos avançados de enxerto ósseo e levantamento de seio maxilar, viabilizando a instalação segura dos implantes.',
-      'Uma de nossas grandes especialidades é o Protocolo All-on-4 e All-on-6. Essa técnica permite que pacientes que usam dentaduras removíveis substituam toda a arcada por dentes fixos suportados por apenas 4 ou 6 implantes estratégicos. Em muitos casos, conseguimos aplicar a técnica de "Carga Imediata", instalando os implantes e a prótese fixa no mesmo dia ou em poucos dias.',
-      'Todo procedimento cirúrgico é realizado em um ambiente rigorosamente asséptico, sob anestesia local altamente eficiente, garantindo que você não sinta dor. Com acompanhamento humanizado e prescrição medicamentosa adequada, o período de recuperação é surpreendentemente tranquilo, devolvendo rapidamente a sua segurança para sorrir e mastigar qualquer tipo de alimento.'
+    shortIntro: 'Os implantes dentários oferecem a solução mais definitiva e biologicamente compatível para a substituição de dentes ausentes. Recupere a eficiência da mastigação e o convívio social com segurança.',
+    topicPoints: [
+      { title: 'Osseointegração Avançada', text: 'Utilizamos implantes de altíssima pureza com superfícies de nanotecnologia. Isso acelera a cicatrização e garante uma estabilidade excepcional a longo prazo.' },
+      { title: 'Planejamento 3D de Precisão', text: 'Avaliação milimétrica com tomografia computadorizada. Realizamos enxertos ósseos avançados quando necessário para viabilizar a instalação mais segura.' },
+      { title: 'Carga Imediata e All-on-4', text: 'Substitua dentaduras por dentes fixos suportados por 4 a 6 implantes. Em muitos casos, conseguimos instalar os implantes e a prótese fixa no mesmo dia.' },
+      { title: 'Cirurgia Indolor', text: 'Procedimento rigorosamente asséptico sob anestesia local altamente eficiente. Recuperação tranquila com acompanhamento humanizado e medicações precisas.' }
     ],
     highlights: [
       {
@@ -381,12 +381,12 @@ const BASE_SERVICES = {
     headingPattern: (city) => `Ortodontia ${city.locationTitle}`,
     introPattern: (city) => `Conquiste um sorriso alinhado e melhore a sua saúde bucal ${city.contextText}`,
     sectionTitlePattern: (city) => `Alinhamento Dental e Correção da Mordida ${city.locationTitle}`,
-    paragraphs: [
-      'A ortodontia moderna deixou de ser um tratamento focado apenas em adolescentes de aparelhos metálicos. Hoje, pacientes de todas as idades buscam não apenas alinhar o sorriso para fins estéticos, mas principalmente corrigir desequilíbrios da mordida (oclusão) que podem causar problemas articulares severos e envelhecimento precoce dos dentes.',
-      'O alinhamento correto dos dentes facilita muito a higienização diária, diminuindo drasticamente os riscos de cáries, gengivite e perda óssea. Além disso, uma mastigação bem distribuída previne retrações gengivais, dores de cabeça tensionais e desgaste nas articulações temporomandibulares (ATM).',
-      'Para garantir precisão milimétrica, o diagnóstico é o pilar central. Realizamos análises faciais detalhadas, avaliações cefalométricas e escaneamento digital para entender a relação entre os seus ossos da face e o posicionamento dos dentes. Só assim podemos planejar os vetores de força corretos para um movimento rápido, eficiente e biologicamente seguro.',
-      'Oferecemos opções ortodônticas inovadoras para se adequar ao seu estilo de vida. Destacamos os Aparelhos Autoligados, que geram menos atrito, eliminam as borrachinhas e aceleram o tratamento, os Aparelhos Estéticos de Safira ou Cerâmica, quase invisíveis, e a grande revolução dos Alinhadores Invisíveis (placas transparentes removíveis) que trazem máximo conforto estético.',
-      'Nosso compromisso é o acompanhamento de excelência. Cada manutenção mensal é focada em aplicar a ativação correta do sistema. E, tão importante quanto mover os dentes, é a fase de contenção ortodôntica fixa e removível que aplicamos ao final, garantindo que o seu novo sorriso alinhado se mantenha estável por toda a vida.'
+    shortIntro: 'A ortodontia moderna alinha o sorriso e corrige desequilíbrios da mordida. Um tratamento eficiente para todas as idades, focando em estética natural e saúde articular.',
+    topicPoints: [
+      { title: 'Saúde Bucal Facilitada', text: 'Dentes alinhados diminuem drasticamente os riscos de cáries e perda óssea. Uma mastigação bem distribuída previne retrações e dores tensionais na ATM.' },
+      { title: 'Diagnóstico de Alta Precisão', text: 'Análises faciais, cefalométricas e escaneamento digital minucioso. Planejamos os vetores de força ideais para um movimento rápido e biologicamente seguro.' },
+      { title: 'Opções Ortodônticas Inovadoras', text: 'Trabalhamos com aparelhos autoligados, estéticos de safira e a revolução dos alinhadores invisíveis. Conforto e discrição adequados ao seu estilo de vida.' },
+      { title: 'Estabilidade Permanente', text: 'Focamos com rigor na fase de contenção ortodôntica fixa e removível ao final do processo. Garantimos que seu novo sorriso se mantenha estável por toda a vida.' }
     ],
     highlights: [
       {
@@ -447,6 +447,7 @@ const BASE_SERVICES = {
 
   'harmonizacao-orofacial': {
     baseSlug: 'harmonizacao-orofacial',
+    images: ['harmonizacao_antes_depois_1', 'harmonizacao_antes_depois_2', 'preenchimento_labial_1', 'preenchimento_labial_2', 'preenchimento_labial_3', 'preenchimento_labial_4', 'preenchimento_labial_5', 'preenchimento_mento', 'botox_1', 'botox_2', 'botox_3'],
     label: 'Harmonização Orofacial',
     eyebrow: 'Estética Facial & Rejuvenescimento',
     titlePattern: (city) => `Harmonização Orofacial ${city.locationTitle} | Dr. Adriano Camillo`,
@@ -454,12 +455,12 @@ const BASE_SERVICES = {
     headingPattern: (city) => `Harmonização Orofacial ${city.locationTitle}`,
     introPattern: (city) => `Realce seus traços marcantes e previna o envelhecimento precoce com procedimentos faciais seguros ${city.contextText}`,
     sectionTitlePattern: (city) => `Equilíbrio Facial com Indicação Responsável ${city.locationTitle}`,
-    paragraphs: [
-      'A Harmonização Orofacial (HOF) praticada no consultório do Dr. Adriano Camillo é pautada pelo respeito rigoroso à anatomia natural, elegância e segurança. A face é a moldura do sorriso, e nosso objetivo é promover o equilíbrio estético restaurando os volumes perdidos e amenizando as marcas da gravidade e da idade, sem criar aparências artificiais ou exageradas.',
-      'O primeiro passo de qualquer procedimento é a Análise Facial Visagista. Estudamos as proporções, o padrão ósseo, as linhas de tensão e a simetria de cada paciente. Procedimentos como o Preenchimento Labial e Malar (maçãs do rosto) com ácido hialurônico são feitos para devolver a sustentação dos tecidos e contornar a mandíbula, proporcionando um rosto mais firme e definido.',
-      'Para a prevenção de rugas dinâmicas (aquelas formadas pelas expressões), a Toxina Botulínica (Botox) é o tratamento padrão-ouro. Aplicada com precisão nos músculos específicos, ela relaxa as áreas de maior tensão na testa, glabela e pés de galinha, promovendo um semblante descansado. Além disso, utilizamos a toxina de forma terapêutica para auxiliar no alívio de apertamento dentário e correção de sorriso gengival.',
-      'Outra vertente poderosa da nossa harmonização são os Bioestimuladores de Colágeno e os Fios de PDO. Esses tratamentos agem profundamente na derme, obrigando a pele a produzir colágeno novo, melhorando a espessura, a elasticidade e o brilho facial a longo prazo, funcionando como uma verdadeira poupança de juventude estrutural.',
-      'Toda a nossa atuação na Harmonização Orofacial é minimamente invasiva, priorizando o uso de microcânulas flexíveis que não cortam vasos sanguíneos, reduzindo drasticamente as chances de hematomas. Os procedimentos são realizados em ambiente clínico seguro, utilizando apenas substâncias biocompatíveis de marcas premium e alta rastreabilidade (ANVISA).'
+    shortIntro: 'Promovemos o equilíbrio estético restaurando volumes e amenizando as marcas do tempo. Respeitamos rigorosamente a anatomia natural, sem criar aparências artificiais.',
+    topicPoints: [
+      { title: 'Análise Facial Visagista', text: 'Estudo detalhado das proporções, simetria e linhas de tensão do paciente. Planejamos preenchimentos labiais e malares para devolver a sustentação de forma elegante.' },
+      { title: 'Toxina Botulínica (Botox)', text: 'O tratamento padrão-ouro para a prevenção de rugas dinâmicas e relaxamento. Também utilizada de forma terapêutica para alívio do apertamento dentário severo.' },
+      { title: 'Bioestimuladores e Fios de PDO', text: 'Tratamentos que agem na derme profunda estimulando a produção de colágeno novo. Melhoram a espessura, elasticidade e brilho facial a longo prazo estruturalmente.' },
+      { title: 'Técnicas Minimamente Invasivas', text: 'Uso de microcânulas flexíveis que reduzem a zero as chances de cortes em vasos sanguíneos. Procedimentos realizados com substâncias biocompatíveis e certificadas (ANVISA).' }
     ],
     highlights: [
       {
@@ -527,12 +528,12 @@ const BASE_SERVICES = {
     headingPattern: (city) => `DTM e Dor Orofacial ${city.locationTitle}`,
     introPattern: (city) => `Alivie dores na mandíbula, estalos articulares e dores de cabeça ${city.contextText}`,
     sectionTitlePattern: (city) => `Diagnóstico Criterioso para o Alívio da Dor ${city.locationTitle}`,
-    paragraphs: [
-      'A Disfunção Temporomandibular (DTM) afeta milhares de pessoas silenciosamente. Ela compreende um conjunto de alterações na articulação que liga a mandíbula ao crânio (ATM) e nos músculos responsáveis pela mastigação. Estalos ao abrir ou fechar a boca, limitação de abertura bucal, zumbidos no ouvido, dor na face e cansaço ao mastigar são alertas de que o sistema entrou em colapso mecânico ou inflamatório.',
-      'Muitos pacientes chegam ao nosso consultório sofrendo há anos com enxaquecas crônicas, e dor cervical ou na nuca, sem saber que a verdadeira origem do problema pode estar em um desequilíbrio oclusal ou em sobrecargas tensionais vindas da mandíbula. O bruxismo (ato de ranger os dentes) e o apertamento dental diurno ou noturno são os grandes vilões do século, intimamente ligados a fatores psicológicos, como ansiedade e estresse crônico.',
-      'No consultório do Dr. Adriano Camillo, o tratamento da DTM começa com uma escuta atenta e uma minuciosa anamnese. Realizamos exames palpatórios da musculatura craniofacial e de mobilidade articular, acompanhados de exames de imagem específicos (como tomografias e ressonâncias), para descobrir exatamente qual estrutura anatômica está comprometida, evitando tratamentos superficiais.',
-      'Nossa abordagem é primordialmente conservadora, não invasiva e baseada em evidências científicas. Confeccionamos placas miorrelaxantes lisas e rígidas, calibradas de forma milimétrica para descomprimir a articulação e proteger os dentes de desgastes severos e trincas. Essa simples, porém técnica placa noturna, é capaz de reprogramar a musculatura mastigatória, trazendo alívio imediato a tensões persistentes.',
-      'Além do suporte mecânico, adotamos uma visão integrativa para o alívio da dor. Incorporamos recursos como a terapia fotodinâmica (Laserterapia), termoterapia, agulhamento seco muscular, aplicação de toxina botulínica e, fundamentalmente, orientações de autocuidado e fisioterapia facial. Trabalhamos de forma multidisciplinar para resgatar não apenas a função da sua mordida, mas a sua qualidade de vida diária.'
+    shortIntro: 'A Disfunção Temporomandibular afeta a articulação e os músculos da mastigação. Tratamos a origem das dores orofaciais e enxaquecas crônicas com foco no seu alívio imediato e bem-estar.',
+    topicPoints: [
+      { title: 'Identificação Exata da Causa', text: 'Diagnóstico minucioso através de exames palpatórios e de imagem 3D. Entendemos a fundo o impacto do bruxismo e desequilíbrios oclusais na sua dor diária.' },
+      { title: 'Abordagem Conservadora', text: 'Utilizamos placas miorrelaxantes lisas e rígidas, calibradas sob medida para você. Elas protegem os dentes de desgastes severos e descomprimem a sua articulação.' },
+      { title: 'Alívio Imediato e Reprogramação', text: 'A placa noturna atua reprogramando a musculatura mastigatória de forma contínua. Isso traz alívio imediato a tensões e melhora a qualidade de vida e do seu sono.' },
+      { title: 'Visão Integrativa da Dor', text: 'Tratamentos combinados com laserterapia, aplicação de toxina botulínica e fisioterapia facial. Uma recuperação completa e multidisciplinar sem precisar de cirurgias.' }
     ],
     highlights: [
       {
@@ -600,12 +601,12 @@ const BASE_SERVICES = {
     headingPattern: (city) => `Ozonioterapia Odontológica ${city.locationTitle}`,
     introPattern: (city) => `Acelere a recuperação pós-operatória e previna infecções com o poder da Ozonioterapia medicinal ${city.contextText}`,
     sectionTitlePattern: (city) => `Tecnologia Biológica para a Saúde Bucal ${city.locationTitle}`,
-    paragraphs: [
-      'A Odontologia contemporânea busca métodos cada vez mais eficientes, seguros e que utilizem os recursos biológicos do próprio organismo para curar. A Ozonioterapia, baseada na aplicação da mistura gasosa de oxigênio e ozônio medicinal (O3), representa um salto gigante nessa direção, proporcionando tratamentos com menos efeitos colaterais químicos e recuperação impressionante.',
-      'O ozônio possui propriedades únicas fundamentais: é um poderoso antimicrobiano (capaz de destruir bactérias, fungos e vírus em segundos), um potente modulador do sistema imunológico local, e o principal responsável pelo aumento significativo da oxigenação dos tecidos celulares, estimulando o crescimento vascular.',
-      'No consultório do Dr. Adriano Camillo, utilizamos geradores de ozônio de alta precisão. Na forma de água ozonizada, irrigamos campos cirúrgicos e bolsas periodontais, promovendo descontaminação absoluta. Na forma de gás (aplicação tópica com campânulas), desinfetamos perfeitamente o interior de raízes dentárias (canais) que apresentavam infecção crônica resistente aos antibióticos tradicionais.',
-      'Em cirurgias complexas, como instalação de múltiplos implantes dentários, remoção de sisos inclusos ou enxertos ósseos, a ozonioterapia brilha na fase pós-operatória. A aplicação indolor atua desligando vias de inflamação exageradas, o que reduz drasticamente o inchaço, minimiza hematomas e alivia a dor nas primeiras horas cruciais, garantindo uma cicatrização até 50% mais rápida.',
-      'Sua atuação biológica é também fantástica no tratamento clínico diário: promove o alívio imediato e a cicatrização de aftas agressivas e herpes labial incipiente. Ao incorporar a ozonioterapia à nossa rotina, oferecemos a você uma odontologia de vanguarda, menos agressiva, mais natural e amplamente ancorada na sustentabilidade da sua saúde integral.'
+    shortIntro: 'Potencialize seus tratamentos odontológicos com ação bactericida e cicatrização acelerada. O ozônio medicinal é natural, seguro e reduz a necessidade de intervenções químicas.',
+    topicPoints: [
+      { title: 'Ação Antimicrobiana Poderosa', text: 'Descontaminação imediata do interior de raízes e bolsas periodontais. Atua combatendo bactérias e vírus sem utilizar compostos químicos agressivos ao organismo.' },
+      { title: 'Recuperação Pós-operatória', text: 'Desliga vias inflamatórias excessivas, diminuindo dor e inchaço significativamente. A cicatrização chega a ser até 50% mais rápida após cirurgias complexas.' },
+      { title: 'Alívio de Lesões e Aftas', text: 'Tratamento indolor e ágil para ocorrências de herpes labial e aftas agressivas. A secagem rápida da lesão inicia logo nas primeiras sessões de forma natural.' },
+      { title: 'Tecnologia Biocompatível', text: 'A mistura de oxigênio e ozônio atua e logo depois não deixa resíduos tóxicos no corpo. Uma terapia de alta tecnologia ancorada na sustentabilidade da sua saúde.' }
     ],
     highlights: [
       {
@@ -674,10 +675,12 @@ const BASE_SERVICES = {
     headingPattern: (city) => `Locação de HIFU ${city.locationTitle}`,
     introPattern: (city) => `Eleve o faturamento da sua clínica oferecendo o Lifting Sem Cortes com total segurança e suporte ${city.contextText}`,
     sectionTitlePattern: (city) => `Modelo de Locação Premium ${city.locationTitle}`,
-    paragraphs: [
-      'Alavancar o faturamento da sua clínica agora é possível sem imobilizar capital em equipamentos caros e que depreciam rapidamente. Ofereça a tecnologia premium de Ultrassom Microfocado (HIFU) pagando apenas pelas diárias que utilizar.',
-      'Diferente de outras locações, nós entregamos um modelo de negócio completo: aparelho rigorosamente calibrado e homologado pela ANVISA, treinamento clínico com protocolos avançados para resultados máximos, e todo o suporte necessário durante o seu dia de atendimentos.',
-      'Para facilitar a sua venda, disponibilizamos um pacote de marketing com fotos autorizadas, vídeos e modelos de anamnese. Basta agendar o seu "HIFU Day", captar os pacientes e maximizar o seu lucro líquido de forma segura e inteligente.'
+    shortIntro: 'Modelo completo de locação do Ultrassom Microfocado para a sua clínica. Maximize seus lucros oferecendo o Lifting sem cortes de forma simples, lucrativa e muito segura.',
+    topicPoints: [
+      { title: 'Treinamento e Suporte Clínico', text: 'Instruções completas sobre protocolos avançados e manuseio da máquina. Suporte dedicado via WhatsApp no dia dos seus atendimentos para maior segurança.' },
+      { title: 'Equipamento Certificado', text: 'Aparelhos revisados, perfeitamente calibrados e homologados entregues pontualmente. Tranquilidade e segurança máxima para o operador e para os seus pacientes.' },
+      { title: 'Pacote de Marketing', text: 'Receba fotos, vídeos e materiais de apoio estruturados para captar mais clientes. Facilita o agendamento e a promoção do seu exclusivo "HIFU Day".' },
+      { title: 'Alta Rentabilidade', text: 'Baixo custo fixo de locação sem despesas imprevisíveis de manutenção ou seguro. Potencialize suas margens e ofereça procedimentos de alto ticket na sua clínica.' }
     ],
     highlights: [
       {
@@ -736,6 +739,7 @@ const BASE_SERVICES = {
   },
   'lipo-de-papada-hifu': {
     baseSlug: 'lipo-de-papada-hifu',
+    images: ['lipo_papada', 'lifting_facial'],
     label: 'Lipo de Papada sem Cortes (HIFU)',
     eyebrow: 'Ultrassom Microfocado para Eliminação de Papada',
     titlePattern: (city) => `Lipo de Papada com HIFU ${city.locationTitle} | Dr. Adriano Camillo`,
@@ -743,12 +747,12 @@ const BASE_SERVICES = {
     headingPattern: (city) => `Lipo de Papada com HIFU ${city.locationTitle}`,
     introPattern: (city) => `Elimine o queixo duplo e recupere o contorno jovem da sua mandíbula com a tecnologia de Ultrassom Microfocado de Alta Intensidade ${city.contextText}`,
     sectionTitlePattern: (city) => `Lipo de Papada sem Cortes e sem Cirurgia ${city.locationTitle}`,
-    paragraphs: [
-      'A gordura submentoniana, popularmente conhecida como papada, é uma das maiores queixas estéticas tanto de homens quanto de mulheres. Frequentemente resistente a dietas e exercícios físicos, essa gordura acumulada abaixo do queixo compromete o ângulo da mandíbula e traz uma aparência envelhecida ou de excesso de peso ao rosto.',
-      'O tratamento de Lipo de Papada com HIFU (Ultrassom Microfocado) revolucionou a harmonização facial ao oferecer uma solução 100% não invasiva, livre de agulhas, cortes ou aspiração cirúrgica. Através de ondas de ultrassom concentradas, atingimos com precisão milimétrica a camada de gordura profunda e a musculatura facial (SMAS).',
-      'As ondas térmicas geradas pelo equipamento Ultramed HIFU causam a apoptose (destruição natural e definitiva) das células de gordura submentoniana, que são gradualmente eliminadas pelo próprio sistema linfático do organismo ao longo das semanas seguintes ao procedimento.',
-      'Diferente da lipoaspiração tradicional ou das enzimas injetáveis — que muitas vezes deixam a pele flácida após a remoção da gordura —, o HIFU estimula uma intensa neocolagênese (produção de novo colágeno e elastina). Isso significa que, enquanto a gordura é eliminada, a pele do pescoço e do queixo se retrai e fica visivelmente mais firme e colada.',
-      'Com o Dr. Adriano Camillo, todo o protocolo é personalizado após uma análise facial computadorizada. O procedimento é realizado no consultório de forma rápida, segura e praticamente indolor, permitindo que você retorne às suas atividades diárias e de trabalho imediatamente após a sessão, sem necessidade de repouso ou ataduras.'
+    shortIntro: 'Reduza a gordura do pescoço e recupere o contorno da mandíbula com tecnologia de ponta. Um tratamento indolor sem a necessidade de agulhas, cortes ou tempo de repouso.',
+    topicPoints: [
+      { title: 'Tecnologia Não Invasiva', text: 'Destruição celular profunda da gordura através do Ultrassom Microfocado (HIFU). Tratamento inovador que não exige cortes, anestesias injetáveis ou faixa mentoniana.' },
+      { title: 'Efeito Lifting e Firmeza', text: 'Estímulo intenso à produção de colágeno na camada muscular profunda (SMAS). A pele se retrai, evitando a flacidez decorrente após a perda de gordura local.' },
+      { title: 'Retorno Imediato à Rotina', text: 'Sessões extremamente confortáveis que duram cerca de apenas 45 minutos. Você pode voltar ao seu trabalho logo após, sem curativos e sem afastamento médico.' },
+      { title: 'Resultados Progressivos', text: 'A gordura é eliminada gradual e naturalmente pelo sistema linfático. Os resultados mais expressivos e contínuos são notados entre 30 a 90 dias após o procedimento.' }
     ],
     highlights: [
       {
@@ -826,7 +830,11 @@ Object.values(BASE_SERVICES).forEach((service) => {
     }
 
     generatedPages[slug] = {
+      ...service,
       slug,
+      isCityPage: true,
+      city: city.name,
+      images: service.images || [],
       citySlug: city.slugSuffix,
       isRental: service.isRental,
       cityName: city.name,
@@ -838,10 +846,11 @@ Object.values(BASE_SERVICES).forEach((service) => {
       heading: service.headingPattern(city),
       intro: service.introPattern(city),
       sectionTitle: service.sectionTitlePattern(city),
-      paragraphs: [
-        ...service.paragraphs,
-        ...(CITY_SERVICE_CONTENT[service.baseSlug]?.[city.slugSuffix]?.paragraphs || []),
-      ],
+      shortIntro: service.shortIntro ? service.shortIntro.replace(/\[cidade\]/g, city.name) : '',
+      topicPoints: service.topicPoints ? service.topicPoints.map(t => ({
+        title: t.title.replace(/\[cidade\]/g, city.name),
+        text: t.text.replace(/\[cidade\]/g, city.name)
+      })) : [],
       benefits: service.benefits,
       steps: service.steps,
       faqs: [
