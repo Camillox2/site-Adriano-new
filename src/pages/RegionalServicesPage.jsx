@@ -54,17 +54,26 @@ const RegionalServicesPage = () => {
         path: '/hifu',
         Icon: Zap,
         description:
-          'Tecnologia não invasiva para estímulo de colágeno, firmeza da pele e protocolos faciais e corporais definidos após avaliação.',
-        topics: ['Equipamento levado até a região', 'Protocolos personalizados', 'Sem cortes'],
+          'Tecnologia não invasiva para estímulo de colágeno. Nós vamos até a sua cidade para realizar os atendimentos.',
+        topics: ['Equipamento levado até você', 'Protocolos personalizados', 'Sem cortes'],
         cta: 'Conhecer o HIFU',
+      },
+      {
+        title: 'Harmonização Facial & Botox',
+        path: getRegionalServicePath('harmonizacao-orofacial', city),
+        Icon: Sparkles,
+        description:
+          'Preenchimentos, Botox e bioestimuladores realizados no conforto da sua cidade. Nós vamos até o paciente para atendimentos programados.',
+        topics: ['Atendimento na sua cidade', 'Botox e Preenchimento', 'Fios de PDO'],
+        cta: 'Ver sobre harmonização',
       },
       {
         title: 'Lipo de Papada com HIFU',
         path: getRegionalServicePath('lipo-de-papada-hifu', city),
         Icon: Target,
         description:
-          'Protocolo com ultrassom microfocado para auxiliar no contorno da região abaixo do queixo e no estímulo de firmeza.',
-        topics: ['Sem cirurgia', 'Contorno mandibular', 'Resultados progressivos'],
+          'Protocolo com ultrassom microfocado para auxiliar no contorno do queixo. Atendimento feito diretamente na sua região.',
+        topics: ['Sem cirurgia', 'Contorno mandibular', 'Atendimento regional'],
         cta: 'Ver tratamento',
       },
       {
@@ -72,9 +81,9 @@ const RegionalServicesPage = () => {
         path: getRegionalServicePath('aluguel-de-hifu', city),
         Icon: Truck,
         description:
-          'Locação do equipamento para clínicas e profissionais, com organização do atendimento e suporte conforme o serviço contratado.',
-        topics: ['Equipamento levado até a clínica', 'Atendimento regional', 'Locação para profissionais'],
-        cta: 'Conhecer a locação',
+          'Alugamos o equipamento para clínicas parceiras, com entrega e suporte total. Clique para saber mais sobre a locação.',
+        topics: ['Equipamento levado à clínica', 'Treinamento e suporte', 'Aluguel B2B'],
+        cta: 'Saber mais do aluguel',
       },
     ];
   }, [city]);

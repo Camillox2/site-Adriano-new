@@ -1,80 +1,80 @@
 import React from 'react';
-import { MapPin, Navigation, Clock, CalendarCheck, ShieldCheck, Truck, PhoneCall, Building2 } from 'lucide-react';
+import { MapPin, Navigation, Clock, CalendarCheck, ShieldCheck, Truck, PhoneCall, Building2, Sparkles } from 'lucide-react';
 import { whatsapp } from '../utils/constants';
 import Reveal from './Reveal';
 
 const REGIONAL_INFO = {
   chapeco: {
     cityName: 'Chapecó - SC',
-    distance: 'Aprox. 85 km (~1h 15min)',
-    route: 'Acesso rápido pela SC-480 / BR-283 até São Lourenço do Oeste',
-    tagline: 'Atendimento odonto-estético de excelência para moradores e pacientes de Chapecó.',
-    highlights: [
-      {
-        icon: CalendarCheck,
-        title: 'Sessão Integrada no Mesmo Dia',
-        description: 'Organizamos sua avaliação e o procedimento na mesma viagem para otimizar seu tempo e evitar deslocamentos repetidos.',
-      },
-      {
-        icon: Navigation,
-        title: 'Rota Direta & Estac. Fácil',
-        description: 'Fácil acesso viário vindo de Chapecó com estacionamento e ambiente clínico preparado para seu conforto.',
-      },
-      {
-        icon: ShieldCheck,
-        title: 'Acompanhamento Pós via WhatsApp',
-        description: 'Suporte remoto contínuo e acompanhamento dedicado do Dr. Adriano durante todo o período de pós-procedimento.',
-      },
-    ],
-    whatsappMsg: 'Olá, Dr. Adriano! Sou de Chapecó e gostaria de agendar uma consulta com atendimento integrado no mesmo dia.',
-  },
-  'pato-branco': {
-    cityName: 'Pato Branco - PR',
-    distance: 'Aprox. 50 km (~40 min)',
-    route: 'Acesso rápido e asfaltado pela PR-493 / Vitorino',
-    tagline: 'Conexão de saúde e estética entre o Sudoeste do Paraná e o Oeste Catarinense.',
-    highlights: [
-      {
-        icon: Clock,
-        title: 'Apenas 40 Minutos de Distância',
-        description: 'Proximidade geográfica que permite agendar seu atendimento em horários flexíveis e voltar para casa no mesmo dia.',
-      },
-      {
-        icon: CalendarCheck,
-        title: 'Horário Reservado Exclusivo',
-        description: 'Atendimento rigorosamente pontual, sem filas de espera, respeitando a sua agenda pessoal e profissional.',
-      },
-      {
-        icon: ShieldCheck,
-        title: 'Referência em Harmonização e Implantes',
-        description: 'Tecnologia de ponta em ultrassom microfocado HIFU e odontologia estética ao alcance de Pato Branco.',
-      },
-    ],
-    whatsappMsg: 'Olá, Dr. Adriano! Sou de Pato Branco e gostaria de agendar uma avaliação no consultório em São Lourenço do Oeste.',
-  },
-  curitiba: {
-    cityName: 'Curitiba & Região Metropolitana',
-    distance: 'Atendimento & Locação Logística Premium',
-    route: 'Cobertura nos bairros Batel, Bigorrilho, Água Verde, Centro, S. J. dos Pinhais, Pinhais e Araucária',
-    tagline: 'Locação de equipamentos de alta tecnologia Ultramed HIFU e estética facial avançada.',
+    distance: 'Nós vamos até você em Chapecó',
+    route: 'Atendimento Domiciliar ou em Clínica Parceira',
+    tagline: 'Levamos excelência em HIFU e Harmonização Facial diretamente para você em Chapecó. Mais conforto, zero viagens.',
     highlights: [
       {
         icon: Truck,
-        title: 'Entrega & Logística Pontual em Curitiba',
-        description: 'Entregamos o equipamento Ultramed HIFU higienizado, calibrado e testado diretamente na sua clínica ou consultório.',
+        title: 'Nós Vamos Até Você',
+        description: 'Chega de pegar estrada. Agendamos o procedimento na sua cidade para que você economize tempo e ganhe conforto.',
       },
       {
-        icon: Building2,
-        title: 'Treinamento & Suporte Operacional',
-        description: 'Fornecemos protocolos clínicos de aplicação, suporte técnico constante e orientação operacional completa.',
+        icon: Sparkles,
+        title: 'HIFU & Harmonização',
+        description: 'Toxina botulínica, preenchimentos e lifting sem cortes com HIFU realizados no conforto da sua região.',
       },
       {
         icon: ShieldCheck,
-        title: 'Tecnologia ANVISA de Alta Performance',
-        description: 'Agregue valor e faturamento para sua clínica em Curitiba oferecendo lifting sem cortes aos seus clientes.',
+        title: 'Acompanhamento Pós-Procedimento',
+        description: 'O Dr. Adriano oferece todo o suporte pós-procedimento via WhatsApp e agendamento de retornos na sua cidade.',
       },
     ],
-    whatsappMsg: 'Olá, Dr. Adriano! Falo de Curitiba e tenho interesse na locação do equipamento HIFU para minha clínica.',
+    whatsappMsg: 'Olá, Dr. Adriano! Sou de Chapecó e gostaria de agendar um atendimento na minha cidade.',
+  },
+  'pato-branco': {
+    cityName: 'Pato Branco - PR',
+    distance: 'Nós vamos até você em Pato Branco',
+    route: 'Atendimento Programado na sua Cidade',
+    tagline: 'O melhor da odontologia estética, HIFU e Harmonização Facial agora disponíveis diretamente em Pato Branco.',
+    highlights: [
+      {
+        icon: Truck,
+        title: 'Atendimento sem Deslocamento',
+        description: 'Levamos nossa estrutura de atendimento até Pato Branco. Seu procedimento de estética e HIFU perto de você.',
+      },
+      {
+        icon: Sparkles,
+        title: 'Procedimentos Premium',
+        description: 'Lifting facial com ultrassom microfocado e procedimentos de harmonização orofacial sem precisar viajar.',
+      },
+      {
+        icon: ShieldCheck,
+        title: 'Locação & Clínicas Parceiras',
+        description: 'Alugamos equipamentos para profissionais de Pato Branco e realizamos os nossos atendimentos em ambientes seguros.',
+      },
+    ],
+    whatsappMsg: 'Olá, Dr. Adriano! Sou de Pato Branco e gostaria de agendar uma avaliação na minha cidade.',
+  },
+  curitiba: {
+    cityName: 'Curitiba & Região Metropolitana',
+    distance: 'Logística Premium & Atendimento',
+    route: 'Batel, Bigorrilho, Água Verde, S. J. dos Pinhais e mais',
+    tagline: 'Locação de equipamentos HIFU para profissionais e atendimento estético avançado na capital.',
+    highlights: [
+      {
+        icon: Truck,
+        title: 'Locação e Entrega em Curitiba',
+        description: 'Alugamos e entregamos o equipamento HIFU higienizado e testado diretamente na sua clínica ou consultório.',
+      },
+      {
+        icon: Sparkles,
+        title: 'Atendimento Estético na Capital',
+        description: 'Realizamos harmonização facial e tratamentos com HIFU com hora marcada para pacientes de Curitiba e região.',
+      },
+      {
+        icon: ShieldCheck,
+        title: 'Treinamento Operacional',
+        description: 'Para locatários, fornecemos suporte clínico constante e orientação operacional de alta performance.',
+      },
+    ],
+    whatsappMsg: 'Olá, Dr. Adriano! Falo de Curitiba e gostaria de saber mais sobre HIFU e Harmonização.',
   },
 };
 
