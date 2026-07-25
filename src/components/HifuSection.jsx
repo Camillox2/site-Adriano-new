@@ -148,21 +148,24 @@ VideoCard.displayName = 'VideoCard';
 // ---------- modal de vídeo ----------
 export const VideoModal = ({ video, onClose }) => (
   <div
-    className="fixed inset-0 bg-slate-950/85 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-fade-in"
+    className="fixed inset-0 bg-slate-950/90 backdrop-blur-md flex items-center justify-center z-50 p-4 animate-fade-in overflow-y-auto"
     onClick={onClose}
     role="dialog"
     aria-modal="true"
     aria-label={video.title}
   >
-    <div className="relative w-full max-w-4xl" onClick={(e) => e.stopPropagation()}>
-      <button
-        onClick={onClose}
-        className="absolute -top-12 right-0 text-white/80 hover:text-white bg-white/10 hover:bg-white/20 rounded-full p-2.5 transition-colors"
-        aria-label="Fechar vídeo"
-      >
-        <X size={24} />
-      </button>
-      <div className="bg-slate-900 rounded-2xl overflow-hidden shadow-2xl">
+    {/* Botão de Fechar Fixo no Canto Superior da Tela (Impossível ficar fora da tela) */}
+    <button
+      onClick={onClose}
+      className="fixed top-4 right-4 sm:top-6 sm:right-6 z-[100] bg-emerald-600 hover:bg-emerald-500 text-white rounded-full p-3 shadow-2xl transition-transform active:scale-95 flex items-center gap-1.5 font-bold text-sm border border-white/20 cursor-pointer"
+      aria-label="Fechar vídeo"
+    >
+      <X size={22} />
+      <span className="hidden sm:inline pr-1">Fechar</span>
+    </button>
+
+    <div className="relative w-full max-w-4xl my-auto" onClick={(e) => e.stopPropagation()}>
+      <div className="bg-slate-900 rounded-3xl overflow-hidden shadow-2xl border border-slate-800">
         <video
           className="w-full aspect-video bg-black"
           controls
@@ -173,9 +176,17 @@ export const VideoModal = ({ video, onClose }) => (
         >
           Seu navegador não suporta o elemento de vídeo.
         </video>
-        <div className="p-5 md:p-6">
-          <h3 className="text-lg md:text-xl font-bold text-white">{video.title}</h3>
-          <p className="text-slate-300 text-sm md:text-base mt-1">{video.description}</p>
+        <div className="p-5 md:p-6 flex items-center justify-between gap-4">
+          <div>
+            <h3 className="text-lg md:text-xl font-bold text-white">{video.title}</h3>
+            <p className="text-slate-300 text-sm md:text-base mt-1">{video.description}</p>
+          </div>
+          <button
+            onClick={onClose}
+            className="sm:hidden shrink-0 bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-xl text-xs font-semibold cursor-pointer"
+          >
+            Fechar ✕
+          </button>
         </div>
       </div>
     </div>

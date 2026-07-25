@@ -331,54 +331,65 @@ const ResultsSection = () => {
         {/* Modal de Imagem Ampliada */}
         {selectedImage && (
           <div
-            className="fixed inset-0 bg-slate-950/90 backdrop-blur-md flex items-center justify-center z-50 p-4 animate-fade-in"
+            className="fixed inset-0 bg-slate-950/95 backdrop-blur-md flex items-center justify-center z-50 p-3 sm:p-6 animate-fade-in overflow-y-auto"
             onClick={() => setSelectedImage(null)}
             role="dialog"
             aria-modal="true"
           >
+            {/* Botão de Fechar Fixo na Tela */}
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="fixed top-4 right-4 sm:top-6 sm:right-6 z-[100] bg-emerald-600 hover:bg-emerald-500 text-white rounded-full p-3 shadow-2xl transition-transform active:scale-95 flex items-center gap-1.5 font-bold text-sm border border-white/20 cursor-pointer"
+              aria-label="Fechar modal"
+            >
+              <X size={22} />
+              <span className="hidden sm:inline pr-1">Fechar</span>
+            </button>
+
             <div
-              className="relative max-w-3xl w-full bg-white rounded-3xl overflow-hidden shadow-2xl"
+              className="relative max-w-3xl w-full bg-white rounded-3xl overflow-hidden shadow-2xl my-auto border border-slate-100 flex flex-col max-h-[90vh]"
               onClick={(e) => e.stopPropagation()}
             >
-              <button
-                onClick={() => setSelectedImage(null)}
-                className="absolute top-4 right-4 z-10 bg-slate-900/70 hover:bg-slate-900 text-white rounded-full p-2.5 transition-colors"
-                aria-label="Fechar modal"
-              >
-                <X size={20} />
-              </button>
-
-              <div className="max-h-[75vh] overflow-hidden bg-black flex items-center justify-center">
+              {/* Imagem principal */}
+              <div className="relative flex-1 min-h-0 bg-black flex items-center justify-center overflow-hidden">
                 <img
                   src={selectedImage.image}
                   alt={selectedImage.title}
-                  className="max-h-[75vh] w-auto object-contain mx-auto"
+                  className="max-h-[60vh] sm:max-h-[68vh] w-auto object-contain mx-auto"
                 />
               </div>
 
-              <div className="p-6 bg-white">
-                <span className="text-xs font-bold uppercase text-emerald-600 tracking-wider">
-                  {selectedImage.categoryLabel}
-                </span>
-                <h3 className="text-xl font-bold text-slate-900 mt-1 mb-2">
+              <div className="p-5 sm:p-6 bg-white shrink-0">
+                <div className="flex items-center justify-between mb-1">
+                  <span className="text-xs font-bold uppercase text-emerald-600 tracking-wider">
+                    {selectedImage.categoryLabel}
+                  </span>
+                  <button
+                    onClick={() => setSelectedImage(null)}
+                    className="sm:hidden text-xs text-slate-500 hover:text-slate-800 font-semibold px-2 py-1 bg-slate-100 rounded-lg cursor-pointer"
+                  >
+                    Fechar ✕
+                  </button>
+                </div>
+                <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-1.5">
                   {selectedImage.title}
                 </h3>
-                <p className="text-slate-600 text-sm leading-relaxed mb-5">
+                <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
                   {selectedImage.description}
                 </p>
 
-                <div className="flex flex-col sm:flex-row gap-3 justify-between items-center pt-4 border-t border-slate-100">
+                <div className="flex flex-col sm:flex-row gap-3 justify-between items-center pt-3 border-t border-slate-100">
                   <div className="flex items-center gap-2 text-xs text-slate-500">
-                    <ShieldCheck size={16} className="text-emerald-600" />
+                    <ShieldCheck size={16} className="text-emerald-600 shrink-0" />
                     <span>Imagens autorizadas de pacientes reais do consultório</span>
                   </div>
                   <a
                     href={WHATSAPP_DEFAULT}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-primary text-xs w-full sm:w-auto"
+                    className="btn-primary text-xs w-full sm:w-auto text-center"
                   >
-                    Quero agendar uma consulta sobre este procedimento
+                    Quero agendar uma consulta
                   </a>
                 </div>
               </div>
@@ -389,24 +400,26 @@ const ResultsSection = () => {
         {/* Modal de Vídeo Ampliado */}
         {isVideoModalOpen && (
           <div
-            className="fixed inset-0 bg-slate-950/90 backdrop-blur-md flex items-center justify-center z-50 p-4 animate-fade-in"
+            className="fixed inset-0 bg-slate-950/95 backdrop-blur-md flex items-center justify-center z-50 p-3 sm:p-6 animate-fade-in overflow-y-auto"
             onClick={() => setIsVideoModalOpen(false)}
             role="dialog"
             aria-modal="true"
           >
+            {/* Botão de Fechar Fixo na Tela */}
+            <button
+              onClick={() => setIsVideoModalOpen(false)}
+              className="fixed top-4 right-4 sm:top-6 sm:right-6 z-[100] bg-emerald-600 hover:bg-emerald-500 text-white rounded-full p-3 shadow-2xl transition-transform active:scale-95 flex items-center gap-1.5 font-bold text-sm border border-white/20 cursor-pointer"
+              aria-label="Fechar vídeo"
+            >
+              <X size={22} />
+              <span className="hidden sm:inline pr-1">Fechar</span>
+            </button>
+
             <div
-              className="relative max-w-2xl w-full bg-slate-900 rounded-3xl overflow-hidden shadow-2xl"
+              className="relative max-w-2xl w-full bg-slate-900 rounded-3xl overflow-hidden shadow-2xl my-auto border border-slate-800"
               onClick={(e) => e.stopPropagation()}
             >
-              <button
-                onClick={() => setIsVideoModalOpen(false)}
-                className="absolute top-4 right-4 z-10 bg-white/20 hover:bg-white/40 text-white rounded-full p-2.5 transition-colors"
-                aria-label="Fechar vídeo"
-              >
-                <X size={20} />
-              </button>
-
-              <div className="aspect-[9/16] max-h-[80vh] mx-auto bg-black">
+              <div className="aspect-[9/16] max-h-[75vh] mx-auto bg-black">
                 <video
                   src={antesEDepoisVideo}
                   controls
