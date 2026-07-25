@@ -1,5 +1,6 @@
 import React from 'react';
-import { Award, GraduationCap, Star, MapPin, ExternalLink, Instagram } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Award, GraduationCap, Star, MapPin, ExternalLink, Instagram, ArrowRight } from 'lucide-react';
 import { images } from '../assets';
 import { SITE, LOCATIONS, whatsapp } from '../utils/constants';
 
@@ -116,7 +117,7 @@ const AboutSection = () => (
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
           {LOCATIONS.map((location) => (
             <div
               key={location.city}
@@ -133,7 +134,7 @@ const AboutSection = () => (
               )}
               <h4 className="font-bold text-slate-900">{location.city}</h4>
               {!location.main && (
-                <p className="text-sm text-slate-600 mb-2">{location.type}</p>
+                <p className="text-sm text-slate-600 mb-1">{location.type}</p>
               )}
               <p className="text-sm text-slate-700 mb-4">{location.address}</p>
               <div className="flex flex-wrap gap-3 text-sm font-semibold">
@@ -154,6 +155,15 @@ const AboutSection = () => (
                 >
                   Agendar
                 </a>
+                {location.pageUrl && (
+                  <Link
+                    to={location.pageUrl}
+                    className="inline-flex items-center gap-1.5 text-emerald-700 hover:underline"
+                  >
+                    <ArrowRight size={14} aria-hidden="true" />
+                    Saiba mais
+                  </Link>
+                )}
               </div>
             </div>
           ))}
