@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import Hero from '../components/Hero';
 import HifuSection from '../components/HifuSection';
 import ServicesSection from '../components/ServicesSection';
+import ResultsSection from '../components/ResultsSection';
 import AboutSection from '../components/AboutSection';
 import TestimonialsSection from '../components/TestimonialsSection';
 import ContactSection from '../components/ContactSection';
@@ -29,8 +30,8 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-white">
       <Seo
-        title="Dr. Adriano Camillo — Odontologia Estética em São Lourenço do Oeste"
-        description="Dentista em São Lourenço do Oeste - SC. Odontologia estética, Ortodontia, Implantes, Harmonização Orofacial, DTM e HIFU. Agende sua avaliação pelo WhatsApp."
+        title="Dr. Adriano Camillo — Odontologia Estética & Harmonização Facial"
+        description="Dentista em São Lourenço do Oeste - SC. Harmonização Orofacial, Preenchimento Labial, Botox, Ortodontia, Implantes e HIFU. Agende sua avaliação."
         path="/"
       />
       <Header />
@@ -38,6 +39,7 @@ const Home = () => {
         <Hero />
         <HifuSection />
         <ServicesSection />
+        <ResultsSection />
         <AboutSection />
         <TestimonialsSection />
         <ContactSection />

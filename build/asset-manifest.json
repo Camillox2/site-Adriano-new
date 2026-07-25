@@ -1,23 +1,32 @@
 {
   "files": {
-    "main.css": "/static/css/main.fdcd9925.css",
-    "main.js": "/static/js/main.ae6b282a.js",
-    "static/js/771.d1d177da.chunk.js": "/static/js/771.d1d177da.chunk.js",
-    "static/js/377.af48e1ef.chunk.js": "/static/js/377.af48e1ef.chunk.js",
-    "static/js/483.1892fb49.chunk.js": "/static/js/483.1892fb49.chunk.js",
-    "static/js/237.4a24556b.chunk.js": "/static/js/237.4a24556b.chunk.js",
+    "main.css": "/static/css/main.839e8f23.css",
+    "main.js": "/static/js/main.47f6c259.js",
+    "static/js/771.f5b043b1.chunk.js": "/static/js/771.f5b043b1.chunk.js",
+    "static/js/377.419b1943.chunk.js": "/static/js/377.419b1943.chunk.js",
+    "static/js/483.520d87c3.chunk.js": "/static/js/483.520d87c3.chunk.js",
+    "static/js/237.205995f5.chunk.js": "/static/js/237.205995f5.chunk.js",
     "static/js/524.366a241c.chunk.js": "/static/js/524.366a241c.chunk.js",
+    "static/media/antesedepois.mp4": "/static/media/antesedepois.4b9da811f499f79fe9a7.mp4",
     "static/media/hifuatendimento.mp4": "/static/media/hifuatendimento.167f2f169a1046de8289.mp4",
     "static/media/hifutres.mp4": "/static/media/hifutres.cfa9d7e763b20048d345.mp4",
     "static/media/hifu.mp4": "/static/media/hifu.e12d90846def5759a8dc.mp4",
     "static/media/hifudois.mp4": "/static/media/hifudois.0e8f79f497c0548cb8a2.mp4",
+    "static/media/resultado_harmonizacao_3.webp": "/static/media/resultado_harmonizacao_3.0c2bf24486459dbd7620.webp",
+    "static/media/harmonizacao_perfil.webp": "/static/media/harmonizacao_perfil.096460bed01eddbccfcf.webp",
+    "static/media/resultado_harmonizacao_1.webp": "/static/media/resultado_harmonizacao_1.8368759d149cffb22fc5.webp",
+    "static/media/preenchimento_labial_detalhe.webp": "/static/media/preenchimento_labial_detalhe.700aaefdb605147dbaa4.webp",
     "static/media/Screenshot_20241104_152125_Photos.webp": "/static/media/Screenshot_20241104_152125_Photos.96ac6a8e8f631e956c06.webp",
+    "static/media/botox_testa_antes_depois.webp": "/static/media/botox_testa_antes_depois.51f729ccadad18166c0b.webp",
+    "static/media/preenchimento_labial_perfil.webp": "/static/media/preenchimento_labial_perfil.717c532b0ef15b8193f5.webp",
     "static/media/paidois.webp": "/static/media/paidois.41ba0f748a1b2a7f8da4.webp",
+    "static/media/resultado_harmonizacao_2.webp": "/static/media/resultado_harmonizacao_2.66d07a27bb04ca8134ff.webp",
     "static/media/poster-hifutres.webp": "/static/media/poster-hifutres.38e9b092e93b44974f1b.webp",
     "static/media/20240723_165806.webp": "/static/media/20240723_165806.4a3036dbef8be903ee30.webp",
     "static/media/Screenshot_20241126_094251_Photos.webp": "/static/media/Screenshot_20241126_094251_Photos.a5982b66723c14e41c46.webp",
     "static/media/Screenshot_20231028_123109_WhatsApp.webp": "/static/media/Screenshot_20231028_123109_WhatsApp.eed6235bce427689b3c9.webp",
     "static/media/20240723_165833.webp": "/static/media/20240723_165833.bf213ab143b02b875766.webp",
+    "static/media/preenchimento_labial_pos_imediato.webp": "/static/media/preenchimento_labial_pos_imediato.59df1e0b5ad9ba1295ba.webp",
     "static/media/20240723_165814.webp": "/static/media/20240723_165814.3934e2f117b9dbfaa99e.webp",
     "static/media/Logotipo Site-02.webp": "/static/media/Logotipo Site-02.d212aa44164726d444f1.webp",
     "static/media/poster-hifudois.webp": "/static/media/poster-hifudois.db6fa54416dcff8262a8.webp",
@@ -29,7 +38,7 @@
     "static/media/newlogo.webp": "/static/media/newlogo.cbe39ddb96ce4106f348.webp"
   },
   "entrypoints": [
-    "static/css/main.fdcd9925.css",
-    "static/js/main.ae6b282a.js"
+    "static/css/main.839e8f23.css",
+    "static/js/main.47f6c259.js"
   ]
 }

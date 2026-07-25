@@ -6,6 +6,7 @@ import { WHATSAPP_DEFAULT } from '../utils/constants';
 
 const NAV_ITEMS = [
   { label: 'Início', target: 'inicio' },
+  { label: 'Resultados', target: 'resultados' },
   { label: 'HIFU', target: 'hifu' },
   { label: 'Serviços', path: '/servicos' },
   { label: 'Sobre', target: 'sobre' },
