@@ -1,3 +1,5 @@
+import { CITY_SERVICE_CONTENT } from './cityServiceContent';
+
 export const CITIES = {
   'sao-lourenco-do-oeste': {
     name: 'São Lourenço do Oeste',
@@ -836,10 +838,16 @@ Object.values(BASE_SERVICES).forEach((service) => {
       heading: service.headingPattern(city),
       intro: service.introPattern(city),
       sectionTitle: service.sectionTitlePattern(city),
-      paragraphs: service.paragraphs,
+      paragraphs: [
+        ...service.paragraphs,
+        ...(CITY_SERVICE_CONTENT[service.baseSlug]?.[city.slugSuffix]?.paragraphs || []),
+      ],
       benefits: service.benefits,
       steps: service.steps,
-      faqs: service.faqs,
+      faqs: [
+        ...service.faqs,
+        ...(CITY_SERVICE_CONTENT[service.baseSlug]?.[city.slugSuffix]?.faqs || []),
+      ],
       stats: service.stats,
       highlights: service.highlights,
       whatsappMessage: service.whatsappMessagePattern(city),

@@ -1,11 +1,11 @@
 {
   "files": {
     "main.css": "/static/css/main.b02ad9dc.css",
-    "main.js": "/static/js/main.77400121.js",
+    "main.js": "/static/js/main.ba4e2ac6.js",
     "static/js/771.f5b043b1.chunk.js": "/static/js/771.f5b043b1.chunk.js",
     "static/js/377.419b1943.chunk.js": "/static/js/377.419b1943.chunk.js",
     "static/js/649.bed81fd4.chunk.js": "/static/js/649.bed81fd4.chunk.js",
-    "static/js/237.7b75a0e7.chunk.js": "/static/js/237.7b75a0e7.chunk.js",
+    "static/js/227.ec08fea2.chunk.js": "/static/js/227.ec08fea2.chunk.js",
     "static/js/524.366a241c.chunk.js": "/static/js/524.366a241c.chunk.js",
     "static/media/antesedepois.mp4": "/static/media/antesedepois.4b9da811f499f79fe9a7.mp4",
     "static/media/hifuatendimento.mp4": "/static/media/hifuatendimento.167f2f169a1046de8289.mp4",
@@ -39,6 +39,6 @@
   },
   "entrypoints": [
     "static/css/main.b02ad9dc.css",
-    "static/js/main.77400121.js"
+    "static/js/main.ba4e2ac6.js"
   ]
 }
