@@ -825,6 +825,7 @@ Object.values(BASE_SERVICES).forEach((service) => {
 
     generatedPages[slug] = {
       slug,
+      citySlug: city.slugSuffix,
       isRental: service.isRental,
       cityName: city.name,
       cityState: city.state,

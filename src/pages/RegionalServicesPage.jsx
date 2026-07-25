@@ -15,6 +15,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import WhatsAppButton from '../components/WhatsAppButton';
 import Seo from '../components/Seo';
+import RegionalLocationCard from '../components/RegionalLocationCard';
 import { images } from '../assets';
 import { whatsapp } from '../utils/constants';
 import {
@@ -217,6 +218,9 @@ const RegionalServicesPage = () => {
             </div>
           </div>
         </section>
+
+        {/* Card de Informações Locacionais Exclusivas */}
+        <RegionalLocationCard citySlug={city.slug} />
 
         <section className="section bg-white">
           <div className="container mx-auto px-4">

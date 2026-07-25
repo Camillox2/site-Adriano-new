@@ -30,6 +30,7 @@ import Reveal from '../components/Reveal';
 import CountUp from '../components/CountUp';
 import HifuRentalDetails from './HifuRentalDetails';
 import DesktopWhatsAppForm from '../components/DesktopWhatsAppForm';
+import RegionalLocationCard from '../components/RegionalLocationCard';
 import { SERVICE_PAGES } from '../data/servicePages';
 import { ADDRESS, SITE, whatsapp } from '../utils/constants';
 import { images } from '../assets';
@@ -265,6 +266,9 @@ const ServiceDetails = () => {
             )}
           </div>
         </section>
+
+        {/* Card Regional de Localização para Chapecó, Pato Branco e Curitiba */}
+        {page.citySlug && <RegionalLocationCard citySlug={page.citySlug} />}
 
         {/* ══════════════════════════════════════════════════
             DESTAQUES (highlights) — 2 colunas com ícone
