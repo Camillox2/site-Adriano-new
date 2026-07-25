@@ -1,35 +1,35 @@
 {
   "files": {
-    "main.css": "/static/css/main.7c173a1c.css",
-    "main.js": "/static/js/main.fe8c1c0f.js",
-    "static/js/771.cf7f0000.chunk.js": "/static/js/771.cf7f0000.chunk.js",
-    "static/js/377.65b278cf.chunk.js": "/static/js/377.65b278cf.chunk.js",
-    "static/js/483.d1de5a90.chunk.js": "/static/js/483.d1de5a90.chunk.js",
-    "static/js/237.9e85f7af.chunk.js": "/static/js/237.9e85f7af.chunk.js",
-    "static/js/524.e52c4e78.chunk.js": "/static/js/524.e52c4e78.chunk.js",
+    "main.css": "/static/css/main.570a21bc.css",
+    "main.js": "/static/js/main.359082b9.js",
+    "static/js/771.d1d177da.chunk.js": "/static/js/771.d1d177da.chunk.js",
+    "static/js/377.af48e1ef.chunk.js": "/static/js/377.af48e1ef.chunk.js",
+    "static/js/483.1892fb49.chunk.js": "/static/js/483.1892fb49.chunk.js",
+    "static/js/237.4a24556b.chunk.js": "/static/js/237.4a24556b.chunk.js",
+    "static/js/524.366a241c.chunk.js": "/static/js/524.366a241c.chunk.js",
     "static/media/hifuatendimento.mp4": "/static/media/hifuatendimento.167f2f169a1046de8289.mp4",
     "static/media/hifutres.mp4": "/static/media/hifutres.cfa9d7e763b20048d345.mp4",
     "static/media/hifu.mp4": "/static/media/hifu.e12d90846def5759a8dc.mp4",
     "static/media/hifudois.mp4": "/static/media/hifudois.0e8f79f497c0548cb8a2.mp4",
     "static/media/Screenshot_20241104_152125_Photos.webp": "/static/media/Screenshot_20241104_152125_Photos.96ac6a8e8f631e956c06.webp",
     "static/media/paidois.webp": "/static/media/paidois.41ba0f748a1b2a7f8da4.webp",
-    "static/media/20240723_165814.webp": "/static/media/20240723_165814.400f3976ee1c5c16fe79.webp",
     "static/media/poster-hifutres.webp": "/static/media/poster-hifutres.38e9b092e93b44974f1b.webp",
     "static/media/20240723_165806.webp": "/static/media/20240723_165806.4a3036dbef8be903ee30.webp",
     "static/media/Screenshot_20241126_094251_Photos.webp": "/static/media/Screenshot_20241126_094251_Photos.a5982b66723c14e41c46.webp",
     "static/media/Screenshot_20231028_123109_WhatsApp.webp": "/static/media/Screenshot_20231028_123109_WhatsApp.eed6235bce427689b3c9.webp",
     "static/media/20240723_165833.webp": "/static/media/20240723_165833.bf213ab143b02b875766.webp",
-    "static/media/pai.webp": "/static/media/pai.39929871a27c3580bbd0.webp",
+    "static/media/20240723_165814.webp": "/static/media/20240723_165814.3934e2f117b9dbfaa99e.webp",
     "static/media/Logotipo Site-02.webp": "/static/media/Logotipo Site-02.d212aa44164726d444f1.webp",
     "static/media/poster-hifudois.webp": "/static/media/poster-hifudois.db6fa54416dcff8262a8.webp",
-    "static/media/20240723_170110.webp": "/static/media/20240723_170110.0871a0a4e3fad1308d4b.webp",
     "static/media/poster-hifuatendimento.webp": "/static/media/poster-hifuatendimento.dd8ec90f635294c2a095.webp",
-    "static/media/newlogo.webp": "/static/media/newlogo.0927dfdfe59ad61c5c34.webp",
+    "static/media/pai.webp": "/static/media/pai.3fd0a0e087e0c6428c07.webp",
+    "static/media/20240723_170110.webp": "/static/media/20240723_170110.c0bf6d1c2c31ab474b42.webp",
     "static/media/poster-hifu.webp": "/static/media/poster-hifu.d860950fc48a23d1b413.webp",
-    "index.html": "/index.html"
+    "index.html": "/index.html",
+    "static/media/newlogo.webp": "/static/media/newlogo.cbe39ddb96ce4106f348.webp"
   },
   "entrypoints": [
-    "static/css/main.7c173a1c.css",
-    "static/js/main.fe8c1c0f.js"
+    "static/css/main.570a21bc.css",
+    "static/js/main.359082b9.js"
   ]
 }

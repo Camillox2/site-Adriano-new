@@ -15,10 +15,18 @@ const Hero = () => {
       id="inicio"
       className="relative min-h-[100svh] flex flex-col justify-center overflow-hidden bg-slate-900"
     >
-      {/* Fundo: vídeo do equipamento em loop (0,5 MB) com foto de fallback */}
+      {/* Fundo: foto estática otimizada no mobile e vídeo de alta qualidade no desktop */}
       <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
+        <img
+          src={images.consultorio1}
+          alt=""
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+          className="w-full h-full object-cover block md:hidden opacity-40"
+        />
         <video
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover hidden md:block"
           autoPlay
           muted
           loop
@@ -103,7 +111,7 @@ const Hero = () => {
                 width="480"
                 height="480"
                 loading="eager"
-                fetchPriority="high"
+                fetchpriority="high"
                 decoding="async"
                 className="relative w-60 sm:w-72 lg:w-[18rem] xl:w-[20rem] h-auto object-contain rounded-[2rem] shadow-2xl ring-1 ring-white/20"
               />
