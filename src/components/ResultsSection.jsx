@@ -126,6 +126,15 @@ const RESULTS_DATA = [
     image: globalImages.botox_1,
     hasBeforeAfter: true,
   },
+  {
+    id: 13,
+    category: 'implantes',
+    categoryLabel: 'Implantes Dentários',
+    title: 'Reabilitação com Prótese Protocolo',
+    description: 'Recuperação funcional e estética completa com fixação sobre implantes.',
+    image: globalImages.implante_dentario_1,
+    hasBeforeAfter: true,
+  },
 ];
 
 const CATEGORIES = [
@@ -133,6 +142,7 @@ const CATEGORIES = [
   { id: 'preenchimento', label: 'Preenchimento Labial' },
   { id: 'botox', label: 'Botox / Toxina Botulínica' },
   { id: 'harmonizacao', label: 'Harmonização Orofacial' },
+  { id: 'implantes', label: 'Implantes Dentários' },
 ];
 
 const ResultsSection = () => {
