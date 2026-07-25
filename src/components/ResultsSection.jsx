@@ -12,6 +12,7 @@ import preenchimentoDetalhe from '../assets/images/resultados/preenchimento_labi
 import resultadoHarmonizacao1 from '../assets/images/resultados/resultado_harmonizacao_1.webp';
 import resultadoHarmonizacao2 from '../assets/images/resultados/resultado_harmonizacao_2.webp';
 import resultadoHarmonizacao3 from '../assets/images/resultados/resultado_harmonizacao_3.webp';
+import { images as globalImages } from '../assets';
 
 // Vídeo real
 import antesEDepoisVideo from '../assets/videos/antesedepois.mp4';
@@ -87,6 +88,42 @@ const RESULTS_DATA = [
     title: 'Resultado Estético Integrado',
     description: 'Planejamento individualizado para harmonização entre sorriso e contornos faciais.',
     image: resultadoHarmonizacao3,
+    hasBeforeAfter: true,
+  },
+  {
+    id: 9,
+    category: 'harmonizacao',
+    categoryLabel: 'Harmonização Orofacial',
+    title: 'Preenchimento Labial',
+    description: 'Contorno e volume natural alcançados com técnica segura de preenchimento.',
+    image: globalImages.preenchimento_labial_1,
+    hasBeforeAfter: true,
+  },
+  {
+    id: 10,
+    category: 'harmonizacao',
+    categoryLabel: 'Harmonização Orofacial',
+    title: 'Lifting Facial',
+    description: 'Efeito lifting não cirúrgico para rejuvenescimento global do rosto.',
+    image: globalImages.lifting_facial,
+    hasBeforeAfter: true,
+  },
+  {
+    id: 11,
+    category: 'harmonizacao',
+    categoryLabel: 'Lipo de Papada',
+    title: 'Lipoaspiração de Papada HD',
+    description: 'Eliminação da gordura submentoniana e definição do contorno da mandíbula.',
+    image: globalImages.lipo_papada,
+    hasBeforeAfter: true,
+  },
+  {
+    id: 12,
+    category: 'botox',
+    categoryLabel: 'Botox / Toxina Botulínica',
+    title: 'Tratamento Preventivo com Botox',
+    description: 'Suavização das linhas de expressão garantindo um visual descansado.',
+    image: globalImages.botox_1,
     hasBeforeAfter: true,
   },
 ];

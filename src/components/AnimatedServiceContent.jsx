@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronRight, Image as ImageIcon } from 'lucide-react';
+import { images as globalImages } from '../assets';
 import Reveal from './Reveal';
 
 const AnimatedServiceContent = ({ page }) => {
@@ -46,7 +47,10 @@ const AnimatedServiceContent = ({ page }) => {
               <div className="space-y-4 mt-8">
                 {topicPoints.map((topic, idx) => (
                   <Reveal key={idx} delay={idx * 100}>
-                    <div className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:border-emerald-200 transition-colors group">
+                    <div 
+                      className="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 hover:border-emerald-200 transition-colors group cursor-pointer"
+                      onClick={() => images.length > 0 && setActiveImageIndex(idx % images.length)}
+                    >
                       <h3 className="text-lg font-bold text-slate-900 flex items-center gap-3">
                         <span className="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 group-hover:bg-emerald-500 group-hover:text-white transition-colors">
                           <ChevronRight size={18} />
@@ -82,7 +86,7 @@ const AnimatedServiceContent = ({ page }) => {
                   images.map((img, idx) => (
                     <img
                       key={idx}
-                      src={img}
+                      src={globalImages[img] || img}
                       alt={`${page.label} - Galeria ${idx + 1}`}
                       className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${
                         idx === activeImageIndex ? 'opacity-100' : 'opacity-0'
