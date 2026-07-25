@@ -28,6 +28,7 @@ import botox_2 from './novas/botox_2.png';
 import botox_3 from './novas/botox_3.png';
 import harmonizacao_antes_depois_1 from './novas/harmonizacao_antes_depois_1.png';
 import harmonizacao_antes_depois_2 from './novas/harmonizacao_antes_depois_2.png';
+import implante_dentario_1 from './novas/implante_dentario_1.png';
 
 // Posters (thumbnails reais extraídos dos vídeos)
 import posterHifu from './images/poster-hifu.webp';
@@ -81,6 +82,7 @@ const images = {
   botox_3,
   harmonizacao_antes_depois_1,
   harmonizacao_antes_depois_2,
+  implante_dentario_1,
 };
 
 const videos = {

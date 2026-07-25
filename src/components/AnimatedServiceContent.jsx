@@ -81,18 +81,30 @@ const AnimatedServiceContent = ({ page }) => {
           {/* Right Column: Dynamic Image Carousel */}
           <div className="lg:col-span-2 lg:sticky lg:top-32">
             <Reveal className="relative">
-              <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl bg-slate-200">
+              <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl bg-slate-900">
                 {images.length > 0 ? (
                   images.map((img, idx) => (
-                    <img
+                    <div
                       key={idx}
-                      src={globalImages[img] || img}
-                      alt={`${page.label} - Galeria ${idx + 1}`}
-                      className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${
-                        idx === activeImageIndex ? 'opacity-100' : 'opacity-0'
+                      className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+                        idx === activeImageIndex ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
                       }`}
-                      loading={idx === 0 ? "eager" : "lazy"}
-                    />
+                    >
+                      {/* Blurred background fill so no blank edges show */}
+                      <img
+                        src={globalImages[img] || img}
+                        alt=""
+                        className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-40 scale-125"
+                        aria-hidden="true"
+                      />
+                      {/* Full uncropped image */}
+                      <img
+                        src={globalImages[img] || img}
+                        alt={`${page.label} - Galeria ${idx + 1}`}
+                        className="relative w-full h-full object-contain z-10 p-2"
+                        loading={idx === 0 ? "eager" : "lazy"}
+                      />
+                    </div>
                   ))
                 ) : (
                   <div className="absolute inset-0 flex flex-col items-center justify-center text-slate-400 bg-slate-100">

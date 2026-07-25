@@ -301,6 +301,7 @@ const BASE_SERVICES = {
 
   'implantes-dentarios': {
     baseSlug: 'implantes-dentarios',
+    images: ['implante_dentario_1'],
     label: 'Implantes Dentários',
     eyebrow: 'Implantodontia & Reabilitação Oral',
     titlePattern: (city) => `Implantes Dentários ${city.locationTitle} | Dr. Adriano Camillo`,

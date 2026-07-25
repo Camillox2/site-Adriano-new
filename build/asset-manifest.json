@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.css": "/static/css/main.b41d8ddc.css",
-    "main.js": "/static/js/main.9c5f1986.js",
-    "static/js/771.7b08dff9.chunk.js": "/static/js/771.7b08dff9.chunk.js",
-    "static/js/377.5a1ab9a9.chunk.js": "/static/js/377.5a1ab9a9.chunk.js",
-    "static/js/649.8ee06f0b.chunk.js": "/static/js/649.8ee06f0b.chunk.js",
-    "static/js/430.c64aa801.chunk.js": "/static/js/430.c64aa801.chunk.js",
+    "main.css": "/static/css/main.f2f9ec63.css",
+    "main.js": "/static/js/main.8f6cdef5.js",
+    "static/js/771.2e603f4c.chunk.js": "/static/js/771.2e603f4c.chunk.js",
+    "static/js/377.9ba463e0.chunk.js": "/static/js/377.9ba463e0.chunk.js",
+    "static/js/649.4d453bd5.chunk.js": "/static/js/649.4d453bd5.chunk.js",
+    "static/js/430.d05a7cc2.chunk.js": "/static/js/430.d05a7cc2.chunk.js",
     "static/js/524.366a241c.chunk.js": "/static/js/524.366a241c.chunk.js",
     "static/media/antesedepois.mp4": "/static/media/antesedepois.4b9da811f499f79fe9a7.mp4",
     "static/media/preenchimento_labial_4.png": "/static/media/preenchimento_labial_4.c634eaac0fa46f3befb3.png",
@@ -21,6 +21,7 @@
     "static/media/botox_3.png": "/static/media/botox_3.f1f99aebfe62d559635e.png",
     "static/media/preenchimento_labial_3.png": "/static/media/preenchimento_labial_3.423ab82efe14d2a382d5.png",
     "static/media/preenchimento_labial_5.png": "/static/media/preenchimento_labial_5.b7f32557a17bef0a38b3.png",
+    "static/media/implante_dentario_1.png": "/static/media/implante_dentario_1.ccbd1f1072bb53009ab2.png",
     "static/media/preenchimento_mento.png": "/static/media/preenchimento_mento.b360d8b600d5880a608f.png",
     "static/media/lipo_papada.png": "/static/media/lipo_papada.b19b0285791191630d7f.png",
     "static/media/preenchimento_labial_1.png": "/static/media/preenchimento_labial_1.495849e47f7a9d46c6d5.png",
@@ -51,7 +52,7 @@
     "static/media/newlogo.webp": "/static/media/newlogo.cbe39ddb96ce4106f348.webp"
   },
   "entrypoints": [
-    "static/css/main.b41d8ddc.css",
-    "static/js/main.9c5f1986.js"
+    "static/css/main.f2f9ec63.css",
+    "static/js/main.8f6cdef5.js"
   ]
 }
