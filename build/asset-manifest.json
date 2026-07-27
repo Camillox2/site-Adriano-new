@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/static/css/main.c66625e4.css",
-    "main.js": "/static/js/main.af467375.js",
+    "main.js": "/static/js/main.88f75ae0.js",
     "static/js/771.2e603f4c.chunk.js": "/static/js/771.2e603f4c.chunk.js",
     "static/js/377.e18142d2.chunk.js": "/static/js/377.e18142d2.chunk.js",
     "static/js/649.c7c78919.chunk.js": "/static/js/649.c7c78919.chunk.js",
     "static/js/569.4f7dddbf.chunk.js": "/static/js/569.4f7dddbf.chunk.js",
     "static/js/524.366a241c.chunk.js": "/static/js/524.366a241c.chunk.js",
-    "static/js/310.9ff03f7a.chunk.js": "/static/js/310.9ff03f7a.chunk.js",
+    "static/js/310.27dda2be.chunk.js": "/static/js/310.27dda2be.chunk.js",
     "static/js/928.d381958a.chunk.js": "/static/js/928.d381958a.chunk.js",
     "static/media/antesedepois.mp4": "/static/media/antesedepois.4b9da811f499f79fe9a7.mp4",
     "static/media/preenchimento_labial_4.png": "/static/media/preenchimento_labial_4.c634eaac0fa46f3befb3.png",
@@ -55,6 +55,6 @@
   },
   "entrypoints": [
     "static/css/main.c66625e4.css",
-    "static/js/main.af467375.js"
+    "static/js/main.88f75ae0.js"
   ]
 }

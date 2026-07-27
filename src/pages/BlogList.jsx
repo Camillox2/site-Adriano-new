@@ -8,7 +8,7 @@ const BlogList = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('Todos');
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
-  const [subscribedEmail, setSubscribedEmail] = useState('');
+  const [subscribedPhone, setSubscribedPhone] = useState('');
 
   // Extrair todas as categorias únicas
   const categories = ['Todos', ...new Set(BLOG_POSTS.map(post => post.category))];
@@ -28,9 +28,9 @@ const BlogList = () => {
 
   const handleNewsletterSubmit = (e) => {
     e.preventDefault();
-    const emailInput = e.target.elements.email.value;
-    if (emailInput) {
-      setSubscribedEmail(emailInput);
+    const phoneInput = e.target.elements.phone.value;
+    if (phoneInput) {
+      setSubscribedPhone(phoneInput);
       setIsSuccessModalOpen(true);
       e.target.reset();
     }
@@ -186,7 +186,7 @@ const BlogList = () => {
           ))}
         </div>
 
-        {/* Sessão Newsletter */}
+        {/* Sessão Newsletter / VIP WhatsApp */}
         <div className="relative rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-emerald-800 via-emerald-900 to-slate-900 border border-emerald-500/30 p-8 md:p-16 shadow-2xl animate-fade-in-up">
           {/* Efeitos de fundo verde fortinho */}
           <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-emerald-400/25 rounded-full blur-3xl" />
@@ -195,14 +195,14 @@ const BlogList = () => {
           <div className="relative z-10 grid md:grid-cols-2 gap-12 items-center">
             <div>
               <div className="inline-flex items-center gap-2 bg-emerald-400/20 text-emerald-300 border border-emerald-400/30 px-4 py-2 rounded-full text-sm font-bold mb-6">
-                <Mail size={16} />
-                Newsletter Exclusiva do Dr. Adriano
+                <MessageCircle size={16} />
+                Lista VIP no WhatsApp do Dr. Adriano
               </div>
               <h3 className="text-3xl md:text-4xl font-extrabold text-white mb-4 leading-tight">
-                Receba dicas de <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-teal-300">saúde & estética</span>
+                Receba novidades & dicas no seu <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-teal-300">WhatsApp</span>
               </h3>
               <p className="text-slate-200 text-lg leading-relaxed">
-                Inscreva-se com seu e-mail e receba artigos novos, dicas de saúde bucal, avisos sobre mitos da harmonização e novidades da clínica diretamente no seu e-mail ou WhatsApp!
+                Inscreva-se com seu número de celular e receba artigos novos, alertas sobre mitos da harmonização e dicas exclusivas de saúde bucal diretamente no seu WhatsApp!
               </p>
             </div>
             
@@ -211,17 +211,17 @@ const BlogList = () => {
               onSubmit={handleNewsletterSubmit}
             >
               <input 
-                name="email"
-                type="email" 
+                name="phone"
+                type="tel" 
                 required
-                placeholder="Digite seu e-mail..." 
-                className="flex-grow bg-slate-950/90 border border-emerald-500/40 text-white rounded-2xl py-4 px-6 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent placeholder:text-slate-400 font-medium"
+                placeholder="Seu WhatsApp com DDD..." 
+                className="flex-grow bg-slate-950/90 border border-emerald-500/40 text-white rounded-2xl py-4 px-6 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent placeholder:text-slate-400 font-medium text-base"
               />
               <button 
                 type="submit"
                 className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold py-4 px-8 rounded-2xl transition-all shadow-lg hover:shadow-emerald-400/30 flex items-center justify-center gap-2 text-base shrink-0"
               >
-                Quero Receber <Send size={18} />
+                Cadastrar Número <Send size={18} />
               </button>
             </form>
           </div>
@@ -253,21 +253,21 @@ const BlogList = () => {
               </span>
 
               <h3 className="text-2xl font-extrabold text-slate-900 mb-3 font-display">
-                Bem-vindo à nossa lista VIP!
+                Bem-vindo à nossa Lista VIP!
               </h3>
 
               <p className="text-slate-600 text-sm leading-relaxed mb-6">
-                O e-mail <strong className="text-emerald-700 font-bold">{subscribedEmail}</strong> foi cadastrado com sucesso. Você passará a receber nossos melhores artigos, mitos sobre estética e dicas de saúde bucal!
+                O número <strong className="text-emerald-700 font-bold">{subscribedPhone}</strong> foi registrado para receber nossos melhores artigos, mitos sobre estética e avisos de novos posts.
               </p>
 
               <div className="space-y-3">
                 <a
-                  href={`https://wa.me/5549998362864?text=${encodeURIComponent(`Olá Dr. Adriano! Gostaria de me cadastrar na newsletter com o e-mail: ${subscribedEmail}`)}`}
+                  href={`https://wa.me/5549998362864?text=${encodeURIComponent(`Olá Dr. Adriano! Cadastrei meu WhatsApp (${subscribedPhone}) no blog para receber as dicas e novidades!`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-6 rounded-2xl transition-all shadow-lg shadow-emerald-600/20 text-sm cursor-pointer flex items-center justify-center gap-2"
                 >
-                  <MessageCircle size={18} /> Confirmar Cadastro pelo WhatsApp
+                  <MessageCircle size={18} /> Iniciar no WhatsApp
                 </a>
                 <button
                   onClick={() => setIsSuccessModalOpen(false)}
