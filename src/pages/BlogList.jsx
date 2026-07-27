@@ -25,7 +25,7 @@ const BlogList = () => {
   }, [searchTerm, selectedCategory]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-emerald-50/70 via-slate-50 to-slate-100/80 pt-24 pb-20 relative">
+    <div className="min-h-screen bg-gradient-to-b from-emerald-100/60 via-slate-200/70 to-slate-300/80 pt-24 pb-20 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header Animado - Centralizado */}
