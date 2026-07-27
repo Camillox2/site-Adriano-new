@@ -1,12 +1,14 @@
 import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { Calendar, User, Tag, ArrowRight, Search, Mail, Send, MessageCircle } from 'lucide-react';
+import { Calendar, User, Tag, ArrowRight, Search, Mail, Send, MessageCircle, CheckCircle2, X } from 'lucide-react';
 import { BLOG_POSTS } from '../data/blogPosts';
 import { images } from '../assets';
 
 const BlogList = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('Todos');
+  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+  const [subscribedEmail, setSubscribedEmail] = useState('');
 
   // Extrair todas as categorias únicas
   const categories = ['Todos', ...new Set(BLOG_POSTS.map(post => post.category))];
@@ -23,6 +25,16 @@ const BlogList = () => {
       return matchesSearch && matchesCategory;
     });
   }, [searchTerm, selectedCategory]);
+
+  const handleNewsletterSubmit = (e) => {
+    e.preventDefault();
+    const emailInput = e.target.elements.email.value;
+    if (emailInput) {
+      setSubscribedEmail(emailInput);
+      setIsSuccessModalOpen(true);
+      e.target.reset();
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-emerald-100/60 via-slate-200/70 to-slate-300/80 pt-24 pb-20 relative">
@@ -193,12 +205,7 @@ const BlogList = () => {
             
             <form 
               className="relative flex flex-col sm:flex-row gap-3" 
-              onSubmit={(e) => { 
-                e.preventDefault(); 
-                const emailInput = e.target.elements.email.value;
-                const message = encodeURIComponent(`Olá Dr. Adriano! Gostaria de me cadastrar na newsletter com o e-mail: ${emailInput}`);
-                window.open(`https://wa.me/5549998362864?text=${message}`, '_blank');
-              }}
+              onSubmit={handleNewsletterSubmit}
             >
               <input 
                 name="email"
@@ -221,6 +228,46 @@ const BlogList = () => {
             <p>Dr. Adriano R. Camillo • Cirurgião-Dentista • CRO/SC 4011</p>
           </div>
         </div>
+
+        {/* Modal de Sucesso de Inscrição */}
+        {isSuccessModalOpen && (
+          <div className="fixed inset-0 bg-slate-950/80 backdrop-blur-md flex items-center justify-center z-[99999] p-4 animate-fade-in">
+            <div className="bg-white rounded-3xl p-8 md:p-10 max-w-md w-full text-center relative border border-emerald-100 shadow-2xl animate-fade-in-up">
+              <button 
+                onClick={() => setIsSuccessModalOpen(false)}
+                className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-2 rounded-full transition-colors"
+                aria-label="Fechar"
+              >
+                <X size={20} />
+              </button>
+
+              <div className="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner">
+                <CheckCircle2 size={44} />
+              </div>
+
+              <span className="text-emerald-700 font-bold uppercase tracking-wider text-xs block mb-2">
+                Inscrição Confirmada! 🎉
+              </span>
+
+              <h3 className="text-2xl font-extrabold text-slate-900 mb-3 font-display">
+                Bem-vindo à nossa lista VIP!
+              </h3>
+
+              <p className="text-slate-600 text-sm leading-relaxed mb-6">
+                O e-mail <strong className="text-emerald-700 font-bold">{subscribedEmail}</strong> foi cadastrado com sucesso. Você passará a receber nossos melhores artigos, mitos sobre estética e dicas de saúde bucal!
+              </p>
+
+              <div className="space-y-3">
+                <button
+                  onClick={() => setIsSuccessModalOpen(false)}
+                  className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-6 rounded-2xl transition-all shadow-lg shadow-emerald-600/20 text-sm cursor-pointer"
+                >
+                  Perfeito, obrigado!
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
       </div>
     </div>
