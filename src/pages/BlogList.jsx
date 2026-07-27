@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Calendar, User, Tag, ArrowRight, Search, Mail, Send, MessageCircle } from 'lucide-react';
 import { BLOG_POSTS } from '../data/blogPosts';
+import { images } from '../assets';
 
 const BlogList = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -24,29 +25,40 @@ const BlogList = () => {
   }, [searchTerm, selectedCategory]);
 
   return (
-    <div className="min-h-screen bg-slate-50 pt-24 pb-20 relative">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 pt-24 pb-20 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header Animado */}
-        <div className="text-center mb-16 animate-fade-in-up">
-          <span className="text-emerald-600 font-semibold tracking-wider uppercase text-sm mb-3 block">
-            Conteúdo Exclusivo
-          </span>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-slate-800 mb-6 pb-2 font-display">
-            Blog da Clínica Odontológica <br className="hidden md:block" /><span className="text-emerald-600">Dr. Adriano Camillo</span>
-          </h1>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto mb-8">
-            Fique por dentro das novidades, descubra mitos e verdades sobre tratamentos estéticos e acompanhe as melhores dicas de saúde bucal.
-          </p>
-          <a 
-            href={`https://wa.me/5549998362864?text=${encodeURIComponent('Olá, vim pelo Blog e gostaria de agendar uma avaliação.')}`}
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-emerald-600/30 transition-all transform hover:-translate-y-1"
-          >
-            <MessageCircle size={20} />
-            Agendar Avaliação
-          </a>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-16 animate-fade-in-up">
+          <div className="flex-1 text-center md:text-left">
+            <span className="text-emerald-600 font-semibold tracking-wider uppercase text-sm mb-3 block">
+              Conteúdo Exclusivo
+            </span>
+            <h1 className="text-4xl md:text-5xl font-extrabold text-slate-800 mb-6 pb-2 font-display">
+              Blog da Clínica Odontológica <br className="hidden md:block" /><span className="text-emerald-600">Dr. Adriano Camillo</span>
+            </h1>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto md:mx-0 mb-8">
+              Fique por dentro das novidades, descubra mitos e verdades sobre tratamentos estéticos e acompanhe as melhores dicas de saúde bucal.
+            </p>
+            <a 
+              href={`https://wa.me/5549998362864?text=${encodeURIComponent('Olá, vim pelo Blog e gostaria de agendar uma avaliação.')}`}
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-emerald-600/30 transition-all transform hover:-translate-y-1"
+            >
+              <MessageCircle size={20} />
+              Agendar Avaliação
+            </a>
+          </div>
+          
+          <div className="flex-shrink-0 relative mt-8 md:mt-0">
+            <div className="absolute -inset-4 bg-gradient-to-tr from-emerald-500/20 to-teal-400/20 rounded-[2rem] blur-2xl" aria-hidden="true"></div>
+            <img 
+              src={images.drAdriano} 
+              alt="Dr. Adriano Camillo" 
+              className="relative w-64 sm:w-72 md:w-80 h-auto object-cover rounded-[2rem] shadow-2xl ring-1 ring-emerald-500/20"
+            />
+          </div>
         </div>
 
         {/* Barra de Pesquisa e Filtros */}
@@ -62,7 +74,7 @@ const BlogList = () => {
               placeholder="Pesquisar artigos..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-slate-900/80 border border-slate-800 text-white rounded-2xl py-4 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 transition-all placeholder:text-slate-600 shadow-inner"
+              className="w-full bg-white border border-slate-200 text-slate-800 rounded-2xl py-4 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 transition-all placeholder:text-slate-400 shadow-sm"
             />
           </div>
 
@@ -74,8 +86,8 @@ const BlogList = () => {
                 onClick={() => setSelectedCategory(category)}
                 className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                   selectedCategory === category 
-                    ? 'bg-emerald-600 text-white shadow-[0_0_15px_rgba(16,185,129,0.4)]' 
-                    : 'bg-slate-900 text-slate-400 hover:bg-slate-800 hover:text-white border border-slate-800'
+                    ? 'bg-emerald-600 text-white shadow-md' 
+                    : 'bg-white text-slate-600 hover:bg-slate-50 hover:text-emerald-700 border border-slate-200 shadow-sm'
                 }`}
               >
                 {category}
@@ -86,13 +98,13 @@ const BlogList = () => {
 
         {/* Feedback de Busca */}
         {filteredPosts.length === 0 && (
-          <div className="text-center py-20 bg-slate-900/30 rounded-3xl border border-slate-800/50">
-            <Search className="h-12 w-12 text-slate-600 mx-auto mb-4" />
-            <h3 className="text-xl font-bold text-white mb-2">Nenhum artigo encontrado</h3>
-            <p className="text-slate-400">Tente buscar por outras palavras-chave ou limpe os filtros.</p>
+          <div className="text-center py-20 bg-white rounded-3xl border border-slate-200 shadow-sm">
+            <Search className="h-12 w-12 text-slate-400 mx-auto mb-4" />
+            <h3 className="text-xl font-bold text-slate-800 mb-2">Nenhum artigo encontrado</h3>
+            <p className="text-slate-600">Tente buscar por outras palavras-chave ou limpe os filtros.</p>
             <button 
               onClick={() => {setSearchTerm(''); setSelectedCategory('Todos');}}
-              className="mt-6 px-6 py-2 bg-emerald-600/20 text-emerald-400 rounded-full hover:bg-emerald-600/30 transition-colors"
+              className="mt-6 px-6 py-2 bg-emerald-50 text-emerald-600 font-semibold rounded-full hover:bg-emerald-100 transition-colors"
             >
               Limpar filtros
             </button>
