@@ -16,6 +16,16 @@ Object.entries(policy.indexableServiceCities).forEach(([service, cities]) => {
   });
 });
 
+// Extrair slugs do Blog
+const blogContent = fs.readFileSync(path.join(__dirname, '../src/data/blogPosts.js'), 'utf8');
+const blogDataScript = blogContent.replace('export const BLOG_POSTS =', 'return');
+const BLOG_POSTS = new Function(blogDataScript)();
+
+urls.push('/blog');
+BLOG_POSTS.forEach(post => {
+  urls.push(`/blog/${post.slug}`);
+});
+
 const uniqueUrls = [...new Set(urls)];
 const today = new Date().toISOString().split('T')[0];
 

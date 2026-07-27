@@ -153,6 +153,29 @@ BASE_SERVICES.forEach((service) => {
   });
 });
 
+// Adicionar Blog
+const blogContent = fs.readFileSync(path.join(__dirname, '../src/data/blogPosts.js'), 'utf8');
+const blogDataScript = blogContent.replace('export const BLOG_POSTS =', 'return');
+const BLOG_POSTS = new Function(blogDataScript)();
+
+pages.push({
+  path: '/blog',
+  name: 'Blog e Novidades',
+  title: 'Blog e Novidades | Dr. Adriano Camillo',
+  description: 'Acompanhe artigos e novidades sobre odontologia estética, harmonização orofacial e implantes em São Lourenço do Oeste.',
+  schemaType: 'CollectionPage'
+});
+
+BLOG_POSTS.forEach(post => {
+  pages.push({
+    path: `/blog/${post.slug}`,
+    name: post.title,
+    title: `${post.title} | Blog Dr. Adriano Camillo`,
+    description: post.excerpt,
+    schemaType: 'Article' // ou genérico, será tratado pelo script
+  });
+});
+
 const escapeJson = (value) => JSON.stringify(value).replace(/</g, '\\u003c');
 
 const replaceMeta = (html, matcher, replacement) => {

@@ -9,6 +9,7 @@ const NAV_ITEMS = [
   { label: 'Resultados', target: 'resultados' },
   { label: 'HIFU', target: 'hifu' },
   { label: 'Serviços', path: '/servicos' },
+  { label: 'Blog', path: '/blog' },
   { label: 'Sobre', target: 'sobre' },
   { label: 'Contato', target: 'contato' },
 ];
