@@ -28,37 +28,27 @@ const BlogList = () => {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 pt-24 pb-20 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Header Animado */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-16 animate-fade-in-up">
-          <div className="flex-1 text-center md:text-left">
-            <span className="text-emerald-600 font-semibold tracking-wider uppercase text-sm mb-3 block">
-              Conteúdo Exclusivo
-            </span>
-            <h1 className="text-4xl md:text-5xl font-extrabold text-slate-800 mb-6 pb-2 font-display">
-              Blog da Clínica Odontológica <br className="hidden md:block" /><span className="text-emerald-600">Dr. Adriano Camillo</span>
-            </h1>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto md:mx-0 mb-8">
-              Fique por dentro das novidades, descubra mitos e verdades sobre tratamentos estéticos e acompanhe as melhores dicas de saúde bucal.
-            </p>
-            <a 
-              href={`https://wa.me/5549998362864?text=${encodeURIComponent('Olá, vim pelo Blog e gostaria de agendar uma avaliação.')}`}
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-emerald-600/30 transition-all transform hover:-translate-y-1"
-            >
-              <MessageCircle size={20} />
-              Agendar Avaliação
-            </a>
-          </div>
-          
-          <div className="flex-shrink-0 relative mt-8 md:mt-0">
-            <div className="absolute -inset-4 bg-gradient-to-tr from-emerald-500/20 to-teal-400/20 rounded-[2rem] blur-2xl" aria-hidden="true"></div>
-            <img 
-              src={images.drAdriano} 
-              alt="Dr. Adriano Camillo" 
-              className="relative w-64 sm:w-72 md:w-80 h-auto object-cover rounded-[2rem] shadow-2xl ring-1 ring-emerald-500/20"
-            />
-          </div>
+        {/* Header Animado - Centralizado */}
+        <div className="text-center max-w-4xl mx-auto mb-16 animate-fade-in-up">
+          <span className="text-emerald-600 font-semibold tracking-wider uppercase text-sm mb-3 block">
+            Conteúdo Exclusivo
+          </span>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-800 mb-6 font-display leading-tight">
+            Blog da Clínica Odontológica <br className="hidden md:block" />
+            <span className="text-emerald-600">Dr. Adriano Camillo</span>
+          </h1>
+          <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto mb-8 leading-relaxed">
+            Fique por dentro das novidades, descubra mitos e verdades sobre tratamentos estéticos e acompanhe as melhores dicas de saúde bucal.
+          </p>
+          <a 
+            href={`https://wa.me/5549998362864?text=${encodeURIComponent('Olá, vim pelo Blog e gostaria de agendar uma avaliação.')}`}
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-8 rounded-full shadow-lg hover:shadow-emerald-600/30 transition-all transform hover:-translate-y-1 text-base"
+          >
+            <MessageCircle size={20} />
+            Agendar Avaliação
+          </a>
         </div>
 
         {/* Barra de Pesquisa e Filtros */}
