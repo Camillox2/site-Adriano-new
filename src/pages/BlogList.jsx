@@ -30,6 +30,18 @@ const BlogList = () => {
         
         {/* Header Animado - Centralizado */}
         <div className="text-center max-w-4xl mx-auto mb-16 animate-fade-in-up">
+          <div className="inline-flex items-center gap-3 bg-white p-2 pr-6 rounded-full border border-emerald-200 shadow-md mb-6">
+            <img 
+              src={images.drAdriano} 
+              alt="Dr. Adriano Camillo" 
+              className="w-12 h-12 rounded-full object-cover ring-2 ring-emerald-500 shadow"
+            />
+            <div className="text-left">
+              <span className="block font-bold text-slate-800 text-sm">Dr. Adriano Camillo</span>
+              <span className="block text-xs text-emerald-600 font-semibold">CRO/SC 4011 • Responsável Técnico</span>
+            </div>
+          </div>
+
           <span className="text-emerald-600 font-semibold tracking-wider uppercase text-sm mb-3 block">
             Conteúdo Exclusivo
           </span>

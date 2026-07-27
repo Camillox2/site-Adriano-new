@@ -7,7 +7,7 @@ export const BLOG_POSTS = [
     date: '2023-11-20',
     category: 'Harmonização Orofacial',
     author: 'Dr. Adriano Camillo',
-    coverImage: '/images/blog/mitos-acido-hialuronico.png',
+    coverImage: '/images/blog/mitos-acido-hialuronico.webp',
     content: [
       { type: 'paragraph', text: 'O ácido hialurônico é um composto muito utilizado na estética em cosméticos e reestruturação facial.' },
       { type: 'paragraph', text: 'Ele se torna seguro por ser uma substância biocompatível com nosso corpo, então tem risco de rejeição mínimo. Existe muita fake news acerca desse ativo, por isso, é interessante esclarecer alguns MITOS:' },
@@ -30,7 +30,7 @@ export const BLOG_POSTS = [
     date: '2023-11-15',
     category: 'Estética Facial',
     author: 'Dr. Adriano Camillo',
-    coverImage: '/images/blog/diferenca-botox-acido.png',
+    coverImage: '/images/blog/diferenca-botox-acido.webp',
     content: [
       { type: 'paragraph', text: 'Esta é uma das dúvidas mais comuns no consultório. Embora ambos os tratamentos sejam excelentes para o rejuvenescimento facial, eles agem de formas completamente diferentes.' },
       { type: 'heading', text: 'Toxina Botulínica (Botox)' },
@@ -60,7 +60,7 @@ export const BLOG_POSTS = [
     date: '2023-11-05',
     category: 'Harmonização Orofacial',
     author: 'Dr. Adriano Camillo',
-    coverImage: '/images/blog/harmonizacao-orofacial.png',
+    coverImage: '/images/blog/harmonizacao-orofacial.webp',
     content: [
       { type: 'paragraph', text: 'A Harmonização Orofacial (HOF) vai muito além da simples aplicação de produtos. Trata-se de um estudo profundo da anatomia do seu rosto, das suas proporções e, principalmente, do que te incomoda quando você se olha no espelho.' },
       { type: 'heading', text: 'O Planejamento é a chave do sucesso' },
