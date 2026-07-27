@@ -85,89 +85,96 @@ const BlogPost = () => {
   };
 
   return (
-    <article className="min-h-screen bg-gradient-to-b from-emerald-200/80 via-slate-200/80 to-emerald-100/70 pt-28 pb-20">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6">
+    <article className="min-h-screen bg-slate-950 pt-28 pb-20 relative overflow-hidden">
+      <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-emerald-600/10 rounded-full blur-[140px] pointer-events-none" />
+      
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
         
         {/* Navegação de Volta */}
-        <Link to="/blog" className="inline-flex items-center gap-2 text-emerald-600 hover:text-emerald-700 font-semibold mb-8 transition-colors hover:-translate-x-1">
+        <Link to="/blog" className="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 font-semibold mb-8 transition-colors hover:-translate-x-1">
           <ArrowLeft size={18} /> Voltar para o Blog
         </Link>
 
-        {/* Cabeçalho do Artigo */}
-        <header className="mb-10">
-          <div className="flex flex-wrap items-center gap-3 mb-4">
-            <span className="bg-emerald-100 text-emerald-800 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
-              {post.category}
-            </span>
-            <span className="flex items-center gap-1.5 text-slate-500 text-sm font-medium">
-              <Calendar size={14} className="text-emerald-600" />
-              {new Date(post.date).toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' })}
-            </span>
-          </div>
-
-          <h1 className="text-3xl md:text-5xl font-extrabold text-slate-900 leading-tight mb-6 font-display">
-            {post.title}
-          </h1>
-
-          <div className="flex items-center gap-3 py-3 border-y border-slate-200/80">
-            <div className="w-10 h-10 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center text-sm shadow-md">
-              AC
-            </div>
-            <div>
-              <p className="text-slate-900 font-bold text-sm">{post.author}</p>
-              <p className="text-slate-500 text-xs font-medium">Cirurgião-Dentista • CRO/SC 4011</p>
-            </div>
-          </div>
-        </header>
-
-        {/* Imagem em Destaque (Arte enviada pelo usuário) */}
-        <div className="mb-12 rounded-3xl overflow-hidden shadow-xl border border-slate-200/80 bg-white max-w-2xl mx-auto">
-          <img 
-            src={post.coverImage} 
-            alt={post.title} 
-            className="w-full h-auto object-contain mx-auto block"
-          />
-        </div>
-
-        {/* Conteúdo Principal */}
-        <div className="prose prose-slate max-w-none">
-          {/* Excerpt como introdução em destaque */}
-          <div className="text-xl md:text-2xl text-slate-700 font-medium leading-relaxed mb-10 border-l-4 border-emerald-500 pl-6 py-1 bg-emerald-50/40 rounded-r-2xl">
-            {post.excerpt}
-          </div>
-
-          <div className="animate-fade-in-up">
-            {renderContent()}
-          </div>
-        </div>
-
-        {/* Rodapé do Artigo - Compartilhamento */}
-        <div className="mt-16 pt-8 border-t border-slate-200 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-2 text-slate-600">
-            <Tag size={18} className="text-emerald-600" />
-            <span className="font-semibold">Categoria:</span>
-            <span className="text-emerald-700 font-bold">{post.category}</span>
-          </div>
+        {/* Card Principal do Artigo */}
+        <div className="bg-white rounded-[2.5rem] p-6 md:p-12 shadow-2xl border border-slate-200">
           
-          <div className="flex items-center gap-4">
-            <span className="text-slate-600 font-semibold text-sm flex items-center gap-2">
-              <Share2 size={18} className="text-emerald-600" /> Compartilhar:
-            </span>
-            <div className="flex gap-2">
-              <button onClick={() => handleShare('whatsapp')} className="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:text-[#25D366] hover:border-[#25D366] transition-colors shadow-sm" aria-label="Compartilhar no WhatsApp">
-                <MessageCircle size={18} />
-              </button>
-              <button onClick={() => handleShare('facebook')} className="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:text-[#1877F2] hover:border-[#1877F2] transition-colors shadow-sm" aria-label="Compartilhar no Facebook">
-                <Facebook size={18} />
-              </button>
-              <button onClick={() => handleShare('twitter')} className="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:text-[#1DA1F2] hover:border-[#1DA1F2] transition-colors shadow-sm" aria-label="Compartilhar no Twitter">
-                <Twitter size={18} />
-              </button>
-              <button onClick={() => handleShare('linkedin')} className="w-10 h-10 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-600 hover:text-[#0A66C2] hover:border-[#0A66C2] transition-colors shadow-sm" aria-label="Compartilhar no LinkedIn">
-                <Linkedin size={18} />
-              </button>
+          {/* Cabeçalho do Artigo */}
+          <header className="mb-10">
+            <div className="flex flex-wrap items-center gap-3 mb-4">
+              <span className="bg-emerald-100 text-emerald-800 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                {post.category}
+              </span>
+              <span className="flex items-center gap-1.5 text-slate-500 text-sm font-medium">
+                <Calendar size={14} className="text-emerald-600" />
+                {new Date(post.date).toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' })}
+              </span>
+            </div>
+
+            <h1 className="text-3xl md:text-5xl font-extrabold text-slate-900 leading-tight mb-6 font-display">
+              {post.title}
+            </h1>
+
+            <div className="flex items-center gap-3 py-3 border-y border-slate-200/80">
+              <div className="w-10 h-10 rounded-full bg-emerald-600 text-white font-bold flex items-center justify-center text-sm shadow-md">
+                AC
+              </div>
+              <div>
+                <p className="text-slate-900 font-bold text-sm">{post.author}</p>
+                <p className="text-slate-500 text-xs font-medium">Cirurgião-Dentista • CRO/SC 4011</p>
+              </div>
+            </div>
+          </header>
+
+          {/* Imagem em Destaque (Arte enviada pelo usuário) */}
+          <div className="mb-12 rounded-3xl overflow-hidden shadow-xl border border-slate-200 bg-white max-w-xl mx-auto">
+            <img 
+              src={post.coverImage} 
+              alt={post.title} 
+              className="w-full h-auto object-contain mx-auto block"
+            />
+          </div>
+
+          {/* Conteúdo Principal */}
+          <div className="prose prose-slate max-w-none">
+            {/* Excerpt como introdução em destaque */}
+            <div className="text-xl md:text-2xl text-slate-700 font-medium leading-relaxed mb-10 border-l-4 border-emerald-500 pl-6 py-1 bg-emerald-50/40 rounded-r-2xl">
+              {post.excerpt}
+            </div>
+
+            <div className="animate-fade-in-up">
+              {renderContent()}
             </div>
           </div>
+
+          {/* Rodapé do Artigo - Compartilhamento */}
+          <div className="mt-16 pt-8 border-t border-slate-200 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="flex items-center gap-2 text-slate-600">
+              <Tag size={18} className="text-emerald-600" />
+              <span className="font-semibold">Categoria:</span>
+              <span className="text-emerald-700 font-bold">{post.category}</span>
+            </div>
+            
+            <div className="flex items-center gap-4">
+              <span className="text-slate-600 font-semibold text-sm flex items-center gap-2">
+                <Share2 size={18} className="text-emerald-600" /> Compartilhar:
+              </span>
+              <div className="flex gap-2">
+                <button onClick={() => handleShare('whatsapp')} className="w-10 h-10 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-600 hover:text-[#25D366] hover:border-[#25D366] transition-colors shadow-sm" aria-label="Compartilhar no WhatsApp">
+                  <MessageCircle size={18} />
+                </button>
+                <button onClick={() => handleShare('facebook')} className="w-10 h-10 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-600 hover:text-[#1877F2] hover:border-[#1877F2] transition-colors shadow-sm" aria-label="Compartilhar no Facebook">
+                  <Facebook size={18} />
+                </button>
+                <button onClick={() => handleShare('twitter')} className="w-10 h-10 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-600 hover:text-[#1DA1F2] hover:border-[#1DA1F2] transition-colors shadow-sm" aria-label="Compartilhar no Twitter">
+                  <Twitter size={18} />
+                </button>
+                <button onClick={() => handleShare('linkedin')} className="w-10 h-10 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-600 hover:text-[#0A66C2] hover:border-[#0A66C2] transition-colors shadow-sm" aria-label="Compartilhar no LinkedIn">
+                  <Linkedin size={18} />
+                </button>
+              </div>
+            </div>
+          </div>
+
         </div>
 
       </div>

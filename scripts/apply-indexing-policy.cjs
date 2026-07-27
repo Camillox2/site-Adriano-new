@@ -14,7 +14,7 @@ const normalizePath = (pathname = '/') => {
 const isIndexablePath = (pathname) => {
   const pagePath = normalizePath(pathname);
 
-  if (policy.corePaths.includes(pagePath)) return true;
+  if (policy.corePaths.includes(pagePath) || pagePath.startsWith('/blog')) return true;
 
   if (pagePath.startsWith('/servicos/')) {
     const city = pagePath.slice('/servicos/'.length);

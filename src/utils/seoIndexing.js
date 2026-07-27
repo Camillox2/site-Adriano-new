@@ -12,7 +12,7 @@ const normalizePath = (pathname = '/') => {
 export const isIndexablePath = (pathname) => {
   const path = normalizePath(pathname);
 
-  if (policy.corePaths.includes(path)) return true;
+  if (policy.corePaths.includes(path) || path.startsWith('/blog')) return true;
 
   if (path.startsWith('/servicos/')) {
     const city = path.slice('/servicos/'.length);

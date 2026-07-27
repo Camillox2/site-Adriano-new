@@ -37,8 +37,11 @@ const BlogList = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-emerald-200/80 via-slate-200/80 to-emerald-100/70 pt-24 pb-20 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-slate-950 pt-24 pb-20 relative overflow-hidden">
+      {/* Efeitos sutis de brilho de fundo */}
+      <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-emerald-600/10 rounded-full blur-[140px] pointer-events-none" />
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header Animado - Centralizado */}
         <div className="text-center max-w-4xl mx-auto mb-16 animate-fade-in-up">
@@ -54,21 +57,21 @@ const BlogList = () => {
             </div>
           </div>
 
-          <span className="text-emerald-700 font-bold tracking-wider uppercase text-sm mb-3 block">
+          <span className="text-emerald-400 font-bold tracking-wider uppercase text-sm mb-3 block">
             Conteúdo Exclusivo
           </span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 mb-6 font-display leading-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 font-display leading-tight">
             Blog da Clínica Odontológica <br className="hidden md:block" />
-            <span className="text-emerald-700">Dr. Adriano Camillo</span>
+            <span className="text-emerald-400">Dr. Adriano Camillo</span>
           </h1>
-          <p className="text-lg md:text-xl text-slate-700 max-w-2xl mx-auto mb-8 leading-relaxed">
+          <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-8 leading-relaxed">
             Fique por dentro das novidades, descubra mitos e verdades sobre tratamentos estéticos e acompanhe as melhores dicas de saúde bucal.
           </p>
           <a 
             href={`https://wa.me/5549998362864?text=${encodeURIComponent('Olá, vim pelo Blog e gostaria de agendar uma avaliação.')}`}
             target="_blank" 
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-8 rounded-full shadow-lg hover:shadow-emerald-600/30 transition-all transform hover:-translate-y-1 text-base"
+            className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3.5 px-8 rounded-full shadow-lg hover:shadow-emerald-600/40 transition-all transform hover:-translate-y-1 text-base"
           >
             <MessageCircle size={20} />
             Agendar Avaliação
@@ -81,14 +84,14 @@ const BlogList = () => {
           {/* Barra de Pesquisa */}
           <div className="max-w-2xl mx-auto relative group">
             <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
-              <Search className="h-5 w-5 text-slate-500 group-focus-within:text-emerald-600 transition-colors" />
+              <Search className="h-5 w-5 text-slate-400 group-focus-within:text-emerald-400 transition-colors" />
             </div>
             <input
               type="text"
               placeholder="Pesquisar artigos..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-white border border-slate-300 text-slate-900 rounded-2xl py-4 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600 transition-all placeholder:text-slate-400 shadow-md"
+              className="w-full bg-slate-900 border border-slate-800 text-white rounded-2xl py-4 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 transition-all placeholder:text-slate-500 shadow-inner"
             />
           </div>
 
@@ -100,8 +103,8 @@ const BlogList = () => {
                 onClick={() => setSelectedCategory(category)}
                 className={`px-5 py-2 rounded-full text-sm font-bold transition-all duration-300 ${
                   selectedCategory === category 
-                    ? 'bg-emerald-700 text-white shadow-lg shadow-emerald-700/30 scale-105' 
-                    : 'bg-white text-slate-700 hover:bg-slate-50 hover:text-emerald-700 border border-slate-300 shadow-sm'
+                    ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-600/30 scale-105' 
+                    : 'bg-slate-900 text-slate-300 hover:bg-slate-800 hover:text-white border border-slate-800 shadow-sm'
                 }`}
               >
                 {category}
