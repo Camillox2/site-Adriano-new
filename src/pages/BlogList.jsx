@@ -32,11 +32,11 @@ const BlogList = () => {
           <span className="text-emerald-500 font-semibold tracking-wider uppercase text-sm mb-3 block">
             Conteúdo Exclusivo
           </span>
-          <h1 className="text-4xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-600 mb-6 pb-2">
-            Blog do Doutor
+          <h1 className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-600 mb-6 pb-2 font-display">
+            Blog da Clínica Odontológica <br className="hidden md:block" /><span className="text-emerald-400">Dr. Adriano Camillo</span>
           </h1>
           <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-            Dicas, novidades e informações confiáveis sobre saúde bucal, estética facial e bem-estar.
+            Fique por dentro das novidades, descubra mitos e verdades sobre tratamentos estéticos e acompanhe as melhores dicas de saúde bucal.
           </p>
         </div>
 
@@ -161,10 +161,10 @@ const BlogList = () => {
                 Newsletter Exclusiva
               </div>
               <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
-                Receba novidades e <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">dicas de estética</span>
+                Fique por dentro das <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">novidades</span>
               </h3>
               <p className="text-slate-300 text-lg">
-                Junte-se à nossa lista VIP e receba conteúdos exclusivos do Dr. Adriano diretamente no seu e-mail. Sem spam.
+                Receba diretamente no seu e-mail artigos novos, dicas práticas de saúde bucal, alertas sobre mitos da estética e convites para eventos exclusivos da clínica. Sem spam, apenas conteúdo de valor!
               </p>
             </div>
             
@@ -172,7 +172,7 @@ const BlogList = () => {
               <input 
                 type="email" 
                 required
-                placeholder="Seu melhor e-mail..." 
+                placeholder="Digite seu e-mail..." 
                 className="flex-grow bg-slate-950/80 border border-slate-700/50 text-white rounded-2xl py-4 px-6 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent placeholder:text-slate-500"
               />
               <button 
@@ -182,6 +182,11 @@ const BlogList = () => {
                 Assinar <Send size={18} />
               </button>
             </form>
+          </div>
+
+          {/* CRO Info */}
+          <div className="relative z-10 mt-12 pt-6 border-t border-slate-800/50 text-center text-slate-500 text-sm">
+            <p>Dr. Adriano R. Camillo • Cirurgião Dentista • CRO/SC 4011</p>
           </div>
         </div>
 

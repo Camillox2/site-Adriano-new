@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.7fb16b10.css",
-    "main.js": "/static/js/main.c0856848.js",
+    "main.css": "/static/css/main.df8f333c.css",
+    "main.js": "/static/js/main.bcb7220d.js",
     "static/js/771.2e603f4c.chunk.js": "/static/js/771.2e603f4c.chunk.js",
     "static/js/377.e18142d2.chunk.js": "/static/js/377.e18142d2.chunk.js",
     "static/js/649.c7c78919.chunk.js": "/static/js/649.c7c78919.chunk.js",
     "static/js/569.4f7dddbf.chunk.js": "/static/js/569.4f7dddbf.chunk.js",
     "static/js/524.366a241c.chunk.js": "/static/js/524.366a241c.chunk.js",
-    "static/js/917.04f6000d.chunk.js": "/static/js/917.04f6000d.chunk.js",
-    "static/js/135.3f5227a9.chunk.js": "/static/js/135.3f5227a9.chunk.js",
+    "static/js/917.0af83229.chunk.js": "/static/js/917.0af83229.chunk.js",
+    "static/js/135.dac87e5a.chunk.js": "/static/js/135.dac87e5a.chunk.js",
     "static/media/antesedepois.mp4": "/static/media/antesedepois.4b9da811f499f79fe9a7.mp4",
     "static/media/preenchimento_labial_4.png": "/static/media/preenchimento_labial_4.c634eaac0fa46f3befb3.png",
     "static/media/hifuatendimento.mp4": "/static/media/hifuatendimento.167f2f169a1046de8289.mp4",
@@ -54,7 +54,7 @@
     "static/media/newlogo.webp": "/static/media/newlogo.cbe39ddb96ce4106f348.webp"
   },
   "entrypoints": [
-    "static/css/main.7fb16b10.css",
-    "static/js/main.c0856848.js"
+    "static/css/main.df8f333c.css",
+    "static/js/main.bcb7220d.js"
   ]
 }
