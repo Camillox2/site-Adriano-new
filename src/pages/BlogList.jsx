@@ -38,18 +38,18 @@ const BlogList = () => {
             />
             <div className="text-left">
               <span className="block font-bold text-slate-800 text-sm">Dr. Adriano Camillo</span>
-              <span className="block text-xs text-emerald-600 font-semibold">CRO/SC 4011 • Responsável Técnico</span>
+              <span className="block text-xs text-emerald-700 font-bold">CRO/SC 4011 • Cirurgião-Dentista</span>
             </div>
           </div>
 
-          <span className="text-emerald-600 font-semibold tracking-wider uppercase text-sm mb-3 block">
+          <span className="text-emerald-700 font-bold tracking-wider uppercase text-sm mb-3 block">
             Conteúdo Exclusivo
           </span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-800 mb-6 font-display leading-tight">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 mb-6 font-display leading-tight">
             Blog da Clínica Odontológica <br className="hidden md:block" />
-            <span className="text-emerald-600">Dr. Adriano Camillo</span>
+            <span className="text-emerald-700">Dr. Adriano Camillo</span>
           </h1>
-          <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto mb-8 leading-relaxed">
+          <p className="text-lg md:text-xl text-slate-700 max-w-2xl mx-auto mb-8 leading-relaxed">
             Fique por dentro das novidades, descubra mitos e verdades sobre tratamentos estéticos e acompanhe as melhores dicas de saúde bucal.
           </p>
           <a 
@@ -69,14 +69,14 @@ const BlogList = () => {
           {/* Barra de Pesquisa */}
           <div className="max-w-2xl mx-auto relative group">
             <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none">
-              <Search className="h-5 w-5 text-slate-500 group-focus-within:text-emerald-500 transition-colors" />
+              <Search className="h-5 w-5 text-slate-500 group-focus-within:text-emerald-600 transition-colors" />
             </div>
             <input
               type="text"
               placeholder="Pesquisar artigos..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-white border border-slate-200 text-slate-800 rounded-2xl py-4 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 transition-all placeholder:text-slate-400 shadow-sm"
+              className="w-full bg-white border border-slate-300 text-slate-900 rounded-2xl py-4 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600 transition-all placeholder:text-slate-400 shadow-md"
             />
           </div>
 
@@ -86,10 +86,10 @@ const BlogList = () => {
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                className={`px-5 py-2 rounded-full text-sm font-bold transition-all duration-300 ${
                   selectedCategory === category 
-                    ? 'bg-emerald-600 text-white shadow-md' 
-                    : 'bg-white text-slate-600 hover:bg-slate-50 hover:text-emerald-700 border border-slate-200 shadow-sm'
+                    ? 'bg-emerald-700 text-white shadow-lg shadow-emerald-700/30 scale-105' 
+                    : 'bg-white text-slate-700 hover:bg-slate-50 hover:text-emerald-700 border border-slate-300 shadow-sm'
                 }`}
               >
                 {category}
@@ -172,44 +172,53 @@ const BlogList = () => {
         </div>
 
         {/* Sessão Newsletter */}
-        <div className="relative rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-emerald-900/40 to-slate-900 border border-emerald-800/30 p-8 md:p-16 animate-fade-in-up">
-          {/* Efeitos de fundo */}
-          <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-emerald-500/20 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-64 h-64 bg-teal-500/20 rounded-full blur-3xl" />
+        <div className="relative rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-emerald-800 via-emerald-900 to-slate-900 border border-emerald-500/30 p-8 md:p-16 shadow-2xl animate-fade-in-up">
+          {/* Efeitos de fundo verde fortinho */}
+          <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-emerald-400/25 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-teal-400/20 rounded-full blur-3xl" />
           
           <div className="relative z-10 grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="inline-flex items-center gap-2 bg-emerald-500/20 text-emerald-400 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+              <div className="inline-flex items-center gap-2 bg-emerald-400/20 text-emerald-300 border border-emerald-400/30 px-4 py-2 rounded-full text-sm font-bold mb-6">
                 <Mail size={16} />
-                Newsletter Exclusiva
+                Newsletter Exclusiva do Dr. Adriano
               </div>
-              <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
-                Fique por dentro das <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400">novidades</span>
+              <h3 className="text-3xl md:text-4xl font-extrabold text-white mb-4 leading-tight">
+                Receba dicas de <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 to-teal-300">saúde & estética</span>
               </h3>
-              <p className="text-slate-300 text-lg">
-                Receba diretamente no seu e-mail artigos novos, dicas práticas de saúde bucal, alertas sobre mitos da estética e convites para eventos exclusivos da clínica. Sem spam, apenas conteúdo de valor!
+              <p className="text-slate-200 text-lg leading-relaxed">
+                Inscreva-se com seu e-mail e receba artigos novos, dicas de saúde bucal, avisos sobre mitos da harmonização e novidades da clínica diretamente no seu e-mail ou WhatsApp!
               </p>
             </div>
             
-            <form className="relative flex flex-col sm:flex-row gap-3" onSubmit={(e) => { e.preventDefault(); alert('Inscrição realizada com sucesso!'); }}>
+            <form 
+              className="relative flex flex-col sm:flex-row gap-3" 
+              onSubmit={(e) => { 
+                e.preventDefault(); 
+                const emailInput = e.target.elements.email.value;
+                const message = encodeURIComponent(`Olá Dr. Adriano! Gostaria de me cadastrar na newsletter com o e-mail: ${emailInput}`);
+                window.open(`https://wa.me/5549998362864?text=${message}`, '_blank');
+              }}
+            >
               <input 
+                name="email"
                 type="email" 
                 required
                 placeholder="Digite seu e-mail..." 
-                className="flex-grow bg-slate-950/80 border border-slate-700/50 text-white rounded-2xl py-4 px-6 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent placeholder:text-slate-500"
+                className="flex-grow bg-slate-950/90 border border-emerald-500/40 text-white rounded-2xl py-4 px-6 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:border-transparent placeholder:text-slate-400 font-medium"
               />
               <button 
                 type="submit"
-                className="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 px-8 rounded-2xl transition-all shadow-lg hover:shadow-emerald-500/25 flex items-center justify-center gap-2"
+                className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold py-4 px-8 rounded-2xl transition-all shadow-lg hover:shadow-emerald-400/30 flex items-center justify-center gap-2 text-base shrink-0"
               >
-                Assinar <Send size={18} />
+                Quero Receber <Send size={18} />
               </button>
             </form>
           </div>
 
           {/* CRO Info */}
-          <div className="relative z-10 mt-12 pt-6 border-t border-slate-800/50 text-center text-slate-500 text-sm">
-            <p>Dr. Adriano R. Camillo • Cirurgião Dentista • CRO/SC 4011</p>
+          <div className="relative z-10 mt-12 pt-6 border-t border-emerald-700/40 text-center text-slate-300 text-sm font-medium">
+            <p>Dr. Adriano R. Camillo • Cirurgião-Dentista • CRO/SC 4011</p>
           </div>
         </div>
 
