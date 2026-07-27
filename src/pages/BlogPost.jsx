@@ -85,7 +85,7 @@ const BlogPost = () => {
   };
 
   return (
-    <article className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 pt-28 pb-20">
+    <article className="min-h-screen bg-gradient-to-b from-emerald-50/70 via-slate-50 to-slate-100/80 pt-28 pb-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         
         {/* Navegação de Volta */}
