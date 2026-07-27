@@ -205,7 +205,8 @@ const ResultsSection = () => {
                 muted
                 loop
                 playsInline
-                autoPlay
+                preload="none"
+                poster={resultadoHarmonizacao1}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               <button

@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { Calendar, User, Tag, ArrowRight, Search, Mail, Send } from 'lucide-react';
+import { Calendar, User, Tag, ArrowRight, Search, Mail, Send, MessageCircle } from 'lucide-react';
 import { BLOG_POSTS } from '../data/blogPosts';
 
 const BlogList = () => {
@@ -24,20 +24,29 @@ const BlogList = () => {
   }, [searchTerm, selectedCategory]);
 
   return (
-    <div className="min-h-screen bg-slate-950 pt-24 pb-20">
+    <div className="min-h-screen bg-slate-50 pt-24 pb-20 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header Animado */}
         <div className="text-center mb-16 animate-fade-in-up">
-          <span className="text-emerald-500 font-semibold tracking-wider uppercase text-sm mb-3 block">
+          <span className="text-emerald-600 font-semibold tracking-wider uppercase text-sm mb-3 block">
             Conteúdo Exclusivo
           </span>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-600 mb-6 pb-2 font-display">
-            Blog da Clínica Odontológica <br className="hidden md:block" /><span className="text-emerald-400">Dr. Adriano Camillo</span>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-slate-800 mb-6 pb-2 font-display">
+            Blog da Clínica Odontológica <br className="hidden md:block" /><span className="text-emerald-600">Dr. Adriano Camillo</span>
           </h1>
-          <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto mb-8">
             Fique por dentro das novidades, descubra mitos e verdades sobre tratamentos estéticos e acompanhe as melhores dicas de saúde bucal.
           </p>
+          <a 
+            href={`https://wa.me/5549998362864?text=${encodeURIComponent('Olá, vim pelo Blog e gostaria de agendar uma avaliação.')}`}
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-emerald-600/30 transition-all transform hover:-translate-y-1"
+          >
+            <MessageCircle size={20} />
+            Agendar Avaliação
+          </a>
         </div>
 
         {/* Barra de Pesquisa e Filtros */}
@@ -95,7 +104,7 @@ const BlogList = () => {
           {filteredPosts.map((post, index) => (
             <article 
               key={post.id}
-              className="bg-slate-900/60 backdrop-blur-sm rounded-3xl overflow-hidden border border-slate-800/80 hover:border-emerald-500/30 transition-all duration-500 hover:shadow-[0_0_40px_rgba(16,185,129,0.1)] hover:-translate-y-2 flex flex-col group animate-fade-in-up"
+              className="bg-white rounded-3xl overflow-hidden border border-slate-200 hover:border-emerald-500/50 transition-all duration-500 hover:shadow-xl hover:-translate-y-2 flex flex-col group animate-fade-in-up"
               style={{ animationDelay: `${(index % 6) * 100}ms` }}
             >
               <Link to={`/blog/${post.slug}`} className="block relative overflow-hidden aspect-[16/10]">
@@ -104,9 +113,9 @@ const BlogList = () => {
                   alt={post.title}
                   className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-out"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="absolute top-4 left-4">
-                  <span className="bg-slate-900/80 backdrop-blur-md text-emerald-400 border border-emerald-500/20 px-3 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5 shadow-lg">
+                  <span className="bg-white/90 backdrop-blur-md text-emerald-700 border border-emerald-500/20 px-3 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5 shadow-sm">
                     <Tag size={12} />
                     {post.category}
                   </span>
@@ -124,22 +133,22 @@ const BlogList = () => {
                   </span>
                 </div>
 
-                <h2 className="text-xl font-bold text-slate-100 mb-3 line-clamp-2 group-hover:text-emerald-400 transition-colors leading-tight">
+                <h2 className="text-xl font-bold text-slate-800 mb-3 line-clamp-2 group-hover:text-emerald-700 transition-colors leading-tight">
                   <Link to={`/blog/${post.slug}`}>
                     {post.title}
                   </Link>
                 </h2>
                 
-                <p className="text-slate-400 text-sm mb-8 line-clamp-3 flex-grow leading-relaxed">
+                <p className="text-slate-600 text-sm mb-8 line-clamp-3 flex-grow leading-relaxed">
                   {post.excerpt}
                 </p>
 
                 <Link 
                   to={`/blog/${post.slug}`}
-                  className="inline-flex items-center gap-2 text-emerald-500 font-bold text-sm hover:text-emerald-400 transition-all mt-auto w-fit group/link"
+                  className="inline-flex items-center gap-2 text-emerald-600 font-bold text-sm hover:text-emerald-500 transition-all mt-auto w-fit group/link"
                 >
                   Leia mais
-                  <span className="bg-emerald-500/10 p-1 rounded-full group-hover/link:bg-emerald-500/20 transition-colors">
+                  <span className="bg-emerald-50 p-1 rounded-full group-hover/link:bg-emerald-100 transition-colors">
                     <ArrowRight size={16} className="transform group-hover/link:translate-x-1 transition-transform" />
                   </span>
                 </Link>
