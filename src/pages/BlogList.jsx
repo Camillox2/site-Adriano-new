@@ -37,7 +37,7 @@ const BlogList = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-emerald-100/60 via-slate-200/70 to-slate-300/80 pt-24 pb-20 relative">
+    <div className="min-h-screen bg-gradient-to-b from-emerald-200/80 via-slate-200/80 to-emerald-100/70 pt-24 pb-20 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header Animado - Centralizado */}
@@ -258,11 +258,19 @@ const BlogList = () => {
               </p>
 
               <div className="space-y-3">
+                <a
+                  href={`https://wa.me/5549998362864?text=${encodeURIComponent(`Olá Dr. Adriano! Gostaria de me cadastrar na newsletter com o e-mail: ${subscribedEmail}`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-6 rounded-2xl transition-all shadow-lg shadow-emerald-600/20 text-sm cursor-pointer flex items-center justify-center gap-2"
+                >
+                  <MessageCircle size={18} /> Confirmar Cadastro pelo WhatsApp
+                </a>
                 <button
                   onClick={() => setIsSuccessModalOpen(false)}
-                  className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-6 rounded-2xl transition-all shadow-lg shadow-emerald-600/20 text-sm cursor-pointer"
+                  className="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold py-3 px-6 rounded-2xl transition-all text-sm cursor-pointer"
                 >
-                  Perfeito, obrigado!
+                  Fechar janela
                 </button>
               </div>
             </div>
