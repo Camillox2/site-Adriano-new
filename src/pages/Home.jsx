@@ -85,13 +85,17 @@ const Home = () => {
       <main>
         <Hero />
         <Suspense fallback={null}>
+          <AboutSection />
+        </Suspense>
+        <Suspense fallback={null}>
           <ResultsSection />
         </Suspense>
         <HifuSection />
+        <Suspense fallback={null}>
+          <TestimonialsSection />
+        </Suspense>
         <ServicesSection />
         <Suspense fallback={null}>
-          <AboutSection />
-          <TestimonialsSection />
           <ContactSection />
         </Suspense>
       </main>
