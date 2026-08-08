@@ -108,7 +108,7 @@ const ContactSection = () => (
           </a>
           <div className="mt-6 pt-5 border-t border-slate-100">
             <p className="text-sm text-slate-600 leading-relaxed">
-              Atendimento planejado com horários pontuais para pacientes de <strong>Chapecó</strong> (~50 min), <strong>Pato Branco</strong> (~45 min), <strong>Realeza</strong>, <strong>Ampére</strong> e toda a região.
+              Atendimento planejado com horários pontuais para pacientes de <strong>Pato Branco</strong> (~45 min), <strong>Realeza</strong>, <strong>Ampére</strong> e toda a região.
             </p>
           </div>
         </div>

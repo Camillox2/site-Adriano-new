@@ -73,11 +73,11 @@ const Home = () => {
       <Seo
         title={
           currentRouteMeta?.title ||
-          'Dr. Adriano Camillo | HIFU e Odontologia em São Lourenço'
+          'Dr. Adriano Camillo — Dentista em São Lourenço do Oeste | HIFU, Ortodontia e Harmonização'
         }
         description={
           currentRouteMeta?.description ||
-          'HIFU, Ortodontia, Implantes e Harmonização Orofacial com o Dr. Adriano Camillo em São Lourenço do Oeste, Chapecó, Pato Branco e região.'
+          'Cirurgião-dentista em São Lourenço do Oeste com atuação em HIFU, Ortodontia, Implantes e Harmonização Orofacial. Atendimento para pacientes de São Lourenço, Pato Branco e região.'
         }
         path={location.pathname}
       />

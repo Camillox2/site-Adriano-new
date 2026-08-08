@@ -50,6 +50,8 @@ const AnalyticsConsent = () => {
     window.__drAdrianoTrackLead = trackLead;
 
     const trackWhatsAppClick = (event) => {
+      if (!(event.target instanceof Element)) return;
+
       const link = event.target.closest('a[href^="https://wa.me/"]');
       if (!link || !window.gtag) return;
 
@@ -57,6 +59,12 @@ const AnalyticsConsent = () => {
         method: 'WhatsApp',
         link_url: link.href,
         page_location: window.location.href,
+      });
+
+      trackLead({
+        method: 'whatsapp_click',
+        service: link.dataset.leadService || link.getAttribute('aria-label') || link.textContent.trim() || 'Contato via WhatsApp',
+        city: link.dataset.leadCity || 'São Lourenço do Oeste',
       });
     };
 

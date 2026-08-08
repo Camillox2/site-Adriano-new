@@ -3,7 +3,9 @@ import { Send, User, MapPin, Sparkles } from 'lucide-react';
 import { whatsapp } from '../utils/constants';
 import { formatClickIdForWhatsApp, trackLead } from '../utils/leadTracking';
 
-const SERVICES_OPTIONS = [
+const RENTAL_SERVICE = 'Aluguel de Equipamento HIFU (B2B)';
+
+const PATIENT_SERVICES_OPTIONS = [
   'HIFU — Ultrassom Microfocado',
   'Lipo de Papada sem Cortes',
   'Odontologia Estética / Lentes',
@@ -13,10 +15,20 @@ const SERVICES_OPTIONS = [
   'DTM e Dor Orofacial',
   'Ozonioterapia',
 ];
+const RENTAL_SERVICES_OPTIONS = [RENTAL_SERVICE, ...PATIENT_SERVICES_OPTIONS];
 
-const DesktopWhatsAppForm = ({ defaultService = '', defaultCity = '', title = 'Agende no WhatsApp' }) => {
+const DesktopWhatsAppForm = ({
+  defaultService = '',
+  defaultCity = '',
+  title = 'Agende no WhatsApp',
+  className = 'hidden lg:block',
+  formId = 'desktop-whatsapp-form',
+}) => {
+  const serviceOptions = defaultService === RENTAL_SERVICE
+    ? RENTAL_SERVICES_OPTIONS
+    : PATIENT_SERVICES_OPTIONS;
   const [name, setName] = useState('');
-  const [service, setService] = useState(defaultService || SERVICES_OPTIONS[0]);
+  const [service, setService] = useState(defaultService || serviceOptions[0]);
   const [city, setCity] = useState(defaultCity || 'São Lourenço do Oeste');
 
   const handleSubmit = (e) => {
@@ -27,7 +39,7 @@ const DesktopWhatsAppForm = ({ defaultService = '', defaultCity = '', title = 'A
   };
 
   return (
-    <div className="hidden lg:block bg-slate-900/90 border border-slate-800 backdrop-blur-xl rounded-3xl p-6 shadow-2xl shadow-emerald-950/20 text-left">
+    <div className={`${className} bg-slate-900/90 border border-slate-800 backdrop-blur-xl rounded-3xl p-6 shadow-2xl shadow-emerald-950/20 text-left`}>
       <div className="flex items-center gap-2 mb-2 text-emerald-400 font-semibold text-sm">
         <Sparkles size={16} />
         <span>Atendimento Direto e Rápido</span>
@@ -39,13 +51,13 @@ const DesktopWhatsAppForm = ({ defaultService = '', defaultCity = '', title = 'A
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label htmlFor="desktop-form-name" className="block text-xs font-medium text-slate-300 mb-1">
+          <label htmlFor={`${formId}-name`} className="block text-xs font-medium text-slate-300 mb-1">
             Seu Nome
           </label>
           <div className="relative">
             <User size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
             <input
-              id="desktop-form-name"
+              id={`${formId}-name`}
               type="text"
               required
               aria-label="Seu Nome"
@@ -58,13 +70,13 @@ const DesktopWhatsAppForm = ({ defaultService = '', defaultCity = '', title = 'A
         </div>
 
         <div>
-          <label htmlFor="desktop-form-city" className="block text-xs font-medium text-slate-300 mb-1">
+          <label htmlFor={`${formId}-city`} className="block text-xs font-medium text-slate-300 mb-1">
             Sua Cidade
           </label>
           <div className="relative">
             <MapPin size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
             <input
-              id="desktop-form-city"
+              id={`${formId}-city`}
               type="text"
               aria-label="Sua Cidade"
               placeholder="Ex: Chapecó"
@@ -76,17 +88,17 @@ const DesktopWhatsAppForm = ({ defaultService = '', defaultCity = '', title = 'A
         </div>
 
         <div>
-          <label htmlFor="desktop-form-service" className="block text-xs font-medium text-slate-300 mb-1">
+          <label htmlFor={`${formId}-service`} className="block text-xs font-medium text-slate-300 mb-1">
             Assunto de Interesse
           </label>
           <select
-            id="desktop-form-service"
+            id={`${formId}-service`}
             aria-label="Assunto de Interesse"
             value={service}
             onChange={(e) => setService(e.target.value)}
             className="w-full bg-slate-950/80 border border-slate-800 rounded-xl px-3 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500 transition-colors"
           >
-            {SERVICES_OPTIONS.map((opt) => (
+            {serviceOptions.map((opt) => (
               <option key={opt} value={opt} className="bg-slate-900 text-white">
                 {opt}
               </option>

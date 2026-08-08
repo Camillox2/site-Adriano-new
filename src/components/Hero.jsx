@@ -65,7 +65,7 @@ const Hero = () => {
           <div className="text-white space-y-6 text-center lg:text-left animate-fade-in-up">
             <span className="inline-flex items-center gap-2 bg-white/10 border border-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-xs sm:text-sm font-medium text-emerald-300">
               <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse-soft" aria-hidden="true"></span>
-              Atendendo São Lourenço do Oeste, Chapecó, Pato Branco e Região
+              Dentista em São Lourenço do Oeste • Atendimento para Pato Branco e Região
             </span>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight">
@@ -102,6 +102,14 @@ const Hero = () => {
               <ShieldCheck size={16} className="text-emerald-400 shrink-0" aria-hidden="true" />
               Resposta rápida pelo WhatsApp • Avaliação sem compromisso
             </p>
+
+            <div className="w-full max-w-sm mx-auto lg:hidden">
+              <DesktopWhatsAppForm
+                title="Agende sua avaliação"
+                className="block"
+                formId="mobile-whatsapp-form"
+              />
+            </div>
 
             {/* Instagram discreto */}
             <a
@@ -165,7 +173,7 @@ const Hero = () => {
                 São Lourenço do Oeste
               </span>
               <span className="block text-xs text-slate-200">
-                Atendendo Chapecó, Pato Branco e Região
+                Atendimento para Pato Branco e Região
               </span>
             </span>
           </div>
