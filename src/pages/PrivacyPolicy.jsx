@@ -24,7 +24,7 @@ const PrivacyPolicy = () => (
           <section>
             <h2 className="text-2xl font-bold text-slate-900">Dados de navegação</h2>
             <p className="mt-3">
-              Quando você aceita a medição de audiência, o site utiliza o Google Analytics 4 para entender, de forma agregada, quais páginas são acessadas e quais links de contato recebem cliques. A medição não é carregada antes da sua escolha.
+              Quando você aceita a medição de audiência, o site utiliza o Google Analytics 4 e a tag do Google Ads para entender, de forma agregada, quais páginas são acessadas e quais contatos pelo WhatsApp são iniciados. A medição não é carregada antes da sua escolha.
             </p>
           </section>
           <section>

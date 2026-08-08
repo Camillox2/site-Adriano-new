@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Send, Phone, User, MapPin, Sparkles } from 'lucide-react';
 import { whatsapp } from '../utils/constants';
+import { formatClickIdForWhatsApp, trackLead } from '../utils/leadTracking';
 
 const SERVICES_OPTIONS = [
   'HIFU — Ultrassom Microfocado',
@@ -22,7 +23,8 @@ const DesktopWhatsAppForm = ({ defaultService = '', defaultCity = '', title = 'A
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const message = `Olá, Dr. Adriano! Meu nome é ${name || 'Cliente'}${city ? ` (${city})` : ''}. Gostaria de agendar/informações sobre: *${service}*. Meu contato: ${phone || 'não informado'}.`;
+    trackLead({ method: 'form_whatsapp', service, city });
+    const message = `Olá, Dr. Adriano! Meu nome é ${name || 'Cliente'}${city ? ` (${city})` : ''}. Gostaria de agendar/informações sobre: *${service}*. Meu contato: ${phone || 'não informado'}.${formatClickIdForWhatsApp()}`;
     window.open(whatsapp(message), '_blank', 'noopener,noreferrer');
   };
 

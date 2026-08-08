@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import Home from './pages/Home';
 import HifuDetails from './pages/HifuDetails';
 import AlugarHifu from './pages/AlugarHifu';
+import AnalyticsConsent from './components/AnalyticsConsent';
 import './styles/global.css';
 
 // Code splitting (carrega apenas quando necessário)
@@ -30,6 +31,7 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
+      <AnalyticsConsent />
       <div className="App">
         <Suspense fallback={<div className="min-h-screen bg-slate-900 flex items-center justify-center text-white">Carregando...</div>}>
           <Routes>
