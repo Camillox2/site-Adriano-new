@@ -205,10 +205,10 @@ const ResultsSection = () => {
         {/* Vídeo em Destaque */}
         <Reveal className="mb-14 md:mb-18">
           <div className="max-w-4xl mx-auto bg-slate-900 rounded-3xl overflow-hidden shadow-2xl border border-slate-800 grid grid-cols-1 md:grid-cols-2 items-center">
-            <div className="relative w-full aspect-[9/16] md:aspect-auto md:h-full max-h-[480px] bg-black flex items-center justify-center group overflow-hidden">
+            <div className="relative w-full aspect-square md:aspect-auto md:h-full md:max-h-[480px] bg-black flex items-center justify-center group overflow-hidden">
               <video
                 src={antesEDepoisVideo}
-                className="w-full h-full object-contain md:object-cover group-hover:scale-105 transition-transform duration-700"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 muted
                 loop
                 playsInline
