@@ -50,9 +50,9 @@ const Hero = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Texto */}
           <div className="text-white space-y-6 text-center lg:text-left animate-fade-in-up">
-            <span className="inline-flex items-center gap-2 bg-white/10 border border-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium text-emerald-300">
+            <span className="inline-flex items-center gap-2 bg-white/10 border border-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-xs sm:text-sm font-medium text-emerald-300">
               <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse-soft" aria-hidden="true"></span>
-              Cirurgião-Dentista • São Lourenço do Oeste e região
+              Atendendo São Lourenço do Oeste, Chapecó, Pato Branco e Região
             </span>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight">
@@ -62,9 +62,8 @@ const Hero = () => {
             </h1>
 
             <p className="text-lg md:text-xl text-slate-200 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              HIFU (Ultrassom Microfocado), Ortodontia, Implantes e Harmonização
-              Orofacial com o Dr. Adriano Camillo — tecnologia de ponta e mais de
-              30 anos de experiência cuidando de você.
+              Referência regional em HIFU (Ultrassom Microfocado), Ortodontia, Implantes e Harmonização
+              Orofacial com o Dr. Adriano Camillo — tecnologia avançada e mais de 30 anos de experiência para pacientes de todo o Oeste Catarinense e Sudoeste do PR.
             </p>
 
             {/* CTAs */}

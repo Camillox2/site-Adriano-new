@@ -13,6 +13,8 @@ import hifuEquipamento from './images/20240723_165814.jpg';
 import hifuEquipamentoDois from './images/Screenshot_20241104_152125_Photos.jpg';
 import whatsappScreenshot from './images/Screenshot_20231028_123109_WhatsApp.jpg';
 import photosScreenshot from './images/Screenshot_20241126_094251_Photos.jpg';
+import faceBefore from './images/face-before.jpg';
+import faceAfter from './images/face-after.jpg';
 
 // Posters (thumbnails reais extraídos dos vídeos)
 import posterHifu from './images/poster-hifu.jpg';
@@ -40,6 +42,8 @@ const images = {
   // Materiais
   whatsappScreenshot,
   photosScreenshot,
+  faceBefore,
+  faceAfter,
 
   // Dr. Adriano
   drAdriano: pai,

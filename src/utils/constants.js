@@ -33,8 +33,8 @@ export const WHATSAPP_HIFU = whatsapp(
   'Olá, Dr. Adriano! Gostaria de agendar uma avaliação para o HIFU (Ultrassom Microfocado).'
 );
 
-export const WHATSAPP_RENTAL = whatsapp(
-  'Olá, Dr. Adriano! Vim pela página de locação do HIFU e gostaria de consultar valores, disponibilidade, configuração das ponteiras e condições para a minha cidade.'
+export const WHATSAPP_ALUGAR_HIFU = whatsapp(
+  'Olá! Gostaria de mais informações sobre a locação do equipamento HIFU Ultramed.'
 );
 
 export const WHATSAPP_EMERGENCY = whatsapp(
@@ -44,10 +44,24 @@ export const WHATSAPP_EMERGENCY = whatsapp(
 export const LOCATIONS = [
   {
     city: 'São Lourenço do Oeste — SC',
-    type: 'Consultório principal',
+    type: 'Consultório Principal (Sede)',
     address: ADDRESS.street,
     mapsUrl: ADDRESS.mapsUrl,
     main: true,
+  },
+  {
+    city: 'Chapecó — SC',
+    type: 'Pacientes da região • Fácil acesso (~50 min)',
+    address: 'Agendamento planejado pelo WhatsApp',
+    mapsUrl: 'https://maps.google.com/?q=Chapeco,+SC',
+    main: false,
+  },
+  {
+    city: 'Pato Branco — PR',
+    type: 'Pacientes da região • Fácil acesso (~45 min)',
+    address: 'Agendamento planejado pelo WhatsApp',
+    mapsUrl: 'https://maps.google.com/?q=Pato+Branco,+PR',
+    main: false,
   },
   {
     city: 'Realeza — PR',
@@ -65,9 +79,10 @@ export const LOCATIONS = [
   },
   {
     city: 'Curitiba — PR',
-    type: 'Atendimento domiciliar',
+    type: 'Atendimento domiciliar especializado',
     address: 'Agende pelo WhatsApp',
     mapsUrl: 'https://maps.google.com/?q=Curitiba,+PR',
     main: false,
   },
 ];
+
