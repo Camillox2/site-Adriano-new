@@ -3,8 +3,8 @@ import {
 Box,
 ChevronLeft,
 ChevronRight,
-Move3D,
-Rotate3D,
+Boxes,
+RotateCw,
 ScanLine,
 Sparkles,
 Zap,
@@ -250,7 +250,7 @@ onActivate();
 )}
 </div>
 <div className="absolute left-3 bottom-3 right-3 sm:left-5 sm:right-auto rounded-2xl bg-slate-950/80 backdrop-blur px-4 py-3 text-white text-xs sm:text-sm flex items-center gap-3 border border-white/10">
-<Move3D size={18} className="text-cyan-300 shrink-0" aria-hidden="true" />
+<Boxes size={18} className="text-cyan-300 shrink-0" aria-hidden="true" />
 Arraste a ponteira sobre {area === 'face' ? 'o rosto' : 'a área corporal'}
 </div>
 </div>

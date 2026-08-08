@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { Rotate3d, Zap, Monitor, Cpu } from 'lucide-react';
+import { RotateCw, Zap, Monitor, Cpu } from 'lucide-react';
 import { images } from '../assets/index';
 
 const HOTSPOTS = [
@@ -197,7 +197,7 @@ const HifuDeviceViewer3d = () => {
 
       {/* Barra inferior */}
       <div className="absolute top-5 left-5 flex items-center gap-2.5 rounded-full bg-slate-900/60 border border-white/10 px-4 py-2 text-sm font-medium text-slate-200 backdrop-blur-md pointer-events-none z-20">
-        <Rotate3d size={16} className="text-cyan-400 animate-spin-slow" />
+        <RotateCw size={16} className="text-cyan-400 animate-spin-slow" />
         Mova o mouse para girar
       </div>
 

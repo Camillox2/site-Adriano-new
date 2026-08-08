@@ -37,6 +37,8 @@ export const WHATSAPP_ALUGAR_HIFU = whatsapp(
   'Olá! Gostaria de mais informações sobre a locação do equipamento HIFU Ultramed.'
 );
 
+export const WHATSAPP_RENTAL = WHATSAPP_ALUGAR_HIFU;
+
 export const WHATSAPP_EMERGENCY = whatsapp(
   'Olá! Tenho uma urgência odontológica e preciso de atendimento.'
 );

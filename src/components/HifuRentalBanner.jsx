@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, CalendarCheck, Move3D, Sparkles } from 'lucide-react';
+import { ArrowRight, CalendarCheck, Boxes, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { images } from '../assets';
 
@@ -22,7 +22,7 @@ const HifuRentalBanner = () => (
             </p>
             <div className="flex flex-wrap gap-3 mt-7">
               <span className="inline-flex items-center gap-2 text-sm text-slate-200 bg-white/5 border border-white/10 rounded-full px-4 py-2">
-                <Move3D size={17} className="text-cyan-300" aria-hidden="true" />
+                <Boxes size={17} className="text-cyan-300" aria-hidden="true" />
                 Modelo 3D interativo
               </span>
               <span className="inline-flex items-center gap-2 text-sm text-slate-200 bg-white/5 border border-white/10 rounded-full px-4 py-2">
