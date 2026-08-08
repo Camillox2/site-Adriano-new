@@ -62,23 +62,63 @@ const AnalyticsConsent = () => {
     rememberGoogleClickId();
     window.__drAdrianoTrackLead = trackLead;
 
-    const trackWhatsAppClick = (event) => {
+    const trackContactClick = (event) => {
       if (!(event.target instanceof Element)) return;
 
-      const link = event.target.closest('a[href^="https://wa.me/"]');
+      const link = event.target.closest('a');
       if (!link || !window.gtag) return;
+
+      if (link.matches('a[href^="tel:"]')) {
+        window.gtag('event', 'phone_click', {
+          link_label: link.getAttribute('aria-label') || link.textContent.trim(),
+          link_url: link.href,
+          page_location: window.location.href,
+        });
+        return;
+      }
+
+      if (link.matches(TRACKED_MAP_SELECTOR)) {
+        const { label, city } = getLinkContext(link);
+        window.gtag('event', 'directions_click', {
+          link_label: label,
+          link_url: link.href,
+          city,
+          page_location: window.location.href,
+        });
+        return;
+      }
+
+      if (!link.matches(TRACKED_WHATSAPP_SELECTOR)) return;
+
+      const needsNavigationGuard = !link.target || link.target === '_self';
+      let navigated = false;
+      const continueNavigation = () => {
+        if (navigated || !needsNavigationGuard) return;
+        navigated = true;
+        window.location.assign(link.href);
+      };
+
+      if (needsNavigationGuard && !event.metaKey && !event.ctrlKey && !event.shiftKey && event.button === 0) {
+        event.preventDefault();
+      }
 
       window.gtag('event', 'whatsapp_click', {
         method: 'WhatsApp',
+        link_label: link.dataset.leadService || link.getAttribute('aria-label') || link.textContent.trim(),
         link_url: link.href,
         page_location: window.location.href,
       });
 
       trackLead({
         method: 'whatsapp_click',
+        onComplete: continueNavigation,
         service: link.dataset.leadService || link.getAttribute('aria-label') || link.textContent.trim() || 'Contato via WhatsApp',
         city: link.dataset.leadCity || 'São Lourenço do Oeste',
       });
+
+      if (needsNavigationGuard && !navigated) {
+        window.setTimeout(continueNavigation, 850);
+      }
     };
 
     document.addEventListener('click', trackContactClick);

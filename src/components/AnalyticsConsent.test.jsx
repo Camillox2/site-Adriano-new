@@ -38,11 +38,31 @@ describe('AnalyticsConsent', () => {
 
     expect(rememberGoogleClickId).toHaveBeenCalledTimes(1);
     expect(trackLead).toHaveBeenCalledTimes(1);
-    expect(trackLead).toHaveBeenCalledWith({
+    expect(trackLead).toHaveBeenCalledWith(expect.objectContaining({
       method: 'whatsapp_click',
       service: 'Agendar no WhatsApp',
-      city: 'São Lourenço do Oeste',
-    });
+    }));
+
+    expect(trackLead.mock.calls[0][0].onComplete).toEqual(expect.any(Function));
+
+    unmount();
+  });
+
+  it('registra telefone e rota somente como eventos auxiliares', () => {
+    const { unmount } = render(
+      <MemoryRouter>
+        <AnalyticsConsent />
+        <a href="tel:+5549998362864">Ligar</a>
+        <a href="https://maps.google.com/?q=Dr+Adriano">Ver no mapa</a>
+      </MemoryRouter>
+    );
+
+    fireEvent.click(document.querySelector('a[href^="tel:"]'));
+    fireEvent.click(document.querySelector('a[href*="maps.google.com"]'));
+
+    expect(trackLead).not.toHaveBeenCalled();
+    expect(window.dataLayer.some((event) => event[0] === 'event' && event[1] === 'phone_click')).toBe(true);
+    expect(window.dataLayer.some((event) => event[0] === 'event' && event[1] === 'directions_click')).toBe(true);
 
     unmount();
   });
