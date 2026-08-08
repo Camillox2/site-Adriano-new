@@ -31,11 +31,14 @@ const Hero = () => {
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="none"
           poster={images.consultorio1}
           src={videos.hifuDois}
           tabIndex={-1}
-        />
+          aria-hidden="true"
+        >
+          <track kind="captions" src="" label="Português" default />
+        </video>
       </div>
       <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-900/85 to-slate-900/60"></div>
       <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-slate-950/90 to-transparent"></div>
@@ -61,23 +64,26 @@ const Hero = () => {
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start pt-2">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <a
                 href={WHATSAPP_DEFAULT}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-primary text-base md:text-lg"
+                className="btn-primary text-base md:text-lg flex items-center justify-center gap-2 shadow-emerald-500/20"
               >
-                <Phone size={20} aria-hidden="true" />
-                Agendar Avaliação
+                <Phone size={19} aria-hidden="true" />
+                Agendar no WhatsApp
               </a>
-              <button onClick={scrollToHifu} className="btn-outline-light text-base md:text-lg">
+              <button
+                onClick={scrollToHifu}
+                className="btn-outline-light text-base md:text-lg hover:bg-slate-900 border-white/20"
+              >
                 Conhecer o HIFU
               </button>
             </div>
 
-            <p className="text-sm text-slate-300 flex items-center justify-center lg:justify-start gap-2">
-              <ShieldCheck size={16} className="text-emerald-400" aria-hidden="true" />
+            <p className="text-sm text-slate-200 flex items-center justify-center lg:justify-start gap-2 font-medium">
+              <ShieldCheck size={16} className="text-emerald-400 shrink-0" aria-hidden="true" />
               Resposta rápida pelo WhatsApp • Avaliação sem compromisso
             </p>
 
@@ -86,7 +92,7 @@ const Hero = () => {
               href={SITE.instagram}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-slate-300 hover:text-white transition-colors text-sm"
+              className="inline-flex items-center gap-2 text-slate-200 hover:text-white transition-colors text-sm font-medium"
             >
               <Instagram size={16} aria-hidden="true" />
               {SITE.instagramHandle}
@@ -107,8 +113,8 @@ const Hero = () => {
               <img
                 src={images.drAdriano}
                 alt="Dr. Adriano Camillo em seu consultório"
-                width="480"
-                height="480"
+                width="420"
+                height="354"
                 loading="eager"
                 fetchpriority="high"
                 decoding="async"
@@ -118,7 +124,7 @@ const Hero = () => {
                 <ShieldCheck className="text-emerald-600 shrink-0" size={24} aria-hidden="true" />
                 <span className="text-sm font-semibold leading-tight whitespace-nowrap">
                   Atuação com HIFU
-                  <span className="block text-xs font-normal text-slate-600 whitespace-nowrap">
+                  <span className="block text-xs font-normal text-slate-700 whitespace-nowrap">
                     e Harmonização Orofacial
                   </span>
                 </span>
@@ -133,14 +139,18 @@ const Hero = () => {
             <Star className="text-emerald-400 shrink-0" size={28} aria-hidden="true" />
             <span>
               <CountUp end={30} suffix="+" className="block text-2xl font-bold text-white" />
-              <span className="block text-sm text-slate-300">anos de experiência</span>
+              <span className="block text-sm text-slate-200">anos de experiência</span>
             </span>
           </div>
           <div className="flex items-center justify-center lg:justify-start gap-4 bg-white/5 border border-white/10 backdrop-blur-sm rounded-2xl px-6 py-4">
             <MapPin className="text-emerald-400 shrink-0" size={28} aria-hidden="true" />
             <span>
-              <CountUp end={6} className="block text-2xl font-bold text-white" />
-              <span className="block text-sm text-slate-300">cidades com operação HIFU</span>
+              <span className="block text-lg font-bold text-white leading-tight">
+                São Lourenço do Oeste
+              </span>
+              <span className="block text-xs text-slate-200">
+                Atendendo Chapecó, Pato Branco e Região
+              </span>
             </span>
           </div>
           <div className="flex items-center justify-center lg:justify-start gap-4 bg-white/5 border border-white/10 backdrop-blur-sm rounded-2xl px-6 py-4">

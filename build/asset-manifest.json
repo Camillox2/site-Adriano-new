@@ -1,13 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.58f09a6b.css",
-    "main.js": "/static/js/main.716f6acf.js",
-    "static/js/377.5f3aa340.chunk.js": "/static/js/377.5f3aa340.chunk.js",
-    "static/js/649.b244a3e0.chunk.js": "/static/js/649.b244a3e0.chunk.js",
-    "static/js/569.7459d653.chunk.js": "/static/js/569.7459d653.chunk.js",
+    "main.css": "/static/css/main.99881230.css",
+    "main.js": "/static/js/main.609210c4.js",
+    "static/js/377.10def06f.chunk.js": "/static/js/377.10def06f.chunk.js",
+    "static/js/649.cda3bb58.chunk.js": "/static/js/649.cda3bb58.chunk.js",
+    "static/js/569.be9fa50e.chunk.js": "/static/js/569.be9fa50e.chunk.js",
     "static/js/524.366a241c.chunk.js": "/static/js/524.366a241c.chunk.js",
-    "static/js/917.31bc3db8.chunk.js": "/static/js/917.31bc3db8.chunk.js",
+    "static/js/917.16d9cb65.chunk.js": "/static/js/917.16d9cb65.chunk.js",
     "static/js/928.af1b3357.chunk.js": "/static/js/928.af1b3357.chunk.js",
+    "static/js/915.49d689c6.chunk.js": "/static/js/915.49d689c6.chunk.js",
+    "static/js/560.2e687148.chunk.js": "/static/js/560.2e687148.chunk.js",
+    "static/js/900.3f137fd1.chunk.js": "/static/js/900.3f137fd1.chunk.js",
+    "static/js/586.16f0a1ca.chunk.js": "/static/js/586.16f0a1ca.chunk.js",
+    "static/js/519.44279686.chunk.js": "/static/js/519.44279686.chunk.js",
     "static/media/antesedepois.mp4": "/static/media/antesedepois.4b9da811f499f79fe9a7.mp4",
     "static/media/preenchimento_labial_4.png": "/static/media/preenchimento_labial_4.c634eaac0fa46f3befb3.png",
     "static/media/hifuatendimento.mp4": "/static/media/hifuatendimento.167f2f169a1046de8289.mp4",
@@ -30,8 +35,10 @@
     "static/media/hifudois.mp4": "/static/media/hifudois.0e8f79f497c0548cb8a2.mp4",
     "static/media/implante_dentario_1.png": "/static/media/implante_dentario_1.6ca39bd2809180a83001.png",
     "static/media/resultado_harmonizacao_3.webp": "/static/media/resultado_harmonizacao_3.0c2bf24486459dbd7620.webp",
+    "static/media/resultado_design_1.webp": "/static/media/resultado_design_1.8aba72077f7401816b49.webp",
     "static/media/harmonizacao_perfil.webp": "/static/media/harmonizacao_perfil.096460bed01eddbccfcf.webp",
     "static/media/resultado_harmonizacao_1.webp": "/static/media/resultado_harmonizacao_1.8368759d149cffb22fc5.webp",
+    "static/media/resultado_design_2.webp": "/static/media/resultado_design_2.781c5f454f2ec5c98e16.webp",
     "static/media/preenchimento_labial_detalhe.webp": "/static/media/preenchimento_labial_detalhe.700aaefdb605147dbaa4.webp",
     "static/media/Screenshot_20241104_152125_Photos.webp": "/static/media/Screenshot_20241104_152125_Photos.96ac6a8e8f631e956c06.webp",
     "static/media/botox_testa_antes_depois.webp": "/static/media/botox_testa_antes_depois.51f729ccadad18166c0b.webp",
@@ -55,7 +62,7 @@
     "static/media/newlogo.webp": "/static/media/newlogo.cbe39ddb96ce4106f348.webp"
   },
   "entrypoints": [
-    "static/css/main.58f09a6b.css",
-    "static/js/main.716f6acf.js"
+    "static/css/main.99881230.css",
+    "static/js/main.609210c4.js"
   ]
 }

@@ -228,6 +228,7 @@ export const CITIES = {
 const BASE_SERVICES = {
   'odontologia-estetica': {
     baseSlug: 'odontologia-estetica',
+    images: ['resultado_design_1', 'resultado_design_2', 'consultorio1', 'consultorio2', 'consultorio3'],
     label: 'Odontologia Estética',
     eyebrow: 'Estética Odontológica & Harmonia do Sorriso',
     titlePattern: (city) => `Odontologia Estética ${city.locationTitle} | Dr. Adriano Camillo`,
@@ -375,6 +376,7 @@ const BASE_SERVICES = {
 
   'ortodontia': {
     baseSlug: 'ortodontia',
+    images: ['resultado_design_1', 'consultorio1', 'consultorio3'],
     label: 'Ortodontia',
     eyebrow: 'Ortodontia & Alinhamento Dental',
     titlePattern: (city) => `Ortodontia ${city.locationTitle} | Dr. Adriano Camillo`,
@@ -522,6 +524,7 @@ const BASE_SERVICES = {
 
   'dtm-dor-orofacial': {
     baseSlug: 'dtm-dor-orofacial',
+    images: ['botox_1', 'consultorio1', 'consultorio2'],
     label: 'DTM e Dor Orofacial',
     eyebrow: 'Tratamento de Articulação (ATM) & Dores Faciais',
     titlePattern: (city) => `DTM e Dor Orofacial ${city.locationTitle} | Dr. Adriano Camillo`,
@@ -595,6 +598,7 @@ const BASE_SERVICES = {
 
   'ozonioterapia': {
     baseSlug: 'ozonioterapia',
+    images: ['consultorio1', 'consultorio2', 'consultorio3'],
     label: 'Ozonioterapia',
     eyebrow: 'Terapia Bioestimulante & Cicatrização',
     titlePattern: (city) => `Ozonioterapia Odontológica ${city.locationTitle} | Dr. Adriano Camillo`,

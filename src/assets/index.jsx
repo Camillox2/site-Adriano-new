@@ -16,6 +16,16 @@ import photosScreenshot from './images/Screenshot_20241126_094251_Photos.webp';
 import faceBefore from './images/face-before.jpg';
 import faceAfter from './images/face-after.jpg';
 
+// Resultados
+import resultado_design_1 from './images/resultados/resultado_design_1.webp';
+import resultado_design_2 from './images/resultados/resultado_design_2.webp';
+import resultado_harmonizacao_1 from './images/resultados/resultado_harmonizacao_1.webp';
+import resultado_harmonizacao_2 from './images/resultados/resultado_harmonizacao_2.webp';
+import resultado_harmonizacao_3 from './images/resultados/resultado_harmonizacao_3.webp';
+import botox_testa_antes_depois from './images/resultados/botox_testa_antes_depois.webp';
+import harmonizacao_perfil from './images/resultados/harmonizacao_perfil.webp';
+import preenchimento_labial_detalhe from './images/resultados/preenchimento_labial_detalhe.webp';
+
 // Novas fotos
 import preenchimento_labial_1 from './novas/preenchimento_labial_1.png';
 import preenchimento_labial_2 from './novas/preenchimento_labial_2.png';
@@ -71,6 +81,16 @@ const images = {
   posterHifuAtendimento,
   posterHifuDois,
   posterHifuTres,
+
+  // Resultados
+  resultado_design_1,
+  resultado_design_2,
+  resultado_harmonizacao_1,
+  resultado_harmonizacao_2,
+  resultado_harmonizacao_3,
+  botox_testa_antes_depois,
+  harmonizacao_perfil,
+  preenchimento_labial_detalhe,
 
   // Novas
   preenchimento_labial_1,

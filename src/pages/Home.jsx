@@ -1,17 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense, lazy } from 'react';
 import { useLocation } from 'react-router-dom';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import HifuSection from '../components/HifuSection';
-import HifuRentalBanner from '../components/HifuRentalBanner';
 import ServicesSection from '../components/ServicesSection';
-import ResultsSection from '../components/ResultsSection';
-import AboutSection from '../components/AboutSection';
-import TestimonialsSection from '../components/TestimonialsSection';
-import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
 import WhatsAppButton from '../components/WhatsAppButton';
 import Seo from '../components/Seo';
+
+const HifuRentalBanner = lazy(() => import('../components/HifuRentalBanner'));
+const ResultsSection = lazy(() => import('../components/ResultsSection'));
+const AboutSection = lazy(() => import('../components/AboutSection'));
+const TestimonialsSection = lazy(() => import('../components/TestimonialsSection'));
+const ContactSection = lazy(() => import('../components/ContactSection'));
 
 const ROUTE_SEO = {
   '/harmonizacao-orofacial': {
@@ -85,12 +86,14 @@ const Home = () => {
       <main>
         <Hero />
         <HifuSection />
-        <HifuRentalBanner />
         <ServicesSection />
-        <ResultsSection />
-        <AboutSection />
-        <TestimonialsSection />
-        <ContactSection />
+        <Suspense fallback={null}>
+          <HifuRentalBanner />
+          <ResultsSection />
+          <AboutSection />
+          <TestimonialsSection />
+          <ContactSection />
+        </Suspense>
       </main>
       <Footer />
       <WhatsAppButton />
