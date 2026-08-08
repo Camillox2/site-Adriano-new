@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { Calendar, User, Tag, ArrowRight, Search, Mail, Send, MessageCircle, CheckCircle2, X } from 'lucide-react';
+import { Calendar, Tag, ArrowRight, Search, Send, MessageCircle, CheckCircle2, X } from 'lucide-react';
 import { BLOG_POSTS } from '../data/blogPosts';
 import { images } from '../assets';
 

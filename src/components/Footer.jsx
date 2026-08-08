@@ -3,6 +3,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Phone, Instagram, MapPin, Clock } from 'lucide-react';
 import { images } from '../assets';
 import { SITE, ADDRESS, WHATSAPP_DEFAULT, WHATSAPP_RENTAL } from '../utils/constants';
+import { normalizePath } from '../utils/seoIndexing';
 
 const QUICK_LINKS = [
   { text: 'Início', target: 'inicio' },
@@ -26,10 +27,11 @@ const Footer = () => {
   const year = new Date().getFullYear();
   const navigate = useNavigate();
   const location = useLocation();
-  const whatsappHref = location.pathname === '/alugar_hifu' ? WHATSAPP_RENTAL : WHATSAPP_DEFAULT;
+  const normalizedPath = normalizePath(location.pathname);
+  const whatsappHref = normalizedPath === '/alugar_hifu' ? WHATSAPP_RENTAL : WHATSAPP_DEFAULT;
 
   const goToSection = (id) => {
-    if (location.pathname !== '/') {
+    if (normalizedPath !== '/') {
       navigate('/', { state: { scrollTo: id } });
       return;
     }

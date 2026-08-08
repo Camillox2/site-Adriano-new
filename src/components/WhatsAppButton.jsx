@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { WHATSAPP_DEFAULT, WHATSAPP_RENTAL } from '../utils/constants';
+import { normalizePath } from '../utils/seoIndexing';
 
 // Ícone oficial do WhatsApp (SVG inline)
 const WhatsAppIcon = ({ size = 28 }) => (
@@ -19,7 +20,7 @@ const WhatsAppButton = ({ href, label }) => {
   const [visible, setVisible] = useState(false);
   const [showLabel, setShowLabel] = useState(false);
   const { pathname } = useLocation();
-  const isRentalPage = pathname === '/alugar_hifu';
+  const isRentalPage = normalizePath(pathname) === '/alugar_hifu';
   const resolvedHref = href || (isRentalPage ? WHATSAPP_RENTAL : WHATSAPP_DEFAULT);
   const resolvedLabel = label || (isRentalPage ? 'Consulte a locação pelo WhatsApp' : 'Dúvidas? Fale com a gente!');
 
@@ -41,7 +42,7 @@ const WhatsAppButton = ({ href, label }) => {
 
   return (
     <div
-      className={`fixed bottom-5 right-5 md:bottom-7 md:right-7 z-50 flex items-center gap-3 transition-all duration-500 ${
+      className={`fixed bottom-5 right-5 md:bottom-7 md:right-7 z-50 hidden sm:flex items-center gap-3 transition-all duration-500 ${
         visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6 pointer-events-none'
       }`}
     >

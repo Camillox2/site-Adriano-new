@@ -2,7 +2,6 @@ import React, { useState, useCallback, memo } from 'react';
 import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
 import {
-  CheckCircle,
   ArrowRight,
   Play,
   X,
@@ -26,6 +25,7 @@ export const HIFU_VIDEOS = [
     duration: '0:09',
     poster: images.posterHifu,
     video: videos.hifu,
+    captions: '/captions/hifu.vtt',
   },
   {
     id: 'hifuTres',
@@ -34,6 +34,7 @@ export const HIFU_VIDEOS = [
     duration: '0:11',
     poster: images.posterHifuTres,
     video: videos.hifuTres,
+    captions: '/captions/hifu-tres.vtt',
   },
   {
     id: 'hifuAtendimento',
@@ -42,6 +43,7 @@ export const HIFU_VIDEOS = [
     duration: '0:16',
     poster: images.posterHifuAtendimento,
     video: videos.hifuAtendimento,
+    captions: '/captions/hifu-atendimento.vtt',
   },
   {
     id: 'hifuDois',
@@ -50,6 +52,7 @@ export const HIFU_VIDEOS = [
     duration: '0:05',
     poster: images.posterHifuDois,
     video: videos.hifuDois,
+    captions: '/captions/hifu-dois.vtt',
   },
 ];
 
@@ -175,6 +178,7 @@ export const VideoModal = ({ video, onClose }) => createPortal(
           poster={video.poster}
           src={video.video}
         >
+          <track kind="captions" src={video.captions} srcLang="pt-BR" label="Português" default />
           Seu navegador não suporta o elemento de vídeo.
         </video>
         <div className="p-5 md:p-6 flex items-center justify-between gap-4">

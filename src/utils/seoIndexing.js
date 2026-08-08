@@ -3,10 +3,15 @@ import policy from '../data/seo-index-policy.json';
 const INDEX_DIRECTIVE = 'index, follow, max-image-preview:large';
 const NOINDEX_DIRECTIVE = 'noindex, follow';
 
-const normalizePath = (pathname = '/') => {
+export const normalizePath = (pathname = '/') => {
   const withoutQuery = pathname.split('?')[0].split('#')[0] || '/';
   if (withoutQuery === '/') return '/';
   return withoutQuery.replace(/\/+$/, '');
+};
+
+export const toCanonicalPath = (pathname = '/') => {
+  const normalized = normalizePath(pathname);
+  return normalized === '/' ? '/' : `${normalized}/`;
 };
 
 export const isIndexablePath = (pathname) => {

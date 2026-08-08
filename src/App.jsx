@@ -1,12 +1,12 @@
 import React, { useEffect, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
-import HifuDetails from './pages/HifuDetails';
-import AlugarHifu from './pages/AlugarHifu';
 import AnalyticsConsent from './components/AnalyticsConsent';
 import './styles/global.css';
 
 // Code splitting (carrega apenas quando necessário)
+const HifuDetails = React.lazy(() => import('./pages/HifuDetails'));
+const AlugarHifu = React.lazy(() => import('./pages/AlugarHifu'));
 const ServicesPage = React.lazy(() => import('./pages/ServicesPage'));
 const RegionalServicesPage = React.lazy(() => import('./pages/RegionalServicesPage'));
 const ServiceDetails = React.lazy(() => import('./pages/ServiceDetails'));

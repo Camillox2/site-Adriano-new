@@ -88,8 +88,8 @@ const pages = [
   {
     path: '/alugar_hifu',
     name: 'Locação de Ultramed HIFU para Clínicas',
-    title: 'Locação de Ultramed HIFU para Clínicas | Dr. Adriano Camillo',
-    description: 'Locação de Ultramed HIFU para profissionais e clínicas habilitados, com equipamento real, logística agendada, orientação operacional e suporte conforme o serviço contratado.',
+    title: 'Locação de Ultramed HIFU para Clínicas | Dr. Adriano',
+    description: 'Alugue o Ultramed HIFU para sua clínica com equipamento revisado, ponteiras faciais, logística agendada e orientação operacional. Consulte disponibilidade.',
   },
   {
     path: '/servicos',
@@ -191,8 +191,10 @@ const replaceMeta = (html, matcher, replacement) => {
   return html.replace(matcher, replacement);
 };
 
+const canonicalPath = (pagePath) => pagePath === '/' ? '/' : `${pagePath.replace(/\/+$/, '')}/`;
+
 const createPage = (baseHtml, page) => {
-  const url = `${siteUrl}${page.path}`;
+  const url = `${siteUrl}${canonicalPath(page.path)}`;
   let html = baseHtml;
 
   html = replaceMeta(html, /<title>[\s\S]*?<\/title>/i, `<title>${page.title}</title>`);
@@ -223,7 +225,7 @@ const createPage = (baseHtml, page) => {
             '@type': 'ListItem',
             position: index + 1,
             name: item.name,
-            url: `${siteUrl}${item.path}`,
+            url: `${siteUrl}${canonicalPath(item.path)}`,
           })),
         },
       }

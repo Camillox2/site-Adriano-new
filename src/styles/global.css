@@ -4,12 +4,13 @@
 
 /* ============================================================
    Dr. Adriano Camillo — Estilos globais
-   Paleta padrão: azul (primary), esmeralda (secondary), slate
+   Paleta padrão: esmeralda, verde e slate
    ============================================================ */
 
 @layer base {
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
     -webkit-tap-highlight-color: transparent;
   }
 
@@ -19,7 +20,7 @@
   }
 
   ::selection {
-    @apply bg-primary-600 text-white;
+    @apply bg-primary-800 text-white;
   }
 
   /* Scrollbar discreta */
@@ -61,7 +62,7 @@
   }
 
   .btn-primary {
-    @apply btn bg-secondary-600 text-white px-6 py-3.5 md:px-8 md:py-4 shadow-lg shadow-secondary-600/25 hover:bg-secondary-700 hover:shadow-xl hover:shadow-secondary-600/30 hover:-translate-y-0.5 active:translate-y-0 relative overflow-hidden;
+    @apply btn bg-secondary-700 text-white px-6 py-3.5 md:px-8 md:py-4 shadow-lg shadow-secondary-700/25 hover:bg-secondary-800 hover:shadow-xl hover:shadow-secondary-700/30 hover:-translate-y-0.5 active:translate-y-0 relative overflow-hidden;
   }
 
   /* Brilho que atravessa o botão no hover */

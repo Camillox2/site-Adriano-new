@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Navigation, Clock, CalendarCheck, ShieldCheck, Truck, PhoneCall, Building2, Sparkles } from 'lucide-react';
+import { MapPin, Navigation, ShieldCheck, Truck, PhoneCall, Sparkles } from 'lucide-react';
 import { whatsapp } from '../utils/constants';
 import Reveal from './Reveal';
 

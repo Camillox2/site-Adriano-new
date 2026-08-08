@@ -1,21 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
   Phone,
   CheckCircle,
-  TrendingUp,
-  ShieldCheck,
-  Zap,
   Target,
   ArrowRight,
   ChevronDown,
-  Sparkles,
-  Award,
-  Play,
-  Shield,
-  ChevronUp,
-  Star
+  Sparkles
 } from 'lucide-react';
-import { SITE, WHATSAPP_DEFAULT } from '../utils/constants';
 import { images, videos } from '../assets';
 import Reveal from '../components/Reveal';
 import SkinDiagram from '../components/SkinDiagram';

@@ -2,15 +2,15 @@ import React, { useEffect, Suspense, lazy } from 'react';
 import { useLocation } from 'react-router-dom';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
-import HifuSection from '../components/HifuSection';
-import ServicesSection from '../components/ServicesSection';
 import Footer from '../components/Footer';
 import WhatsAppButton from '../components/WhatsAppButton';
 import Seo from '../components/Seo';
 
 const ResultsSection = lazy(() => import('../components/ResultsSection'));
 const AboutSection = lazy(() => import('../components/AboutSection'));
+const HifuSection = lazy(() => import('../components/HifuSection'));
 const TestimonialsSection = lazy(() => import('../components/TestimonialsSection'));
+const ServicesSection = lazy(() => import('../components/ServicesSection'));
 const ContactSection = lazy(() => import('../components/ContactSection'));
 
 const ROUTE_SEO = {
@@ -73,11 +73,11 @@ const Home = () => {
       <Seo
         title={
           currentRouteMeta?.title ||
-          'Dr. Adriano Camillo — HIFU, Ortodontia e Harmonização | São Lourenço, Chapecó e Pato Branco'
+          'Dr. Adriano Camillo | HIFU e Odontologia em São Lourenço'
         }
         description={
           currentRouteMeta?.description ||
-          'Dr. Adriano Camillo: HIFU, Ortodontia, Implantes e Harmonização Orofacial em São Lourenço do Oeste, Chapecó, Pato Branco e região. Profissionais habilitados também podem consultar a locação de Ultramed HIFU.'
+          'HIFU, Ortodontia, Implantes e Harmonização Orofacial com o Dr. Adriano Camillo em São Lourenço do Oeste, Chapecó, Pato Branco e região.'
         }
         path={location.pathname}
       />
@@ -90,11 +90,15 @@ const Home = () => {
         <Suspense fallback={null}>
           <ResultsSection />
         </Suspense>
-        <HifuSection />
+        <Suspense fallback={null}>
+          <HifuSection />
+        </Suspense>
         <Suspense fallback={null}>
           <TestimonialsSection />
         </Suspense>
-        <ServicesSection />
+        <Suspense fallback={null}>
+          <ServicesSection />
+        </Suspense>
         <Suspense fallback={null}>
           <ContactSection />
         </Suspense>

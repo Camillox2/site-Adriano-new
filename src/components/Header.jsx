@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Phone, Menu, X } from 'lucide-react';
 import { images } from '../assets';
 import { WHATSAPP_DEFAULT, WHATSAPP_ALUGAR_HIFU } from '../utils/constants';
+import { normalizePath } from '../utils/seoIndexing';
 
 const NAV_ITEMS = [
   { label: 'Início', target: 'inicio' },
+  { label: 'Sobre', target: 'sobre' },
   { label: 'Resultados', target: 'resultados' },
   { label: 'HIFU', target: 'hifu' },
   { label: 'Serviços', path: '/servicos' },
   { label: 'Blog', path: '/blog' },
-  { label: 'Sobre', target: 'sobre' },
   { label: 'Contato', target: 'contato' },
 ];
 
@@ -24,28 +25,42 @@ const NAV_ITEMS_RENTAL = [
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
-  const [progress, setProgress] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
+  const progressRef = useRef(null);
+  const frameRef = useRef(null);
   const navigate = useNavigate();
   const location = useLocation();
 
-  const isRentalPage = location.pathname === '/alugar_hifu';
+  const normalizedPath = normalizePath(location.pathname);
+  const isRentalPage = normalizedPath === '/alugar_hifu';
   const currentItems = isRentalPage ? NAV_ITEMS_RENTAL : NAV_ITEMS;
   const whatsappLink = isRentalPage ? WHATSAPP_ALUGAR_HIFU : WHATSAPP_DEFAULT;
   const ctaLabel = isRentalPage ? 'Alugar HIFU' : 'Agendar Avaliação';
 
   // No topo da home o header é transparente; fora dela, sempre sólido
-  const solid = scrolled || location.pathname !== '/' || menuOpen;
+  const solid = scrolled || normalizedPath !== '/' || menuOpen;
 
   useEffect(() => {
     const onScroll = () => {
-      setScrolled(window.scrollY > 40);
-      const max = document.documentElement.scrollHeight - window.innerHeight;
-      setProgress(max > 0 ? Math.min((window.scrollY / max) * 100, 100) : 0);
+      if (frameRef.current) return;
+      frameRef.current = window.requestAnimationFrame(() => {
+        frameRef.current = null;
+        const nextScrolled = window.scrollY > 40;
+        setScrolled((current) => (current === nextScrolled ? current : nextScrolled));
+
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = max > 0 ? Math.min((window.scrollY / max) * 100, 100) : 0;
+        if (progressRef.current) {
+          progressRef.current.style.width = `${progress}%`;
+        }
+      });
     };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (frameRef.current) window.cancelAnimationFrame(frameRef.current);
+    };
   }, []);
 
   // Trava o scroll do body com o menu mobile aberto
@@ -66,7 +81,7 @@ const Header = () => {
       }
       return;
     }
-    if (location.pathname !== '/') {
+    if (normalizedPath !== '/') {
       navigate('/', { state: { scrollTo: id } });
       return;
     }
@@ -95,7 +110,7 @@ const Header = () => {
         <button
           onClick={() => goToSection(isRentalPage ? 'inicio-locacao' : 'inicio')}
           className="flex items-center gap-3 text-left focus:outline-none"
-          aria-label="Voltar ao início"
+          title="Voltar ao início"
         >
           <img
             src={images.logo}
@@ -126,8 +141,8 @@ const Header = () => {
         <nav className="hidden md:flex items-center gap-1 lg:gap-2" aria-label="Navegação principal">
           {currentItems.map((item) => (
             <button
-              key={item.target}
-              onClick={() => goToSection(item.target)}
+              key={item.path || item.target}
+              onClick={() => goToItem(item)}
               className={`px-3 lg:px-4 py-2 rounded-full text-sm lg:text-base font-medium transition-colors duration-200 ${
                 solid
                   ? 'text-slate-700 hover:text-primary-700 hover:bg-primary-50'
@@ -170,8 +185,8 @@ const Header = () => {
           <nav className="container mx-auto px-4 py-4 flex flex-col" aria-label="Menu móvel">
             {currentItems.map((item) => (
               <button
-                key={item.target}
-                onClick={() => goToSection(item.target)}
+                key={item.path || item.target}
+                onClick={() => goToItem(item)}
                 className="text-left text-slate-800 font-medium text-lg py-3.5 px-2 border-b border-slate-50 rounded-lg hover:bg-primary-50 hover:text-primary-700 transition-colors"
               >
                 {item.label}
@@ -192,8 +207,9 @@ const Header = () => {
 
       {/* Barra de progresso da leitura */}
       <div
+        ref={progressRef}
         className="absolute bottom-0 left-0 h-[3px] bg-gradient-to-r from-primary-600 via-secondary-500 to-emerald-400 transition-[width] duration-150 ease-out"
-        style={{ width: `${progress}%`, opacity: solid ? 1 : 0 }}
+        style={{ width: '0%', opacity: solid ? 1 : 0 }}
         aria-hidden="true"
       ></div>
     </header>

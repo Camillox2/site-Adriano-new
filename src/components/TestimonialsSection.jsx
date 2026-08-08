@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { ChevronLeft, ChevronRight, Star, Quote, Instagram } from 'lucide-react';
-import { SITE, WHATSAPP_DEFAULT } from '../utils/constants';
+import { ChevronLeft, ChevronRight, Star, Quote, MapPin } from 'lucide-react';
+import { ADDRESS, WHATSAPP_DEFAULT } from '../utils/constants';
 import CountUp from './CountUp';
 import Reveal from './Reveal';
 
@@ -196,8 +196,8 @@ const TestimonialsSection = () => {
         {/* CTA */}
         <div className="text-center mt-14">
           <p className="text-slate-300 mb-6 max-w-xl mx-auto">
-            Veja mais resultados e o dia a dia do consultório no Instagram — ou
-            agende agora a sua avaliação.
+            Leia as avaliações publicadas no Google ou fale diretamente com a equipe
+            para agendar sua avaliação.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
             <a
@@ -209,13 +209,13 @@ const TestimonialsSection = () => {
               Quero agendar minha avaliação
             </a>
             <a
-              href={SITE.instagram}
+              href={ADDRESS.mapsUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-outline-light"
             >
-              <Instagram size={18} aria-hidden="true" />
-              Ver no Instagram
+              <MapPin size={18} aria-hidden="true" />
+              Ver avaliações no Google
             </a>
           </div>
         </div>

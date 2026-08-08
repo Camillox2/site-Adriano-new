@@ -148,6 +148,7 @@ const CATEGORIES = [
 
 const ResultsSection = () => {
   const [activeCategory, setActiveCategory] = useState('todos');
+  const [showAllResults, setShowAllResults] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
 
@@ -176,6 +177,12 @@ const ResultsSection = () => {
   const filteredResults = activeCategory === 'todos'
     ? RESULTS_DATA
     : RESULTS_DATA.filter((r) => r.category === activeCategory);
+  const visibleResults = showAllResults ? filteredResults : filteredResults.slice(0, 6);
+
+  const selectCategory = (categoryId) => {
+    setActiveCategory(categoryId);
+    setShowAllResults(false);
+  };
 
   return (
     <section id="resultados" className="section bg-gradient-to-b from-white via-slate-50 to-white relative overflow-hidden">
@@ -188,7 +195,7 @@ const ResultsSection = () => {
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight">
             Transformações reais,<br className="hidden sm:inline" />
-            <span className="text-emerald-600">resultados naturais</span>
+            <span className="text-emerald-700">resultados naturais</span>
           </h2>
           <p className="text-slate-600 text-base md:text-lg mt-4 leading-relaxed">
             Confira alguns dos resultados de procedimentos realizados no consultório pelo Dr. Adriano Camillo. Cada planejamento respeita a anatomia e os desejos individuais de cada paciente.
@@ -207,7 +214,9 @@ const ResultsSection = () => {
                 playsInline
                 preload="none"
                 poster={resultadoHarmonizacao1}
-              />
+              >
+                <track kind="captions" src="/captions/antes-depois.vtt" srcLang="pt-BR" label="Português" default />
+              </video>
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               <button
                 onClick={() => setIsVideoModalOpen(true)}
@@ -218,7 +227,7 @@ const ResultsSection = () => {
                   <Play size={28} fill="currentColor" />
                 </span>
               </button>
-              <span className="absolute bottom-4 left-4 bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+              <span className="absolute bottom-4 left-4 bg-emerald-700 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                 Vídeo de Paciente Real
               </span>
             </div>
@@ -267,10 +276,10 @@ const ResultsSection = () => {
           {CATEGORIES.map((cat) => (
             <button
               key={cat.id}
-              onClick={() => setActiveCategory(cat.id)}
+              onClick={() => selectCategory(cat.id)}
               className={`px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold transition-all duration-300 ${
                 activeCategory === cat.id
-                  ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-600/20 scale-105'
+                  ? 'bg-emerald-700 text-white shadow-lg shadow-emerald-700/20 scale-105'
                   : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100 hover:border-slate-300'
               }`}
             >
@@ -281,7 +290,7 @@ const ResultsSection = () => {
 
         {/* Grid de Fotos de Resultados */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          {filteredResults.map((item, idx) => (
+          {visibleResults.map((item, idx) => (
             <Reveal key={item.id} delay={idx * 80}>
               <div
                 role="button"
@@ -320,7 +329,7 @@ const ResultsSection = () => {
                   <p className="text-slate-600 text-xs leading-relaxed flex-grow">
                     {item.description}
                   </p>
-                  <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-emerald-600 font-semibold">
+                  <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-emerald-700 font-semibold">
                     <span>Ver em alta resolução</span>
                     <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                   </div>
@@ -329,6 +338,19 @@ const ResultsSection = () => {
             </Reveal>
           ))}
         </div>
+
+        {filteredResults.length > 6 && (
+          <div className="flex justify-center -mt-4 mb-12">
+            <button
+              type="button"
+              onClick={() => setShowAllResults((current) => !current)}
+              className="inline-flex items-center justify-center rounded-full border border-emerald-700 px-6 py-3 text-sm font-bold text-emerald-800 transition-colors hover:bg-emerald-50 focus:outline-none focus-visible:ring-4 focus-visible:ring-emerald-300"
+              aria-expanded={showAllResults}
+            >
+              {showAllResults ? 'Mostrar menos resultados' : `Ver mais ${filteredResults.length - 6} resultados`}
+            </button>
+          </div>
+        )}
 
         {/* Modal de Imagem Ampliada com Portal */}
         {selectedImage && createPortal(
@@ -447,7 +469,9 @@ const ResultsSection = () => {
                   controls
                   autoPlay
                   className="w-full h-full object-contain"
-                />
+                >
+                  <track kind="captions" src="/captions/antes-depois.vtt" srcLang="pt-BR" label="Português" default />
+                </video>
               </div>
             </div>
           </div>,

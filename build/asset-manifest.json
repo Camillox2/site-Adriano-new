@@ -1,17 +1,21 @@
 {
   "files": {
-    "main.css": "/static/css/main.a27cd240.css",
-    "main.js": "/static/js/main.e8a70d7a.js",
-    "static/js/377.10def06f.chunk.js": "/static/js/377.10def06f.chunk.js",
-    "static/js/649.cda3bb58.chunk.js": "/static/js/649.cda3bb58.chunk.js",
-    "static/js/569.a00ce8a4.chunk.js": "/static/js/569.a00ce8a4.chunk.js",
-    "static/js/524.d27282f2.chunk.js": "/static/js/524.d27282f2.chunk.js",
-    "static/js/917.16d9cb65.chunk.js": "/static/js/917.16d9cb65.chunk.js",
-    "static/js/928.af1b3357.chunk.js": "/static/js/928.af1b3357.chunk.js",
-    "static/js/560.2e687148.chunk.js": "/static/js/560.2e687148.chunk.js",
-    "static/js/900.52eaef07.chunk.js": "/static/js/900.52eaef07.chunk.js",
-    "static/js/586.d5df32e3.chunk.js": "/static/js/586.d5df32e3.chunk.js",
-    "static/js/519.e877d2c3.chunk.js": "/static/js/519.e877d2c3.chunk.js",
+    "main.css": "/static/css/main.fa9d2dc5.css",
+    "main.js": "/static/js/main.f775843b.js",
+    "static/js/771.e09c39bf.chunk.js": "/static/js/771.e09c39bf.chunk.js",
+    "static/js/564.ea08f763.chunk.js": "/static/js/564.ea08f763.chunk.js",
+    "static/js/377.54bdfa60.chunk.js": "/static/js/377.54bdfa60.chunk.js",
+    "static/js/649.59017033.chunk.js": "/static/js/649.59017033.chunk.js",
+    "static/js/569.c7f3a041.chunk.js": "/static/js/569.c7f3a041.chunk.js",
+    "static/js/524.3ec70b5a.chunk.js": "/static/js/524.3ec70b5a.chunk.js",
+    "static/js/917.0994e376.chunk.js": "/static/js/917.0994e376.chunk.js",
+    "static/js/928.d381958a.chunk.js": "/static/js/928.d381958a.chunk.js",
+    "static/js/560.839d5b73.chunk.js": "/static/js/560.839d5b73.chunk.js",
+    "static/js/900.dfca949f.chunk.js": "/static/js/900.dfca949f.chunk.js",
+    "static/js/473.1f281709.chunk.js": "/static/js/473.1f281709.chunk.js",
+    "static/js/586.6f5b737a.chunk.js": "/static/js/586.6f5b737a.chunk.js",
+    "static/js/743.7f06e4f8.chunk.js": "/static/js/743.7f06e4f8.chunk.js",
+    "static/js/519.67c4a236.chunk.js": "/static/js/519.67c4a236.chunk.js",
     "static/media/antesedepois.mp4": "/static/media/antesedepois.4b9da811f499f79fe9a7.mp4",
     "static/media/preenchimento_labial_4.png": "/static/media/preenchimento_labial_4.c634eaac0fa46f3befb3.png",
     "static/media/hifuatendimento.mp4": "/static/media/hifuatendimento.167f2f169a1046de8289.mp4",
@@ -29,8 +33,6 @@
     "static/media/preenchimento_mento.png": "/static/media/preenchimento_mento.b360d8b600d5880a608f.png",
     "static/media/lipo_papada.png": "/static/media/lipo_papada.b19b0285791191630d7f.png",
     "static/media/preenchimento_labial_1.png": "/static/media/preenchimento_labial_1.495849e47f7a9d46c6d5.png",
-    "static/media/face-before.jpg": "/static/media/face-before.2844522fd4ae497aba08.jpg",
-    "static/media/face-after.jpg": "/static/media/face-after.b02e4365c2e287659f69.jpg",
     "static/media/hifudois.mp4": "/static/media/hifudois.0e8f79f497c0548cb8a2.mp4",
     "static/media/implante_dentario_1.png": "/static/media/implante_dentario_1.6ca39bd2809180a83001.png",
     "static/media/resultado_harmonizacao_3.webp": "/static/media/resultado_harmonizacao_3.0c2bf24486459dbd7620.webp",
@@ -61,7 +63,7 @@
     "static/media/newlogo.webp": "/static/media/newlogo.cbe39ddb96ce4106f348.webp"
   },
   "entrypoints": [
-    "static/css/main.a27cd240.css",
-    "static/js/main.e8a70d7a.js"
+    "static/css/main.fa9d2dc5.css",
+    "static/js/main.f775843b.js"
   ]
 }

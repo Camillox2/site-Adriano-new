@@ -1,20 +1,22 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 /**
  * Número que conta de 0 até `end` quando entra na tela.
  * <CountUp end={30} suffix="+" />
  */
 const CountUp = ({ end, suffix = '', prefix = '', duration = 1800, className = '' }) => {
-  const ref = useRef(null);
-  const [value, setValue] = useState(0);
+  const containerRef = useRef(null);
+  const valueRef = useRef(null);
   const started = useRef(false);
+  const finalValue = `${prefix}${end}${suffix}`;
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
+    const el = containerRef.current;
+    const valueEl = valueRef.current;
+    if (!el || !valueEl) return;
 
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      setValue(end);
+      valueEl.textContent = finalValue;
       return;
     }
 
@@ -29,7 +31,7 @@ const CountUp = ({ end, suffix = '', prefix = '', duration = 1800, className = '
           const progress = Math.min((now - start) / duration, 1);
           // ease-out expo: acelera no início, desacelera no final
           const eased = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-          setValue(Math.round(eased * end));
+          valueEl.textContent = `${prefix}${Math.round(eased * end)}${suffix}`;
           if (progress < 1) requestAnimationFrame(tick);
         };
         requestAnimationFrame(tick);
@@ -39,13 +41,12 @@ const CountUp = ({ end, suffix = '', prefix = '', duration = 1800, className = '
 
     observer.observe(el);
     return () => observer.disconnect();
-  }, [end, duration]);
+  }, [duration, end, finalValue, prefix, suffix]);
 
   return (
-    <span ref={ref} className={className}>
-      {prefix}
-      {value}
-      {suffix}
+    <span ref={containerRef} className={className}>
+      <span className="sr-only">{finalValue}</span>
+      <span ref={valueRef} aria-hidden="true">{prefix}0{suffix}</span>
     </span>
   );
 };

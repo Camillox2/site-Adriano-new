@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Send, Phone, User, MapPin, Sparkles } from 'lucide-react';
+import { Send, User, MapPin, Sparkles } from 'lucide-react';
 import { whatsapp } from '../utils/constants';
 import { formatClickIdForWhatsApp, trackLead } from '../utils/leadTracking';
 
@@ -16,14 +16,13 @@ const SERVICES_OPTIONS = [
 
 const DesktopWhatsAppForm = ({ defaultService = '', defaultCity = '', title = 'Agende no WhatsApp' }) => {
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
   const [service, setService] = useState(defaultService || SERVICES_OPTIONS[0]);
   const [city, setCity] = useState(defaultCity || 'São Lourenço do Oeste');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     trackLead({ method: 'form_whatsapp', service, city });
-    const message = `Olá, Dr. Adriano! Meu nome é ${name || 'Cliente'}${city ? ` (${city})` : ''}. Gostaria de agendar/informações sobre: *${service}*. Meu contato: ${phone || 'não informado'}.${formatClickIdForWhatsApp()}`;
+    const message = `Olá, Dr. Adriano! Meu nome é ${name || 'Cliente'}${city ? ` e sou de ${city}` : ''}. Gostaria de agendar uma avaliação sobre: *${service}*.${formatClickIdForWhatsApp()}`;
     window.open(whatsapp(message), '_blank', 'noopener,noreferrer');
   };
 
@@ -50,7 +49,7 @@ const DesktopWhatsAppForm = ({ defaultService = '', defaultCity = '', title = 'A
               type="text"
               required
               aria-label="Seu Nome"
-              placeholder="Ex: Dra. Juliana ou Marcos"
+              placeholder="Ex: Maria"
               value={name}
               onChange={(e) => setName(e.target.value)}
               className="w-full bg-slate-950/80 border border-slate-800 rounded-xl pl-9 pr-3 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition-colors"
@@ -58,42 +57,21 @@ const DesktopWhatsAppForm = ({ defaultService = '', defaultCity = '', title = 'A
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-3">
-          <div>
-            <label htmlFor="desktop-form-phone" className="block text-xs font-medium text-slate-300 mb-1">
-              Seu WhatsApp
-            </label>
-            <div className="relative">
-              <Phone size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
-              <input
-                id="desktop-form-phone"
-                type="tel"
-                required
-                aria-label="Seu WhatsApp"
-                placeholder="(00) 90000-0000"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                className="w-full bg-slate-950/80 border border-slate-800 rounded-xl pl-9 pr-3 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition-colors"
-              />
-            </div>
-          </div>
-
-          <div>
-            <label htmlFor="desktop-form-city" className="block text-xs font-medium text-slate-300 mb-1">
-              Sua Cidade
-            </label>
-            <div className="relative">
-              <MapPin size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
-              <input
-                id="desktop-form-city"
-                type="text"
-                aria-label="Sua Cidade"
-                placeholder="Ex: Chapecó"
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
-                className="w-full bg-slate-950/80 border border-slate-800 rounded-xl pl-9 pr-3 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition-colors"
-              />
-            </div>
+        <div>
+          <label htmlFor="desktop-form-city" className="block text-xs font-medium text-slate-300 mb-1">
+            Sua Cidade
+          </label>
+          <div className="relative">
+            <MapPin size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+            <input
+              id="desktop-form-city"
+              type="text"
+              aria-label="Sua Cidade"
+              placeholder="Ex: Chapecó"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              className="w-full bg-slate-950/80 border border-slate-800 rounded-xl pl-9 pr-3 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition-colors"
+            />
           </div>
         </div>
 

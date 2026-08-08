@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { SITE } from '../utils/constants';
-import { getRobotsDirective } from '../utils/seoIndexing';
+import { getRobotsDirective, toCanonicalPath } from '../utils/seoIndexing';
 
 /**
  * Componente de SEO por rota (sem dependências externas).
@@ -8,7 +8,7 @@ import { getRobotsDirective } from '../utils/seoIndexing';
  */
 const Seo = ({ title, description, path = '/', jsonLd = null }) => {
   useEffect(() => {
-    const url = `${SITE.url}${path === '/' ? '/' : path}`;
+    const url = `${SITE.url}${toCanonicalPath(path)}`;
     const requestedPath = window.location.pathname || path;
 
     document.title = title;

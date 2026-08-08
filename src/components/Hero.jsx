@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Phone, Instagram, ShieldCheck, MapPin, Star } from 'lucide-react';
 import { images, videos } from '../assets';
 import { SITE, WHATSAPP_DEFAULT } from '../utils/constants';
@@ -6,6 +6,22 @@ import CountUp from './CountUp';
 import DesktopWhatsAppForm from './DesktopWhatsAppForm';
 
 const Hero = () => {
+  const backgroundVideoRef = useRef(null);
+
+  useEffect(() => {
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const syncMotion = () => {
+      const video = backgroundVideoRef.current;
+      if (!video) return;
+      if (motionQuery.matches) video.pause();
+      else video.play().catch(() => {});
+    };
+
+    syncMotion();
+    motionQuery.addEventListener?.('change', syncMotion);
+    return () => motionQuery.removeEventListener?.('change', syncMotion);
+  }, []);
+
   const scrollToHifu = () => {
     document.getElementById('hifu')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -22,10 +38,11 @@ const Hero = () => {
           alt=""
           loading="eager"
           decoding="async"
-          fetchpriority="high"
+          fetchPriority="high"
           className="w-full h-full object-cover block md:hidden opacity-40"
         />
         <video
+          ref={backgroundVideoRef}
           className="w-full h-full object-cover hidden md:block"
           autoPlay
           muted
@@ -37,7 +54,6 @@ const Hero = () => {
           tabIndex={-1}
           aria-hidden="true"
         >
-          <track kind="captions" src="" label="Português" default />
         </video>
       </div>
       <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-900/85 to-slate-900/60"></div>
@@ -100,7 +116,7 @@ const Hero = () => {
           </div>
 
           {/* Foto do Dr. Adriano + Formulário Desktop */}
-          <div className="flex flex-col lg:flex-row gap-8 items-center justify-center lg:justify-end animate-fade-in-right order-first lg:order-last">
+          <div className="flex flex-col lg:flex-row gap-8 items-center justify-center lg:justify-end animate-fade-in-right">
             <div className="w-full max-w-sm hidden lg:block">
               <DesktopWhatsAppForm title="Agendar Avaliação Rápida" />
             </div>
@@ -116,7 +132,7 @@ const Hero = () => {
                 width="420"
                 height="354"
                 loading="eager"
-                fetchpriority="high"
+                fetchPriority="high"
                 decoding="async"
                 className="relative w-60 sm:w-72 lg:w-[18rem] xl:w-[20rem] h-auto object-contain rounded-[2rem] shadow-2xl ring-1 ring-white/20"
               />

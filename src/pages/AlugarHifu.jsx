@@ -23,9 +23,9 @@ const CARTRIDGES = [
 ];
 
 const VIDEOS = [
-  { title: 'Aplicação de HIFU', description: 'Veja o atendimento e o equipamento em uso.', poster: images.posterHifu, src: videos.hifu },
-  { title: 'Técnica e ponteira', description: 'Detalhes da aplicação do Ultramed HIFU.', poster: images.posterHifuTres, src: videos.hifuTres },
-  { title: 'Atendimento personalizado', description: 'Um recorte da experiência de atendimento.', poster: images.posterHifuAtendimento, src: videos.hifuAtendimento },
+  { title: 'Aplicação de HIFU', description: 'Veja o atendimento e o equipamento em uso.', poster: images.posterHifu, src: videos.hifu, captions: '/captions/hifu.vtt' },
+  { title: 'Técnica e ponteira', description: 'Detalhes da aplicação do Ultramed HIFU.', poster: images.posterHifuTres, src: videos.hifuTres, captions: '/captions/hifu-tres.vtt' },
+  { title: 'Atendimento personalizado', description: 'Um recorte da experiência de atendimento.', poster: images.posterHifuAtendimento, src: videos.hifuAtendimento, captions: '/captions/hifu-atendimento.vtt' },
 ];
 
 const FAQS = [
@@ -35,42 +35,14 @@ const FAQS = [
   { q: 'Posso consultar datas para a minha cidade?', a: 'Sim. Fale pelo WhatsApp, informe sua cidade e a data desejada para verificar a disponibilidade.' },
 ];
 
-const BeforeAfter = () => {
-  const [position, setPosition] = useState(50);
-
-  return (
-    <div className="relative mx-auto aspect-[3/4] w-full max-w-sm select-none overflow-hidden rounded-3xl bg-slate-950 shadow-xl shadow-slate-200/80">
-      <img src={images.faceAfter} alt="Resultado após o tratamento" className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
-      <div className="absolute inset-y-0 left-0 overflow-hidden" style={{ width: `${position}%` }}>
-        <img src={images.faceBefore} alt="Imagem antes do tratamento" className="h-full w-[calc(100vw-2rem)] max-w-sm object-cover" loading="lazy" />
-      </div>
-      <div className="pointer-events-none absolute inset-y-0" style={{ left: `${position}%` }}>
-        <span className="absolute inset-y-0 -left-px w-0.5 bg-white shadow-[0_0_0_1px_rgba(15,23,42,.12)]" />
-        <span className="absolute left-1/2 top-1/2 flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-xs font-black tracking-tight text-slate-800 shadow-lg">↔</span>
-      </div>
-      <span className="absolute left-4 top-4 rounded-full bg-slate-900/75 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-white">Antes</span>
-      <span className="absolute right-4 top-4 rounded-full bg-white/90 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-slate-800">Depois</span>
-      <input
-        type="range"
-        min="0"
-        max="100"
-        value={position}
-        onChange={(event) => setPosition(Number(event.target.value))}
-        aria-label="Comparar antes e depois"
-        className="absolute inset-0 z-10 h-full w-full cursor-ew-resize opacity-0"
-      />
-    </div>
-  );
-};
-
 const AlugarHifu = () => {
   const [openFaq, setOpenFaq] = useState(0);
 
   return (
     <div className="min-h-screen bg-white text-slate-900">
       <Seo
-        title="Locação de Ultramed HIFU para Clínicas | Dr. Adriano Camillo"
-        description="Locação de Ultramed HIFU para profissionais e clínicas habilitados, com equipamento real, logística agendada, orientação operacional e suporte conforme o serviço contratado."
+        title="Locação de Ultramed HIFU para Clínicas | Dr. Adriano"
+        description="Alugue o Ultramed HIFU para sua clínica com equipamento revisado, ponteiras faciais, logística agendada e orientação operacional. Consulte disponibilidade."
         path="/alugar_hifu"
       />
       <Header />
@@ -106,32 +78,19 @@ const AlugarHifu = () => {
               <h2 className="mt-3 text-3xl font-bold text-slate-900 md:text-4xl">Vídeos reais de atendimento</h2>
               <p className="mt-4 text-slate-600">Veja o Ultramed HIFU e a aplicação na prática. Os vídeos estão aqui na página, prontos para assistir.</p>
             </Reveal>
-            <div className="mt-10 grid gap-5 md:grid-cols-3">
+            <div className="mt-10 grid auto-cols-[84%] grid-flow-col gap-5 overflow-x-auto pb-4 snap-x snap-mandatory md:auto-cols-auto md:grid-flow-row md:grid-cols-3 md:overflow-visible md:pb-0" aria-label="Vídeos reais do Ultramed HIFU">
               {VIDEOS.map((video, index) => (
                 <Reveal key={video.title} delay={index * 100} y={18}>
-                  <article className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg">
-                    <video className="aspect-[9/16] w-full bg-slate-100 object-cover" controls playsInline preload="metadata" poster={video.poster}>
+                  <article className="snap-start overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg">
+                    <video className="aspect-[9/16] w-full bg-slate-100 object-cover" controls playsInline preload="none" poster={video.poster} aria-label={video.title}>
                       <source src={video.src} type="video/mp4" />
+                      <track kind="captions" src={video.captions} srcLang="pt-BR" label="Português" default />
                       Seu navegador não suporta vídeo.
                     </video>
                     <div className="p-5"><span className="mb-3 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.12em] text-secondary-700"><Play size={14} fill="currentColor" />Vídeo real</span><h3 className="text-lg font-bold text-slate-900">{video.title}</h3><p className="mt-2 text-sm leading-relaxed text-slate-600">{video.description}</p></div>
                   </article>
                 </Reveal>
               ))}
-            </div>
-          </div>
-        </section>
-
-        <section id="resultado-hifu" className="section bg-white">
-          <div className="container mx-auto px-4">
-            <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
-              <Reveal y={18}><BeforeAfter /></Reveal>
-              <Reveal delay={120} y={18}>
-                <p className="text-xs font-bold uppercase tracking-[0.15em] text-secondary-700">Resultado visível</p>
-                <h2 className="mt-3 text-3xl font-bold leading-tight text-slate-900 md:text-4xl">Antes e depois, sem esconder o processo</h2>
-                <p className="mt-5 max-w-xl text-lg leading-relaxed text-slate-600">Arraste o controle sobre a imagem para comparar. Para a clínica, isso ajuda a conversar sobre expectativas reais e sobre a importância de uma avaliação individual.</p>
-                <div className="mt-7 rounded-2xl border border-secondary-100 bg-secondary-50 p-5 text-sm leading-relaxed text-slate-700"><strong className="text-slate-900">Importante:</strong> cada paciente responde de uma forma. Imagens clínicas ilustram resultados individuais e não constituem promessa de resultado.</div>
-              </Reveal>
             </div>
           </div>
         </section>

@@ -120,7 +120,7 @@ const ServicesSection = () => (
             <Link
               to={service.path}
               className="inline-flex items-center gap-2 text-primary-700 font-semibold mt-6 hover:gap-3.5 transition-all text-sm md:text-base"
-              aria-label={`Conhecer ${service.title}`}
+              aria-label={`Saiba mais sobre ${service.title}`}
             >
               Saiba mais
               <ArrowRight size={17} aria-hidden="true" />
