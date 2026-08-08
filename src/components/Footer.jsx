@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { Phone, Instagram, MapPin, Clock, Mail } from 'lucide-react';
+import { Phone, Instagram, MapPin, Clock } from 'lucide-react';
 import { images } from '../assets';
 import { SITE, ADDRESS, WHATSAPP_DEFAULT, WHATSAPP_RENTAL } from '../utils/constants';
 
@@ -78,13 +78,6 @@ const Footer = () => {
                 aria-label="Instagram"
               >
                 <Instagram size={19} className="text-white" />
-              </a>
-              <a
-                href={`mailto:${SITE.email}`}
-                className="w-11 h-11 bg-slate-800 hover:bg-slate-700 rounded-full flex items-center justify-center transition-colors"
-                aria-label="E-mail"
-              >
-                <Mail size={19} className="text-white" />
               </a>
             </div>
           </div>

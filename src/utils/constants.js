@@ -8,7 +8,6 @@ export const SITE = {
   url: 'https://dradrianocamillo.com',
   phone: '(49) 9 9836-2864',
   phoneRaw: '5549998362864',
-  email: 'contato@dradrianocamillo.com',
   instagram: 'https://www.instagram.com/dr.adrianocamillo/',
   instagramHandle: '@dr.adrianocamillo',
 };
@@ -19,7 +18,7 @@ export const ADDRESS = {
   state: 'SC',
   zip: '89990-000',
   mapsUrl:
-    'https://maps.google.com/?q=Rua+Coronel+Bertaso,+1243+-+Sala+206+-+Centro,+S%C3%A3o+Louren%C3%A7o+do+Oeste+-+SC,+89990-000',
+    'https://www.google.com/maps/search/?api=1&query=Adriano+Camillo+Odontologia+e+Face%2C+S%C3%A3o+Louren%C3%A7o+do+Oeste%2C+SC',
 };
 
 // Gera link do WhatsApp com mensagem pré-preenchida

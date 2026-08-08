@@ -1,8 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Award, GraduationCap, Star, MapPin, ExternalLink, Instagram, ArrowRight } from 'lucide-react';
+import { Award, GraduationCap, Star, Instagram } from 'lucide-react';
 import { images } from '../assets';
-import { SITE, LOCATIONS, whatsapp } from '../utils/constants';
+import { SITE } from '../utils/constants';
 
 const ACHIEVEMENTS = [
   {
@@ -102,71 +101,6 @@ const AboutSection = () => (
             <Instagram size={18} aria-hidden="true" />
             Acompanhe o dia a dia no Instagram
           </a>
-        </div>
-      </div>
-
-      {/* Locais de atendimento */}
-      <div className="bg-white rounded-3xl border border-slate-100 shadow-sm p-6 md:p-10">
-        <div className="text-center mb-8">
-          <h3 className="text-2xl md:text-3xl font-bold text-slate-900 flex items-center justify-center gap-3">
-            <MapPin className="text-primary-700" size={28} aria-hidden="true" />
-            Atendimento Regional
-          </h3>
-          <p className="text-slate-600 mt-2 max-w-2xl mx-auto">
-            Consultório de referência em São Lourenço do Oeste — com fácil deslocamento e agendamento otimizado para pacientes de Chapecó, Pato Branco e todo o Sudoeste do PR / Oeste de SC.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
-          {LOCATIONS.map((location) => (
-            <div
-              key={location.city}
-              className={`rounded-2xl p-5 border transition-all duration-300 hover:shadow-lg ${
-                location.main
-                  ? 'bg-primary-50/60 border-primary-200'
-                  : 'bg-slate-50 border-slate-100'
-              }`}
-            >
-              {location.main && (
-                <span className="inline-block bg-primary-700 text-white text-[11px] font-bold tracking-wide uppercase px-3 py-1 rounded-full mb-3">
-                  Consultório principal
-                </span>
-              )}
-              <h4 className="font-bold text-slate-900">{location.city}</h4>
-              {!location.main && (
-                <p className="text-sm text-slate-600 mb-1">{location.type}</p>
-              )}
-              <p className="text-sm text-slate-700 mb-4">{location.address}</p>
-              <div className="flex flex-wrap gap-3 text-sm font-semibold">
-                <a
-                  href={location.mapsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-primary-700 hover:underline"
-                >
-                  <ExternalLink size={14} aria-hidden="true" />
-                  Ver no mapa
-                </a>
-                <a
-                  href={whatsapp(`Olá! Gostaria de agendar uma consulta em ${location.city}.`)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-secondary-700 hover:underline"
-                >
-                  Agendar
-                </a>
-                {location.pageUrl && (
-                  <Link
-                    to={location.pageUrl}
-                    className="inline-flex items-center gap-1.5 text-emerald-700 hover:underline"
-                  >
-                    <ArrowRight size={14} aria-hidden="true" />
-                    Saiba mais
-                  </Link>
-                )}
-              </div>
-            </div>
-          ))}
         </div>
       </div>
     </div>

@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/static/css/main.a27cd240.css",
-    "main.js": "/static/js/main.a675f255.js",
+    "main.js": "/static/js/main.e8a70d7a.js",
     "static/js/377.10def06f.chunk.js": "/static/js/377.10def06f.chunk.js",
     "static/js/649.cda3bb58.chunk.js": "/static/js/649.cda3bb58.chunk.js",
     "static/js/569.a00ce8a4.chunk.js": "/static/js/569.a00ce8a4.chunk.js",
-    "static/js/524.74d47904.chunk.js": "/static/js/524.74d47904.chunk.js",
+    "static/js/524.d27282f2.chunk.js": "/static/js/524.d27282f2.chunk.js",
     "static/js/917.16d9cb65.chunk.js": "/static/js/917.16d9cb65.chunk.js",
     "static/js/928.af1b3357.chunk.js": "/static/js/928.af1b3357.chunk.js",
     "static/js/560.2e687148.chunk.js": "/static/js/560.2e687148.chunk.js",
-    "static/js/900.0ae56df0.chunk.js": "/static/js/900.0ae56df0.chunk.js",
+    "static/js/900.52eaef07.chunk.js": "/static/js/900.52eaef07.chunk.js",
     "static/js/586.d5df32e3.chunk.js": "/static/js/586.d5df32e3.chunk.js",
-    "static/js/519.44279686.chunk.js": "/static/js/519.44279686.chunk.js",
+    "static/js/519.e877d2c3.chunk.js": "/static/js/519.e877d2c3.chunk.js",
     "static/media/antesedepois.mp4": "/static/media/antesedepois.4b9da811f499f79fe9a7.mp4",
     "static/media/preenchimento_labial_4.png": "/static/media/preenchimento_labial_4.c634eaac0fa46f3befb3.png",
     "static/media/hifuatendimento.mp4": "/static/media/hifuatendimento.167f2f169a1046de8289.mp4",
@@ -62,6 +62,6 @@
   },
   "entrypoints": [
     "static/css/main.a27cd240.css",
-    "static/js/main.a675f255.js"
+    "static/js/main.e8a70d7a.js"
   ]
 }

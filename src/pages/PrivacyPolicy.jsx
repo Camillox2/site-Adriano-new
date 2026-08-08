@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Seo from '../components/Seo';
-import { SITE } from '../utils/constants';
+import { WHATSAPP_DEFAULT } from '../utils/constants';
 
 const PrivacyPolicy = () => (
   <div className="min-h-screen bg-white">
@@ -42,8 +42,8 @@ const PrivacyPolicy = () => (
           <section>
             <h2 className="text-2xl font-bold text-slate-900">Fale conosco</h2>
             <p className="mt-3">
-              Para dúvidas sobre privacidade ou sobre seus dados, entre em contato pelo e-mail{' '}
-              <a className="text-primary-700 font-semibold hover:underline" href={`mailto:${SITE.email}`}>{SITE.email}</a>.
+              Para dúvidas sobre privacidade ou sobre seus dados, entre em contato pelo{' '}
+              <a className="text-primary-700 font-semibold hover:underline" href={WHATSAPP_DEFAULT} target="_blank" rel="noopener noreferrer">WhatsApp</a>.
             </p>
           </section>
         </div>

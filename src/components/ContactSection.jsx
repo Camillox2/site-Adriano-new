@@ -4,7 +4,6 @@ import {
   Phone,
   Clock,
   Instagram,
-  Mail,
   ArrowRight,
   ExternalLink,
   AlertCircle,
@@ -36,15 +35,6 @@ const CONTACT_METHODS = [
     buttonText: 'Seguir no Instagram',
     primary: false,
   },
-  {
-    Icon: Mail,
-    title: 'E-mail',
-    description: 'Prefere escrever? Envie sua dúvida com calma e detalhes.',
-    value: SITE.email,
-    href: `mailto:${SITE.email}`,
-    buttonText: 'Enviar e-mail',
-    primary: false,
-  },
 ];
 
 const ContactSection = () => (
@@ -62,7 +52,7 @@ const ContactSection = () => (
       </div>
 
       {/* Canais de contato */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 mb-14 md:mb-20 max-w-5xl mx-auto">
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6 mb-14 md:mb-20 max-w-3xl mx-auto">
         {CONTACT_METHODS.map(({ Icon, title, description, value, href, buttonText, primary }) => (
           <div
             key={title}

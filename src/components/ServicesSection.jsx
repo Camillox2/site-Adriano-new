@@ -4,12 +4,14 @@ import {
   ArrowRight,
   FlaskConical,
   Heart,
+  MapPin,
+  ExternalLink,
   Phone,
   Smile,
   Stethoscope,
   Syringe,
 } from 'lucide-react';
-import { whatsapp } from '../utils/constants';
+import { LOCATIONS, whatsapp } from '../utils/constants';
 
 const SERVICES = [
   {
@@ -75,6 +77,34 @@ const ServicesSection = () => (
           Da saúde bucal à estética facial: tratamentos com tecnologia atual,
           planejamento individual e atendimento humanizado.
         </p>
+      </div>
+
+      <div className="mb-12 rounded-3xl border border-slate-100 bg-slate-50 p-6 shadow-sm md:mb-16 md:p-10">
+        <div className="text-center mb-8">
+          <h3 className="flex items-center justify-center gap-3 text-2xl font-bold text-slate-900 md:text-3xl">
+            <MapPin className="text-primary-700" size={28} aria-hidden="true" />
+            Atendimento Regional
+          </h3>
+          <p className="mx-auto mt-2 max-w-2xl text-slate-600">
+            Consultório de referência em São Lourenço do Oeste — com fácil deslocamento e agendamento otimizado para pacientes de Chapecó, Pato Branco e todo o Sudoeste do PR / Oeste de SC.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-5 lg:grid-cols-3">
+          {LOCATIONS.map((location) => (
+            <div key={location.city} className={`rounded-2xl border p-5 transition-all duration-300 hover:shadow-lg ${location.main ? 'border-primary-200 bg-primary-50/60' : 'border-slate-100 bg-white'}`}>
+              {location.main && <span className="mb-3 inline-block rounded-full bg-primary-700 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-white">Consultório principal</span>}
+              <h4 className="font-bold text-slate-900">{location.city}</h4>
+              {!location.main && <p className="mb-1 text-sm text-slate-600">{location.type}</p>}
+              <p className="mb-4 text-sm text-slate-700">{location.address}</p>
+              <div className="flex flex-wrap gap-3 text-sm font-semibold">
+                <a href={location.mapsUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-primary-700 hover:underline"><ExternalLink size={14} aria-hidden="true" />Ver no mapa</a>
+                <a href={whatsapp(`Olá! Gostaria de agendar uma consulta em ${location.city}.`)} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-secondary-700 hover:underline">Agendar</a>
+                {location.pageUrl && <Link to={location.pageUrl} className="inline-flex items-center gap-1.5 text-emerald-700 hover:underline"><ArrowRight size={14} aria-hidden="true" />Saiba mais</Link>}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
