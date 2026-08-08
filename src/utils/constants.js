@@ -13,7 +13,7 @@ export const SITE = {
 };
 
 export const ADDRESS = {
-  street: 'Rua Coronel Bertaso, 1243 — Sala 206, Centro',
+  street: 'Rua Coronel Bertaso, 1243 — Sala 205, Centro',
   city: 'São Lourenço do Oeste',
   state: 'SC',
   zip: '89990-000',

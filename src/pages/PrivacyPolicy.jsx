@@ -4,7 +4,15 @@ import Footer from '../components/Footer';
 import Seo from '../components/Seo';
 import { WHATSAPP_DEFAULT } from '../utils/constants';
 
-const PrivacyPolicy = () => (
+const CONSENT_KEY = 'dr-adriano-analytics-consent';
+
+const PrivacyPolicy = () => {
+  const reopenConsentChoices = () => {
+    window.localStorage.removeItem(CONSENT_KEY);
+    window.location.reload();
+  };
+
+  return (
   <div className="min-h-screen bg-white">
     <Seo
       title="Política de Privacidade | Dr. Adriano Camillo"
@@ -24,7 +32,7 @@ const PrivacyPolicy = () => (
           <section>
             <h2 className="text-2xl font-bold text-slate-900">Dados de navegação</h2>
             <p className="mt-3">
-              Quando você aceita a medição de audiência, o site utiliza o Google Analytics 4 e a tag do Google Ads para entender, de forma agregada, quais páginas são acessadas e quais contatos pelo WhatsApp são iniciados. A medição não é carregada antes da sua escolha.
+              O site carrega a tag do Google Analytics 4 e do Google Ads com cookies desativados por padrão. Quando você aceita a medição, usamos cookies para entender, de forma agregada, quais páginas são acessadas e quais contatos pelo WhatsApp são iniciados. Se você recusar, não gravamos cookies de Analytics ou Ads; a tag opera apenas com sinais técnicos sem identificação para respeitar sua escolha e permitir medição agregada.
             </p>
           </section>
           <section>
@@ -36,8 +44,11 @@ const PrivacyPolicy = () => (
           <section>
             <h2 className="text-2xl font-bold text-slate-900">Sua escolha</h2>
             <p className="mt-3">
-              Você pode aceitar ou recusar a medição de audiência no aviso exibido no site. A escolha fica registrada neste navegador e pode ser alterada ao limpar os dados de navegação.
+              Você pode aceitar ou recusar a medição de audiência no aviso exibido no site. A escolha fica registrada neste navegador e pode ser alterada a qualquer momento.
             </p>
+            <button type="button" className="mt-4 text-primary-700 font-semibold hover:underline" onClick={reopenConsentChoices}>
+              Alterar preferência de medição
+            </button>
           </section>
           <section>
             <h2 className="text-2xl font-bold text-slate-900">Fale conosco</h2>
@@ -51,6 +62,7 @@ const PrivacyPolicy = () => (
     </main>
     <Footer />
   </div>
-);
+  );
+};
 
 export default PrivacyPolicy;

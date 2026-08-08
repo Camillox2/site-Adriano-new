@@ -40,7 +40,9 @@ const loadAnalytics = () => {
 
   const script = document.createElement('script');
   script.async = true;
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+  // A single Google tag configures both destinations. Starting with the Ads
+  // ID lets Google Ads detect the base tag while GA4 remains configured above.
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`;
   document.head.appendChild(script);
 };
 
@@ -48,18 +50,9 @@ const AnalyticsConsent = () => {
   const [consent, setConsent] = useState(() => window.localStorage.getItem(CONSENT_KEY));
 
   useEffect(() => {
-    if (consent !== 'granted') return undefined;
-
+    // Advanced Consent Mode: load after hydration with every storage category
+    // denied. A refusal therefore does not allow Ads/Analytics cookies.
     loadAnalytics();
-    window.gtag('consent', 'update', {
-      ad_storage: 'granted',
-      // This is a healthcare site. Measurement is allowed after consent, but
-      // ad personalization and enhanced-conversion user data stay disabled.
-      ad_user_data: 'denied',
-      ad_personalization: 'denied',
-      analytics_storage: 'granted',
-    });
-    rememberGoogleClickId();
     window.__drAdrianoTrackLead = trackLead;
 
     const trackContactClick = (event) => {
@@ -126,6 +119,20 @@ const AnalyticsConsent = () => {
       document.removeEventListener('click', trackContactClick);
       delete window.__drAdrianoTrackLead;
     };
+  }, []);
+
+  useEffect(() => {
+    if (consent !== 'granted') return;
+
+    window.gtag('consent', 'update', {
+      ad_storage: 'granted',
+      // This is a healthcare site. Measurement is allowed after consent, but
+      // ad personalization and enhanced-conversion user data stay disabled.
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'granted',
+    });
+    rememberGoogleClickId();
   }, [consent]);
 
   const setChoice = (choice) => {
@@ -139,7 +146,7 @@ const AnalyticsConsent = () => {
     <aside className="fixed inset-x-4 bottom-4 md:inset-x-auto md:right-6 md:bottom-6 z-[60] max-w-xl rounded-2xl bg-slate-950 text-white shadow-2xl p-5 md:p-6">
       <h2 className="font-bold text-lg">Medição de audiência</h2>
       <p className="text-sm leading-relaxed text-slate-300 mt-2">
-        Usamos uma medição opcional para entender páginas acessadas e contatos iniciados pelo WhatsApp.{' '}
+        Usamos cookies opcionais para entender páginas acessadas e contatos iniciados pelo WhatsApp. Se você recusar, não usamos cookies de Analytics ou Ads.{' '}
         <Link className="text-emerald-300 hover:text-emerald-200 underline" to="/politica-de-privacidade">
           Saiba como funciona.
         </Link>

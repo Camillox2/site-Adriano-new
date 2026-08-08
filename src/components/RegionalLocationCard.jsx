@@ -157,7 +157,7 @@ const RegionalLocationCard = ({ citySlug }) => {
           <div className="flex items-center gap-2.5 text-left">
             <ShieldCheck size={18} className="text-emerald-400 shrink-0" />
             <span>
-              <strong className="text-slate-200">Transparência & Conformidade Google E-E-A-T:</strong> O consultório físico do Dr. Adriano Camillo (CRO-SC) está sediado na Rua Coronel Bertaso, 1243 - Sala 206, São Lourenço do Oeste - SC. Oferecemos atendimento com hora marcada e logística de apoio para moradores de {info.cityName}.
+              <strong className="text-slate-200">Transparência & Conformidade Google E-E-A-T:</strong> O consultório físico do Dr. Adriano Camillo (CRO-SC) está sediado na Rua Coronel Bertaso, 1243 - Sala 205, São Lourenço do Oeste - SC. Oferecemos atendimento com hora marcada e logística de apoio para moradores de {info.cityName}.
             </span>
           </div>
         </div>

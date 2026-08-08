@@ -66,4 +66,29 @@ describe('AnalyticsConsent', () => {
 
     unmount();
   });
+
+  it('mantém a tag em modo negado e envia somente sinais sem cookies quando a medição é recusada', () => {
+    window.localStorage.setItem('dr-adriano-analytics-consent', 'denied');
+
+    const { unmount } = render(
+      <MemoryRouter>
+        <AnalyticsConsent />
+        <a href="https://wa.me/5549998362864">Agendar</a>
+      </MemoryRouter>
+    );
+
+    fireEvent.click(document.querySelector('a[href^="https://wa.me/"]'));
+
+    expect(rememberGoogleClickId).not.toHaveBeenCalled();
+    expect(trackLead).toHaveBeenCalledWith(expect.objectContaining({ method: 'whatsapp_click' }));
+    expect(window.dataLayer.some((event) => (
+      event[0] === 'consent'
+      && event[1] === 'default'
+      && event[2].ad_storage === 'denied'
+      && event[2].analytics_storage === 'denied'
+    ))).toBe(true);
+    expect(document.querySelector('script[src*="googletagmanager.com/gtag/js?id=AW-18349275000"]')).not.toBeNull();
+
+    unmount();
+  });
 });
