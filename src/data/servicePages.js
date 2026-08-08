@@ -6,8 +6,8 @@ export const CITIES = {
     state: 'SC',
     slugSuffix: 'sao-lourenco-do-oeste',
     isPrimary: true,
-    locationTitle: 'em São Lourenço do Oeste - SC',
-    contextText: 'no consultório do Dr. Adriano Camillo em São Lourenço do Oeste - SC.',
+    locationTitle: '— Atendendo São Lourenço, Chapecó, Pato Branco e Região',
+    contextText: 'com atendimento de referência no consultório do Dr. Adriano Camillo, com fácil acesso para pacientes de São Lourenço do Oeste, Chapecó, Pato Branco e toda a região.',
   },
   'chapeco': {
     name: 'Chapecó',

@@ -1,14 +1,13 @@
 {
   "files": {
-    "main.css": "/static/css/main.c66625e4.css",
-    "main.js": "/static/js/main.88f75ae0.js",
-    "static/js/771.2e603f4c.chunk.js": "/static/js/771.2e603f4c.chunk.js",
-    "static/js/377.e18142d2.chunk.js": "/static/js/377.e18142d2.chunk.js",
-    "static/js/649.c7c78919.chunk.js": "/static/js/649.c7c78919.chunk.js",
-    "static/js/569.4f7dddbf.chunk.js": "/static/js/569.4f7dddbf.chunk.js",
+    "main.css": "/static/css/main.58f09a6b.css",
+    "main.js": "/static/js/main.716f6acf.js",
+    "static/js/377.5f3aa340.chunk.js": "/static/js/377.5f3aa340.chunk.js",
+    "static/js/649.b244a3e0.chunk.js": "/static/js/649.b244a3e0.chunk.js",
+    "static/js/569.7459d653.chunk.js": "/static/js/569.7459d653.chunk.js",
     "static/js/524.366a241c.chunk.js": "/static/js/524.366a241c.chunk.js",
-    "static/js/310.27dda2be.chunk.js": "/static/js/310.27dda2be.chunk.js",
-    "static/js/928.d381958a.chunk.js": "/static/js/928.d381958a.chunk.js",
+    "static/js/917.31bc3db8.chunk.js": "/static/js/917.31bc3db8.chunk.js",
+    "static/js/928.af1b3357.chunk.js": "/static/js/928.af1b3357.chunk.js",
     "static/media/antesedepois.mp4": "/static/media/antesedepois.4b9da811f499f79fe9a7.mp4",
     "static/media/preenchimento_labial_4.png": "/static/media/preenchimento_labial_4.c634eaac0fa46f3befb3.png",
     "static/media/hifuatendimento.mp4": "/static/media/hifuatendimento.167f2f169a1046de8289.mp4",
@@ -26,6 +25,8 @@
     "static/media/preenchimento_mento.png": "/static/media/preenchimento_mento.b360d8b600d5880a608f.png",
     "static/media/lipo_papada.png": "/static/media/lipo_papada.b19b0285791191630d7f.png",
     "static/media/preenchimento_labial_1.png": "/static/media/preenchimento_labial_1.495849e47f7a9d46c6d5.png",
+    "static/media/face-before.jpg": "/static/media/face-before.2844522fd4ae497aba08.jpg",
+    "static/media/face-after.jpg": "/static/media/face-after.b02e4365c2e287659f69.jpg",
     "static/media/hifudois.mp4": "/static/media/hifudois.0e8f79f497c0548cb8a2.mp4",
     "static/media/implante_dentario_1.png": "/static/media/implante_dentario_1.6ca39bd2809180a83001.png",
     "static/media/resultado_harmonizacao_3.webp": "/static/media/resultado_harmonizacao_3.0c2bf24486459dbd7620.webp",
@@ -54,7 +55,7 @@
     "static/media/newlogo.webp": "/static/media/newlogo.cbe39ddb96ce4106f348.webp"
   },
   "entrypoints": [
-    "static/css/main.c66625e4.css",
-    "static/js/main.88f75ae0.js"
+    "static/css/main.58f09a6b.css",
+    "static/js/main.716f6acf.js"
   ]
 }

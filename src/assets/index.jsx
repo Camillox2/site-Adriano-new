@@ -2,19 +2,35 @@
 import React from 'react';
 
 // Imagens
-import logo from './images/newlogo.png';
-import logotipoSite from './images/Logotipo Site-02.png';
-import pai from './images/pai.jpg';
-import paidois from './images/paidois.jpg';
-import consultorio1 from './images/20240723_165806.jpg';
-import consultorio2 from './images/20240723_165833.jpg';
-import consultorio3 from './images/20240723_170110.jpg';
-import hifuEquipamento from './images/20240723_165814.jpg';
-import hifuEquipamentoDois from './images/Screenshot_20241104_152125_Photos.jpg';
-import whatsappScreenshot from './images/Screenshot_20231028_123109_WhatsApp.jpg';
-import photosScreenshot from './images/Screenshot_20241126_094251_Photos.jpg';
+import logo from './images/newlogo.webp';
+import logotipoSite from './images/Logotipo Site-02.webp';
+import pai from './images/pai.webp';
+import paidois from './images/paidois.webp';
+import consultorio1 from './images/20240723_165806.webp';
+import consultorio2 from './images/20240723_165833.webp';
+import consultorio3 from './images/20240723_170110.webp';
+import hifuEquipamento from './images/20240723_165814.webp';
+import hifuEquipamentoDois from './images/Screenshot_20241104_152125_Photos.webp';
+import whatsappScreenshot from './images/Screenshot_20231028_123109_WhatsApp.webp';
+import photosScreenshot from './images/Screenshot_20241126_094251_Photos.webp';
 import faceBefore from './images/face-before.jpg';
 import faceAfter from './images/face-after.jpg';
+
+// Novas fotos
+import preenchimento_labial_1 from './novas/preenchimento_labial_1.png';
+import preenchimento_labial_2 from './novas/preenchimento_labial_2.png';
+import preenchimento_labial_3 from './novas/preenchimento_labial_3.png';
+import preenchimento_labial_4 from './novas/preenchimento_labial_4.png';
+import preenchimento_labial_5 from './novas/preenchimento_labial_5.png';
+import lipo_papada from './novas/lipo_papada.png';
+import lifting_facial from './novas/lifting_facial.png';
+import preenchimento_mento from './novas/preenchimento_mento.png';
+import botox_1 from './novas/botox_1.png';
+import botox_2 from './novas/botox_2.png';
+import botox_3 from './novas/botox_3.png';
+import harmonizacao_antes_depois_1 from './novas/harmonizacao_antes_depois_1.png';
+import harmonizacao_antes_depois_2 from './novas/harmonizacao_antes_depois_2.png';
+import implante_dentario_1 from './novas/implante_dentario_1.png';
 
 // Posters (thumbnails reais extraídos dos vídeos)
 import posterHifu from './images/poster-hifu.webp';

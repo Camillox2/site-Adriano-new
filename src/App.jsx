@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import HifuDetails from './pages/HifuDetails';
@@ -6,7 +6,6 @@ import AlugarHifu from './pages/AlugarHifu';
 import './styles/global.css';
 
 // Code splitting (carrega apenas quando necessário)
-const HifuDetails = React.lazy(() => import('./pages/HifuDetails'));
 const ServicesPage = React.lazy(() => import('./pages/ServicesPage'));
 const RegionalServicesPage = React.lazy(() => import('./pages/RegionalServicesPage'));
 const ServiceDetails = React.lazy(() => import('./pages/ServiceDetails'));
@@ -31,14 +30,21 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
-      <AnalyticsConsent />
       <div className="App">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/hifu" element={<HifuDetails />} />
-          <Route path="/alugar_hifu" element={<AlugarHifu />} />
-          <Route path="*" element={<Home />} />
-        </Routes>
+        <Suspense fallback={<div className="min-h-screen bg-slate-900 flex items-center justify-center text-white">Carregando...</div>}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/hifu" element={<HifuDetails />} />
+            <Route path="/alugar_hifu" element={<AlugarHifu />} />
+            <Route path="/servicos" element={<ServicesPage />} />
+            <Route path="/servicos/:citySlug" element={<RegionalServicesPage />} />
+            <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
+            <Route path="/blog" element={<BlogList />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
+            <Route path="/:slug" element={<ServiceDetails />} />
+            <Route path="*" element={<Home />} />
+          </Routes>
+        </Suspense>
       </div>
     </Router>
   );
