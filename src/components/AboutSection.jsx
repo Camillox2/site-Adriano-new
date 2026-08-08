@@ -109,14 +109,14 @@ const AboutSection = () => (
         <div className="text-center mb-8">
           <h3 className="text-2xl md:text-3xl font-bold text-slate-900 flex items-center justify-center gap-3">
             <MapPin className="text-primary-700" size={28} aria-hidden="true" />
-            Locais de atendimento
+            Atendimento Regional
           </h3>
-          <p className="text-slate-600 mt-2">
-            Consultório em São Lourenço do Oeste e atendimento agendado na região
+          <p className="text-slate-600 mt-2 max-w-2xl mx-auto">
+            Consultório de referência em São Lourenço do Oeste — com fácil deslocamento e agendamento otimizado para pacientes de Chapecó, Pato Branco e todo o Sudoeste do PR / Oeste de SC.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
           {LOCATIONS.map((location) => (
             <div
               key={location.city}

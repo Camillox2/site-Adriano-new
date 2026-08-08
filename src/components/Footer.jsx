@@ -55,7 +55,7 @@ const Footer = () => {
             </div>
             <p className="text-sm leading-relaxed text-slate-400 mb-6">
               Odontologia e estética facial avançada com tecnologia de ponta e
-              atendimento humanizado em São Lourenço do Oeste e região.
+              atendimento de referência para São Lourenço do Oeste, Chapecó, Pato Branco e toda a região.
             </p>
             <div className="flex gap-3">
               <a
@@ -157,7 +157,7 @@ const Footer = () => {
             © {year} Dr. Adriano Camillo — Todos os direitos reservados.
           </p>
           <p>
-            Atendimento em São Lourenço do Oeste • Realeza • Ampére • Curitiba
+            Atendimento para São Lourenço do Oeste • Chapecó • Pato Branco • Realeza • Ampére • Curitiba
           </p>
         </div>
       </div>
