@@ -6,7 +6,6 @@ import { formatClickIdForWhatsApp, trackLead } from '../utils/leadTracking';
 const SERVICES_OPTIONS = [
   'HIFU — Ultrassom Microfocado',
   'Lipo de Papada sem Cortes',
-  'Aluguel de Equipamento HIFU (B2B)',
   'Odontologia Estética / Lentes',
   'Implantes Dentários',
   'Ortodontia / Alinhadores',

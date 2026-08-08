@@ -17,9 +17,9 @@ const NAV_ITEMS = [
 const NAV_ITEMS_RENTAL = [
   { label: 'Início', target: 'inicio-locacao' },
   { label: 'O Aparelho', target: 'aparelho-locacao' },
-  { label: 'Simulador 3D', target: 'simulador-locacao' },
   { label: 'Ponteiras', target: 'ponteiras-locacao' },
-  { label: 'Vantagens', target: 'vantagens-locacao' },
+  { label: 'Como funciona', target: 'vantagens-locacao' },
+  { label: 'Dúvidas', target: 'duvidas-locacao' },
 ];
 
 const Header = () => {

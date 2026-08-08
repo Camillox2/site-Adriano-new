@@ -8,7 +8,6 @@ import Footer from '../components/Footer';
 import WhatsAppButton from '../components/WhatsAppButton';
 import Seo from '../components/Seo';
 
-const HifuRentalBanner = lazy(() => import('../components/HifuRentalBanner'));
 const ResultsSection = lazy(() => import('../components/ResultsSection'));
 const AboutSection = lazy(() => import('../components/AboutSection'));
 const TestimonialsSection = lazy(() => import('../components/TestimonialsSection'));
@@ -78,18 +77,19 @@ const Home = () => {
         }
         description={
           currentRouteMeta?.description ||
-          'Cirurgião-dentista e especialista em HIFU (Ultrassom Microfocado), Ortodontia, Implantes e Harmonização Orofacial. Atendimento de referência para São Lourenço do Oeste, Chapecó, Pato Branco e toda a região.'
+          'Dr. Adriano Camillo: HIFU, Ortodontia, Implantes e Harmonização Orofacial em São Lourenço do Oeste, Chapecó, Pato Branco e região. Profissionais habilitados também podem consultar a locação de Ultramed HIFU.'
         }
         path={location.pathname}
       />
       <Header />
       <main>
         <Hero />
+        <Suspense fallback={null}>
+          <ResultsSection />
+        </Suspense>
         <HifuSection />
         <ServicesSection />
         <Suspense fallback={null}>
-          <HifuRentalBanner />
-          <ResultsSection />
           <AboutSection />
           <TestimonialsSection />
           <ContactSection />

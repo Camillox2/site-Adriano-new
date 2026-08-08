@@ -320,38 +320,56 @@ const HifuSection = () => {
           </div>
         </div>
 
-        {/* CTA */}
-        <div className="bg-slate-900 rounded-3xl px-6 py-12 md:p-14 text-center relative overflow-hidden">
-          <div
-            className="absolute -top-24 -right-24 w-72 h-72 bg-primary-600/20 rounded-full blur-3xl"
-            aria-hidden="true"
-          ></div>
-          <div
-            className="absolute -bottom-24 -left-24 w-72 h-72 bg-emerald-600/20 rounded-full blur-3xl"
-            aria-hidden="true"
-          ></div>
-          <div className="relative z-10 max-w-2xl mx-auto">
-            <h3 className="text-2xl md:text-4xl font-bold text-white leading-tight">
-              Será que o HIFU é para você?
-            </h3>
-            <p className="text-slate-300 mt-4 mb-8 text-base md:text-lg leading-relaxed">
-              Cada rosto é único. Agende uma avaliação personalizada com o Dr.
-              Adriano e descubra, sem compromisso, o plano ideal para o seu caso.
-            </p>
-            <a
-              href={WHATSAPP_HIFU}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary text-base md:text-lg"
-            >
-              Agendar Avaliação HIFU
-              <ArrowRight size={20} aria-hidden="true" />
-            </a>
-            <p className="text-slate-300 text-sm mt-5">
-              Atendimento em São Lourenço do Oeste, Realeza, Ampére e Curitiba
-            </p>
-          </div>
-        </div>
+        {/* Decisão de público: paciente ou profissional, no mesmo card */}
+        <Reveal>
+          <section className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl shadow-slate-200/70" aria-label="Escolha seu atendimento HIFU">
+            <div className="grid md:grid-cols-2">
+              <div className="flex flex-col bg-secondary-50 p-7 sm:p-9 md:p-11">
+                <div className="flex items-start justify-between gap-5">
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-[0.14em] text-secondary-700">Para pacientes</p>
+                    <h3 className="mt-4 text-2xl font-bold leading-tight text-slate-900 md:text-3xl">Será que o HIFU é para você?</h3>
+                  </div>
+                  <img
+                    src={images.drAdriano}
+                    alt="Dr. Adriano Camillo"
+                    loading="lazy"
+                    className="h-16 w-16 shrink-0 rounded-2xl object-cover object-top shadow-sm sm:h-20 sm:w-20"
+                  />
+                </div>
+                <p className="mt-5 max-w-lg text-base leading-relaxed text-slate-600">
+                  Cada rosto é único. Agende uma avaliação personalizada com o Dr. Adriano e descubra, sem compromisso, o plano ideal para o seu caso.
+                </p>
+                <a href={WHATSAPP_HIFU} target="_blank" rel="noopener noreferrer" className="btn-primary mt-8 w-full justify-center sm:w-fit">
+                  Agendar avaliação com o Dr. Adriano
+                  <ArrowRight size={20} aria-hidden="true" />
+                </a>
+              </div>
+
+              <div className="flex flex-col border-t border-slate-200 bg-white p-7 sm:p-9 md:border-l md:border-t-0 md:p-11">
+                <div className="flex items-start justify-between gap-5">
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-[0.14em] text-secondary-700">Para profissionais e clínicas</p>
+                    <h3 className="mt-4 text-2xl font-bold leading-tight text-slate-900 md:text-3xl">Quer levar o HIFU para a sua clínica?</h3>
+                  </div>
+                  <img
+                    src={images.hifuEquipamento}
+                    alt="Equipamento Ultramed HIFU"
+                    loading="lazy"
+                    className="h-16 w-16 shrink-0 rounded-2xl object-cover object-[64%_55%] shadow-sm sm:h-20 sm:w-20"
+                  />
+                </div>
+                <p className="mt-5 max-w-lg text-base leading-relaxed text-slate-600">
+                  Consulte a locação do Ultramed HIFU, veja o equipamento real e encontre uma data para a sua agenda.
+                </p>
+                <Link to="/alugar_hifu" className="btn-outline mt-8 w-full justify-center sm:w-fit">
+                  Quero alugar o HIFU
+                  <ArrowRight size={20} aria-hidden="true" />
+                </Link>
+              </div>
+            </div>
+          </section>
+        </Reveal>
       </div>
 
       {activeVideo && <VideoModal video={activeVideo} onClose={close} />}

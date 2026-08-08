@@ -86,6 +86,12 @@ const BASE_SERVICES = [
 
 const pages = [
   {
+    path: '/alugar_hifu',
+    name: 'Locação de Ultramed HIFU para Clínicas',
+    title: 'Locação de Ultramed HIFU para Clínicas | Dr. Adriano Camillo',
+    description: 'Locação de Ultramed HIFU para profissionais e clínicas habilitados, com equipamento real, logística agendada, orientação operacional e suporte conforme o serviço contratado.',
+  },
+  {
     path: '/servicos',
     name: 'Serviços Odontológicos e Estética Facial',
     title: 'Serviços Odontológicos em São Lourenço do Oeste | Dr. Adriano Camillo',
