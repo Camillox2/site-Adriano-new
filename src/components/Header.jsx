@@ -6,8 +6,10 @@ import { WHATSAPP_DEFAULT, WHATSAPP_ALUGAR_HIFU } from '../utils/constants';
 
 const NAV_ITEMS = [
   { label: 'Início', target: 'inicio' },
+  { label: 'Resultados', target: 'resultados' },
   { label: 'HIFU', target: 'hifu' },
-  { label: 'Serviços', target: 'servicos' },
+  { label: 'Serviços', path: '/servicos' },
+  { label: 'Blog', path: '/blog' },
   { label: 'Sobre', target: 'sobre' },
   { label: 'Contato', target: 'contato' },
 ];
@@ -71,6 +73,15 @@ const Header = () => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const goToItem = (item) => {
+    if (item.path) {
+      setMenuOpen(false);
+      navigate(item.path);
+      return;
+    }
+    goToSection(item.target);
+  };
+
   return (
     <header
       className={`fixed top-0 inset-x-0 z-40 transition-all duration-300 ${
@@ -103,7 +114,7 @@ const Header = () => {
             </span>
             <span
               className={`block text-xs md:text-sm ${
-                solid ? 'text-slate-500' : 'text-slate-200'
+                solid ? 'text-slate-600' : 'text-slate-200'
               }`}
             >
               Cirurgião-Dentista

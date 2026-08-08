@@ -1,19 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Phone, Instagram, ShieldCheck, MapPin, Star } from 'lucide-react';
 import { images, videos } from '../assets';
 import { SITE, WHATSAPP_DEFAULT } from '../utils/constants';
 import CountUp from './CountUp';
+import DesktopWhatsAppForm from './DesktopWhatsAppForm';
 
 const Hero = () => {
-  const [showVideo, setShowVideo] = useState(false);
-
-  // Vídeo de fundo só para quem aceita movimento (acessibilidade)
-  useEffect(() => {
-    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      setShowVideo(true);
-    }
-  }, []);
-
   const scrollToHifu = () => {
     document.getElementById('hifu')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -23,25 +15,27 @@ const Hero = () => {
       id="inicio"
       className="relative min-h-[100svh] flex flex-col justify-center overflow-hidden bg-slate-900"
     >
-      {/* Fundo: vídeo do equipamento em loop (0,5 MB) com foto de fallback */}
+      {/* Fundo: foto estática otimizada no mobile e vídeo de alta qualidade no desktop */}
       <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
-        {showVideo ? (
-          <video
-            className="w-full h-full object-cover"
-            autoPlay
-            muted
-            loop
-            playsInline
-            poster={images.consultorio1}
-            src={videos.hifuDois}
-            tabIndex={-1}
-          />
-        ) : (
-          <div
-            className="w-full h-full bg-cover bg-center animate-kenburns"
-            style={{ backgroundImage: `url(${images.consultorio1})` }}
-          ></div>
-        )}
+        <img
+          src={images.consultorio1}
+          alt=""
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+          className="w-full h-full object-cover block md:hidden opacity-40"
+        />
+        <video
+          className="w-full h-full object-cover hidden md:block"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster={images.consultorio1}
+          src={videos.hifuDois}
+          tabIndex={-1}
+        />
       </div>
       <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-900/85 to-slate-900/60"></div>
       <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-slate-950/90 to-transparent"></div>
@@ -99,8 +93,12 @@ const Hero = () => {
             </a>
           </div>
 
-          {/* Foto do Dr. Adriano */}
-          <div className="flex justify-center lg:justify-end animate-fade-in-right order-first lg:order-last">
+          {/* Foto do Dr. Adriano + Formulário Desktop */}
+          <div className="flex flex-col lg:flex-row gap-8 items-center justify-center lg:justify-end animate-fade-in-right order-first lg:order-last">
+            <div className="w-full max-w-sm hidden lg:block">
+              <DesktopWhatsAppForm title="Agendar Avaliação Rápida" />
+            </div>
+
             <div className="relative">
               <div
                 className="absolute -inset-4 bg-gradient-to-tr from-emerald-500/30 to-primary-500/30 rounded-[2rem] blur-2xl"
@@ -111,14 +109,16 @@ const Hero = () => {
                 alt="Dr. Adriano Camillo em seu consultório"
                 width="480"
                 height="480"
+                loading="eager"
                 fetchpriority="high"
-                className="relative w-60 sm:w-72 lg:w-[22rem] h-auto object-contain rounded-[2rem] shadow-2xl ring-1 ring-white/20"
+                decoding="async"
+                className="relative w-60 sm:w-72 lg:w-[18rem] xl:w-[20rem] h-auto object-contain rounded-[2rem] shadow-2xl ring-1 ring-white/20"
               />
               <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 lg:left-auto lg:-translate-x-0 lg:-right-4 bg-white text-slate-900 px-5 py-3 rounded-2xl shadow-xl flex items-center gap-3 w-max max-w-[90vw]">
                 <ShieldCheck className="text-emerald-600 shrink-0" size={24} aria-hidden="true" />
                 <span className="text-sm font-semibold leading-tight whitespace-nowrap">
-                  Especialista em HIFU
-                  <span className="block text-xs font-normal text-slate-500 whitespace-nowrap">
+                  Atuação com HIFU
+                  <span className="block text-xs font-normal text-slate-600 whitespace-nowrap">
                     e Harmonização Orofacial
                   </span>
                 </span>
@@ -139,15 +139,15 @@ const Hero = () => {
           <div className="flex items-center justify-center lg:justify-start gap-4 bg-white/5 border border-white/10 backdrop-blur-sm rounded-2xl px-6 py-4">
             <MapPin className="text-emerald-400 shrink-0" size={28} aria-hidden="true" />
             <span>
-              <CountUp end={4} className="block text-2xl font-bold text-white" />
-              <span className="block text-sm text-slate-300">cidades atendidas</span>
+              <CountUp end={6} className="block text-2xl font-bold text-white" />
+              <span className="block text-sm text-slate-300">cidades com operação HIFU</span>
             </span>
           </div>
           <div className="flex items-center justify-center lg:justify-start gap-4 bg-white/5 border border-white/10 backdrop-blur-sm rounded-2xl px-6 py-4">
             <ShieldCheck className="text-emerald-400 shrink-0" size={28} aria-hidden="true" />
             <span>
-              <CountUp end={100} suffix="%" className="block text-2xl font-bold text-white" />
-              <span className="block text-sm text-slate-300">atendimento personalizado</span>
+              <CountUp end={1} suffix=":1" className="block text-2xl font-bold text-white" />
+              <span className="block text-sm text-slate-300">planejamento individual</span>
             </span>
           </div>
         </div>

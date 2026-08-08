@@ -17,10 +17,10 @@ import faceBefore from './images/face-before.jpg';
 import faceAfter from './images/face-after.jpg';
 
 // Posters (thumbnails reais extraídos dos vídeos)
-import posterHifu from './images/poster-hifu.jpg';
-import posterHifuAtendimento from './images/poster-hifuatendimento.jpg';
-import posterHifuDois from './images/poster-hifudois.jpg';
-import posterHifuTres from './images/poster-hifutres.jpg';
+import posterHifu from './images/poster-hifu.webp';
+import posterHifuAtendimento from './images/poster-hifuatendimento.webp';
+import posterHifuDois from './images/poster-hifudois.webp';
+import posterHifuTres from './images/poster-hifutres.webp';
 
 // Vídeos (comprimidos para web — 1080p)
 import hifuVideo from './videos/hifu.mp4';
@@ -55,6 +55,22 @@ const images = {
   posterHifuAtendimento,
   posterHifuDois,
   posterHifuTres,
+
+  // Novas
+  preenchimento_labial_1,
+  preenchimento_labial_2,
+  preenchimento_labial_3,
+  preenchimento_labial_4,
+  preenchimento_labial_5,
+  lipo_papada,
+  lifting_facial,
+  preenchimento_mento,
+  botox_1,
+  botox_2,
+  botox_3,
+  harmonizacao_antes_depois_1,
+  harmonizacao_antes_depois_2,
+  implante_dentario_1,
 };
 
 const videos = {

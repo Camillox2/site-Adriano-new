@@ -1,7 +1,7 @@
 {
   "name": "dr-adriano-camillo-site",
   "version": "1.0.0",
-  "description": "Site profissional para Dr. Adriano Camillo - Cirurgião Dentista especialista em Ortodontia, Implantes, Harmonização Orofacial e HIFU",
+  "description": "Site profissional para Dr. Adriano Camillo - Cirurgião-Dentista com atuação em Ortodontia, Implantes, Harmonização Orofacial e HIFU",
   "author": "Desenvolvido para Dr. Adriano Camillo",
   "keywords": [
     "dentista",
@@ -34,7 +34,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "node scripts/build-sitemap.cjs && react-scripts build && node scripts/generate-static-seo-pages.cjs && node scripts/apply-indexing-policy.cjs",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build:analyze": "npm run build && npx serve -s build",
@@ -64,10 +64,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/seu-usuario/dr-adriano-camillo-site.git"
+    "url": "https://github.com/Camillox2/site-Adriano-new.git"
   },
   "bugs": {
-    "url": "https://github.com/seu-usuario/dr-adriano-camillo-site/issues"
+    "url": "https://github.com/Camillox2/site-Adriano-new/issues"
   },
   "license": "UNLICENSED"
 }

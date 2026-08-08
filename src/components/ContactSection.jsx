@@ -71,7 +71,7 @@ const ContactSection = () => (
             }`}
           >
             {primary && (
-              <span className="self-center -mt-10 mb-3 bg-secondary-600 text-white text-xs font-bold tracking-wide uppercase px-4 py-1.5 rounded-full shadow">
+              <span className="self-center -mt-10 mb-3 bg-emerald-700 text-white text-xs font-bold tracking-wide uppercase px-4 py-1.5 rounded-full shadow">
                 Recomendado
               </span>
             )}
@@ -139,7 +139,7 @@ const ContactSection = () => (
             </li>
             <li className="flex justify-between gap-4">
               <span>Domingo</span>
-              <span className="font-semibold text-slate-400">Fechado</span>
+              <span className="font-semibold text-slate-500">Fechado</span>
             </li>
           </ul>
           <a

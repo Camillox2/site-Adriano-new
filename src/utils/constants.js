@@ -4,6 +4,7 @@
 export const SITE = {
   name: 'Dr. Adriano Camillo',
   title: 'Cirurgião-Dentista',
+  cro: 'CRO-SC 4011',
   url: 'https://dradrianocamillo.com',
   phone: '(49) 9 9836-2864',
   phoneRaw: '5549998362864',
@@ -49,6 +50,7 @@ export const LOCATIONS = [
     type: 'Consultório Principal (Sede)',
     address: ADDRESS.street,
     mapsUrl: ADDRESS.mapsUrl,
+    pageUrl: '/servicos',
     main: true,
   },
   {
@@ -68,15 +70,17 @@ export const LOCATIONS = [
   {
     city: 'Realeza — PR',
     type: 'Atendimento com agendamento',
-    address: 'Agende pelo WhatsApp',
+    address: '25 km (~20 min) — cidade vizinha',
     mapsUrl: 'https://maps.google.com/?q=Realeza,+PR',
+    pageUrl: '/servicos/realeza',
     main: false,
   },
   {
     city: 'Ampére — PR',
     type: 'Atendimento com agendamento',
-    address: 'Agende pelo WhatsApp',
+    address: '30 km (~25 min) — cidade vizinha',
     mapsUrl: 'https://maps.google.com/?q=Amp%C3%A9re,+PR',
+    pageUrl: '/servicos/ampere',
     main: false,
   },
   {
@@ -84,6 +88,7 @@ export const LOCATIONS = [
     type: 'Atendimento domiciliar especializado',
     address: 'Agende pelo WhatsApp',
     mapsUrl: 'https://maps.google.com/?q=Curitiba,+PR',
+    pageUrl: '/servicos/curitiba',
     main: false,
   },
 ];

@@ -7,17 +7,19 @@ import { SITE, ADDRESS, WHATSAPP_DEFAULT, WHATSAPP_RENTAL } from '../utils/const
 const QUICK_LINKS = [
   { text: 'Início', target: 'inicio' },
   { text: 'HIFU', target: 'hifu' },
-  { text: 'Serviços', target: 'servicos' },
+  { text: 'Serviços', path: '/servicos' },
   { text: 'Sobre', target: 'sobre' },
   { text: 'Contato', target: 'contato' },
 ];
 
 const SERVICES = [
-  'HIFU — Ultrassom Microfocado',
-  'Ortodontia',
-  'Implantes Dentários',
-  'Harmonização Orofacial',
-  'Ozonioterapia',
+  { label: 'HIFU — Ultrassom Microfocado', path: '/hifu' },
+  { label: 'Ortodontia', path: '/ortodontia' },
+  { label: 'Implantes Dentários', path: '/implantes-dentarios' },
+  { label: 'Harmonização Orofacial', path: '/harmonizacao-orofacial' },
+  { label: 'Odontologia Estética', path: '/odontologia-estetica' },
+  { label: 'DTM e Dor Orofacial', path: '/dtm-dor-orofacial' },
+  { label: 'Ozonioterapia', path: '/ozonioterapia' },
 ];
 
 const Footer = () => {
@@ -51,7 +53,7 @@ const Footer = () => {
               />
               <div>
                 <p className="text-lg font-bold text-white leading-tight">Dr. Adriano Camillo</p>
-                <p className="text-sm text-slate-400">Cirurgião-Dentista</p>
+                <p className="text-sm text-slate-300">{SITE.title} • {SITE.cro}</p>
               </div>
             </div>
             <p className="text-sm leading-relaxed text-slate-400 mb-6">
@@ -92,13 +94,19 @@ const Footer = () => {
             <h3 className="text-white font-bold mb-5">Navegação</h3>
             <ul className="space-y-2.5 text-sm">
               {QUICK_LINKS.map((link) => (
-                <li key={link.target}>
-                  <button
-                    onClick={() => goToSection(link.target)}
-                    className="hover:text-white transition-colors"
-                  >
-                    {link.text}
-                  </button>
+                <li key={link.path || link.target}>
+                  {link.path ? (
+                    <Link to={link.path} className="hover:text-white transition-colors">
+                      {link.text}
+                    </Link>
+                  ) : (
+                    <button
+                      onClick={() => goToSection(link.target)}
+                      className="hover:text-white transition-colors"
+                    >
+                      {link.text}
+                    </button>
+                  )}
                 </li>
               ))}
               <li>
@@ -117,10 +125,19 @@ const Footer = () => {
           {/* Serviços */}
           <div>
             <h3 className="text-white font-bold mb-5">Serviços</h3>
-            <ul className="space-y-2.5 text-sm text-slate-400">
+            <ul className="space-y-2.5 text-sm text-slate-300">
               {SERVICES.map((service) => (
-                <li key={service}>{service}</li>
+                <li key={service.path}>
+                  <Link to={service.path} className="hover:text-white transition-colors">
+                    {service.label}
+                  </Link>
+                </li>
               ))}
+              <li>
+                <Link to="/servicos" className="font-semibold text-emerald-400 hover:text-emerald-300 transition-colors">
+                  Ver todos os serviços
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -134,14 +151,14 @@ const Footer = () => {
                   <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="text-white font-semibold hover:underline">
                     {SITE.phone}
                   </a>
-                  <span className="block text-slate-400">WhatsApp</span>
+                  <span className="block text-slate-300">WhatsApp</span>
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin size={17} className="text-primary-500 shrink-0 mt-0.5" aria-hidden="true" />
                 <span>
                   {ADDRESS.street}
-                  <span className="block text-slate-400">
+                  <span className="block text-slate-300">
                     {ADDRESS.city} — {ADDRESS.state}
                   </span>
                 </span>
@@ -150,7 +167,7 @@ const Footer = () => {
                 <Clock size={17} className="text-secondary-500 shrink-0 mt-0.5" aria-hidden="true" />
                 <span>
                   Seg a sex: 8h às 18h
-                  <span className="block text-slate-400">Sábado: 8h às 12h</span>
+                  <span className="block text-slate-300">Sábado: 8h às 12h</span>
                 </span>
               </li>
             </ul>
@@ -158,9 +175,9 @@ const Footer = () => {
         </div>
 
         {/* Barra final */}
-        <div className="py-6 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-3 text-sm text-slate-500">
+        <div className="py-6 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-3 text-sm text-slate-400">
           <p>
-            © {year} Dr. Adriano Camillo — Todos os direitos reservados.
+            © {year} Dr. Adriano Camillo — {SITE.cro} — Todos os direitos reservados.
           </p>
           <p>
             Atendimento para São Lourenço do Oeste • Chapecó • Pato Branco • Realeza • Ampére • Curitiba

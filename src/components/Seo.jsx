@@ -1,13 +1,15 @@
 import { useEffect } from 'react';
 import { SITE } from '../utils/constants';
+import { getRobotsDirective } from '../utils/seoIndexing';
 
 /**
  * Componente de SEO por rota (sem dependências externas).
- * Atualiza título, description, canonical, Open Graph e JSON-LD dinâmico.
+ * Atualiza título, description, canonical, robots, Open Graph e JSON-LD dinâmico.
  */
 const Seo = ({ title, description, path = '/', jsonLd = null }) => {
   useEffect(() => {
     const url = `${SITE.url}${path === '/' ? '/' : path}`;
+    const requestedPath = window.location.pathname || path;
 
     document.title = title;
 
@@ -22,6 +24,7 @@ const Seo = ({ title, description, path = '/', jsonLd = null }) => {
     };
 
     setMeta('name', 'description', description);
+    setMeta('name', 'robots', getRobotsDirective(requestedPath));
     setMeta('property', 'og:title', title);
     setMeta('property', 'og:description', description);
     setMeta('property', 'og:url', url);

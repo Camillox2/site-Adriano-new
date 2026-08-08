@@ -6,47 +6,71 @@ import Reveal from './Reveal';
 
 const TESTIMONIALS = [
   {
-    name: 'Maria S.',
-    treatment: 'HIFU',
-    text: 'Resultado incrível! O Dr. Adriano é muito profissional e o procedimento HIFU superou minhas expectativas. Minha pele ficou mais firme e jovem de forma natural.',
-    location: 'São Lourenço do Oeste',
+    name: 'Emanoelli Pessoa',
+    treatment: 'Avaliação no Google Maps',
+    text: 'Gostaria de deixar registrado meu elogio ao excelente trabalho do Dr. Adriano Camillo. Um profissional extremamente competente, gentil, atencioso e muito educado. Transmite segurança durante todo o atendimento, explica cada procedimento com clareza e trata seus pacientes com respeito e cuidado. Fiquei muito satisfeita e recomendo seu trabalho a todos que procuram um dentista de confiança e um atendimento de qualidade!',
+    location: 'São Lourenço do Oeste - SC',
   },
   {
-    name: 'João S.',
-    treatment: 'Implantes',
-    text: 'Excelente profissional! Meu implante ficou perfeito e o atendimento foi excepcional. Voltei a sorrir com confiança.',
-    location: 'Realeza',
+    name: 'Danieli Ferreira',
+    treatment: 'Avaliação no Google Maps',
+    text: 'Dr. Adriano é um profissional em quem tenho total confiança. É profissional, competente e atencioso, super recomendo!',
+    location: 'São Lourenço do Oeste - SC',
   },
   {
-    name: 'Ana C.',
-    treatment: 'Harmonização Orofacial',
-    text: 'Resultado natural e lindo! O Dr. Adriano tem um olhar clínico incrível. Me sinto muito mais confiante.',
-    location: 'Ampére',
+    name: 'Jaqueline Ribeiro',
+    treatment: 'Avaliação no Google Maps',
+    text: 'Excelente profissional, atencioso e muito competente. Com certeza irei retornar para outros procedimentos.',
+    location: 'São Lourenço do Oeste - SC',
   },
   {
-    name: 'Carlos R.',
-    treatment: 'Ortodontia',
-    text: 'Tratamento ortodôntico perfeito! O Dr. Adriano foi muito atencioso durante todo o processo. Meu sorriso ficou exatamente como eu sonhava.',
-    location: 'São Lourenço do Oeste',
+    name: 'Monica Turani',
+    treatment: 'Avaliação no Google Maps',
+    text: 'O lugar é maravilhoso, o Dr é um excelente profissional. E as meninas são legais.',
+    location: 'São Lourenço do Oeste - SC',
   },
   {
-    name: 'Fernanda L.',
-    treatment: 'Ozonioterapia',
-    text: 'A ozonioterapia me ajudou muito na recuperação pós-cirúrgica. Técnica inovadora e o Dr. Adriano sempre explicando tudo com detalhes.',
-    location: 'Realeza',
+    name: 'Luiza Nesi',
+    treatment: 'Avaliação no Google Maps',
+    text: 'Um profissional muito bom minha vida toda faço meus tratamentos com ele e super indico.',
+    location: 'São Lourenço do Oeste - SC',
   },
   {
-    name: 'Roberto O.',
-    treatment: 'HIFU',
-    text: 'Incrível como o HIFU pode rejuvenescer sem cirurgia! Resultado surpreendente e natural.',
-    location: 'Ampére',
+    name: 'Ivan Carlos Guaragni',
+    treatment: 'Avaliação no Google Maps',
+    text: 'Sempre bem atendido, o dentista sempre atencioso e eficiente.',
+    location: 'São Lourenço do Oeste - SC',
+  },
+  {
+    name: 'Lilian Guidini',
+    treatment: 'Avaliação no Google Maps',
+    text: 'Excelente trabalho, e um ótimo atendimento, ❤️',
+    location: 'São Lourenço do Oeste - SC',
+  },
+  {
+    name: 'Samira Schwade',
+    treatment: 'Avaliação no Google Maps',
+    text: 'Excelente profissional! Atendimento rápido e resultados impecáveis.',
+    location: 'São Lourenço do Oeste - SC',
+  },
+  {
+    name: 'Catia Regina Frasson Cella',
+    treatment: 'Avaliação no Google Maps',
+    text: 'Foi ótimo, super recomendo a todos da região.',
+    location: 'São Lourenço do Oeste - SC',
+  },
+  {
+    name: 'Loriva Bampu',
+    treatment: 'Avaliação no Google Maps',
+    text: 'Atendimento nota 10! Muito atencioso e resultado seguro.',
+    location: 'São Lourenço do Oeste - SC',
   },
 ];
 
 const STATS = [
   { end: 30, suffix: '+', label: 'anos de experiência' },
   { end: 4, suffix: '', label: 'cidades atendidas' },
-  { value: 'Milhares', label: 'de pacientes atendidos' },
+  { value: '5.0 ★', label: 'avaliação média no Google' },
   { end: 5, suffix: '', label: 'especialidades integradas' },
 ];
 
@@ -114,7 +138,7 @@ const TestimonialsSection = () => {
         <div className="relative max-w-3xl mx-auto">
           <figure className="bg-white rounded-3xl p-8 md:p-12 shadow-2xl text-center overflow-hidden">
             <Quote className="text-primary-200 mx-auto mb-5" size={44} aria-hidden="true" />
-            <div className="flex justify-center gap-1 mb-6" aria-label="Avaliação 5 de 5 estrelas">
+            <div className="flex justify-center gap-1 mb-6" role="img" aria-label="Avaliação 5 de 5 estrelas">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="text-amber-400 fill-current" size={20} aria-hidden="true" />
               ))}
@@ -126,7 +150,7 @@ const TestimonialsSection = () => {
               </blockquote>
               <figcaption className="mt-7 pt-6 border-t border-slate-100">
                 <span className="block font-bold text-slate-900">{current.name}</span>
-                <span className="block text-sm text-slate-500 mt-1">
+                <span className="block text-sm text-slate-600 mt-1">
                   {current.treatment} • {current.location}
                 </span>
               </figcaption>
@@ -135,14 +159,14 @@ const TestimonialsSection = () => {
 
           <button
             onClick={prev}
-            className="absolute left-0 sm:-left-6 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-slate-800 rounded-full p-3 shadow-lg transition-all hover:scale-105"
+            className="absolute left-0 sm:-left-6 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-slate-800 rounded-full p-4 shadow-lg transition-all hover:scale-105"
             aria-label="Depoimento anterior"
           >
             <ChevronLeft size={22} />
           </button>
           <button
             onClick={next}
-            className="absolute right-0 sm:-right-6 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-slate-800 rounded-full p-3 shadow-lg transition-all hover:scale-105"
+            className="absolute right-0 sm:-right-6 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-slate-800 rounded-full p-4 shadow-lg transition-all hover:scale-105"
             aria-label="Próximo depoimento"
           >
             <ChevronRight size={22} />
@@ -150,7 +174,7 @@ const TestimonialsSection = () => {
         </div>
 
         {/* Indicadores */}
-        <div className="flex justify-center gap-2.5 mt-8" role="tablist" aria-label="Depoimentos">
+        <div className="flex justify-center gap-2 mt-8" role="tablist" aria-label="Depoimentos">
           {TESTIMONIALS.map((testimonial, i) => (
             <button
               key={testimonial.name}
@@ -158,10 +182,14 @@ const TestimonialsSection = () => {
               role="tab"
               aria-selected={i === index}
               aria-label={`Depoimento de ${testimonial.name}`}
-              className={`h-2.5 rounded-full transition-all duration-300 ${
-                i === index ? 'bg-emerald-400 w-8' : 'bg-white/30 w-2.5 hover:bg-white/50'
-              }`}
-            />
+              className="p-2 outline-none group"
+            >
+              <div
+                className={`h-2.5 rounded-full transition-all duration-300 ${
+                  i === index ? 'bg-emerald-400 w-8' : 'bg-white/30 w-2.5 group-hover:bg-white/50'
+                }`}
+              />
+            </button>
           ))}
         </div>
 

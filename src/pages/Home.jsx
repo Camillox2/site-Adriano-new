@@ -5,6 +5,7 @@ import Hero from '../components/Hero';
 import HifuSection from '../components/HifuSection';
 import HifuRentalBanner from '../components/HifuRentalBanner';
 import ServicesSection from '../components/ServicesSection';
+import ResultsSection from '../components/ResultsSection';
 import AboutSection from '../components/AboutSection';
 import TestimonialsSection from '../components/TestimonialsSection';
 import ContactSection from '../components/ContactSection';
@@ -86,6 +87,7 @@ const Home = () => {
         <HifuSection />
         <HifuRentalBanner />
         <ServicesSection />
+        <ResultsSection />
         <AboutSection />
         <TestimonialsSection />
         <ContactSection />

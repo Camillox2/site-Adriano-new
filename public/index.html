@@ -40,9 +40,13 @@
   <!-- Fontes -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
+  </noscript>
 
-  <!-- Dados estruturados: clínica odontológica (Google Rich Results) -->
+  <!-- Dados estruturados: clínica odontológica -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -90,16 +94,22 @@
           { "@type": "City", "name": "Pato Branco" },
           { "@type": "City", "name": "Realeza" },
           { "@type": "City", "name": "Ampére" },
+          { "@type": "City", "name": "Realeza" },
+          { "@type": "City", "name": "Chapecó" },
+          { "@type": "City", "name": "Pato Branco" },
           { "@type": "City", "name": "Curitiba" }
         ],
         "sameAs": ["https://www.instagram.com/dr.adrianocamillo/"],
         "founder": { "@id": "https://dradrianocamillo.com/#draadriano" },
         "makesOffer": [
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "HIFU - Ultrassom Microfocado", "url": "https://dradrianocamillo.com/hifu" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Ortodontia" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Implantes Dentários" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Harmonização Orofacial" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Ozonioterapia" } }
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Ortodontia", "url": "https://dradrianocamillo.com/ortodontia" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Implantes Dentários", "url": "https://dradrianocamillo.com/implantes-dentarios" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Harmonização Orofacial", "url": "https://dradrianocamillo.com/harmonizacao-orofacial" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Odontologia Estética", "url": "https://dradrianocamillo.com/odontologia-estetica" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "DTM e Dor Orofacial", "url": "https://dradrianocamillo.com/dtm-dor-orofacial" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Ozonioterapia", "url": "https://dradrianocamillo.com/ozonioterapia" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Locação de HIFU", "url": "https://dradrianocamillo.com/aluguel-de-hifu" } }
         ]
       },
       {
@@ -118,6 +128,8 @@
           "Ortodontia",
           "Implantes Dentários",
           "Harmonização Orofacial",
+          "Odontologia Estética",
+          "DTM e Dor Orofacial",
           "Ozonioterapia"
         ],
         "sameAs": ["https://www.instagram.com/dr.adrianocamillo/"]
@@ -128,8 +140,8 @@
 </head>
 <body>
   <noscript>
-    <h1>Dr. Adriano Camillo — Cirurgião-Dentista</h1>
-    <p>HIFU (Ultrassom Microfocado), Ortodontia, Implantes e Harmonização Orofacial em São Lourenço do Oeste - SC.</p>
+    <h1>Dr. Adriano Camillo — Cirurgião-Dentista em São Lourenço do Oeste</h1>
+    <p>Odontologia estética, HIFU, Ortodontia, Implantes, Harmonização Orofacial e avaliação de DTM e dor orofacial em São Lourenço do Oeste - SC.</p>
     <p>Agende pelo WhatsApp: <a href="https://wa.me/5549998362864">(49) 9 9836-2864</a></p>
     <p>Você precisa habilitar o JavaScript para ver o site completo.</p>
   </noscript>

@@ -1,0 +1,8 @@
+---
+# cPanel executes these tasks when "Deploy HEAD Commit" is selected.
+# The build is versioned only on the deployment branch, so the production
+# server receives the pre-built static files and does not need Node.js.
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home1/vito0736/public_html/
+    - /bin/cp -a build/. "$DEPLOYPATH"

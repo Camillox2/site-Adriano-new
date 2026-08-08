@@ -1,4 +1,5 @@
 import React, { useState, useCallback, memo } from 'react';
+import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
 import {
   CheckCircle,
@@ -9,6 +10,8 @@ import {
   Timer,
   TrendingUp,
   ShieldCheck,
+  Sparkles,
+  Target,
 } from 'lucide-react';
 import { videos, images } from '../assets';
 import { WHATSAPP_HIFU } from '../utils/constants';
@@ -51,12 +54,36 @@ export const HIFU_VIDEOS = [
 ];
 
 const BENEFITS = [
-  'Lifting facial sem cortes e sem agulhas',
-  'Estimula o colágeno natural da sua pele',
-  'Sessão única na maioria dos casos',
-  'Sem afastamento das atividades',
-  'Resultados progressivos por até 6 meses',
-  'Tecnologia consolidada mundialmente',
+  {
+    icon: Zap,
+    title: 'Lifting Facial sem Cortes',
+    description: 'Atinge a camada profunda SMAS (a mesma da cirurgia plástica) com ultrassom, promovendo efeito lifting imediato sem cortes ou agulhas.'
+  },
+  {
+    icon: Sparkles,
+    title: 'Estímulo Profundo de Colágeno',
+    description: 'Gera micropontos de coagulação que ativam a neocolagênese natural da pele, produzindo colágeno novo e denso por até 6 meses.'
+  },
+  {
+    icon: Target,
+    title: 'Redução de Papada e Gordura',
+    description: 'Destrói as células de gordura submentoniana (queixo duplo) e enrijece o tecido ao mesmo tempo, evitando a flacidez pós-tratamento.'
+  },
+  {
+    icon: Timer,
+    title: 'Zero Tempo de Repouso',
+    description: 'Procedimento não invasivo de consultório. Retorne ao trabalho, maquiagem e rotina diária imediatamente após a aplicação.'
+  },
+  {
+    icon: TrendingUp,
+    title: 'Resultados Progressivos',
+    description: 'A firmeza da pele evolui dia a dia de forma sutil e natural, atingindo o pico de beleza e definição entre 30 e 90 dias.'
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Segurança Comprovada ANVISA',
+    description: 'Realizado com o equipamento profissional Ultramed HIFU, calibrado e manuseado com técnica clínica apurada.'
+  }
 ];
 
 const HIGHLIGHTS = [
@@ -120,23 +147,26 @@ const VideoCard = memo(({ video, onClick }) => (
 VideoCard.displayName = 'VideoCard';
 
 // ---------- modal de vídeo ----------
-export const VideoModal = ({ video, onClose }) => (
+export const VideoModal = ({ video, onClose }) => createPortal(
   <div
-    className="fixed inset-0 bg-slate-950/85 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-fade-in"
+    className="fixed inset-0 bg-slate-950/95 backdrop-blur-md flex items-center justify-center z-[99999] p-4 animate-fade-in overflow-y-auto"
     onClick={onClose}
     role="dialog"
     aria-modal="true"
     aria-label={video.title}
   >
-    <div className="relative w-full max-w-4xl" onClick={(e) => e.stopPropagation()}>
-      <button
-        onClick={onClose}
-        className="absolute -top-12 right-0 text-white/80 hover:text-white bg-white/10 hover:bg-white/20 rounded-full p-2.5 transition-colors"
-        aria-label="Fechar vídeo"
-      >
-        <X size={24} />
-      </button>
-      <div className="bg-slate-900 rounded-2xl overflow-hidden shadow-2xl">
+    {/* Botão de Fechar Fixo no Canto Superior da Tela */}
+    <button
+      onClick={onClose}
+      className="fixed top-4 right-4 sm:top-6 sm:right-6 z-[100000] bg-emerald-600 hover:bg-emerald-500 text-white rounded-full p-3 shadow-2xl transition-transform active:scale-95 flex items-center gap-1.5 font-bold text-sm border border-white/20 cursor-pointer"
+      aria-label="Fechar vídeo"
+    >
+      <X size={22} />
+      <span className="hidden sm:inline pr-1">Fechar</span>
+    </button>
+
+    <div className="relative w-full max-w-4xl my-auto" onClick={(e) => e.stopPropagation()}>
+      <div className="bg-slate-900 rounded-3xl overflow-hidden shadow-2xl border border-slate-800">
         <video
           className="w-full aspect-video bg-black"
           controls
@@ -147,13 +177,22 @@ export const VideoModal = ({ video, onClose }) => (
         >
           Seu navegador não suporta o elemento de vídeo.
         </video>
-        <div className="p-5 md:p-6">
-          <h3 className="text-lg md:text-xl font-bold text-white">{video.title}</h3>
-          <p className="text-slate-300 text-sm md:text-base mt-1">{video.description}</p>
+        <div className="p-5 md:p-6 flex items-center justify-between gap-4">
+          <div>
+            <h3 className="text-lg md:text-xl font-bold text-white">{video.title}</h3>
+            <p className="text-slate-300 text-sm md:text-base mt-1">{video.description}</p>
+          </div>
+          <button
+            onClick={onClose}
+            className="shrink-0 bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-xl text-xs font-semibold cursor-pointer shadow-md"
+          >
+            Fechar ✕
+          </button>
         </div>
       </div>
     </div>
-  </div>
+  </div>,
+  document.body
 );
 
 // ---------- seção ----------
@@ -222,7 +261,7 @@ const HifuSection = () => {
               <ShieldCheck className="text-emerald-600 shrink-0" size={26} aria-hidden="true" />
               <span className="text-sm font-semibold text-slate-800 whitespace-nowrap">
                 Equipamento Ultramed HIFU
-                <span className="block text-xs font-normal text-slate-500">
+                <span className="block text-xs font-normal text-slate-600">
                   Tecnologia profissional de consultório
                 </span>
               </span>
@@ -238,21 +277,25 @@ const HifuSection = () => {
               ultrassom microfocado devolve firmeza à pele estimulando o que ela
               tem de melhor: o seu próprio colágeno.
             </p>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {BENEFITS.map((benefit) => (
-                <li
-                  key={benefit}
-                  className="flex items-start gap-3 bg-white border border-slate-100 rounded-xl p-3.5"
-                >
-                  <CheckCircle
-                    size={20}
-                    className="text-emerald-600 shrink-0 mt-0.5"
-                    aria-hidden="true"
-                  />
-                  <span className="text-slate-700 text-sm font-medium">{benefit}</span>
-                </li>
-              ))}
-            </ul>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {BENEFITS.map((b) => {
+                const IconComponent = b.icon;
+                return (
+                  <div
+                    key={b.title}
+                    className="flex items-start gap-3.5 bg-white border border-slate-100 rounded-2xl p-4 shadow-sm hover:border-emerald-200 transition-colors"
+                  >
+                    <div className="p-2.5 bg-emerald-50 text-emerald-600 rounded-xl shrink-0 mt-0.5">
+                      <IconComponent size={20} aria-hidden="true" />
+                    </div>
+                    <div>
+                      <h4 className="text-slate-900 font-semibold text-sm mb-1">{b.title}</h4>
+                      <p className="text-slate-600 text-xs leading-relaxed">{b.description}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
             <Link
               to="/hifu"
               className="inline-flex items-center gap-2 text-primary-700 font-semibold mt-7 hover:gap-3.5 transition-all"
@@ -304,7 +347,7 @@ const HifuSection = () => {
               Agendar Avaliação HIFU
               <ArrowRight size={20} aria-hidden="true" />
             </a>
-            <p className="text-slate-400 text-sm mt-5">
+            <p className="text-slate-300 text-sm mt-5">
               Atendimento em São Lourenço do Oeste, Realeza, Ampére e Curitiba
             </p>
           </div>
