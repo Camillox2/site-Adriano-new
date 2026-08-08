@@ -29,20 +29,33 @@ export const getLeadTrackingContext = () => {
   }
 };
 
-export const trackLead = ({ method, service, city }) => {
+export const trackLead = ({ method, service = 'Avaliação', city = '', onComplete } = {}) => {
   if (typeof window.gtag !== 'function') return;
 
-  window.gtag('event', 'generate_lead', {
+  const leadPayload = {
     method,
     service,
     city,
-  });
+  };
 
-  window.gtag('event', 'conversion', {
+  if (method === 'form_whatsapp') {
+    window.gtag('event', 'form_whatsapp_submit', leadPayload);
+  }
+
+  window.gtag('event', 'generate_lead', leadPayload);
+
+  const conversionPayload = {
     send_to: GOOGLE_ADS_LEAD_SEND_TO,
     value: 1.0,
     currency: 'BRL',
-  });
+  };
+
+  if (typeof onComplete === 'function') {
+    conversionPayload.event_callback = onComplete;
+    conversionPayload.event_timeout = 800;
+  }
+
+  window.gtag('event', 'conversion', conversionPayload);
 };
 
 export const formatClickIdForWhatsApp = () => {

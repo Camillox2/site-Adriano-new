@@ -5,6 +5,19 @@ import { rememberGoogleClickId, trackLead } from '../utils/leadTracking';
 const GA_MEASUREMENT_ID = 'G-ZFM9X87FLS';
 const GOOGLE_ADS_ID = 'AW-18349275000';
 const CONSENT_KEY = 'dr-adriano-analytics-consent';
+const TRACKED_WHATSAPP_SELECTOR = 'a[href^="https://wa.me/"]';
+const TRACKED_MAP_SELECTOR = 'a[href*="google.com/maps"], a[href*="maps.google.com"]';
+
+const getLinkContext = (link) => {
+  const section = link.closest('section, article, header, footer, main');
+  const sectionText = section?.innerText || '';
+  const cityMatch = sectionText.match(/(?:S[aã]o Louren[cç]o do Oeste|Pato Branco|Chapec[oó]|Realeza|Amp[eé]re|Curitiba)/i);
+
+  return {
+    label: link.getAttribute('aria-label') || link.textContent?.trim() || 'Contato pelo site',
+    city: cityMatch?.[0] || '',
+  };
+};
 
 const loadAnalytics = () => {
   if (window.__drAdrianoAnalyticsLoaded) return;
@@ -68,9 +81,9 @@ const AnalyticsConsent = () => {
       });
     };
 
-    document.addEventListener('click', trackWhatsAppClick);
+    document.addEventListener('click', trackContactClick);
     return () => {
-      document.removeEventListener('click', trackWhatsAppClick);
+      document.removeEventListener('click', trackContactClick);
       delete window.__drAdrianoTrackLead;
     };
   }, [consent]);
