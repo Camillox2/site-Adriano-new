@@ -13,12 +13,12 @@ export const SITE = {
 };
 
 export const ADDRESS = {
-  street: 'Rua Coronel Bertaso, 1243 — Sala 205, Centro',
+  street: 'Rua Coronel Bertaso, 1243 — Sala 205, Centro Comercial Brasília, Centro',
   city: 'São Lourenço do Oeste',
   state: 'SC',
   zip: '89990-000',
   mapsUrl:
-    'https://www.google.com/maps/search/?api=1&query=Adriano+Camillo+Odontologia+e+Face%2C+S%C3%A3o+Louren%C3%A7o+do+Oeste%2C+SC',
+    'https://www.google.com/maps/search/?api=1&query=Dr.+Adriano+Camillo+Dentista+em+S%C3%A3o+Louren%C3%A7o+do+Oeste',
 };
 
 // Gera link do WhatsApp com mensagem pré-preenchida

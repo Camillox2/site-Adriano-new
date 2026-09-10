@@ -69,9 +69,10 @@ const Hero = () => {
             </span>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight">
-              Rejuvenesça e transforme
-              <span className="text-emerald-400"> seu sorriso</span>
-              <br className="hidden sm:block" /> sem cirurgia
+              Dentista em São Lourenço do Oeste
+              <span className="text-emerald-400 block text-2xl sm:text-3xl lg:text-4xl font-semibold mt-2">
+                Odontologia Estética, Ortodontia & Harmonização Facial
+              </span>
             </h1>
 
             <p className="text-lg md:text-xl text-slate-200 leading-relaxed max-w-2xl mx-auto lg:mx-0">
