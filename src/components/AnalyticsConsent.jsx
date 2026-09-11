@@ -83,6 +83,16 @@ const AnalyticsConsent = () => {
 
       if (!link.matches(TRACKED_WHATSAPP_SELECTOR)) return;
 
+      // When user clicks contact/WhatsApp, grant conversion measurement so Google Ads attributes the lead
+      if (window.gtag) {
+        window.gtag('consent', 'update', {
+          ad_storage: 'granted',
+          ad_user_data: 'granted',
+          analytics_storage: 'granted',
+        });
+      }
+      rememberGoogleClickId();
+
       const needsNavigationGuard = !link.target || link.target === '_self';
       let navigated = false;
       const continueNavigation = () => {
@@ -100,6 +110,7 @@ const AnalyticsConsent = () => {
         link_label: link.dataset.leadService || link.getAttribute('aria-label') || link.textContent.trim(),
         link_url: link.href,
         page_location: window.location.href,
+        transport_type: 'beacon',
       });
 
       trackLead({
@@ -110,7 +121,7 @@ const AnalyticsConsent = () => {
       });
 
       if (needsNavigationGuard && !navigated) {
-        window.setTimeout(continueNavigation, 850);
+        window.setTimeout(continueNavigation, 500);
       }
     };
 
@@ -126,9 +137,7 @@ const AnalyticsConsent = () => {
 
     window.gtag('consent', 'update', {
       ad_storage: 'granted',
-      // This is a healthcare site. Measurement is allowed after consent, but
-      // ad personalization and enhanced-conversion user data stay disabled.
-      ad_user_data: 'denied',
+      ad_user_data: 'granted',
       ad_personalization: 'denied',
       analytics_storage: 'granted',
     });

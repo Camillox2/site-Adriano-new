@@ -42,12 +42,16 @@ export const trackLead = ({ method, service = 'Avaliação', city = '', onComple
     window.gtag('event', 'form_whatsapp_submit', leadPayload);
   }
 
-  window.gtag('event', 'generate_lead', leadPayload);
+  window.gtag('event', 'generate_lead', {
+    ...leadPayload,
+    transport_type: 'beacon',
+  });
 
   const conversionPayload = {
     send_to: GOOGLE_ADS_LEAD_SEND_TO,
     value: 1.0,
     currency: 'BRL',
+    transport_type: 'beacon',
   };
 
   if (typeof onComplete === 'function') {
