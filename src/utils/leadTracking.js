@@ -1,5 +1,5 @@
 const LEAD_CLICK_ID_KEY = 'dr-adriano-google-click-id';
-const GOOGLE_ADS_LEAD_SEND_TO = 'AW-18349275000/DnpUCP2Jgd4cEPjuzq1E';
+const GOOGLE_ADS_LEAD_SEND_TO = 'AW-4270885111';
 
 const getSearchClickId = () => {
   const params = new URLSearchParams(window.location.search);

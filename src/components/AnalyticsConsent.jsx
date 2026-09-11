@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { rememberGoogleClickId, trackLead } from '../utils/leadTracking';
 
 const GA_MEASUREMENT_ID = 'G-ZFM9X87FLS';
-const GOOGLE_ADS_ID = 'AW-18349275000';
+const GOOGLE_ADS_ID = 'AW-4270885111';
 const CONSENT_KEY = 'dr-adriano-analytics-consent';
 const TRACKED_WHATSAPP_SELECTOR = 'a[href^="https://wa.me/"]';
 const TRACKED_MAP_SELECTOR = 'a[href*="google.com/maps"], a[href*="maps.google.com"]';
@@ -83,15 +83,21 @@ const AnalyticsConsent = () => {
 
       if (!link.matches(TRACKED_WHATSAPP_SELECTOR)) return;
 
-      // When user clicks contact/WhatsApp, grant conversion measurement so Google Ads attributes the lead
-      if (window.gtag) {
-        window.gtag('consent', 'update', {
-          ad_storage: 'granted',
-          ad_user_data: 'granted',
-          analytics_storage: 'granted',
-        });
+      // When user clicks contact/WhatsApp without having explicitly denied cookies,
+      // grant conversion measurement so Google Ads attributes the lead
+      const currentConsent = window.localStorage.getItem(CONSENT_KEY);
+      if (currentConsent !== 'denied') {
+        if (window.gtag) {
+          window.gtag('consent', 'update', {
+            ad_storage: 'granted',
+            ad_user_data: 'granted',
+            analytics_storage: 'granted',
+          });
+        }
+        if (currentConsent !== 'granted') {
+          rememberGoogleClickId();
+        }
       }
-      rememberGoogleClickId();
 
       const needsNavigationGuard = !link.target || link.target === '_self';
       let navigated = false;

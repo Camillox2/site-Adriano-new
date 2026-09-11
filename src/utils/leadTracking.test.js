@@ -19,7 +19,7 @@ describe('trackLead', () => {
     });
     expect(window.gtag).toHaveBeenNthCalledWith(2, 'event', 'generate_lead', expect.any(Object));
     expect(window.gtag).toHaveBeenNthCalledWith(3, 'event', 'conversion', expect.objectContaining({
-      send_to: 'AW-18349275000/DnpUCP2Jgd4cEPjuzq1E',
+      send_to: 'AW-4270885111',
     }));
   });
 });

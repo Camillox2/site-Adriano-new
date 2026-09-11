@@ -87,7 +87,7 @@ describe('AnalyticsConsent', () => {
       && event[2].ad_storage === 'denied'
       && event[2].analytics_storage === 'denied'
     ))).toBe(true);
-    expect(document.querySelector('script[src*="googletagmanager.com/gtag/js?id=AW-18349275000"]')).not.toBeNull();
+    expect(document.querySelector('script[src*="googletagmanager.com/gtag/js?id=AW-4270885111"]')).not.toBeNull();
 
     unmount();
   });
