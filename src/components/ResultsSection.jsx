@@ -5,7 +5,6 @@ import { WHATSAPP_DEFAULT } from '../utils/constants';
 import Reveal from './Reveal';
 
 // Importação das imagens reais de pacientes
-import botoxTesta from '../assets/images/resultados/botox_testa_antes_depois.webp';
 import preenchimentoPerfil from '../assets/images/resultados/preenchimento_labial_perfil.webp';
 import harmonizacaoPerfil from '../assets/images/resultados/harmonizacao_perfil.webp';
 import preenchimentoPosImediato from '../assets/images/resultados/preenchimento_labial_pos_imediato.webp';
@@ -19,15 +18,6 @@ import { images as globalImages } from '../assets';
 import antesEDepoisVideo from '../assets/videos/antesedepois.mp4';
 
 const RESULTS_DATA = [
-  {
-    id: 1,
-    category: 'botox',
-    categoryLabel: 'Botox / Toxina Botulínica',
-    title: 'Tratamento de Linhas de Expressão na Testa',
-    description: 'Suavização expressiva das rugas dinâmicas na testa e região glabelar, mantendo a naturalidade do olhar.',
-    image: botoxTesta,
-    hasBeforeAfter: true,
-  },
   {
     id: 2,
     category: 'preenchimento',
@@ -119,15 +109,6 @@ const RESULTS_DATA = [
     hasBeforeAfter: true,
   },
   {
-    id: 12,
-    category: 'botox',
-    categoryLabel: 'Botox / Toxina Botulínica',
-    title: 'Tratamento Preventivo com Botox',
-    description: 'Suavização das linhas de expressão garantindo um visual descansado.',
-    image: globalImages.botox_1,
-    hasBeforeAfter: true,
-  },
-  {
     id: 13,
     category: 'implantes',
     categoryLabel: 'Implantes Dentários',
@@ -141,7 +122,6 @@ const RESULTS_DATA = [
 const CATEGORIES = [
   { id: 'todos', label: 'Todos os Resultados' },
   { id: 'preenchimento', label: 'Preenchimento Labial' },
-  { id: 'botox', label: 'Botox / Toxina Botulínica' },
   { id: 'harmonizacao', label: 'Harmonização Orofacial' },
   { id: 'implantes', label: 'Implantes Dentários' },
 ];

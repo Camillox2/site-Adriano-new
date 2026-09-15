@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/static/css/main.7b7956c2.css",
-    "main.js": "/static/js/main.4b7ef0ce.js",
-    "static/js/771.e09c39bf.chunk.js": "/static/js/771.e09c39bf.chunk.js",
-    "static/js/564.ea08f763.chunk.js": "/static/js/564.ea08f763.chunk.js",
-    "static/js/377.54bdfa60.chunk.js": "/static/js/377.54bdfa60.chunk.js",
-    "static/js/649.704ca957.chunk.js": "/static/js/649.704ca957.chunk.js",
-    "static/js/569.68748946.chunk.js": "/static/js/569.68748946.chunk.js",
+    "main.js": "/static/js/main.33716888.js",
+    "static/js/771.04d7729c.chunk.js": "/static/js/771.04d7729c.chunk.js",
+    "static/js/564.039f3c7f.chunk.js": "/static/js/564.039f3c7f.chunk.js",
+    "static/js/377.0c8c8873.chunk.js": "/static/js/377.0c8c8873.chunk.js",
+    "static/js/649.0cdb8c85.chunk.js": "/static/js/649.0cdb8c85.chunk.js",
+    "static/js/569.b1b12a8f.chunk.js": "/static/js/569.b1b12a8f.chunk.js",
     "static/js/524.9eba9036.chunk.js": "/static/js/524.9eba9036.chunk.js",
-    "static/js/917.0994e376.chunk.js": "/static/js/917.0994e376.chunk.js",
+    "static/js/917.fefa905e.chunk.js": "/static/js/917.fefa905e.chunk.js",
     "static/js/928.d381958a.chunk.js": "/static/js/928.d381958a.chunk.js",
-    "static/js/560.828e1e6d.chunk.js": "/static/js/560.828e1e6d.chunk.js",
-    "static/js/900.dfca949f.chunk.js": "/static/js/900.dfca949f.chunk.js",
-    "static/js/473.1f281709.chunk.js": "/static/js/473.1f281709.chunk.js",
+    "static/js/560.6af46eb9.chunk.js": "/static/js/560.6af46eb9.chunk.js",
+    "static/js/900.b3b899da.chunk.js": "/static/js/900.b3b899da.chunk.js",
+    "static/js/473.c02dd90b.chunk.js": "/static/js/473.c02dd90b.chunk.js",
     "static/js/586.6f5b737a.chunk.js": "/static/js/586.6f5b737a.chunk.js",
     "static/js/743.7f06e4f8.chunk.js": "/static/js/743.7f06e4f8.chunk.js",
     "static/js/519.807599c7.chunk.js": "/static/js/519.807599c7.chunk.js",
@@ -64,6 +64,6 @@
   },
   "entrypoints": [
     "static/css/main.7b7956c2.css",
-    "static/js/main.4b7ef0ce.js"
+    "static/js/main.33716888.js"
   ]
 }
