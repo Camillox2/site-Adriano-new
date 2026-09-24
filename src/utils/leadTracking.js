@@ -1,5 +1,7 @@
 const LEAD_CLICK_ID_KEY = 'dr-adriano-google-click-id';
-const GOOGLE_ADS_LEAD_SEND_TO = 'AW-4270885111';
+export const GA_MEASUREMENT_ID = 'G-ZFM9X87FLS';
+export const GOOGLE_ADS_ID = 'AW-18349275000';
+const GOOGLE_ADS_LEAD_SEND_TO = `${GOOGLE_ADS_ID}/DnpUCP2Jgd4cEPjuzq1E`;
 
 const getSearchClickId = () => {
   const params = new URLSearchParams(window.location.search);
@@ -29,8 +31,8 @@ export const getLeadTrackingContext = () => {
   }
 };
 
-export const trackLead = ({ method, service = 'Avaliação', city = '', onComplete } = {}) => {
-  if (typeof window.gtag !== 'function') return;
+export const trackLead = ({ method, service = 'Avaliação', city = '' } = {}) => {
+  if (typeof window.gtag !== 'function' || method !== 'form_whatsapp') return;
 
   const leadPayload = {
     method,
@@ -38,12 +40,14 @@ export const trackLead = ({ method, service = 'Avaliação', city = '', onComple
     city,
   };
 
-  if (method === 'form_whatsapp') {
-    window.gtag('event', 'form_whatsapp_submit', leadPayload);
-  }
+  window.gtag('event', 'form_whatsapp_submit', {
+    ...leadPayload,
+    send_to: GA_MEASUREMENT_ID,
+  });
 
   window.gtag('event', 'generate_lead', {
     ...leadPayload,
+    send_to: GA_MEASUREMENT_ID,
     transport_type: 'beacon',
   });
 
@@ -53,11 +57,6 @@ export const trackLead = ({ method, service = 'Avaliação', city = '', onComple
     currency: 'BRL',
     transport_type: 'beacon',
   };
-
-  if (typeof onComplete === 'function') {
-    conversionPayload.event_callback = onComplete;
-    conversionPayload.event_timeout = 800;
-  }
 
   window.gtag('event', 'conversion', conversionPayload);
 };

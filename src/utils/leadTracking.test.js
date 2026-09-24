@@ -1,4 +1,4 @@
-import { trackLead } from './leadTracking';
+import { GA_MEASUREMENT_ID, trackLead } from './leadTracking';
 
 describe('trackLead', () => {
   beforeEach(() => {
@@ -16,10 +16,19 @@ describe('trackLead', () => {
       method: 'form_whatsapp',
       service: 'HIFU',
       city: 'São Lourenço do Oeste',
+      send_to: GA_MEASUREMENT_ID,
     });
-    expect(window.gtag).toHaveBeenNthCalledWith(2, 'event', 'generate_lead', expect.any(Object));
-    expect(window.gtag).toHaveBeenNthCalledWith(3, 'event', 'conversion', expect.objectContaining({
-      send_to: 'AW-4270885111',
+    expect(window.gtag).toHaveBeenNthCalledWith(2, 'event', 'generate_lead', expect.objectContaining({
+      send_to: GA_MEASUREMENT_ID,
     }));
+    expect(window.gtag).toHaveBeenNthCalledWith(3, 'event', 'conversion', expect.objectContaining({
+      send_to: 'AW-18349275000/DnpUCP2Jgd4cEPjuzq1E',
+    }));
+  });
+
+  it('não envia conversão do Ads para clique simples no WhatsApp', () => {
+    trackLead({ method: 'whatsapp_click' });
+
+    expect(window.gtag).not.toHaveBeenCalled();
   });
 });

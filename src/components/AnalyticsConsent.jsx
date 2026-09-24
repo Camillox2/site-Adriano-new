@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { rememberGoogleClickId, trackLead } from '../utils/leadTracking';
+import { GA_MEASUREMENT_ID, GOOGLE_ADS_ID, rememberGoogleClickId } from '../utils/leadTracking';
 
-const GA_MEASUREMENT_ID = 'G-ZFM9X87FLS';
-const GOOGLE_ADS_ID = 'AW-4270885111';
 const CONSENT_KEY = 'dr-adriano-analytics-consent';
 const TRACKED_WHATSAPP_SELECTOR = 'a[href^="https://wa.me/"]';
 const TRACKED_MAP_SELECTOR = 'a[href*="google.com/maps"], a[href*="maps.google.com"]';
@@ -53,8 +51,6 @@ const AnalyticsConsent = () => {
     // Advanced Consent Mode: load after hydration with every storage category
     // denied. A refusal therefore does not allow Ads/Analytics cookies.
     loadAnalytics();
-    window.__drAdrianoTrackLead = trackLead;
-
     const trackContactClick = (event) => {
       if (!(event.target instanceof Element)) return;
 
@@ -112,18 +108,12 @@ const AnalyticsConsent = () => {
       }
 
       window.gtag('event', 'whatsapp_click', {
+        send_to: GA_MEASUREMENT_ID,
         method: 'WhatsApp',
         link_label: link.dataset.leadService || link.getAttribute('aria-label') || link.textContent.trim(),
         link_url: link.href,
         page_location: window.location.href,
         transport_type: 'beacon',
-      });
-
-      trackLead({
-        method: 'whatsapp_click',
-        onComplete: continueNavigation,
-        service: link.dataset.leadService || link.getAttribute('aria-label') || link.textContent.trim() || 'Contato via WhatsApp',
-        city: link.dataset.leadCity || 'São Lourenço do Oeste',
       });
 
       if (needsNavigationGuard && !navigated) {
@@ -134,7 +124,6 @@ const AnalyticsConsent = () => {
     document.addEventListener('click', trackContactClick);
     return () => {
       document.removeEventListener('click', trackContactClick);
-      delete window.__drAdrianoTrackLead;
     };
   }, []);
 

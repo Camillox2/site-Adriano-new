@@ -4,6 +4,8 @@ import AnalyticsConsent from './AnalyticsConsent';
 import { rememberGoogleClickId, trackLead } from '../utils/leadTracking';
 
 jest.mock('../utils/leadTracking', () => ({
+  GA_MEASUREMENT_ID: 'G-ZFM9X87FLS',
+  GOOGLE_ADS_ID: 'AW-18349275000',
   rememberGoogleClickId: jest.fn(),
   trackLead: jest.fn(),
 }));
@@ -24,7 +26,7 @@ describe('AnalyticsConsent', () => {
     window.localStorage.clear();
   });
 
-  it('registra um lead quando o visitante clica em um link do WhatsApp', () => {
+  it('registra o clique no WhatsApp apenas no Analytics, sem conversão do Ads', () => {
     const { unmount } = render(
       <MemoryRouter>
         <AnalyticsConsent />
@@ -37,13 +39,13 @@ describe('AnalyticsConsent', () => {
     fireEvent.click(document.querySelector('a[href^="https://wa.me/"]'));
 
     expect(rememberGoogleClickId).toHaveBeenCalledTimes(1);
-    expect(trackLead).toHaveBeenCalledTimes(1);
-    expect(trackLead).toHaveBeenCalledWith(expect.objectContaining({
-      method: 'whatsapp_click',
-      service: 'Agendar no WhatsApp',
-    }));
-
-    expect(trackLead.mock.calls[0][0].onComplete).toEqual(expect.any(Function));
+    expect(trackLead).not.toHaveBeenCalled();
+    expect(window.dataLayer.some((event) => (
+      event[0] === 'event'
+      && event[1] === 'whatsapp_click'
+      && event[2].send_to === 'G-ZFM9X87FLS'
+    ))).toBe(true);
+    expect(window.dataLayer.some((event) => event[0] === 'event' && event[1] === 'conversion')).toBe(false);
 
     unmount();
   });
@@ -80,14 +82,14 @@ describe('AnalyticsConsent', () => {
     fireEvent.click(document.querySelector('a[href^="https://wa.me/"]'));
 
     expect(rememberGoogleClickId).not.toHaveBeenCalled();
-    expect(trackLead).toHaveBeenCalledWith(expect.objectContaining({ method: 'whatsapp_click' }));
+    expect(trackLead).not.toHaveBeenCalled();
     expect(window.dataLayer.some((event) => (
       event[0] === 'consent'
       && event[1] === 'default'
       && event[2].ad_storage === 'denied'
       && event[2].analytics_storage === 'denied'
     ))).toBe(true);
-    expect(document.querySelector('script[src*="googletagmanager.com/gtag/js?id=AW-4270885111"]')).not.toBeNull();
+    expect(document.querySelector('script[src*="googletagmanager.com/gtag/js?id=AW-18349275000"]')).not.toBeNull();
 
     unmount();
   });
