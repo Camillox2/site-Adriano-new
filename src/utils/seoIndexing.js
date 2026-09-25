@@ -1,4 +1,5 @@
 import policy from '../data/seo-index-policy.json';
+import { BLOG_POSTS } from '../data/blogPosts';
 
 const INDEX_DIRECTIVE = 'index, follow, max-image-preview:large';
 const NOINDEX_DIRECTIVE = 'noindex, follow';
@@ -17,7 +18,8 @@ export const toCanonicalPath = (pathname = '/') => {
 export const isIndexablePath = (pathname) => {
   const path = normalizePath(pathname);
 
-  if (policy.corePaths.includes(path) || path.startsWith('/blog')) return true;
+  if (policy.corePaths.includes(path)) return true;
+  if (path.startsWith('/blog/')) return BLOG_POSTS.some((post) => path === `/blog/${post.slug}`);
 
   if (path.startsWith('/servicos/')) {
     const city = path.slice('/servicos/'.length);
@@ -30,7 +32,8 @@ export const isIndexablePath = (pathname) => {
   return Object.entries(policy.indexableServiceCities).some(([service, cities]) => {
     if (slug === service) return cities.includes(policy.primaryCity);
     if (!slug.startsWith(`${service}-`)) return false;
-    return cities.includes(slug.slice(service.length + 1));
+    const city = slug.slice(service.length + 1);
+    return city !== policy.primaryCity && cities.includes(city);
   });
 };
 

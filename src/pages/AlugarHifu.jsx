@@ -3,6 +3,7 @@ import { ArrowRight, Calendar, CheckCircle2, ChevronDown, MessageSquare, Play, S
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Seo from '../components/Seo';
+import { PAGE_META } from '../data/pageMeta';
 import Reveal from '../components/Reveal';
 import HifuDeviceViewer3d from '../components/HifuDeviceViewer3d';
 import { images, videos } from '../assets';
@@ -40,8 +41,8 @@ const AlugarHifu = () => {
   return (
     <div className="min-h-screen bg-white text-slate-900">
       <Seo
-        title="Locação de Ultramed HIFU para Clínicas | Dr. Adriano"
-        description="Alugue o Ultramed HIFU para sua clínica com equipamento revisado, ponteiras faciais, logística agendada e orientação operacional. Consulte disponibilidade."
+        title={PAGE_META['/alugar_hifu'].title}
+        description={PAGE_META['/alugar_hifu'].description}
         path="/alugar_hifu"
       />
       <Header />

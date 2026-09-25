@@ -10,11 +10,11 @@ import './styles/global.css';
 const HifuDetails = React.lazy(() => import('./pages/HifuDetails'));
 const AlugarHifu = React.lazy(() => import('./pages/AlugarHifu'));
 const ServicesPage = React.lazy(() => import('./pages/ServicesPage'));
-const RegionalServicesPage = React.lazy(() => import('./pages/RegionalServicesPage'));
 const ServiceDetails = React.lazy(() => import('./pages/ServiceDetails'));
 const PrivacyPolicy = React.lazy(() => import('./pages/PrivacyPolicy'));
 const BlogList = React.lazy(() => import('./pages/BlogList'));
 const BlogPost = React.lazy(() => import('./pages/BlogPost'));
+const NotFound = React.lazy(() => import('./pages/NotFound'));
 
 // Rola para o topo sempre que a rota muda (exceto navegação com âncora)
 const ScrollToTop = () => {
@@ -48,12 +48,11 @@ function App() {
             <Route path="/hifu" element={<HifuDetails />} />
             <Route path="/alugar_hifu" element={<AlugarHifu />} />
             <Route path="/servicos" element={<ServicesPage />} />
-            <Route path="/servicos/:citySlug" element={<RegionalServicesPage />} />
             <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
             <Route path="/blog" element={<BlogList />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/:slug" element={<ServiceDetails />} />
-            <Route path="*" element={<Home />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
         </RouteErrorBoundary>

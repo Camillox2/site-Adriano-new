@@ -1,32 +1,9 @@
 const fs = require('fs');
 const path = require('path');
-const policy = require('../src/data/seo-index-policy.json');
+const { sitemapPaths } = require('./seo-paths.cjs');
 
 const siteUrl = 'https://dradrianocamillo.com';
-
-const urls = [...policy.corePaths];
-
-policy.indexableRegionalCities.forEach((city) => {
-  urls.push(`/servicos/${city}`);
-});
-
-Object.entries(policy.indexableServiceCities).forEach(([service, cities]) => {
-  cities.forEach((city) => {
-    urls.push(city === policy.primaryCity ? `/${service}` : `/${service}-${city}`);
-  });
-});
-
-// Extrair slugs do Blog
-const blogContent = fs.readFileSync(path.join(__dirname, '../src/data/blogPosts.js'), 'utf8');
-const blogDataScript = blogContent.replace('export const BLOG_POSTS =', 'return');
-const BLOG_POSTS = new Function(blogDataScript)();
-
-urls.push('/blog');
-BLOG_POSTS.forEach(post => {
-  urls.push(`/blog/${post.slug}`);
-});
-
-const uniqueUrls = [...new Set(urls)];
+const uniqueUrls = sitemapPaths();
 const today = new Date().toISOString().split('T')[0];
 const canonicalPath = (pagePath) => pagePath === '/' ? '/' : `${pagePath.replace(/\/+$/, '')}/`;
 

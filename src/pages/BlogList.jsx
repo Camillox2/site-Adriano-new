@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import { Calendar, Tag, ArrowRight, Search, Send, MessageCircle, CheckCircle2, X } from 'lucide-react';
 import { BLOG_POSTS } from '../data/blogPosts';
 import { images } from '../assets';
+import Seo from '../components/Seo';
+import { PAGE_META } from '../data/pageMeta';
 
 const BlogList = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -38,6 +40,7 @@ const BlogList = () => {
 
   return (
     <div className="min-h-screen bg-slate-950 pt-24 pb-20 relative overflow-hidden">
+      <Seo title={PAGE_META['/blog'].title} description={PAGE_META['/blog'].description} path="/blog" />
       {/* Efeitos sutis de brilho de fundo */}
       <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-emerald-600/10 rounded-full blur-[140px] pointer-events-none" />
       

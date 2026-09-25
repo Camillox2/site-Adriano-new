@@ -1,25 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import { Calendar, Tag, ArrowLeft, Share2, Facebook, Twitter, Linkedin, MessageCircle } from 'lucide-react';
 import { BLOG_POSTS } from '../data/blogPosts';
 import { WHATSAPP_DEFAULT } from '../utils/constants';
+import Seo from '../components/Seo';
+import { blogPostMeta } from '../data/pageMeta';
+import NotFound from './NotFound';
 
 const BlogPost = () => {
   const { slug } = useParams();
-  const navigate = useNavigate();
-  const [post, setPost] = useState(null);
+  // Busca síncrona: o mesmo conteúdo aparece no primeiro render (necessário
+  // para o HTML pré-renderizado e a hidratação do React).
+  const post = BLOG_POSTS.find(p => p.slug === slug);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    const foundPost = BLOG_POSTS.find(p => p.slug === slug);
-    if (foundPost) {
-      setPost(foundPost);
-    } else {
-      navigate('/blog', { replace: true });
-    }
-  }, [slug, navigate]);
+  }, [slug]);
 
-  if (!post) return null;
+  if (!post) return <NotFound />;
+
+  const meta = blogPostMeta(post);
 
   // Função para compartilhar a página
   const handleShare = (platform) => {
@@ -86,6 +86,7 @@ const BlogPost = () => {
 
   return (
     <article className="min-h-screen bg-slate-950 pt-28 pb-20 relative overflow-hidden">
+      <Seo title={meta.title} description={meta.description} path={`/blog/${post.slug}`} />
       <div className="absolute top-10 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-emerald-600/10 rounded-full blur-[140px] pointer-events-none" />
       
       <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">

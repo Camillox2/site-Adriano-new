@@ -14,6 +14,7 @@ import {
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Seo from '../components/Seo';
+import { PAGE_META } from '../data/pageMeta';
 import Reveal from '../components/Reveal';
 import SkinDiagram from '../components/SkinDiagram';
 import { HIFU_VIDEOS, VideoModal } from '../components/HifuSection';
@@ -177,8 +178,8 @@ const HifuDetails = () => {
   return (
     <div className="min-h-screen bg-white">
       <Seo
-        title="HIFU Ultrassom Microfocado — São Lourenço do Oeste, Chapecó e Pato Branco | Dr. Adriano Camillo"
-        description="Lifting facial sem cirurgia com HIFU (Ultrassom Microfocado) para São Lourenço do Oeste, Chapecó, Pato Branco e região. Trata flacidez, papada e contorno facial estimulando o colágeno. Agende sua avaliação."
+        title={PAGE_META['/hifu'].title}
+        description={PAGE_META['/hifu'].description}
         path="/hifu"
         jsonLd={FAQ_JSONLD}
       />

@@ -6,7 +6,7 @@ import { getRobotsDirective, toCanonicalPath } from '../utils/seoIndexing';
  * Componente de SEO por rota (sem dependências externas).
  * Atualiza título, description, canonical, robots, Open Graph e JSON-LD dinâmico.
  */
-const Seo = ({ title, description, path = '/', jsonLd = null }) => {
+const Seo = ({ title, description, path = '/', jsonLd = null, noindex = false }) => {
   useEffect(() => {
     const url = `${SITE.url}${toCanonicalPath(path)}`;
     const requestedPath = window.location.pathname || path;
@@ -24,21 +24,24 @@ const Seo = ({ title, description, path = '/', jsonLd = null }) => {
     };
 
     setMeta('name', 'description', description);
-    setMeta('name', 'robots', getRobotsDirective(requestedPath));
+    setMeta('name', 'robots', noindex ? 'noindex, follow' : getRobotsDirective(requestedPath));
     setMeta('property', 'og:title', title);
     setMeta('property', 'og:description', description);
     setMeta('property', 'og:url', url);
     setMeta('name', 'twitter:title', title);
     setMeta('name', 'twitter:description', description);
 
-    // Canonical
+    // Canonical (páginas noindex, como a 404, não têm canonical)
     let canonical = document.head.querySelector('link[rel="canonical"]');
-    if (!canonical) {
+    if (noindex) {
+      canonical?.remove();
+      canonical = null;
+    } else if (!canonical) {
       canonical = document.createElement('link');
       canonical.setAttribute('rel', 'canonical');
       document.head.appendChild(canonical);
     }
-    canonical.setAttribute('href', url);
+    canonical?.setAttribute('href', url);
 
     // JSON-LD dinâmico da rota
     const SCRIPT_ID = 'route-jsonld';
@@ -54,7 +57,7 @@ const Seo = ({ title, description, path = '/', jsonLd = null }) => {
     return () => {
       document.getElementById(SCRIPT_ID)?.remove();
     };
-  }, [title, description, path, jsonLd]);
+  }, [title, description, path, jsonLd, noindex]);
 
   return null;
 };

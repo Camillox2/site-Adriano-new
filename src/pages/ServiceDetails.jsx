@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { Link, Navigate, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import {
   ArrowLeft,
   ArrowRight,
@@ -27,6 +27,7 @@ import Seo from '../components/Seo';
 import Reveal from '../components/Reveal';
 import CountUp from '../components/CountUp';
 import HifuRentalDetails from './HifuRentalDetails';
+import NotFound from './NotFound';
 import DesktopWhatsAppForm from '../components/DesktopWhatsAppForm';
 import RegionalLocationCard from '../components/RegionalLocationCard';
 import AnimatedServiceContent from '../components/AnimatedServiceContent';
@@ -119,7 +120,7 @@ const ServiceDetails = () => {
     };
   }, [page]);
 
-  if (!page) return <Navigate to="/" replace />;
+  if (!page) return <NotFound />;
 
   /* helpers para dados com fallback */
   const stats = page.stats || [];

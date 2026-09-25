@@ -1,58 +1,91 @@
 {
-  "headers": [
+  "routes": [
     {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "strict-origin-when-cross-origin"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "SAMEORIGIN"
-        }
-      ]
+      "src": "/(.*)",
+      "headers": {
+        "X-Content-Type-Options": "nosniff",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "X-Frame-Options": "SAMEORIGIN"
+      },
+      "continue": true
     },
     {
-      "source": "/static/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    }
-  ],
-  "redirects": [
-    {
-      "source": "/hifu",
-      "destination": "/hifu/",
-      "permanent": true
+      "src": "/static/(.*)",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "continue": true
     },
     {
-      "source": "/blog/mitos-sobre-o-acido-hialuronico",
-      "destination": "/blog/mitos-sobre-o-acido-hialuronico/",
-      "permanent": true
+      "src": "^/hifu$",
+      "status": 308,
+      "headers": {
+        "Location": "/hifu/"
+      }
     },
     {
-      "source": "/servicos/curitiba{/}?",
-      "destination": "/",
-      "permanent": true
+      "src": "^/blog/mitos-sobre-o-acido-hialuronico$",
+      "status": 308,
+      "headers": {
+        "Location": "/blog/mitos-sobre-o-acido-hialuronico/"
+      }
     },
     {
-      "source": "/:service(odontologia-estetica|implantes-dentarios|ortodontia|harmonizacao-orofacial|dtm-dor-orofacial|ozonioterapia|aluguel-de-hifu|lipo-de-papada-hifu)-sao-lourenco-do-oeste{/}?",
-      "destination": "/:service/",
-      "permanent": true
-    }
-  ],
-  "rewrites": [
+      "src": "^/servicos/curitiba/?$",
+      "status": 308,
+      "headers": {
+        "Location": "/"
+      }
+    },
     {
-      "source": "/((?!.*\\.(?:xml|txt|ico|png|jpg|jpeg|svg|webp|json|css|js|mp4|webm)$).*)",
-      "destination": "/index.html"
+      "src": "^/servicos/(sao-lourenco-do-oeste|chapeco|pato-branco|ampere|realeza|novo-horizonte|francisco-beltrao|dois-vizinhos|palmas|xanxere|maravilha|pinhalzinho|concordia)/?$",
+      "status": 308,
+      "headers": {
+        "Location": "/servicos/"
+      }
+    },
+    {
+      "src": "^/(odontologia-estetica|implantes-dentarios|ortodontia|harmonizacao-orofacial|dtm-dor-orofacial|ozonioterapia|aluguel-de-hifu|lipo-de-papada-hifu)-sao-lourenco-do-oeste/?$",
+      "status": 308,
+      "headers": {
+        "Location": "/$1/"
+      }
+    },
+    {
+      "src": "^/(odontologia-estetica|implantes-dentarios|ortodontia|harmonizacao-orofacial|dtm-dor-orofacial|ozonioterapia|lipo-de-papada-hifu)-(chapeco|pato-branco|ampere|realeza|novo-horizonte|francisco-beltrao|dois-vizinhos|palmas|xanxere|maravilha|pinhalzinho|curitiba|sao-jose-dos-pinhais|pinhais|araucaria|colombo|batel-curitiba|agua-verde-curitiba|bigorrilho-curitiba|efapi-chapeco|centro-chapeco|concordia|cascavel|toledo|erechim)/?$",
+      "status": 308,
+      "headers": {
+        "Location": "/$1/"
+      }
+    },
+    {
+      "src": "^/aluguel-de-hifu-(sao-jose-dos-pinhais|pinhais|araucaria|colombo|batel-curitiba|agua-verde-curitiba|bigorrilho-curitiba)/?$",
+      "status": 308,
+      "headers": {
+        "Location": "/aluguel-de-hifu-curitiba/"
+      }
+    },
+    {
+      "src": "^/aluguel-de-hifu-(efapi-chapeco|centro-chapeco)/?$",
+      "status": 308,
+      "headers": {
+        "Location": "/aluguel-de-hifu-chapeco/"
+      }
+    },
+    {
+      "src": "^/aluguel-de-hifu-(novo-horizonte|francisco-beltrao|dois-vizinhos|palmas|xanxere|maravilha|pinhalzinho|concordia|cascavel|toledo|erechim)/?$",
+      "status": 308,
+      "headers": {
+        "Location": "/aluguel-de-hifu/"
+      }
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "status": 404,
+      "dest": "/404.html"
     }
   ]
 }

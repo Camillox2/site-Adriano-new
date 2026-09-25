@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Seo from '../components/Seo';
+import { PAGE_META } from '../data/pageMeta';
 import { WHATSAPP_DEFAULT } from '../utils/constants';
 
 const CONSENT_KEY = 'dr-adriano-analytics-consent';
@@ -15,8 +16,8 @@ const PrivacyPolicy = () => {
   return (
   <div className="min-h-screen bg-white">
     <Seo
-      title="Política de Privacidade | Dr. Adriano Camillo"
-      description="Política de privacidade do site do Dr. Adriano Camillo."
+      title={PAGE_META['/politica-de-privacidade'].title}
+      description={PAGE_META['/politica-de-privacidade'].description}
       path="/politica-de-privacidade"
     />
     <Header />

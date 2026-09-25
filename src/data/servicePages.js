@@ -6,7 +6,7 @@ export const CITIES = {
     state: 'SC',
     slugSuffix: 'sao-lourenco-do-oeste',
     isPrimary: true,
-    locationTitle: '— Atendendo São Lourenço, Chapecó, Pato Branco e Região',
+    locationTitle: 'em São Lourenço do Oeste - SC',
     contextText: 'com atendimento de referência no consultório do Dr. Adriano Camillo, com fácil acesso para pacientes de São Lourenço do Oeste, Chapecó, Pato Branco e toda a região.',
   },
   'chapeco': {
@@ -817,55 +817,100 @@ const BASE_SERVICES = {
   },
 };
 
-// Gera dinamicamente todas as combinações de Serviço + Cidade
+// O consultório fica apenas em São Lourenço do Oeste - SC. Por isso, as páginas
+// de tratamento para pacientes existem somente na versão principal (sem cidade).
+// A locação de HIFU (B2B, para clínicas) atende de fato outras cidades, então
+// mantém páginas próprias para as cidades abaixo, com textos individuais.
+// Qualquer combinação removida precisa ter redirecionamento 308 em vercel.json.
+export const PRIMARY_CITY_SLUG = 'sao-lourenco-do-oeste';
+export const RENTAL_SERVICE_SLUG = 'aluguel-de-hifu';
+
+export const RENTAL_CITY_COPY = {
+  'sao-lourenco-do-oeste': {
+    title: 'Locação de Aparelho HIFU para Clínicas em São Lourenço do Oeste e Região | Dr. Adriano Camillo',
+    description: 'Aluguel de máquina HIFU para clínicas e profissionais de estética de São Lourenço do Oeste e região. Equipamento calibrado, treinamento completo e suporte no dia da locação.',
+    heading: 'Locação de HIFU para Clínicas em São Lourenço do Oeste e Região',
+    context: 'para clínicas e profissionais de estética de São Lourenço do Oeste e região.',
+  },
+  chapeco: {
+    title: 'Locação de Aparelho HIFU para Clínicas de Chapecó - SC | Dr. Adriano Camillo',
+    description: 'Locação de HIFU para clínicas e consultórios de Chapecó - SC: equipamento calibrado levado conforme o agendamento combinado, treinamento operacional e suporte pelo WhatsApp.',
+    heading: 'Locação de HIFU para Clínicas de Chapecó - SC',
+    context: 'para clínicas e profissionais de estética de Chapecó - SC, com o equipamento levado conforme o agendamento combinado.',
+  },
+  'pato-branco': {
+    title: 'Locação de Aparelho HIFU para Clínicas de Pato Branco - PR | Dr. Adriano Camillo',
+    description: 'Aluguel de HIFU para profissionais de estética de Pato Branco - PR, com equipamento revisado, orientação operacional e suporte durante o seu HIFU Day.',
+    heading: 'Locação de HIFU para Clínicas de Pato Branco - PR',
+    context: 'para clínicas e profissionais de estética de Pato Branco - PR, com orientação operacional e suporte durante o HIFU Day.',
+  },
+  ampere: {
+    title: 'Locação de Aparelho HIFU para Clínicas de Ampére - PR | Dr. Adriano Camillo',
+    description: 'Locação de HIFU para clínicas de Ampére - PR, cidade vizinha a São Lourenço do Oeste: entrega e retirada do equipamento organizadas diretamente na sua clínica.',
+    heading: 'Locação de HIFU para Clínicas de Ampére - PR',
+    context: 'para clínicas de Ampére - PR, cidade vizinha, com entrega e retirada do equipamento organizadas diretamente na sua clínica.',
+  },
+  realeza: {
+    title: 'Locação de Aparelho HIFU para Clínicas de Realeza - PR | Dr. Adriano Camillo',
+    description: 'Aluguel de HIFU para profissionais de estética de Realeza - PR, com possibilidade de treinamento inicial de manuseio do equipamento na sua própria clínica.',
+    heading: 'Locação de HIFU para Clínicas de Realeza - PR',
+    context: 'para profissionais de estética de Realeza - PR, com possibilidade de treinamento inicial na sua própria clínica.',
+  },
+  curitiba: {
+    title: 'Locação de Aparelho HIFU para Clínicas de Curitiba e Região Metropolitana | Dr. Adriano Camillo',
+    description: 'Locação de HIFU para clínicas e consultórios de Curitiba e região metropolitana, com o equipamento higienizado e testado entregue na sua clínica e orientação operacional.',
+    heading: 'Locação de HIFU para Clínicas de Curitiba e Região Metropolitana',
+    context: 'para clínicas e consultórios de Curitiba e região metropolitana, com o equipamento higienizado e testado entregue na sua clínica.',
+  },
+};
+
+export const RENTAL_CITY_SLUGS = Object.keys(RENTAL_CITY_COPY);
+
 const generatedPages = {};
 
+const buildPage = (service, city) => {
+  const slug = city.isPrimary ? service.baseSlug : `${service.baseSlug}-${city.slugSuffix}`;
+  const rentalCopy = service.isRental ? RENTAL_CITY_COPY[city.slugSuffix] : null;
+
+  return {
+    ...service,
+    slug,
+    isCityPage: true,
+    city: city.name,
+    images: service.images || [],
+    citySlug: city.slugSuffix,
+    isRental: service.isRental,
+    cityName: city.name,
+    cityState: city.state,
+    label: service.label,
+    eyebrow: service.eyebrow,
+    title: rentalCopy ? rentalCopy.title : service.titlePattern(city),
+    description: rentalCopy ? rentalCopy.description : service.descriptionPattern(city),
+    heading: rentalCopy ? rentalCopy.heading : service.headingPattern(city),
+    intro: service.introPattern(rentalCopy ? { ...city, contextText: rentalCopy.context } : city),
+    sectionTitle: service.sectionTitlePattern(city),
+    shortIntro: service.shortIntro ? service.shortIntro.replace(/\[cidade\]/g, city.name) : '',
+    topicPoints: service.topicPoints ? service.topicPoints.map(t => ({
+      title: t.title.replace(/\[cidade\]/g, city.name),
+      text: t.text.replace(/\[cidade\]/g, city.name)
+    })) : [],
+    benefits: service.benefits,
+    steps: service.steps,
+    faqs: [
+      ...service.faqs,
+      ...(CITY_SERVICE_CONTENT[service.baseSlug]?.[city.slugSuffix]?.faqs || []),
+    ],
+    stats: service.stats,
+    highlights: service.highlights,
+    whatsappMessage: service.whatsappMessagePattern(city),
+  };
+};
+
 Object.values(BASE_SERVICES).forEach((service) => {
-  Object.values(CITIES).forEach((city) => {
-    // REGRA PARA LOCAIS HIFU-ONLY (Curitiba, RMC, Bairros)
-    if (city.isHifuOnly && service.baseSlug !== 'aluguel-de-hifu' && service.baseSlug !== 'lipo-de-papada-hifu') {
-      return;
-    }
-
-    let slug = '';
-    if (city.isPrimary) {
-      slug = service.baseSlug;
-    } else {
-      slug = `${service.baseSlug}-${city.slugSuffix}`;
-    }
-
-    generatedPages[slug] = {
-      ...service,
-      slug,
-      isCityPage: true,
-      city: city.name,
-      images: service.images || [],
-      citySlug: city.slugSuffix,
-      isRental: service.isRental,
-      cityName: city.name,
-      cityState: city.state,
-      label: service.label,
-      eyebrow: service.eyebrow,
-      title: service.titlePattern(city),
-      description: service.descriptionPattern(city),
-      heading: service.headingPattern(city),
-      intro: service.introPattern(city),
-      sectionTitle: service.sectionTitlePattern(city),
-      shortIntro: service.shortIntro ? service.shortIntro.replace(/\[cidade\]/g, city.name) : '',
-      topicPoints: service.topicPoints ? service.topicPoints.map(t => ({
-        title: t.title.replace(/\[cidade\]/g, city.name),
-        text: t.text.replace(/\[cidade\]/g, city.name)
-      })) : [],
-      benefits: service.benefits,
-      steps: service.steps,
-      faqs: [
-        ...service.faqs,
-        ...(CITY_SERVICE_CONTENT[service.baseSlug]?.[city.slugSuffix]?.faqs || []),
-      ],
-      stats: service.stats,
-      highlights: service.highlights,
-      whatsappMessage: service.whatsappMessagePattern(city),
-    };
+  const citySlugs = service.baseSlug === RENTAL_SERVICE_SLUG ? RENTAL_CITY_SLUGS : [PRIMARY_CITY_SLUG];
+  citySlugs.forEach((citySlug) => {
+    const page = buildPage(service, CITIES[citySlug]);
+    generatedPages[page.slug] = page;
   });
 });
 

@@ -20,6 +20,7 @@ import {
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Seo from '../components/Seo';
+import { PAGE_META } from '../data/pageMeta';
 import { images } from '../assets';
 import { ADDRESS, whatsapp } from '../utils/constants';
 
@@ -234,8 +235,8 @@ const ServicesPage = () => {
   return (
     <div className="min-h-screen bg-white">
       <Seo
-        title="Serviços Odontológicos em São Lourenço do Oeste | Dr. Adriano Camillo"
-        description="Conheça os serviços do Dr. Adriano Camillo em São Lourenço do Oeste: HIFU, implantes, ortodontia, estética, harmonização, DTM e ozonioterapia."
+        title={PAGE_META['/servicos'].title}
+        description={PAGE_META['/servicos'].description}
         path="/servicos"
         jsonLd={jsonLd}
       />

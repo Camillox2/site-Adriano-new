@@ -1,35 +1,10 @@
 const fs = require('fs');
 const path = require('path');
-const policy = require('../src/data/seo-index-policy.json');
+const { isIndexablePath } = require('./seo-paths.cjs');
 
 const buildDirectory = path.join(__dirname, '..', 'build');
 const INDEX_DIRECTIVE = 'index, follow, max-image-preview:large';
 const NOINDEX_DIRECTIVE = 'noindex, follow';
-
-const normalizePath = (pathname = '/') => {
-  if (pathname === '/') return '/';
-  return pathname.replace(/\/+$/, '');
-};
-
-const isIndexablePath = (pathname) => {
-  const pagePath = normalizePath(pathname);
-
-  if (policy.corePaths.includes(pagePath) || pagePath.startsWith('/blog')) return true;
-
-  if (pagePath.startsWith('/servicos/')) {
-    const city = pagePath.slice('/servicos/'.length);
-    return policy.indexableRegionalCities.includes(city);
-  }
-
-  if (!/^\/[a-z0-9-]+$/.test(pagePath)) return false;
-
-  const slug = pagePath.slice(1);
-  return Object.entries(policy.indexableServiceCities).some(([service, cities]) => {
-    if (slug === service) return cities.includes(policy.primaryCity);
-    if (!slug.startsWith(`${service}-`)) return false;
-    return cities.includes(slug.slice(service.length + 1));
-  });
-};
 
 const collectIndexFiles = (directory) => {
   const files = [];

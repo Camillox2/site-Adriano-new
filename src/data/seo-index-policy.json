@@ -8,32 +8,36 @@
     "/blog",
     "/politica-de-privacidade"
   ],
-  "indexableRegionalCities": [
-    "chapeco",
-    "pato-branco"
-  ],
+  "indexableRegionalCities": [],
   "indexableServiceCities": {
-    "odontologia-estetica": ["sao-lourenco-do-oeste", "chapeco", "pato-branco"],
-    "implantes-dentarios": ["sao-lourenco-do-oeste", "chapeco", "pato-branco"],
-    "ortodontia": ["sao-lourenco-do-oeste", "chapeco", "pato-branco"],
-    "harmonizacao-orofacial": ["sao-lourenco-do-oeste", "chapeco", "pato-branco"],
-    "dtm-dor-orofacial": ["sao-lourenco-do-oeste", "chapeco", "pato-branco"],
-    "ozonioterapia": ["sao-lourenco-do-oeste", "chapeco", "pato-branco"],
+    "odontologia-estetica": [
+      "sao-lourenco-do-oeste"
+    ],
+    "implantes-dentarios": [
+      "sao-lourenco-do-oeste"
+    ],
+    "ortodontia": [
+      "sao-lourenco-do-oeste"
+    ],
+    "harmonizacao-orofacial": [
+      "sao-lourenco-do-oeste"
+    ],
+    "dtm-dor-orofacial": [
+      "sao-lourenco-do-oeste"
+    ],
+    "ozonioterapia": [
+      "sao-lourenco-do-oeste"
+    ],
     "aluguel-de-hifu": [
       "sao-lourenco-do-oeste",
-      "ampere",
-      "realeza",
       "chapeco",
       "pato-branco",
+      "ampere",
+      "realeza",
       "curitiba"
     ],
     "lipo-de-papada-hifu": [
-      "sao-lourenco-do-oeste",
-      "ampere",
-      "realeza",
-      "chapeco",
-      "pato-branco",
-      "curitiba"
+      "sao-lourenco-do-oeste"
     ]
   }
 }

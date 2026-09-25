@@ -71,7 +71,7 @@ export const LOCATIONS = [
     type: 'Atendimento com agendamento',
     address: '25 km (~20 min) — cidade vizinha',
     mapsUrl: 'https://maps.google.com/?q=Realeza,+PR',
-    pageUrl: '/servicos/realeza',
+    pageUrl: '/servicos',
     main: false,
   },
   {
@@ -79,7 +79,7 @@ export const LOCATIONS = [
     type: 'Atendimento com agendamento',
     address: '30 km (~25 min) — cidade vizinha',
     mapsUrl: 'https://maps.google.com/?q=Amp%C3%A9re,+PR',
-    pageUrl: '/servicos/ampere',
+    pageUrl: '/servicos',
     main: false,
   },
   {
@@ -87,7 +87,7 @@ export const LOCATIONS = [
     type: 'Atendimento domiciliar especializado',
     address: 'Agende pelo WhatsApp',
     mapsUrl: 'https://maps.google.com/?q=Curitiba,+PR',
-    pageUrl: '/servicos/curitiba',
+    pageUrl: '/servicos',
     main: false,
   },
 ];
