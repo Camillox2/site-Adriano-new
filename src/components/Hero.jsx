@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Phone, Instagram, ShieldCheck, MapPin, Star } from 'lucide-react';
 import { images, videos } from '../assets';
 import { SITE, WHATSAPP_DEFAULT } from '../utils/constants';
@@ -7,8 +7,23 @@ import DesktopWhatsAppForm from './DesktopWhatsAppForm';
 
 const Hero = () => {
   const backgroundVideoRef = useRef(null);
+  // O vídeo só é renderizado em telas >= 768px para não ser baixado no mobile
+  const [isDesktop, setIsDesktop] = useState(
+    () => typeof window !== 'undefined' && !!window.matchMedia?.('(min-width: 768px)').matches
+  );
 
   useEffect(() => {
+    if (!window.matchMedia) return undefined;
+    const desktopQuery = window.matchMedia('(min-width: 768px)');
+    const syncViewport = () => setIsDesktop(desktopQuery.matches);
+
+    syncViewport();
+    desktopQuery.addEventListener?.('change', syncViewport);
+    return () => desktopQuery.removeEventListener?.('change', syncViewport);
+  }, []);
+
+  useEffect(() => {
+    if (!isDesktop || !window.matchMedia) return undefined;
     const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     const syncMotion = () => {
       const video = backgroundVideoRef.current;
@@ -20,7 +35,7 @@ const Hero = () => {
     syncMotion();
     motionQuery.addEventListener?.('change', syncMotion);
     return () => motionQuery.removeEventListener?.('change', syncMotion);
-  }, []);
+  }, [isDesktop]);
 
   const scrollToHifu = () => {
     document.getElementById('hifu')?.scrollIntoView({ behavior: 'smooth' });
@@ -41,20 +56,22 @@ const Hero = () => {
           fetchPriority="high"
           className="w-full h-full object-cover block md:hidden opacity-40"
         />
-        <video
-          ref={backgroundVideoRef}
-          className="w-full h-full object-cover hidden md:block"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="none"
-          poster={images.consultorio1}
-          src={videos.hifuDois}
-          tabIndex={-1}
-          aria-hidden="true"
-        >
-        </video>
+        {isDesktop && (
+          <video
+            ref={backgroundVideoRef}
+            className="w-full h-full object-cover hidden md:block"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="none"
+            poster={images.consultorio1}
+            src={videos.hifuDois}
+            tabIndex={-1}
+            aria-hidden="true"
+          >
+          </video>
+        )}
       </div>
       <div className="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-900/85 to-slate-900/60"></div>
       <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-slate-950/90 to-transparent"></div>

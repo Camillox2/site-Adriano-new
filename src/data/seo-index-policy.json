@@ -10,8 +10,7 @@
   ],
   "indexableRegionalCities": [
     "chapeco",
-    "pato-branco",
-    "curitiba"
+    "pato-branco"
   ],
   "indexableServiceCities": {
     "odontologia-estetica": ["sao-lourenco-do-oeste", "chapeco", "pato-branco"],

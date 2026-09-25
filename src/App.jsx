@@ -2,6 +2,7 @@ import React, { useEffect, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import AnalyticsConsent from './components/AnalyticsConsent';
+import ErrorBoundary from './components/ErrorBoundary';
 import './styles/global.css';
 
 // Code splitting (carrega apenas quando necessário)
@@ -27,12 +28,19 @@ const ScrollToTop = () => {
   return null;
 };
 
+// Reinicia o Error Boundary a cada troca de rota
+const RouteErrorBoundary = ({ children }) => {
+  const { pathname } = useLocation();
+  return <ErrorBoundary key={pathname}>{children}</ErrorBoundary>;
+};
+
 function App() {
   return (
     <Router>
       <ScrollToTop />
       <AnalyticsConsent />
       <div className="App">
+        <RouteErrorBoundary>
         <Suspense fallback={<div className="min-h-screen bg-slate-900 flex items-center justify-center text-white">Carregando...</div>}>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -47,6 +55,7 @@ function App() {
             <Route path="*" element={<Home />} />
           </Routes>
         </Suspense>
+        </RouteErrorBoundary>
       </div>
     </Router>
   );

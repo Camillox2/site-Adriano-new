@@ -104,6 +104,13 @@ const pages = [
     title: 'HIFU em São Lourenço do Oeste — Ultrassom Microfocado | Dr. Adriano Camillo',
     description: 'HIFU em São Lourenço do Oeste - SC. Conheça a tecnologia, indicações, cuidados e agende uma avaliação individual.',
   },
+  {
+    path: '/politica-de-privacidade',
+    name: 'Política de Privacidade',
+    title: 'Política de Privacidade | Dr. Adriano Camillo',
+    description: 'Política de privacidade do site do Dr. Adriano Camillo.',
+    schema: false,
+  },
 ];
 
 const REGIONAL_CITIES = [

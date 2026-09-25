@@ -92,7 +92,7 @@ const HifuRentalDetails = ({ data }) => {
       <section className="relative z-30 -mt-12 mx-4 md:mx-auto max-w-6xl">
         <div className="bg-white rounded-[2rem] shadow-2xl border border-slate-100 p-8 md:p-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-            {data.stats.map((stat, i) => (
+            {(data.stats || []).map((stat, i) => (
               <Reveal key={i} delay={i * 150}>
                 <div className="text-center md:text-left flex items-center justify-center md:justify-start gap-6">
                   <div className="w-16 h-16 rounded-2xl bg-emerald-50 flex items-center justify-center shrink-0">
@@ -128,7 +128,7 @@ const HifuRentalDetails = ({ data }) => {
           </Reveal>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {data.benefits.map((benefit, i) => (
+            {(data.benefits || []).map((benefit, i) => (
               <Reveal key={i} delay={i * 100}>
                 <div className="bg-white rounded-3xl p-8 shadow-lg shadow-slate-200/50 border border-slate-100 hover:-translate-y-2 transition-all duration-300 h-full">
                   <div className="w-14 h-14 bg-gradient-to-br from-primary-500 to-emerald-500 rounded-2xl flex items-center justify-center mb-6 text-white shadow-md">
@@ -179,7 +179,7 @@ const HifuRentalDetails = ({ data }) => {
                   Suporte completo no seu HIFU Day
                 </h2>
                 <div className="space-y-6 text-lg text-slate-300">
-                  {data.paragraphs.map((p, i) => (
+                  {(data.paragraphs || []).map((p, i) => (
                     <p key={i} className="leading-relaxed">{p}</p>
                   ))}
                 </div>
@@ -187,7 +187,7 @@ const HifuRentalDetails = ({ data }) => {
             </Reveal>
 
             <div className="space-y-6 relative">
-              {data.steps.map((step, i) => (
+              {(data.steps || []).map((step, i) => (
                 <Reveal key={i} delay={i * 150}>
                   <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 flex gap-6 items-start hover:bg-white/10 transition-colors">
                     <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-600 text-white font-bold flex items-center justify-center shrink-0 text-xl shadow-lg">
@@ -221,7 +221,7 @@ const HifuRentalDetails = ({ data }) => {
 
           <Reveal delay={200}>
             <div className="max-w-3xl mx-auto space-y-4">
-            {data.faqs.map((faq, index) => {
+            {(data.faqs || []).map((faq, index) => {
               const isOpen = activeFaq === index;
               return (
                 <div
