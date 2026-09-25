@@ -3,6 +3,22 @@ export const GA_MEASUREMENT_ID = 'G-ZFM9X87FLS';
 export const GOOGLE_ADS_ID = 'AW-18349275000';
 const GOOGLE_ADS_LEAD_SEND_TO = `${GOOGLE_ADS_ID}/DnpUCP2Jgd4cEPjuzq1E`;
 
+// Conversões secundárias do Google Ads para cliques de contato.
+// Preencha com o "send_to" completo (formato AW-18349275000/XXXX) quando as
+// ações de conversão forem criadas no Google Ads. Enquanto estiverem vazias,
+// nenhuma conversão do Ads é enviada nesses cliques (apenas os eventos do GA4).
+export const ADS_WHATSAPP_CLICK_SEND_TO = '';
+export const ADS_PHONE_CLICK_SEND_TO = '';
+
+export const trackAdsClickConversion = (sendTo) => {
+  if (!sendTo || typeof window.gtag !== 'function') return;
+
+  window.gtag('event', 'conversion', {
+    send_to: sendTo,
+    transport_type: 'beacon',
+  });
+};
+
 const getSearchClickId = () => {
   const params = new URLSearchParams(window.location.search);
   const type = ['gclid', 'wbraid', 'gbraid'].find((key) => params.get(key));

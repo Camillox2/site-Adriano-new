@@ -1,4 +1,4 @@
-import { GA_MEASUREMENT_ID, trackLead } from './leadTracking';
+import { GA_MEASUREMENT_ID, trackAdsClickConversion, trackLead } from './leadTracking';
 
 describe('trackLead', () => {
   beforeEach(() => {
@@ -30,5 +30,29 @@ describe('trackLead', () => {
     trackLead({ method: 'whatsapp_click' });
 
     expect(window.gtag).not.toHaveBeenCalled();
+  });
+});
+
+describe('trackAdsClickConversion', () => {
+  beforeEach(() => {
+    window.gtag = jest.fn();
+  });
+
+  afterEach(() => {
+    delete window.gtag;
+  });
+
+  it('não envia nada enquanto o rótulo de conversão estiver vazio', () => {
+    trackAdsClickConversion('');
+
+    expect(window.gtag).not.toHaveBeenCalled();
+  });
+
+  it('envia a conversão secundária quando o rótulo estiver configurado', () => {
+    trackAdsClickConversion('AW-18349275000/TESTE');
+
+    expect(window.gtag).toHaveBeenCalledWith('event', 'conversion', expect.objectContaining({
+      send_to: 'AW-18349275000/TESTE',
+    }));
   });
 });

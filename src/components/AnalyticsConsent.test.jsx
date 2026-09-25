@@ -1,12 +1,15 @@
 import { fireEvent, render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import AnalyticsConsent from './AnalyticsConsent';
-import { rememberGoogleClickId, trackLead } from '../utils/leadTracking';
+import { rememberGoogleClickId, trackAdsClickConversion, trackLead } from '../utils/leadTracking';
 
 jest.mock('../utils/leadTracking', () => ({
   GA_MEASUREMENT_ID: 'G-ZFM9X87FLS',
   GOOGLE_ADS_ID: 'AW-18349275000',
+  ADS_WHATSAPP_CLICK_SEND_TO: '',
+  ADS_PHONE_CLICK_SEND_TO: '',
   rememberGoogleClickId: jest.fn(),
+  trackAdsClickConversion: jest.fn(),
   trackLead: jest.fn(),
 }));
 
@@ -18,6 +21,7 @@ describe('AnalyticsConsent', () => {
     delete window.gtag;
     window.dataLayer = [];
     rememberGoogleClickId.mockClear();
+    trackAdsClickConversion.mockClear();
     trackLead.mockClear();
   });
 
@@ -90,6 +94,68 @@ describe('AnalyticsConsent', () => {
       && event[2].analytics_storage === 'denied'
     ))).toBe(true);
     expect(document.querySelector('script[src*="googletagmanager.com/gtag/js?id=AW-18349275000"]')).not.toBeNull();
+
+    unmount();
+  });
+
+  it('não concede consentimento automaticamente ao clicar no WhatsApp sem escolha no aviso', () => {
+    window.localStorage.removeItem('dr-adriano-analytics-consent');
+
+    const { unmount } = render(
+      <MemoryRouter>
+        <AnalyticsConsent />
+        <a href="https://wa.me/5549998362864">Agendar</a>
+      </MemoryRouter>
+    );
+
+    fireEvent.click(document.querySelector('a[href^="https://wa.me/"]'));
+
+    expect(window.dataLayer.some((event) => event[0] === 'consent' && event[1] === 'update')).toBe(false);
+    expect(rememberGoogleClickId).not.toHaveBeenCalled();
+    expect(window.localStorage.getItem('dr-adriano-analytics-consent')).toBeNull();
+    expect(window.dataLayer.some((event) => event[0] === 'event' && event[1] === 'whatsapp_click')).toBe(true);
+    expect(trackAdsClickConversion).toHaveBeenCalledWith('');
+
+    unmount();
+  });
+
+  it('ativa url_passthrough antes da configuração das tags', () => {
+    const { unmount } = render(
+      <MemoryRouter>
+        <AnalyticsConsent />
+      </MemoryRouter>
+    );
+
+    const passthroughIndex = window.dataLayer.findIndex((event) => (
+      event[0] === 'set' && event[1] === 'url_passthrough' && event[2] === true
+    ));
+    const firstConfigIndex = window.dataLayer.findIndex((event) => event[0] === 'config');
+
+    expect(passthroughIndex).toBeGreaterThan(-1);
+    expect(passthroughIndex).toBeLessThan(firstConfigIndex);
+
+    unmount();
+  });
+
+  it('concede consentimento somente ao clicar em Aceitar', () => {
+    window.localStorage.removeItem('dr-adriano-analytics-consent');
+
+    const { getByRole, unmount } = render(
+      <MemoryRouter>
+        <AnalyticsConsent />
+      </MemoryRouter>
+    );
+
+    expect(window.dataLayer.some((event) => event[0] === 'consent' && event[1] === 'update')).toBe(false);
+    fireEvent.click(getByRole('button', { name: 'Aceitar' }));
+
+    expect(window.localStorage.getItem('dr-adriano-analytics-consent')).toBe('granted');
+    expect(window.dataLayer.some((event) => (
+      event[0] === 'consent'
+      && event[1] === 'update'
+      && event[2].ad_storage === 'granted'
+      && event[2].ad_personalization === 'denied'
+    ))).toBe(true);
 
     unmount();
   });
