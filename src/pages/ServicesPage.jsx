@@ -29,7 +29,7 @@ const DesktopWhatsAppForm = React.lazy(() => import('../components/DesktopWhatsA
 const SERVICES = [
   {
     title: 'HIFU — Ultrassom Microfocado',
-    path: '/hifu',
+    path: '/hifu/',
     Icon: Zap,
     description:
       'Tecnologia não invasiva para estimular colágeno e auxiliar no cuidado da flacidez facial e corporal, conforme avaliação individual.',

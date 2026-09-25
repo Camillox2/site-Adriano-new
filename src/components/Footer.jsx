@@ -14,7 +14,7 @@ const QUICK_LINKS = [
 ];
 
 const SERVICES = [
-  { label: 'HIFU — Ultrassom Microfocado', path: '/hifu' },
+  { label: 'HIFU — Ultrassom Microfocado', path: '/hifu/' },
   { label: 'Ortodontia', path: '/ortodontia' },
   { label: 'Implantes Dentários', path: '/implantes-dentarios' },
   { label: 'Harmonização Orofacial', path: '/harmonizacao-orofacial' },
@@ -105,7 +105,7 @@ const Footer = () => {
                 </li>
               ))}
               <li>
-                <Link to="/hifu" className="hover:text-white transition-colors">
+                <Link to="/hifu/" className="hover:text-white transition-colors">
                   Página completa do HIFU
                 </Link>
               </li>

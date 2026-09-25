@@ -301,7 +301,7 @@ const HifuSection = () => {
               })}
             </div>
             <Link
-              to="/hifu"
+              to="/hifu/"
               className="inline-flex items-center gap-2 text-primary-700 font-semibold mt-7 hover:gap-3.5 transition-all"
             >
               Saiba tudo sobre o Ultrassom Microfocado

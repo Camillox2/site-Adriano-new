@@ -139,7 +139,7 @@ const BlogList = () => {
               className="bg-white rounded-3xl overflow-hidden border border-slate-200 hover:border-emerald-500/50 transition-all duration-500 hover:shadow-xl hover:-translate-y-2 flex flex-col group animate-fade-in-up"
               style={{ animationDelay: `${(index % 6) * 100}ms` }}
             >
-              <Link to={`/blog/${post.slug}`} className="block relative overflow-hidden aspect-[16/10]">
+              <Link to={`/blog/${post.slug}/`} className="block relative overflow-hidden aspect-[16/10]">
                 <img 
                   src={post.coverImage} 
                   alt={post.title}
@@ -166,7 +166,7 @@ const BlogList = () => {
                 </div>
 
                 <h2 className="text-xl font-bold text-slate-800 mb-3 line-clamp-2 group-hover:text-emerald-700 transition-colors leading-tight">
-                  <Link to={`/blog/${post.slug}`}>
+                  <Link to={`/blog/${post.slug}/`}>
                     {post.title}
                   </Link>
                 </h2>
@@ -176,7 +176,7 @@ const BlogList = () => {
                 </p>
 
                 <Link 
-                  to={`/blog/${post.slug}`}
+                  to={`/blog/${post.slug}/`}
                   className="inline-flex items-center gap-2 text-emerald-600 font-bold text-sm hover:text-emerald-500 transition-all mt-auto w-fit group/link"
                 >
                   Leia mais
