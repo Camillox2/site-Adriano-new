@@ -1,6 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { GA_MEASUREMENT_ID, GOOGLE_ADS_ID, rememberGoogleClickId } from '../utils/leadTracking';
+import {
+  ADS_PHONE_CLICK_SEND_TO,
+  ADS_WHATSAPP_CLICK_SEND_TO,
+  GA_MEASUREMENT_ID,
+  GOOGLE_ADS_ID,
+  rememberGoogleClickId,
+  trackAdsClickConversion,
+} from '../utils/leadTracking';
 
 const CONSENT_KEY = 'dr-adriano-analytics-consent';
 const TRACKED_WHATSAPP_SELECTOR = 'a[href^="https://wa.me/"]';
@@ -32,6 +39,9 @@ const loadAnalytics = () => {
     ad_personalization: 'denied',
     analytics_storage: 'denied',
   });
+  // Keeps ad-click identifiers (gclid/wbraid/gbraid) in internal links while
+  // consent is denied, so Ads can attribute conversions without cookies.
+  window.gtag('set', 'url_passthrough', true);
   window.gtag('js', new Date());
   window.gtag('config', GA_MEASUREMENT_ID, { anonymize_ip: true });
   window.gtag('config', GOOGLE_ADS_ID);
@@ -63,6 +73,7 @@ const AnalyticsConsent = () => {
           link_url: link.href,
           page_location: window.location.href,
         });
+        trackAdsClickConversion(ADS_PHONE_CLICK_SEND_TO);
         return;
       }
 
@@ -79,21 +90,8 @@ const AnalyticsConsent = () => {
 
       if (!link.matches(TRACKED_WHATSAPP_SELECTOR)) return;
 
-      // When user clicks contact/WhatsApp without having explicitly denied cookies,
-      // grant conversion measurement so Google Ads attributes the lead
-      const currentConsent = window.localStorage.getItem(CONSENT_KEY);
-      if (currentConsent !== 'denied') {
-        if (window.gtag) {
-          window.gtag('consent', 'update', {
-            ad_storage: 'granted',
-            ad_user_data: 'granted',
-            analytics_storage: 'granted',
-          });
-        }
-        if (currentConsent !== 'granted') {
-          rememberGoogleClickId();
-        }
-      }
+      // LGPD: consent is only granted by the "Aceitar" button in the banner.
+      // A WhatsApp click never changes the consent state.
 
       const needsNavigationGuard = !link.target || link.target === '_self';
       let navigated = false;
@@ -115,6 +113,7 @@ const AnalyticsConsent = () => {
         page_location: window.location.href,
         transport_type: 'beacon',
       });
+      trackAdsClickConversion(ADS_WHATSAPP_CLICK_SEND_TO);
 
       if (needsNavigationGuard && !navigated) {
         window.setTimeout(continueNavigation, 500);
@@ -147,19 +146,22 @@ const AnalyticsConsent = () => {
   if (consent) return null;
 
   return (
-    <aside className="fixed inset-x-4 bottom-4 md:inset-x-auto md:right-6 md:bottom-6 z-[60] max-w-xl rounded-2xl bg-slate-950 text-white shadow-2xl p-5 md:p-6">
-      <h2 className="font-bold text-lg">Medição de audiência</h2>
-      <p className="text-sm leading-relaxed text-slate-300 mt-2">
-        Usamos cookies opcionais para entender páginas acessadas e contatos iniciados pelo WhatsApp. Se você recusar, não usamos cookies de Analytics ou Ads.{' '}
+    <aside
+      aria-label="Aviso de cookies"
+      className="fixed inset-x-4 bottom-4 md:inset-x-auto md:right-6 md:bottom-6 z-[60] max-w-md rounded-2xl bg-slate-950 text-white shadow-2xl p-4 md:p-5"
+    >
+      <h2 className="font-semibold text-base">Este site utiliza cookies</h2>
+      <p className="text-sm leading-relaxed text-slate-300 mt-1">
+        Usamos cookies para melhorar sua experiência e entender como o site é usado. Você pode aceitar ou recusar.{' '}
         <Link className="text-emerald-300 hover:text-emerald-200 underline" to="/politica-de-privacidade">
-          Saiba como funciona.
+          Política de privacidade
         </Link>
       </p>
-      <div className="flex flex-col sm:flex-row gap-3 mt-5">
-        <button type="button" className="btn-primary !py-3 text-sm" onClick={() => setChoice('granted')}>
-          Aceitar medição
+      <div className="flex flex-row gap-3 mt-4">
+        <button type="button" className="btn-primary !py-2.5 text-sm flex-1" onClick={() => setChoice('granted')}>
+          Aceitar
         </button>
-        <button type="button" className="btn-outline-light !py-3 text-sm" onClick={() => setChoice('denied')}>
+        <button type="button" className="btn-outline-light !py-2.5 text-sm flex-1" onClick={() => setChoice('denied')}>
           Recusar
         </button>
       </div>

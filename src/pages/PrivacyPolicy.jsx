@@ -44,10 +44,10 @@ const PrivacyPolicy = () => {
           <section>
             <h2 className="text-2xl font-bold text-slate-900">Sua escolha</h2>
             <p className="mt-3">
-              Você pode aceitar ou recusar a medição de audiência no aviso exibido no site. A escolha fica registrada neste navegador e pode ser alterada a qualquer momento.
+              Você pode aceitar ou recusar os cookies no aviso exibido no site. A escolha fica registrada neste navegador e pode ser alterada a qualquer momento.
             </p>
             <button type="button" className="mt-4 text-primary-700 font-semibold hover:underline" onClick={reopenConsentChoices}>
-              Alterar preferência de medição
+              Alterar preferências de cookies
             </button>
           </section>
           <section>
