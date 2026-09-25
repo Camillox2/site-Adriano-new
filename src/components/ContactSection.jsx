@@ -121,14 +121,10 @@ const ContactSection = () => (
           <ul className="space-y-3 text-slate-700">
             <li className="flex justify-between gap-4 pb-3 border-b border-slate-100">
               <span>Segunda a sexta</span>
-              <span className="font-semibold">8h às 18h</span>
-            </li>
-            <li className="flex justify-between gap-4 pb-3 border-b border-slate-100">
-              <span>Sábado</span>
-              <span className="font-semibold">8h às 12h</span>
+              <span className="font-semibold">8h30 às 19h</span>
             </li>
             <li className="flex justify-between gap-4">
-              <span>Domingo</span>
+              <span>Sábado e domingo</span>
               <span className="font-semibold text-slate-500">Fechado</span>
             </li>
           </ul>

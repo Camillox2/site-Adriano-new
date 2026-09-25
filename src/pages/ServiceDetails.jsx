@@ -433,7 +433,7 @@ const ServiceDetails = () => {
                   </span>
                   <span className="flex items-center gap-2">
                     <Clock size={18} aria-hidden="true" />
-                    Seg a sex, 8h às 18h
+                    Segunda a sexta: 8h30 às 19h
                   </span>
                 </div>
               </Reveal>

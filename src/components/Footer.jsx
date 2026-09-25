@@ -161,8 +161,8 @@ const Footer = () => {
               <li className="flex items-start gap-3">
                 <Clock size={17} className="text-secondary-500 shrink-0 mt-0.5" aria-hidden="true" />
                 <span>
-                  Seg a sex: 8h às 18h
-                  <span className="block text-slate-300">Sábado: 8h às 12h</span>
+                  Segunda a sexta: 8h30 às 19h
+                  <span className="block text-slate-300">Sábado e domingo: fechado</span>
                 </span>
               </li>
             </ul>
