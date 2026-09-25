@@ -6,8 +6,8 @@ import { rememberGoogleClickId, trackAdsClickConversion, trackLead } from '../ut
 jest.mock('../utils/leadTracking', () => ({
   GA_MEASUREMENT_ID: 'G-ZFM9X87FLS',
   GOOGLE_ADS_ID: 'AW-18349275000',
-  ADS_WHATSAPP_CLICK_SEND_TO: '',
-  ADS_PHONE_CLICK_SEND_TO: '',
+  ADS_WHATSAPP_CLICK_SEND_TO: 'AW-18349275000/TSg8CKzz-4QdEPjuzq1E',
+  ADS_PHONE_CLICK_SEND_TO: 'AW-18349275000/-MjrCK_z-4QdEPjuzq1E',
   rememberGoogleClickId: jest.fn(),
   trackAdsClickConversion: jest.fn(),
   trackLead: jest.fn(),
@@ -68,6 +68,8 @@ describe('AnalyticsConsent', () => {
 
     expect(trackLead).not.toHaveBeenCalled();
     expect(window.dataLayer.some((event) => event[0] === 'event' && event[1] === 'phone_click')).toBe(true);
+    expect(trackAdsClickConversion).toHaveBeenCalledTimes(1);
+    expect(trackAdsClickConversion).toHaveBeenCalledWith('AW-18349275000/-MjrCK_z-4QdEPjuzq1E');
     expect(window.dataLayer.some((event) => event[0] === 'event' && event[1] === 'directions_click')).toBe(true);
 
     unmount();
@@ -114,7 +116,7 @@ describe('AnalyticsConsent', () => {
     expect(rememberGoogleClickId).not.toHaveBeenCalled();
     expect(window.localStorage.getItem('dr-adriano-analytics-consent')).toBeNull();
     expect(window.dataLayer.some((event) => event[0] === 'event' && event[1] === 'whatsapp_click')).toBe(true);
-    expect(trackAdsClickConversion).toHaveBeenCalledWith('');
+    expect(trackAdsClickConversion).toHaveBeenCalledWith('AW-18349275000/TSg8CKzz-4QdEPjuzq1E');
 
     unmount();
   });

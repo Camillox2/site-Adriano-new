@@ -3,12 +3,12 @@ export const GA_MEASUREMENT_ID = 'G-ZFM9X87FLS';
 export const GOOGLE_ADS_ID = 'AW-18349275000';
 const GOOGLE_ADS_LEAD_SEND_TO = `${GOOGLE_ADS_ID}/DnpUCP2Jgd4cEPjuzq1E`;
 
-// Conversões secundárias do Google Ads para cliques de contato.
-// Preencha com o "send_to" completo (formato AW-18349275000/XXXX) quando as
-// ações de conversão forem criadas no Google Ads. Enquanto estiverem vazias,
-// nenhuma conversão do Ads é enviada nesses cliques (apenas os eventos do GA4).
-export const ADS_WHATSAPP_CLICK_SEND_TO = '';
-export const ADS_PHONE_CLICK_SEND_TO = '';
+// Conversões secundárias do Google Ads para cliques de contato
+// ("send_to" completo, formato AW-18349275000/XXXX). O valor (R$1) é o padrão
+// configurado na ação do Google Ads, por isso não é enviado pelo código.
+// Se uma constante ficar vazia, nenhuma conversão do Ads é enviada nesse clique.
+export const ADS_WHATSAPP_CLICK_SEND_TO = 'AW-18349275000/TSg8CKzz-4QdEPjuzq1E';
+export const ADS_PHONE_CLICK_SEND_TO = 'AW-18349275000/-MjrCK_z-4QdEPjuzq1E';
 
 export const trackAdsClickConversion = (sendTo) => {
   if (!sendTo || typeof window.gtag !== 'function') return;
