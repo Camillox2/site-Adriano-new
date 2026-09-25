@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { ArrowRight, Calendar, CheckCircle2, ChevronDown, MessageSquare, Play, ShieldCheck, Target, TrendingUp } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import WhatsAppButton from '../components/WhatsAppButton';
 import Seo from '../components/Seo';
 import Reveal from '../components/Reveal';
 import HifuDeviceViewer3d from '../components/HifuDeviceViewer3d';
@@ -123,7 +122,6 @@ const AlugarHifu = () => {
       </main>
 
       <Footer />
-      <WhatsAppButton />
     </div>
   );
 };

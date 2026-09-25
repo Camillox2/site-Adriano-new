@@ -23,7 +23,6 @@ import {
 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import WhatsAppButton from '../components/WhatsAppButton';
 import Seo from '../components/Seo';
 import Reveal from '../components/Reveal';
 import CountUp from '../components/CountUp';
@@ -140,7 +139,6 @@ const ServiceDetails = () => {
         <Header />
         <HifuRentalDetails data={page} />
         <Footer />
-        <WhatsAppButton />
       </div>
     );
   }
@@ -470,7 +468,6 @@ const ServiceDetails = () => {
       </main>
 
       <Footer />
-      <WhatsAppButton />
     </div>
   );
 };

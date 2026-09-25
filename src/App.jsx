@@ -2,6 +2,7 @@ import React, { useEffect, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import AnalyticsConsent from './components/AnalyticsConsent';
+import WhatsAppButton from './components/WhatsAppButton';
 import ErrorBoundary from './components/ErrorBoundary';
 import './styles/global.css';
 
@@ -57,6 +58,7 @@ function App() {
         </Suspense>
         </RouteErrorBoundary>
       </div>
+      <WhatsAppButton />
     </Router>
   );
 }

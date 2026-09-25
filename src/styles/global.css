@@ -195,3 +195,16 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* Botão flutuante do WhatsApp (todas as páginas) */
+.whatsapp-float {
+  right: calc(16px + env(safe-area-inset-right, 0px));
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+}
+
+@media (min-width: 768px) {
+  .whatsapp-float {
+    right: calc(24px + env(safe-area-inset-right, 0px));
+    bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  }
+}

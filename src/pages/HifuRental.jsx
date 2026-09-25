@@ -20,7 +20,6 @@ import {
 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import WhatsAppButton from '../components/WhatsAppButton';
 import Seo from '../components/Seo';
 import Reveal from '../components/Reveal';
 import HifuInteractiveLab from '../components/HifuInteractiveLab';
@@ -257,7 +256,6 @@ const HifuRental = () => {
       </main>
 
       <Footer />
-      <WhatsAppButton />
       {activeVideo && <VideoModal video={activeVideo} onClose={closeVideo} />}
     </div>
   );

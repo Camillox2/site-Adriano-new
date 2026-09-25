@@ -19,7 +19,6 @@ import {
 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import WhatsAppButton from '../components/WhatsAppButton';
 import Seo from '../components/Seo';
 import { images } from '../assets';
 import { ADDRESS, whatsapp } from '../utils/constants';
@@ -546,7 +545,6 @@ const ServicesPage = () => {
       </main>
 
       <Footer />
-      <WhatsAppButton />
     </div>
   );
 };

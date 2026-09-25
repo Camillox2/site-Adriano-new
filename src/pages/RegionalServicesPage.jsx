@@ -13,7 +13,6 @@ import {
 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import WhatsAppButton from '../components/WhatsAppButton';
 import Seo from '../components/Seo';
 import RegionalLocationCard from '../components/RegionalLocationCard';
 import { images } from '../assets';
@@ -371,7 +370,6 @@ const RegionalServicesPage = () => {
       </main>
 
       <Footer />
-      <WhatsAppButton />
     </div>
   );
 };
