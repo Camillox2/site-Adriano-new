@@ -7,7 +7,7 @@ const ACHIEVEMENTS = [
   {
     Icon: GraduationCap,
     title: 'Formação sólida',
-    description: 'Graduado pela UFSC, com especialização em Ortodontia',
+    description: 'Graduado pela UFSC, especialista em Ortodontia e mestre em DTM e Dor Orofacial',
   },
   {
     Icon: Award,
@@ -67,8 +67,9 @@ const AboutSection = () => (
             Com mais de 30 anos de atuação, o Dr. Adriano Camillo é referência
             regional em tratamentos odontológicos e estéticos avançados.
             Graduado pela Universidade Federal de Santa Catarina (UFSC), possui
-            especialização em Ortodontia e certificações em Harmonização
-            Orofacial e HIFU.
+            especialização em Ortodontia, mestrado em DTM e Dor Orofacial pela
+            Faculdade São Leopoldo Mandic (Campinas, 2018) e certificações em
+            Harmonização Orofacial e HIFU.
           </p>
           <p className="text-slate-600 leading-relaxed md:text-lg">
             Sua abordagem combina técnicas consolidadas com as tecnologias mais

@@ -532,7 +532,7 @@ const BASE_SERVICES = {
     headingPattern: (city) => `DTM e Dor Orofacial ${city.locationTitle}`,
     introPattern: (city) => `Alivie dores na mandíbula, estalos articulares e dores de cabeça ${city.contextText}`,
     sectionTitlePattern: (city) => `Diagnóstico Criterioso para o Alívio da Dor ${city.locationTitle}`,
-    shortIntro: 'A Disfunção Temporomandibular afeta a articulação e os músculos da mastigação. Tratamos a origem das dores orofaciais e enxaquecas crônicas com foco no seu alívio imediato e bem-estar.',
+    shortIntro: 'A Disfunção Temporomandibular afeta a articulação e os músculos da mastigação. Tratamos a origem das dores orofaciais e enxaquecas crônicas com foco no seu alívio imediato e bem-estar. O Dr. Adriano Camillo é mestre em DTM e Dor Orofacial pela Faculdade São Leopoldo Mandic (Campinas, 2018).',
     topicPoints: [
       { title: 'Identificação Exata da Causa', text: 'Diagnóstico minucioso através de exames palpatórios e de imagem 3D. Entendemos a fundo o impacto do bruxismo e desequilíbrios oclusais na sua dor diária.' },
       { title: 'Abordagem Conservadora', text: 'Utilizamos placas miorrelaxantes lisas e rígidas, calibradas sob medida para você. Elas protegem os dentes de desgastes severos e descomprimem a sua articulação.' },
