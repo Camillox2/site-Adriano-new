@@ -27,6 +27,28 @@
       ]
     }
   ],
+  "redirects": [
+    {
+      "source": "/hifu",
+      "destination": "/hifu/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/mitos-sobre-o-acido-hialuronico",
+      "destination": "/blog/mitos-sobre-o-acido-hialuronico/",
+      "permanent": true
+    },
+    {
+      "source": "/servicos/curitiba{/}?",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/:service(odontologia-estetica|implantes-dentarios|ortodontia|harmonizacao-orofacial|dtm-dor-orofacial|ozonioterapia|aluguel-de-hifu|lipo-de-papada-hifu)-sao-lourenco-do-oeste{/}?",
+      "destination": "/:service/",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/((?!.*\\.(?:xml|txt|ico|png|jpg|jpeg|svg|webp|json|css|js|mp4|webm)$).*)",
