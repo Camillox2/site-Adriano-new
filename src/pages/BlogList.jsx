@@ -159,7 +159,7 @@ const BlogList = () => {
                 <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
 
                 <div className="flex items-center gap-4 text-xs text-slate-500 mb-4 font-medium">
-                  <span className="flex items-center gap-1.5">
+                  <span className="flex items-center gap-1.5" suppressHydrationWarning>
                     <Calendar size={14} className="text-emerald-600" />
                     {new Date(post.date).toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' })}
                   </span>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ChevronRight, Image as ImageIcon } from 'lucide-react';
 import { images as globalImages } from '../assets';
 import Reveal from './Reveal';
+import { isPrerendering } from '../utils/prerender';
 
 const AnimatedServiceContent = ({ page }) => {
   const [activeImageIndex, setActiveImageIndex] = useState(0);
@@ -14,7 +15,7 @@ const AnimatedServiceContent = ({ page }) => {
 
   // Auto-slide images every 5 seconds if there are multiple
   useEffect(() => {
-    if (images.length > 1) {
+    if (images.length > 1 && !isPrerendering()) {
       const interval = setInterval(() => {
         setActiveImageIndex((prev) => (prev + 1) % images.length);
       }, 5000);

@@ -1,17 +1,19 @@
-import React, { useEffect, Suspense, lazy } from 'react';
+import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Header from '../components/Header';
 import Hero from '../components/Hero';
 import Footer from '../components/Footer';
 import Seo from '../components/Seo';
 import { PAGE_META } from '../data/pageMeta';
+import SafeSuspense from '../components/SafeSuspense';
+import lazyWithPreload from '../utils/lazyWithPreload';
 
-const ResultsSection = lazy(() => import('../components/ResultsSection'));
-const AboutSection = lazy(() => import('../components/AboutSection'));
-const HifuSection = lazy(() => import('../components/HifuSection'));
-const TestimonialsSection = lazy(() => import('../components/TestimonialsSection'));
-const ServicesSection = lazy(() => import('../components/ServicesSection'));
-const ContactSection = lazy(() => import('../components/ContactSection'));
+const ResultsSection = lazyWithPreload(() => import('../components/ResultsSection'));
+const AboutSection = lazyWithPreload(() => import('../components/AboutSection'));
+const HifuSection = lazyWithPreload(() => import('../components/HifuSection'));
+const TestimonialsSection = lazyWithPreload(() => import('../components/TestimonialsSection'));
+const ServicesSection = lazyWithPreload(() => import('../components/ServicesSection'));
+const ContactSection = lazyWithPreload(() => import('../components/ContactSection'));
 
 const Home = () => {
   const location = useLocation();
@@ -35,28 +37,33 @@ const Home = () => {
       <Header />
       <main>
         <Hero />
-        <Suspense fallback={null}>
+        <SafeSuspense>
           <AboutSection />
-        </Suspense>
-        <Suspense fallback={null}>
+        </SafeSuspense>
+        <SafeSuspense>
           <ResultsSection />
-        </Suspense>
-        <Suspense fallback={null}>
+        </SafeSuspense>
+        <SafeSuspense>
           <HifuSection />
-        </Suspense>
-        <Suspense fallback={null}>
+        </SafeSuspense>
+        <SafeSuspense>
           <TestimonialsSection />
-        </Suspense>
-        <Suspense fallback={null}>
+        </SafeSuspense>
+        <SafeSuspense>
           <ServicesSection />
-        </Suspense>
-        <Suspense fallback={null}>
+        </SafeSuspense>
+        <SafeSuspense>
           <ContactSection />
-        </Suspense>
+        </SafeSuspense>
       </main>
       <Footer />
     </div>
   );
 };
+
+// Usado por preloadRoute (App.jsx) antes de hidratar a página inicial
+Home.preload = () => Promise.all(
+  [ResultsSection, AboutSection, HifuSection, TestimonialsSection, ServicesSection, ContactSection].map((section) => section.preload())
+);
 
 export default Home;

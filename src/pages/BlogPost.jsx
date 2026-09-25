@@ -105,7 +105,7 @@ const BlogPost = () => {
               <span className="bg-emerald-100 text-emerald-800 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
                 {post.category}
               </span>
-              <span className="flex items-center gap-1.5 text-slate-500 text-sm font-medium">
+              <span className="flex items-center gap-1.5 text-slate-500 text-sm font-medium" suppressHydrationWarning>
                 <Calendar size={14} className="text-emerald-600" />
                 {new Date(post.date).toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' })}
               </span>

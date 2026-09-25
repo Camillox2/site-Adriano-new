@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ADS_PHONE_CLICK_SEND_TO,
@@ -8,6 +8,7 @@ import {
   rememberGoogleClickId,
   trackAdsClickConversion,
 } from '../utils/leadTracking';
+import { hydration, isPrerendering } from '../utils/prerender';
 
 const CONSENT_KEY = 'dr-adriano-analytics-consent';
 const TRACKED_WHATSAPP_SELECTOR = 'a[href^="https://wa.me/"]';
@@ -56,8 +57,17 @@ const loadAnalytics = () => {
 
 const AnalyticsConsent = () => {
   const [consent, setConsent] = useState(() => window.localStorage.getItem(CONSENT_KEY));
+  // Ao hidratar HTML pré-renderizado (que não contém o banner), o primeiro
+  // render precisa bater com o HTML; o banner entra logo em seguida, antes da pintura.
+  const [mounted, setMounted] = useState(() => !hydration.pending);
+
+  useLayoutEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
+    // Captura do pré-render no build: nenhum script de analytics/consentimento.
+    if (isPrerendering()) return undefined;
     // Advanced Consent Mode: load after hydration with every storage category
     // denied. A refusal therefore does not allow Ads/Analytics cookies.
     loadAnalytics();
@@ -127,7 +137,7 @@ const AnalyticsConsent = () => {
   }, []);
 
   useEffect(() => {
-    if (consent !== 'granted') return;
+    if (consent !== 'granted' || isPrerendering()) return;
 
     window.gtag('consent', 'update', {
       ad_storage: 'granted',
@@ -143,7 +153,7 @@ const AnalyticsConsent = () => {
     setConsent(choice);
   };
 
-  if (consent) return null;
+  if (consent || !mounted || isPrerendering()) return null;
 
   return (
     <aside

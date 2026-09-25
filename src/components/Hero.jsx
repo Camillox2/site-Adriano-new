@@ -1,18 +1,22 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Phone, Instagram, ShieldCheck, MapPin, Star } from 'lucide-react';
 import { images, videos } from '../assets';
 import { SITE, WHATSAPP_DEFAULT } from '../utils/constants';
 import CountUp from './CountUp';
 import DesktopWhatsAppForm from './DesktopWhatsAppForm';
+import { isInitialRenderDeterministic } from '../utils/prerender';
 
 const Hero = () => {
   const backgroundVideoRef = useRef(null);
   // O vídeo só é renderizado em telas >= 768px para não ser baixado no mobile
+  // No HTML pré-renderizado (e na hidratação dele) começa como mobile; o
+  // useLayoutEffect abaixo aplica o valor real antes da primeira pintura.
   const [isDesktop, setIsDesktop] = useState(
-    () => typeof window !== 'undefined' && !!window.matchMedia?.('(min-width: 768px)').matches
+    () => !isInitialRenderDeterministic()
+      && typeof window !== 'undefined' && !!window.matchMedia?.('(min-width: 768px)').matches
   );
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!window.matchMedia) return undefined;
     const desktopQuery = window.matchMedia('(min-width: 768px)');
     const syncViewport = () => setIsDesktop(desktopQuery.matches);

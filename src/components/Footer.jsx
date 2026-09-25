@@ -171,7 +171,7 @@ const Footer = () => {
 
         {/* Barra final */}
         <div className="py-6 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-3 text-sm text-slate-400">
-          <p>
+          <p suppressHydrationWarning>
             © {year} Dr. Adriano Camillo — {SITE.cro} — Todos os direitos reservados.
           </p>
           <p>

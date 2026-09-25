@@ -3,6 +3,7 @@ import { ChevronLeft, ChevronRight, Star, Quote, MapPin } from 'lucide-react';
 import { ADDRESS, WHATSAPP_DEFAULT } from '../utils/constants';
 import CountUp from './CountUp';
 import Reveal from './Reveal';
+import { isPrerendering } from '../utils/prerender';
 
 const TESTIMONIALS = [
   {
@@ -85,6 +86,7 @@ const TestimonialsSection = () => {
     setIndex((current) => (current === 0 ? TESTIMONIALS.length - 1 : current - 1));
 
   useEffect(() => {
+    if (isPrerendering()) return undefined;
     const interval = setInterval(next, 7000);
     return () => clearInterval(interval);
   }, [next]);
