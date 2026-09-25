@@ -8,6 +8,7 @@ import { PAGE_META } from '../data/pageMeta';
 import SafeSuspense from '../components/SafeSuspense';
 import lazyWithPreload from '../utils/lazyWithPreload';
 
+const OfficeGallerySection = lazyWithPreload(() => import('../components/OfficeGallerySection'));
 const ResultsSection = lazyWithPreload(() => import('../components/ResultsSection'));
 const AboutSection = lazyWithPreload(() => import('../components/AboutSection'));
 const HifuSection = lazyWithPreload(() => import('../components/HifuSection'));
@@ -41,6 +42,9 @@ const Home = () => {
           <AboutSection />
         </SafeSuspense>
         <SafeSuspense>
+          <OfficeGallerySection />
+        </SafeSuspense>
+        <SafeSuspense>
           <ResultsSection />
         </SafeSuspense>
         <SafeSuspense>
@@ -63,7 +67,7 @@ const Home = () => {
 
 // Usado por preloadRoute (App.jsx) antes de hidratar a página inicial
 Home.preload = () => Promise.all(
-  [ResultsSection, AboutSection, HifuSection, TestimonialsSection, ServicesSection, ContactSection].map((section) => section.preload())
+  [ResultsSection, AboutSection, OfficeGallerySection, HifuSection, TestimonialsSection, ServicesSection, ContactSection].map((section) => section.preload())
 );
 
 export default Home;
