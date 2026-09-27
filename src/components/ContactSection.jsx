@@ -25,6 +25,12 @@ const CONTACT_METHODS = [
     href: WHATSAPP_DEFAULT,
     buttonText: 'Chamar no WhatsApp',
     primary: true,
+    // Ação secundária (mais discreta): ligação direta para o consultório
+    secondary: {
+      href: SITE.phoneTel,
+      text: 'Ligar agora',
+      ariaLabel: `Ligar agora para o consultório: ${SITE.phone}`,
+    },
   },
   {
     Icon: Instagram,
@@ -53,7 +59,7 @@ const ContactSection = () => (
 
       {/* Canais de contato */}
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6 mb-14 md:mb-20 max-w-3xl mx-auto">
-        {CONTACT_METHODS.map(({ Icon, title, description, value, href, buttonText, primary }) => (
+        {CONTACT_METHODS.map(({ Icon, title, description, value, href, buttonText, primary, secondary }) => (
           <div
             key={title}
             className={`card card-lift p-7 text-center flex flex-col ${
@@ -84,6 +90,16 @@ const ContactSection = () => (
               {buttonText}
               <ArrowRight size={17} aria-hidden="true" />
             </a>
+            {secondary && (
+              <a
+                href={secondary.href}
+                aria-label={secondary.ariaLabel}
+                className="btn-outline w-full !py-3 mt-3"
+              >
+                <Phone size={17} aria-hidden="true" />
+                {secondary.text}
+              </a>
+            )}
           </div>
         ))}
       </div>

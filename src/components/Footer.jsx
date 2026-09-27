@@ -143,10 +143,21 @@ const Footer = () => {
               <li className="flex items-start gap-3">
                 <Phone size={17} className="text-secondary-500 shrink-0 mt-0.5" aria-hidden="true" />
                 <span>
-                  <a href={whatsappHref} target="_blank" rel="noopener noreferrer" className="text-white font-semibold hover:underline">
+                  <a
+                    href={SITE.phoneTel}
+                    aria-label={`Ligar para ${SITE.phone}`}
+                    className="text-white font-semibold hover:underline"
+                  >
                     {SITE.phone}
                   </a>
-                  <span className="block text-slate-300">WhatsApp</span>
+                  <a
+                    href={whatsappHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-slate-300 hover:text-white hover:underline"
+                  >
+                    WhatsApp
+                  </a>
                 </span>
               </li>
               <li className="flex items-start gap-3">

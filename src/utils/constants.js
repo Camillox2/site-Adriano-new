@@ -8,6 +8,7 @@ export const SITE = {
   url: 'https://dradrianocamillo.com',
   phone: '(49) 9 9836-2864',
   phoneRaw: '5549998362864',
+  phoneTel: 'tel:+5549998362864',
   instagram: 'https://www.instagram.com/dr.adrianocamillo/',
   instagramHandle: '@dr.adrianocamillo',
 };
