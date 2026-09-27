@@ -47,19 +47,39 @@ const loadAnalytics = () => {
   window.gtag('config', GA_MEASUREMENT_ID, { anonymize_ip: true });
   window.gtag('config', GOOGLE_ADS_ID);
 
-  const script = document.createElement('script');
-  script.async = true;
-  // A single Google tag configures both destinations. Starting with the Ads
-  // ID lets Google Ads detect the base tag while GA4 remains configured above.
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`;
-  document.head.appendChild(script);
+  let scriptRequested = false;
+  const appendGoogleTag = () => {
+    if (scriptRequested) return;
+    scriptRequested = true;
+
+    const script = document.createElement('script');
+    script.async = true;
+    script.fetchPriority = 'low';
+    // A single Google tag configures both destinations. Starting with the Ads
+    // ID lets Google Ads detect the base tag while GA4 remains configured above.
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${GOOGLE_ADS_ID}`;
+    document.head.appendChild(script);
+  };
+
+  // Queue analytics now, but fetch Google's scripts during idle time.
+  // A tracked contact click starts the download immediately so its events queue.
+  if (window.requestIdleCallback) {
+    const idleHandle = window.requestIdleCallback(appendGoogleTag, { timeout: 5000 });
+    window.__drAdrianoLoadAnalyticsScript = () => {
+      window.cancelIdleCallback?.(idleHandle);
+      appendGoogleTag();
+    };
+  } else {
+    window.__drAdrianoLoadAnalyticsScript = appendGoogleTag;
+    appendGoogleTag();
+  }
 };
 
 const AnalyticsConsent = () => {
   const [consent, setConsent] = useState(() => window.localStorage.getItem(CONSENT_KEY));
-  // Ao hidratar HTML pré-renderizado (que não contém o banner), o primeiro
-  // render precisa bater com o HTML; o banner entra logo em seguida, antes da pintura.
-  const [mounted, setMounted] = useState(() => !hydration.pending);
+  // O banner faz parte do HTML pré-renderizado para aparecer junto com o conteúdo.
+  // Visitantes com escolha salva removem esse nó antes da hidratação em index.html.
+  const [mounted, setMounted] = useState(() => !hydration.pending || !consent);
 
   useLayoutEffect(() => {
     setMounted(true);
@@ -78,6 +98,7 @@ const AnalyticsConsent = () => {
       if (!link || !window.gtag) return;
 
       if (link.matches('a[href^="tel:"]')) {
+        window.__drAdrianoLoadAnalyticsScript?.();
         window.gtag('event', 'phone_click', {
           link_label: link.getAttribute('aria-label') || link.textContent.trim(),
           link_url: link.href,
@@ -88,6 +109,7 @@ const AnalyticsConsent = () => {
       }
 
       if (link.matches(TRACKED_MAP_SELECTOR)) {
+        window.__drAdrianoLoadAnalyticsScript?.();
         const { label, city } = getLinkContext(link);
         window.gtag('event', 'directions_click', {
           link_label: label,
@@ -99,6 +121,8 @@ const AnalyticsConsent = () => {
       }
 
       if (!link.matches(TRACKED_WHATSAPP_SELECTOR)) return;
+
+      window.__drAdrianoLoadAnalyticsScript?.();
 
       // LGPD: consent is only granted by the "Aceitar" button in the banner.
       // A WhatsApp click never changes the consent state.
@@ -153,7 +177,7 @@ const AnalyticsConsent = () => {
     setConsent(choice);
   };
 
-  if (consent || !mounted || isPrerendering()) return null;
+  if (consent || !mounted) return null;
 
   return (
     <aside

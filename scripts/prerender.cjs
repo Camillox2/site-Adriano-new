@@ -9,8 +9,8 @@
 // - PRERENDER=off pula esta etapa (o site continua funcionando como SPA).
 // Qualquer falha interrompe o build, para nunca publicar HTML incompleto.
 //
-// Durante a captura: window.__PRERENDER__ = true (sem banner de cookies,
-// consentimento, GTM/gtag ou carrosséis automáticos), IntersectionObserver
+// Durante a captura: window.__PRERENDER__ = true (sem scripts de analytics,
+// consentimento, GTM/gtag ou carrosséis automáticos; o banner é pré-renderizado), IntersectionObserver
 // desativado (Reveal/CountUp ficam no estado inicial, como no primeiro render
 // do visitante) e toda requisição para fora do servidor local é bloqueada.
 const fs = require('fs');

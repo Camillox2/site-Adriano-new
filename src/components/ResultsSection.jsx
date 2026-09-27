@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Sparkles, Play, ZoomIn, X, CheckCircle, ArrowRight, ShieldCheck } from 'lucide-react';
 import { WHATSAPP_DEFAULT } from '../utils/constants';
@@ -127,10 +127,30 @@ const CATEGORIES = [
 ];
 
 const ResultsSection = () => {
+  const featuredVideoRef = useRef(null);
   const [activeCategory, setActiveCategory] = useState('todos');
   const [showAllResults, setShowAllResults] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+
+  useEffect(() => {
+    const video = featuredVideoRef.current;
+    if (!video) return undefined;
+
+    if (!('IntersectionObserver' in window)) {
+      video.poster = resultadoHarmonizacao1;
+      return undefined;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      if (!entries.some((entry) => entry.isIntersecting)) return;
+      video.poster = resultadoHarmonizacao1;
+      observer.disconnect();
+    }, { rootMargin: '400px' });
+
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
 
   // Efeito para travar o scroll e permitir fechar modais via tecla Escape
   React.useEffect(() => {
@@ -187,13 +207,13 @@ const ResultsSection = () => {
           <div className="max-w-4xl mx-auto bg-slate-900 rounded-3xl overflow-hidden shadow-2xl border border-slate-800 grid grid-cols-1 md:grid-cols-2 items-center">
             <div className="relative w-full aspect-square md:aspect-auto md:h-full md:max-h-[480px] bg-black flex items-center justify-center group overflow-hidden">
               <video
+                ref={featuredVideoRef}
                 src={antesEDepoisVideo}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 muted
                 loop
                 playsInline
                 preload="none"
-                poster={resultadoHarmonizacao1}
               >
                 <track kind="captions" src="/captions/antes-depois.vtt" srcLang="pt-BR" label="Português" default />
               </video>

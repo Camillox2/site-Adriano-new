@@ -37,9 +37,6 @@
   <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/apple-touch-icon.png" />
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
-  <!-- Conexão antecipada com o Google Tag Manager -->
-  <link rel="preconnect" href="https://www.googletagmanager.com" />
-
   <!-- Dados estruturados: clínica odontológica -->
   <script type="application/ld+json">
   {
@@ -139,5 +136,12 @@
     <p>Você precisa habilitar o JavaScript para ver o site completo.</p>
   </noscript>
   <div id="root"></div>
+  <script>
+    try {
+      if (localStorage.getItem('dr-adriano-analytics-consent')) {
+        document.querySelector('#root [aria-label="Aviso de cookies"]')?.remove();
+      }
+    } catch (error) {}
+  </script>
 </body>
 </html>
