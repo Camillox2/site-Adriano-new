@@ -25,6 +25,28 @@ const getLinkContext = (link) => {
   };
 };
 
+// Estados de consentimento (Consent Mode v2). ad_personalization fica sempre negado.
+const DENIED_CONSENT = {
+  ad_storage: 'denied',
+  ad_user_data: 'denied',
+  ad_personalization: 'denied',
+  analytics_storage: 'denied',
+};
+const GRANTED_CONSENT = {
+  ad_storage: 'granted',
+  ad_user_data: 'granted',
+  ad_personalization: 'denied',
+  analytics_storage: 'granted',
+};
+
+const readSavedConsent = () => {
+  try {
+    return window.localStorage.getItem(CONSENT_KEY);
+  } catch {
+    return null;
+  }
+};
+
 const loadAnalytics = () => {
   if (window.__drAdrianoAnalyticsLoaded) return;
 
@@ -34,12 +56,13 @@ const loadAnalytics = () => {
     window.dataLayer.push(arguments);
   };
 
-  window.gtag('consent', 'default', {
-    ad_storage: 'denied',
-    ad_user_data: 'denied',
-    ad_personalization: 'denied',
-    analytics_storage: 'denied',
-  });
+  window.gtag('consent', 'default', DENIED_CONSENT);
+  // Escolha salva em visita anterior: aplica antes dos "config" para que o
+  // page_view inicial já saia com o estado correto.
+  const savedConsent = readSavedConsent();
+  if (savedConsent === 'granted' || savedConsent === 'denied') {
+    window.gtag('consent', 'update', savedConsent === 'granted' ? GRANTED_CONSENT : DENIED_CONSENT);
+  }
   // Keeps ad-click identifiers (gclid/wbraid/gbraid) in internal links while
   // consent is denied, so Ads can attribute conversions without cookies.
   window.gtag('set', 'url_passthrough', true);
@@ -57,9 +80,9 @@ const loadAnalytics = () => {
 
 const AnalyticsConsent = () => {
   const [consent, setConsent] = useState(() => window.localStorage.getItem(CONSENT_KEY));
-  // Ao hidratar HTML pré-renderizado (que não contém o banner), o primeiro
-  // render precisa bater com o HTML; o banner entra logo em seguida, antes da pintura.
-  const [mounted, setMounted] = useState(() => !hydration.pending);
+  // O banner faz parte do HTML pré-renderizado para aparecer junto com o conteúdo.
+  // Visitantes com escolha salva removem esse nó antes da hidratação em index.html.
+  const [mounted, setMounted] = useState(() => !hydration.pending || !consent);
 
   useLayoutEffect(() => {
     setMounted(true);
@@ -139,12 +162,7 @@ const AnalyticsConsent = () => {
   useEffect(() => {
     if (consent !== 'granted' || isPrerendering()) return;
 
-    window.gtag('consent', 'update', {
-      ad_storage: 'granted',
-      ad_user_data: 'granted',
-      ad_personalization: 'denied',
-      analytics_storage: 'granted',
-    });
+    window.gtag('consent', 'update', GRANTED_CONSENT);
     rememberGoogleClickId();
   }, [consent]);
 
@@ -153,7 +171,7 @@ const AnalyticsConsent = () => {
     setConsent(choice);
   };
 
-  if (consent || !mounted || isPrerendering()) return null;
+  if (consent || !mounted) return null;
 
   return (
     <aside

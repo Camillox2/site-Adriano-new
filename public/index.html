@@ -2,6 +2,15 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
+  <!-- Aviso de cookies: esconde antes da primeira pintura quando já existe escolha salva -->
+  <script>
+    try {
+      if (localStorage.getItem('dr-adriano-analytics-consent')) {
+        document.documentElement.setAttribute('data-consent-saved', '');
+      }
+    } catch (error) {}
+  </script>
+  <style>html[data-consent-saved] #root > aside[aria-label="Aviso de cookies"] { display: none; }</style>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#065f46" />
 
@@ -139,5 +148,14 @@
     <p>Você precisa habilitar o JavaScript para ver o site completo.</p>
   </noscript>
   <div id="root"></div>
+  <script>
+    // Visitantes com escolha salva: remove o aviso pré-renderizado antes da hidratação.
+    try {
+      if (localStorage.getItem('dr-adriano-analytics-consent')) {
+        var cookieBanner = document.querySelector('#root [aria-label="Aviso de cookies"]');
+        if (cookieBanner && cookieBanner.parentNode) cookieBanner.parentNode.removeChild(cookieBanner);
+      }
+    } catch (error) {}
+  </script>
 </body>
 </html>

@@ -161,8 +161,7 @@ const Hero = () => {
                 alt="Dr. Adriano Camillo em seu consultório"
                 width="420"
                 height="354"
-                loading="eager"
-                fetchPriority="high"
+                loading="lazy"
                 decoding="async"
                 className="relative w-60 sm:w-72 lg:w-[18rem] xl:w-[20rem] h-auto object-contain rounded-[2rem] shadow-2xl ring-1 ring-white/20"
               />

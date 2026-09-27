@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { WHATSAPP_RENTAL, whatsapp } from '../utils/constants';
 import { normalizePath } from '../utils/seoIndexing';
+import { isInitialRenderDeterministic, isPrerendering } from '../utils/prerender';
 
 // Mensagem padrão do botão flutuante (todas as páginas)
 export const WHATSAPP_FLOAT_MESSAGE = 'Olá! Vim pelo site e gostaria de agendar uma avaliação.';
@@ -37,9 +38,12 @@ const measureBannerLift = () => {
 
 // Acompanha o aviso de cookies sem alterar o componente de consentimento
 const useCookieBannerLift = () => {
-  const [lift, setLift] = useState(measureBannerLift);
+  // No HTML pré-renderizado e na hidratação começa sem deslocamento (igual para
+  // todos os visitantes); a posição real é aplicada no efeito abaixo.
+  const [lift, setLift] = useState(() => (isInitialRenderDeterministic() ? null : measureBannerLift()));
 
   useEffect(() => {
+    if (isPrerendering()) return undefined;
     let frame = 0;
     let resizeObserver;
     let observedBanner = null;
