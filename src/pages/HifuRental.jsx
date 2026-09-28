@@ -237,7 +237,7 @@ const HifuRental = () => {
                   <button type="button" onClick={() => setOpenFaq(openFaq === index ? -1 : index)} className="w-full p-5 flex justify-between gap-4 text-left font-bold text-slate-900" aria-expanded={openFaq === index}>
                     {question}<ChevronDown className={`shrink-0 text-primary-700 transition-transform ${openFaq === index ? 'rotate-180' : ''}`} size={21} />
                   </button>
-                  {openFaq === index && <p className="px-5 pb-5 text-slate-600 leading-relaxed animate-fade-in">{answer}</p>}
+                  <p className="px-5 pb-5 text-slate-600 leading-relaxed animate-fade-in" hidden={openFaq !== index}>{answer}</p>
                 </div>
               ))}
             </div>

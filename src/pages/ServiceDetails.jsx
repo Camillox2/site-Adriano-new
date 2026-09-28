@@ -75,11 +75,10 @@ const FaqItem = ({ faq, open, onToggle, index }) => (
           aria-hidden="true"
         />
       </button>
-      {open && (
-        <div className="px-5 md:px-6 pb-5 md:pb-6 -mt-1 animate-fade-in">
-          <p className="text-slate-600 leading-relaxed">{faq.answer}</p>
-        </div>
-      )}
+      {/* Resposta sempre no HTML (SEO/IA); fechada fica oculta via atributo hidden */}
+      <div className="px-5 md:px-6 pb-5 md:pb-6 -mt-1 animate-fade-in" hidden={!open}>
+        <p className="text-slate-600 leading-relaxed">{faq.answer}</p>
+      </div>
     </div>
   </Reveal>
 );
@@ -97,10 +96,10 @@ const ServiceDetails = () => {
       '@graph': [
         {
           '@type': 'Service',
-          '@id': `https://dradrianocamillo.com/${page.slug}#service`,
+          '@id': `https://dradrianocamillo.com/${page.slug}/#service`,
           name: page.label,
           description: page.description,
-          url: `https://dradrianocamillo.com/${page.slug}`,
+          url: `https://dradrianocamillo.com/${page.slug}/`,
           provider: { '@id': 'https://dradrianocamillo.com/#clinica' },
           areaServed: {
             '@type': 'City',

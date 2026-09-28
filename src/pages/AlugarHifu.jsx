@@ -8,6 +8,7 @@ import Reveal from '../components/Reveal';
 import HifuDeviceViewer3d from '../components/HifuDeviceViewer3d';
 import { images, videos } from '../assets';
 import { WHATSAPP_ALUGAR_HIFU } from '../utils/constants';
+import { ALUGAR_HIFU_FAQS as FAQS, faqPageSchema } from '../data/pageFaqs';
 
 const ADVANTAGES = [
   { Icon: ShieldCheck, title: 'Equipamento revisado', text: 'O Ultramed HIFU é preparado e conferido antes da locação.' },
@@ -28,12 +29,21 @@ const VIDEOS = [
   { title: 'Atendimento personalizado', description: 'Um recorte da experiência de atendimento.', poster: images.posterHifuAtendimento, src: videos.hifuAtendimento, captions: '/captions/hifu-atendimento.vtt' },
 ];
 
-const FAQS = [
-  { q: 'Como funciona a entrega e a retirada?', a: 'A logística é alinhada com a sua agenda e a região de atendimento antes da confirmação da locação.' },
-  { q: 'Quais ponteiras acompanham o equipamento?', a: 'A disponibilidade das ponteiras faciais de 1,5 mm, 3,0 mm e 4,5 mm é confirmada no momento da locação.' },
-  { q: 'Quem pode operar o Ultramed HIFU?', a: 'O equipamento deve ser utilizado por profissionais habilitados e capacitados, respeitando as regras aplicáveis ao seu conselho profissional.' },
-  { q: 'Posso consultar datas para a minha cidade?', a: 'Sim. Fale pelo WhatsApp, informe sua cidade e a data desejada para verificar a disponibilidade.' },
-];
+// JSON-LD da rota (Service + FAQPage), igual ao gerado no HTML estático
+const ROUTE_JSONLD = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Service',
+      name: PAGE_META['/alugar_hifu'].h1,
+      description: PAGE_META['/alugar_hifu'].description,
+      url: 'https://dradrianocamillo.com/alugar_hifu/',
+      provider: { '@id': 'https://dradrianocamillo.com/#clinica' },
+      areaServed: { '@type': 'City', name: 'São Lourenço do Oeste' },
+    },
+    faqPageSchema(FAQS),
+  ],
+};
 
 const AlugarHifu = () => {
   const [openFaq, setOpenFaq] = useState(0);
@@ -44,6 +54,7 @@ const AlugarHifu = () => {
         title={PAGE_META['/alugar_hifu'].title}
         description={PAGE_META['/alugar_hifu'].description}
         path="/alugar_hifu"
+        jsonLd={ROUTE_JSONLD}
       />
       <Header />
 
@@ -115,7 +126,7 @@ const AlugarHifu = () => {
 
         <section id="duvidas-locacao" className="section bg-slate-50">
           <div className="container mx-auto px-4"><Reveal className="mx-auto max-w-2xl text-center"><p className="text-xs font-bold uppercase tracking-[0.15em] text-secondary-700">Dúvidas frequentes</p><h2 className="mt-3 text-3xl font-bold text-slate-900 md:text-4xl">Sobre a locação</h2></Reveal>
-            <div className="mx-auto mt-10 max-w-3xl divide-y divide-slate-200 rounded-2xl border border-slate-200 bg-white"><Reveal>{FAQS.map((faq, index) => { const expanded = openFaq === index; return <div key={faq.q}><button type="button" onClick={() => setOpenFaq(expanded ? -1 : index)} className="flex w-full items-center justify-between gap-4 px-5 py-5 text-left sm:px-6" aria-expanded={expanded}><span className="font-semibold text-slate-900">{faq.q}</span><ChevronDown size={20} className={`shrink-0 text-secondary-700 transition-transform ${expanded ? 'rotate-180' : ''}`} aria-hidden="true" /></button>{expanded && <p className="px-5 pb-5 text-sm leading-relaxed text-slate-600 sm:px-6">{faq.a}</p>}</div>; })}</Reveal></div>
+            <div className="mx-auto mt-10 max-w-3xl divide-y divide-slate-200 rounded-2xl border border-slate-200 bg-white"><Reveal>{FAQS.map((faq, index) => { const expanded = openFaq === index; return <div key={faq.question}><button type="button" onClick={() => setOpenFaq(expanded ? -1 : index)} className="flex w-full items-center justify-between gap-4 px-5 py-5 text-left sm:px-6" aria-expanded={expanded}><span className="font-semibold text-slate-900">{faq.question}</span><ChevronDown size={20} className={`shrink-0 text-secondary-700 transition-transform ${expanded ? 'rotate-180' : ''}`} aria-hidden="true" /></button><p className="px-5 pb-5 text-sm leading-relaxed text-slate-600 sm:px-6" hidden={!expanded}>{faq.answer}</p></div>; })}</Reveal></div>
           </div>
         </section>
 

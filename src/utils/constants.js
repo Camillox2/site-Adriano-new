@@ -18,8 +18,15 @@ export const ADDRESS = {
   city: 'São Lourenço do Oeste',
   state: 'SC',
   zip: '89990-000',
-  mapsUrl:
-    'https://www.google.com/maps/search/?api=1&query=Dr.+Adriano+Camillo+Dentista+em+S%C3%A3o+Louren%C3%A7o+do+Oeste',
+  // Perfil da Empresa no Google (Adriano R. Camillo Consultório Odontológico), link estável por CID
+  mapsUrl: 'https://www.google.com/maps?cid=1502128700667960177',
+};
+
+export const GOOGLE_BUSINESS = {
+  name: 'Adriano R. Camillo Consultório Odontológico',
+  mapsUrl: ADDRESS.mapsUrl,
+  shareUrl: 'https://maps.app.goo.gl/kqwdPY9NxcTnvazZA',
+  reviewUrl: 'https://g.page/r/CXGbOzoYotgUEBM/review',
 };
 
 // Gera link do WhatsApp com mensagem pré-preenchida

@@ -20,6 +20,7 @@ import SkinDiagram from '../components/SkinDiagram';
 import { HIFU_VIDEOS, VideoModal } from '../components/HifuSection';
 import { images } from '../assets';
 import { WHATSAPP_HIFU } from '../utils/constants';
+import { HIFU_FAQS as FAQS, faqPageSchema } from '../data/pageFaqs';
 
 // ---------- conteúdo ----------
 const BENEFITS = [
@@ -96,53 +97,20 @@ const STEPS = [
   },
 ];
 
-const FAQS = [
-  {
-    question: 'O que é HIFU (Ultrassom Microfocado)?',
-    answer:
-      'HIFU é a sigla de High Intensity Focused Ultrasound — ultrassom focado de alta intensidade. É uma tecnologia não invasiva que concentra energia em pontos precisos das camadas profundas da pele, provocando a contração imediata das fibras e estimulando a produção de colágeno novo. O resultado é um efeito lifting sem cirurgia.',
-  },
-  {
-    question: 'Para quem o HIFU é indicado?',
-    answer:
-      'É indicado principalmente para pessoas a partir dos 30 anos com flacidez leve a moderada na face, papada ou pescoço, que desejam rejuvenescer sem cirurgia. A avaliação profissional define se o HIFU é a melhor opção para o seu caso.',
-  },
-  {
-    question: 'Quando os resultados aparecem?',
-    answer:
-      'Há um efeito tensor discreto já nos primeiros dias, mas o principal resultado vem da produção de colágeno novo: a melhora se torna visível a partir de 30 dias e evolui progressivamente por até 6 meses após a sessão.',
-  },
-  {
-    question: 'O procedimento dói?',
-    answer:
-      'A maioria dos pacientes sente apenas pontadas leves ou calor durante a aplicação, bem tolerados. Não é necessária anestesia geral e o desconforto termina junto com a sessão.',
-  },
-  {
-    question: 'Quantas sessões são necessárias?',
-    answer:
-      'Na maioria dos casos, uma única sessão é suficiente. Dependendo do grau de flacidez, pode ser recomendada uma sessão de manutenção após 12 a 18 meses.',
-  },
-  {
-    question: 'Quais os cuidados após o HIFU?',
-    answer:
-      'Os cuidados são simples: usar protetor solar diariamente, manter a pele hidratada e evitar exposição solar intensa nos primeiros dias. Não há restrição para atividades do dia a dia.',
-  },
-  {
-    question: 'HIFU substitui a cirurgia plástica?',
-    answer:
-      'O HIFU trata flacidez leve a moderada com excelentes resultados, mas não substitui um lifting cirúrgico em casos de flacidez acentuada. Na avaliação, o Dr. Adriano indica com transparência o tratamento mais adequado ao seu caso.',
-  },
-];
-
-// JSON-LD FAQPage para os resultados do Google
+// JSON-LD da rota (Service + FAQPage), igual ao gerado no HTML estático
 const FAQ_JSONLD = {
   '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: FAQS.map((faq) => ({
-    '@type': 'Question',
-    name: faq.question,
-    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
-  })),
+  '@graph': [
+    {
+      '@type': 'Service',
+      name: PAGE_META['/hifu'].h1,
+      description: PAGE_META['/hifu'].description,
+      url: 'https://dradrianocamillo.com/hifu/',
+      provider: { '@id': 'https://dradrianocamillo.com/#clinica' },
+      areaServed: { '@type': 'City', name: 'São Lourenço do Oeste' },
+    },
+    faqPageSchema(FAQS),
+  ],
 };
 
 // ---------- componentes ----------
@@ -162,11 +130,10 @@ const FaqItem = ({ faq, open, onToggle }) => (
         aria-hidden="true"
       />
     </button>
-    {open && (
-      <div className="px-5 md:px-6 pb-5 md:pb-6 -mt-1 animate-fade-in">
-        <p className="text-slate-600 leading-relaxed">{faq.answer}</p>
-      </div>
-    )}
+    {/* Resposta sempre no HTML (SEO/IA); fechada fica oculta via atributo hidden */}
+    <div className="px-5 md:px-6 pb-5 md:pb-6 -mt-1 animate-fade-in" hidden={!open}>
+      <p className="text-slate-600 leading-relaxed">{faq.answer}</p>
+    </div>
   </div>
 );
 

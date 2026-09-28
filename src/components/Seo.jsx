@@ -47,6 +47,8 @@ const Seo = ({ title, description, path = '/', jsonLd = null, noindex = false })
     const SCRIPT_ID = 'route-jsonld';
     document.getElementById(SCRIPT_ID)?.remove();
     if (jsonLd) {
+      // O JSON-LD da rota substitui o gerado no build (evita FAQPage/Service duplicados)
+      document.getElementById('static-route-jsonld')?.remove();
       const script = document.createElement('script');
       script.type = 'application/ld+json';
       script.id = SCRIPT_ID;

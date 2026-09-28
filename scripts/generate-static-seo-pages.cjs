@@ -14,6 +14,10 @@ const srcData = (file) => loadSrcModule(path.join(__dirname, '..', 'src', 'data'
 const { PAGE_META, NOT_FOUND_META, blogPostMeta } = srcData('pageMeta.js');
 const { SERVICE_PAGE_LIST } = srcData('servicePages.js');
 const { BLOG_POSTS } = srcData('blogPosts.js');
+const { HIFU_FAQS, SERVICES_FAQS, ALUGAR_HIFU_FAQS, faqPageSchema } = srcData('pageFaqs.js');
+
+// Perguntas frequentes visíveis de cada página fixa (as páginas de serviço usam service.faqs)
+const PAGE_FAQS = { '/hifu': HIFU_FAQS, '/servicos': SERVICES_FAQS, '/alugar_hifu': ALUGAR_HIFU_FAQS };
 
 const canonicalPath = (pagePath) => (pagePath === '/' ? '/' : `${pagePath.replace(/\/+$/, '')}/`);
 const escapeHtml = (value) => String(value)
@@ -28,7 +32,7 @@ const primaryServices = SERVICE_PAGE_LIST.filter((page) => page.citySlug === 'sa
 const pages = [];
 
 Object.entries(PAGE_META).forEach(([pagePath, meta]) => {
-  const page = { path: pagePath, ...meta };
+  const page = { path: pagePath, ...meta, faqs: PAGE_FAQS[pagePath] || [] };
   if (meta.schemaType === 'CollectionPage') {
     page.items = pagePath === '/blog'
       ? BLOG_POSTS.map((post) => ({ name: post.title, path: `/blog/${post.slug}` }))
@@ -45,6 +49,7 @@ SERVICE_PAGE_LIST.forEach((service) => {
     h1: service.heading,
     serviceName: service.label,
     cityName: service.cityName,
+    faqs: service.faqs || [],
   });
 });
 
@@ -66,7 +71,16 @@ const replaceTag = (html, matcher, replacement) => {
   return html.replace(matcher, replacement);
 };
 
-const schemaFor = (page, url) => {
+// Acrescenta o FAQPage (mesmo texto do acordeão visível) ao schema principal da página.
+const withFaq = (schema, page) => {
+  if (!schema || !page.faqs || !page.faqs.length) return schema;
+  const { '@context': context, ...main } = schema;
+  return { '@context': context, '@graph': [main, faqPageSchema(page.faqs)] };
+};
+
+const schemaFor = (page, url) => withFaq(baseSchemaFor(page, url), page);
+
+const baseSchemaFor = (page, url) => {
   if (page.schema === false || page.path === '/') return null;
   if (page.schemaType === 'CollectionPage') {
     return {

@@ -23,6 +23,7 @@ import Seo from '../components/Seo';
 import { PAGE_META } from '../data/pageMeta';
 import { images } from '../assets';
 import { ADDRESS, whatsapp } from '../utils/constants';
+import { SERVICES_FAQS as FAQS } from '../data/pageFaqs';
 
 const DesktopWhatsAppForm = React.lazy(() => import('../components/DesktopWhatsAppForm'));
 
@@ -141,29 +142,6 @@ const SERVICES = [
   },
 ];
 
-const FAQS = [
-  {
-    question: 'Como saber qual tratamento é indicado para mim?',
-    answer:
-      'A indicação depende da avaliação clínica, do seu histórico de saúde e dos seus objetivos. Durante a consulta, o Dr. Adriano explica as alternativas, benefícios, limitações e etapas antes de qualquer decisão.',
-  },
-  {
-    question: 'Posso agendar diretamente pelo WhatsApp?',
-    answer:
-      'Sim. No celular, toque no botão do WhatsApp. No computador, você também pode preencher o formulário para abrir a conversa com as informações iniciais já organizadas.',
-  },
-  {
-    question: 'O consultório atende pacientes de outras cidades?',
-    answer:
-      'Sim. O consultório fica em São Lourenço do Oeste e recebe pacientes da região. Ao entrar em contato, informe sua cidade para facilitar a organização do atendimento.',
-  },
-  {
-    question: 'Os resultados são iguais para todas as pessoas?',
-    answer:
-      'Não. Resultados, duração e número de sessões variam conforme o quadro clínico, os hábitos e a resposta individual. A avaliação é essencial para alinhar expectativas com segurança.',
-  },
-];
-
 const useDesktopViewport = () => {
   const [isDesktop, setIsDesktop] = useState(false);
 
@@ -187,18 +165,18 @@ const ServicesPage = () => {
       '@graph': [
         {
           '@type': 'CollectionPage',
-          '@id': 'https://dradrianocamillo.com/servicos#pagina',
+          '@id': 'https://dradrianocamillo.com/servicos/#pagina',
           name: 'Serviços do Dr. Adriano Camillo',
           description:
             'Tratamentos odontológicos e de estética facial em São Lourenço do Oeste, com planejamento individual e atendimento humanizado.',
-          url: 'https://dradrianocamillo.com/servicos',
+          url: 'https://dradrianocamillo.com/servicos/',
           mainEntity: {
             '@type': 'ItemList',
             itemListElement: SERVICES.map((service, index) => ({
               '@type': 'ListItem',
               position: index + 1,
               name: service.title,
-              url: `https://dradrianocamillo.com${service.path}`,
+              url: `https://dradrianocamillo.com${service.path.replace(/\/?$/, '/')}`,
             })),
           },
         },
@@ -215,7 +193,7 @@ const ServicesPage = () => {
               '@type': 'ListItem',
               position: 2,
               name: 'Serviços',
-              item: 'https://dradrianocamillo.com/servicos',
+              item: 'https://dradrianocamillo.com/servicos/',
             },
           ],
         },
