@@ -4,6 +4,7 @@ import { Phone, Instagram, MapPin, Clock } from 'lucide-react';
 import { images } from '../assets';
 import { SITE, ADDRESS, WHATSAPP_DEFAULT, WHATSAPP_RENTAL } from '../utils/constants';
 import { normalizePath } from '../utils/seoIndexing';
+import DcFoundryCredit from './DcFoundryCredit';
 
 const QUICK_LINKS = [
   { text: 'Início', target: 'inicio' },
@@ -181,13 +182,18 @@ const Footer = () => {
         </div>
 
         {/* Barra final */}
-        <div className="py-6 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-3 text-sm text-slate-400">
-          <p suppressHydrationWarning>
-            © {year} Dr. Adriano Camillo — {SITE.cro} — Todos os direitos reservados.
-          </p>
-          <p>
-            Atendimento em São Lourenço do Oeste • Pato Branco • Realeza • Ampére e região
-          </p>
+        <div className="py-6 border-t border-slate-800 flex flex-col gap-5">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-3 text-sm text-slate-400">
+            <p suppressHydrationWarning>
+              © {year} Dr. Adriano Camillo — {SITE.cro} — Todos os direitos reservados.
+            </p>
+            <p>
+              Atendimento em São Lourenço do Oeste • Pato Branco • Realeza • Ampére e região
+            </p>
+          </div>
+          <div className="flex justify-center pt-1 pb-1">
+            <DcFoundryCredit />
+          </div>
         </div>
       </div>
     </footer>
