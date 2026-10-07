@@ -75,7 +75,7 @@ describe('AnalyticsConsent', () => {
     unmount();
   });
 
-  it('mantém a tag em modo negado e envia somente sinais sem cookies quando a medição é recusada', () => {
+  it('mantém a medição concedida mesmo com valor "denied" salvo anteriormente', () => {
     window.localStorage.setItem('dr-adriano-analytics-consent', 'denied');
 
     const { unmount } = render(
@@ -87,20 +87,23 @@ describe('AnalyticsConsent', () => {
 
     fireEvent.click(document.querySelector('a[href^="https://wa.me/"]'));
 
-    expect(rememberGoogleClickId).not.toHaveBeenCalled();
     expect(trackLead).not.toHaveBeenCalled();
     expect(window.dataLayer.some((event) => (
       event[0] === 'consent'
       && event[1] === 'default'
-      && event[2].ad_storage === 'denied'
-      && event[2].analytics_storage === 'denied'
+      && event[2].ad_storage === 'granted'
+      && event[2].ad_user_data === 'granted'
+      && event[2].analytics_storage === 'granted'
+      && event[2].ad_personalization === 'denied'
     ))).toBe(true);
+    expect(window.dataLayer.some((event) => event[0] === 'consent' && event[1] === 'update')).toBe(false);
+    expect(trackAdsClickConversion).toHaveBeenCalledWith('AW-18349275000/TSg8CKzz-4QdEPjuzq1E');
     expect(document.querySelector('script[src*="googletagmanager.com/gtag/js?id=AW-18349275000"]')).not.toBeNull();
 
     unmount();
   });
 
-  it('não concede consentimento automaticamente ao clicar no WhatsApp sem escolha no aviso', () => {
+  it('envia a conversão do WhatsApp sem precisar de escolha no aviso', () => {
     window.localStorage.removeItem('dr-adriano-analytics-consent');
 
     const { unmount } = render(
@@ -112,8 +115,10 @@ describe('AnalyticsConsent', () => {
 
     fireEvent.click(document.querySelector('a[href^="https://wa.me/"]'));
 
-    expect(window.dataLayer.some((event) => event[0] === 'consent' && event[1] === 'update')).toBe(false);
-    expect(rememberGoogleClickId).not.toHaveBeenCalled();
+    expect(window.dataLayer.some((event) => (
+      event[0] === 'consent' && event[1] === 'default' && event[2].ad_storage === 'granted'
+    ))).toBe(true);
+    expect(rememberGoogleClickId).toHaveBeenCalledTimes(1);
     expect(window.localStorage.getItem('dr-adriano-analytics-consent')).toBeNull();
     expect(window.dataLayer.some((event) => event[0] === 'event' && event[1] === 'whatsapp_click')).toBe(true);
     expect(trackAdsClickConversion).toHaveBeenCalledWith('AW-18349275000/TSg8CKzz-4QdEPjuzq1E');
@@ -139,24 +144,22 @@ describe('AnalyticsConsent', () => {
     unmount();
   });
 
-  it('concede consentimento somente ao clicar em Aceitar', () => {
+  it.each(['Entendi', 'Recusar'])('o botão %s só fecha o aviso, sem alterar o consentimento', (name) => {
     window.localStorage.removeItem('dr-adriano-analytics-consent');
 
-    const { getByRole, unmount } = render(
+    const { getByRole, queryByRole, unmount } = render(
       <MemoryRouter>
         <AnalyticsConsent />
       </MemoryRouter>
     );
 
-    expect(window.dataLayer.some((event) => event[0] === 'consent' && event[1] === 'update')).toBe(false);
-    fireEvent.click(getByRole('button', { name: 'Aceitar' }));
+    fireEvent.click(getByRole('button', { name }));
 
-    expect(window.localStorage.getItem('dr-adriano-analytics-consent')).toBe('granted');
+    expect(window.localStorage.getItem('dr-adriano-analytics-consent')).not.toBeNull();
+    expect(queryByRole('complementary', { name: 'Aviso de cookies' })).toBeNull();
+    expect(window.dataLayer.some((event) => event[0] === 'consent' && event[1] === 'update')).toBe(false);
     expect(window.dataLayer.some((event) => (
-      event[0] === 'consent'
-      && event[1] === 'update'
-      && event[2].ad_storage === 'granted'
-      && event[2].ad_personalization === 'denied'
+      event[0] === 'consent' && event[1] === 'default' && event[2].ad_storage === 'granted'
     ))).toBe(true);
 
     unmount();

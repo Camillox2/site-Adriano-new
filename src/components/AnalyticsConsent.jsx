@@ -25,26 +25,14 @@ const getLinkContext = (link) => {
   };
 };
 
-// Estados de consentimento (Consent Mode v2). ad_personalization fica sempre negado.
-const DENIED_CONSENT = {
-  ad_storage: 'denied',
-  ad_user_data: 'denied',
-  ad_personalization: 'denied',
-  analytics_storage: 'denied',
-};
+// Consent Mode v2: medição (Analytics/Ads) ativa por padrão para todos os
+// visitantes. ad_personalization fica sempre negado. O aviso de cookies é
+// apenas informativo: os botões só fecham o aviso e não alteram o consentimento.
 const GRANTED_CONSENT = {
   ad_storage: 'granted',
   ad_user_data: 'granted',
   ad_personalization: 'denied',
   analytics_storage: 'granted',
-};
-
-const readSavedConsent = () => {
-  try {
-    return window.localStorage.getItem(CONSENT_KEY);
-  } catch {
-    return null;
-  }
 };
 
 const loadAnalytics = () => {
@@ -56,15 +44,9 @@ const loadAnalytics = () => {
     window.dataLayer.push(arguments);
   };
 
-  window.gtag('consent', 'default', DENIED_CONSENT);
-  // Escolha salva em visita anterior: aplica antes dos "config" para que o
-  // page_view inicial já saia com o estado correto.
-  const savedConsent = readSavedConsent();
-  if (savedConsent === 'granted' || savedConsent === 'denied') {
-    window.gtag('consent', 'update', savedConsent === 'granted' ? GRANTED_CONSENT : DENIED_CONSENT);
-  }
-  // Keeps ad-click identifiers (gclid/wbraid/gbraid) in internal links while
-  // consent is denied, so Ads can attribute conversions without cookies.
+  // Padrão concedido para todos (valores antigos salvos como "denied" são ignorados).
+  window.gtag('consent', 'default', GRANTED_CONSENT);
+  // Keeps ad-click identifiers (gclid/wbraid/gbraid) in internal links.
   window.gtag('set', 'url_passthrough', true);
   window.gtag('js', new Date());
   window.gtag('config', GA_MEASUREMENT_ID, { anonymize_ip: true });
@@ -91,9 +73,9 @@ const AnalyticsConsent = () => {
   useEffect(() => {
     // Captura do pré-render no build: nenhum script de analytics/consentimento.
     if (isPrerendering()) return undefined;
-    // Advanced Consent Mode: load after hydration with every storage category
-    // denied. A refusal therefore does not allow Ads/Analytics cookies.
+    // Load after hydration with measurement granted by default.
     loadAnalytics();
+    rememberGoogleClickId();
     const trackContactClick = (event) => {
       if (!(event.target instanceof Element)) return;
 
@@ -122,9 +104,6 @@ const AnalyticsConsent = () => {
       }
 
       if (!link.matches(TRACKED_WHATSAPP_SELECTOR)) return;
-
-      // LGPD: consent is only granted by the "Aceitar" button in the banner.
-      // A WhatsApp click never changes the consent state.
 
       const needsNavigationGuard = !link.target || link.target === '_self';
       let navigated = false;
@@ -159,13 +138,7 @@ const AnalyticsConsent = () => {
     };
   }, []);
 
-  useEffect(() => {
-    if (consent !== 'granted' || isPrerendering()) return;
-
-    window.gtag('consent', 'update', GRANTED_CONSENT);
-    rememberGoogleClickId();
-  }, [consent]);
-
+  // Apenas registra que o aviso foi fechado; não altera o consentimento.
   const setChoice = (choice) => {
     window.localStorage.setItem(CONSENT_KEY, choice);
     setConsent(choice);
@@ -180,14 +153,14 @@ const AnalyticsConsent = () => {
     >
       <h2 className="font-semibold text-base">Este site utiliza cookies</h2>
       <p className="text-sm leading-relaxed text-slate-300 mt-1">
-        Usamos cookies para melhorar sua experiência e entender como o site é usado. Você pode aceitar ou recusar.{' '}
+        Usamos cookies do Google Analytics e do Google Ads para medir as visitas ao site e o desempenho dos nossos anúncios.{' '}
         <Link className="text-emerald-300 hover:text-emerald-200 underline" to="/politica-de-privacidade">
           Política de privacidade
         </Link>
       </p>
       <div className="flex flex-row gap-3 mt-4">
         <button type="button" className="btn-primary !py-2.5 text-sm flex-1" onClick={() => setChoice('granted')}>
-          Aceitar
+          Entendi
         </button>
         <button type="button" className="btn-outline-light !py-2.5 text-sm flex-1" onClick={() => setChoice('denied')}>
           Recusar

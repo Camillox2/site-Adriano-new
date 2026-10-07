@@ -33,7 +33,7 @@ const PrivacyPolicy = () => {
           <section>
             <h2 className="text-2xl font-bold text-slate-900">Dados de navegação</h2>
             <p className="mt-3">
-              O site carrega a tag do Google Analytics 4 e do Google Ads com cookies desativados por padrão. Quando você aceita a medição, usamos cookies para entender, de forma agregada, quais páginas são acessadas e quais contatos pelo WhatsApp são iniciados. Se você recusar, não gravamos cookies de Analytics ou Ads; a tag opera apenas com sinais técnicos sem identificação para respeitar sua escolha e permitir medição agregada.
+              O site utiliza o Google Analytics 4 e o Google Ads, com cookies, para entender, de forma agregada, quais páginas são acessadas e quais contatos pelo WhatsApp e telefone são iniciados, e para medir o desempenho dos nossos anúncios. Não usamos esses dados para personalização de anúncios.
             </p>
           </section>
           <section>
@@ -45,10 +45,10 @@ const PrivacyPolicy = () => {
           <section>
             <h2 className="text-2xl font-bold text-slate-900">Sua escolha</h2>
             <p className="mt-3">
-              Você pode aceitar ou recusar os cookies no aviso exibido no site. A escolha fica registrada neste navegador e pode ser alterada a qualquer momento.
+              O aviso exibido no site informa sobre o uso de cookies de medição. Se preferir, você pode bloquear ou apagar cookies nas configurações do seu navegador.
             </p>
             <button type="button" className="mt-4 text-primary-700 font-semibold hover:underline" onClick={reopenConsentChoices}>
-              Alterar preferências de cookies
+              Exibir novamente o aviso de cookies
             </button>
           </section>
           <section>
