@@ -192,7 +192,7 @@
 .rd-ultrasound-wave{animation:rd-wave 4s ease-in-out infinite}
 .rd-face-dot{animation:rd-dot 3s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
 .adriano-redesign.motion-paused *{animation-play-state:paused!important}
-.motion-paused :is(.rd-scene-content,.rd-hero-copy,.rd-hero-canvas,.rd-treatment-art,.rd-treatment-detail,.rd-office-main>img,.rd-story-content blockquote){animation:none!important;opacity:1;transform:none}
+.motion-paused :is(.rd-scene-content,.rd-hero-copy,.rd-hero-canvas,.rd-treatment-art,.rd-treatment-detail,.rd-office-main>img,.rd-story-content blockquote){animation-play-state:running!important}
 .motion-paused .rd-face-outline{stroke-dashoffset:0}
 .motion-paused .rd-smile-text path{stroke-dashoffset:0}
 @keyframes rd-enter{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
@@ -242,7 +242,7 @@
 .rd-hero-description{font-size:16px;line-height:1.8}
 .rd-treatment-detail{font-size:13px}
 .motion-paused .rd-scene-stage{transform:none;transition:none}
-.motion-paused :is(.rd-smile-reveal,.rd-smile-tooth){animation:none!important;transform:none;opacity:1}
+.motion-paused :is(.rd-smile-reveal,.rd-smile-tooth,.rd-smile-fine,.rd-face-outline){animation-play-state:running!important}
 .motion-paused .rd-smile-fine{stroke-dashoffset:0}
 @keyframes rd-smile-write{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 @keyframes rd-smile-breathe{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.1)}}
