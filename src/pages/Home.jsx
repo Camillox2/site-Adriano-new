@@ -1,73 +1,53 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import Header from '../components/Header';
-import Hero from '../components/Hero';
-import Footer from '../components/Footer';
 import Seo from '../components/Seo';
 import { PAGE_META } from '../data/pageMeta';
+import RedesignHeader from '../components/redesign/RedesignHeader';
 import SafeSuspense from '../components/SafeSuspense';
 import lazyWithPreload from '../utils/lazyWithPreload';
+import DentalHero from '../components/redesign/DentalHero';
+import TreatmentExplorer from '../components/redesign/TreatmentExplorer';
+import { HifuFeature, DoctorProfile, OfficeExperience, PatientStories, RedesignFooter } from '../components/redesign/HomeSections';
+import AppointmentForm from '../components/redesign/AppointmentForm';
+import '../styles/redesign.css';
 
-const OfficeGallerySection = lazyWithPreload(() => import('../components/OfficeGallerySection'));
 const ResultsSection = lazyWithPreload(() => import('../components/ResultsSection'));
-const AboutSection = lazyWithPreload(() => import('../components/AboutSection'));
-const HifuSection = lazyWithPreload(() => import('../components/HifuSection'));
-const TestimonialsSection = lazyWithPreload(() => import('../components/TestimonialsSection'));
-const ServicesSection = lazyWithPreload(() => import('../components/ServicesSection'));
-const ContactSection = lazyWithPreload(() => import('../components/ContactSection'));
 
-const Home = () => {
+export default function Home() {
   const location = useLocation();
-
-  // Auto-scroll para a seção pedida pela navegação (menu/rodapé)
+  const [paused, setPaused] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
   useEffect(() => {
-    const target = location.state?.scrollTo;
-    if (target) {
-      setTimeout(() => {
-        document.getElementById(target)?.scrollIntoView({ behavior: 'smooth' });
-      }, 150);
-      if (location.state?.scrollTo) {
-        window.history.replaceState({}, '');
-      }
-    }
-  }, [location.state]);
-
+    const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const update = () => setReducedMotion(preference.matches);
+    update();
+    preference.addEventListener('change', update);
+    return () => preference.removeEventListener('change', update);
+  }, []);
+  useEffect(() => {
+    const id = location.state?.scrollTo || location.hash.slice(1);
+    const target = id;
+    if (target) document.getElementById(target)?.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth' });
+  }, [location.state, location.hash, reducedMotion]);
+  const motionPaused = paused || reducedMotion;
   return (
-    <div className="min-h-screen bg-white">
+    <div className={`adriano-redesign${motionPaused ? ' motion-paused' : ''}`}>
       <Seo title={PAGE_META['/'].title} description={PAGE_META['/'].description} path="/" />
-      <Header />
-      <main>
-        <Hero />
-        <SafeSuspense>
-          <AboutSection />
-        </SafeSuspense>
-        <SafeSuspense>
-          <OfficeGallerySection />
-        </SafeSuspense>
-        <SafeSuspense>
-          <ResultsSection />
-        </SafeSuspense>
-        <SafeSuspense>
-          <HifuSection />
-        </SafeSuspense>
-        <SafeSuspense>
-          <TestimonialsSection />
-        </SafeSuspense>
-        <SafeSuspense>
-          <ServicesSection />
-        </SafeSuspense>
-        <SafeSuspense>
-          <ContactSection />
-        </SafeSuspense>
+      <a className="rd-skip" href="#conteudo">Ir para o conteúdo</a>
+      <RedesignHeader />
+      <main id="conteudo">
+        <DentalHero paused={motionPaused} reducedMotion={reducedMotion} onToggleMotion={() => setPaused(value => !value)} />
+        <TreatmentExplorer />
+        <HifuFeature />
+        <DoctorProfile />
+        <OfficeExperience />
+        <div className="rd-legacy-results"><SafeSuspense><ResultsSection /></SafeSuspense></div>
+        <PatientStories />
+        <AppointmentForm />
       </main>
-      <Footer />
+      <RedesignFooter />
     </div>
   );
-};
+}
 
-// Usado por preloadRoute (App.jsx) antes de hidratar a página inicial
-Home.preload = () => Promise.all(
-  [ResultsSection, AboutSection, OfficeGallerySection, HifuSection, TestimonialsSection, ServicesSection, ContactSection].map((section) => section.preload())
-);
-
-export default Home;
+Home.preload = () => ResultsSection.preload();

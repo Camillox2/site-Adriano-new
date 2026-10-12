@@ -8,7 +8,7 @@ export const PAGE_META = {
   '/': {
     title: 'Dr. Adriano Camillo | Dentista em São Lourenço do Oeste',
     description: 'Dentista em São Lourenço do Oeste - SC. Dr. Adriano Camillo: Implantes, Ortodontia, Estética Dental e Harmonização Orofacial. Agende sua consulta!',
-    h1: 'Dentista em São Lourenço do Oeste Odontologia Estética, Ortodontia & Harmonização Facial',
+    h1: 'Seu sorriso. Sua essência. Nosso cuidado.',
   },
   '/servicos': {
     title: 'Serviços Odontológicos em São Lourenço do Oeste | Dr. Adriano Camillo',
