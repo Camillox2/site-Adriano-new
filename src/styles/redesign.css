@@ -39,8 +39,8 @@
 .adriano-redesign h1{font:400 clamp(55px,5.55vw,86px)/1.02 var(--rd-serif);letter-spacing:-.056em;margin-bottom:35px}
 .adriano-redesign h1>span{display:block;white-space:nowrap}
 .rd-smile-text{position:relative}
-.rd-smile-text svg{position:absolute;bottom:-25px;right:5px;width:60%;height:28px;overflow:visible}
-.rd-smile-text path{fill:none;stroke:#3a9a79;stroke-width:2.5;stroke-linecap:round;stroke-dasharray:440;stroke-dashoffset:440;animation:rd-draw 1.5s .5s forwards}
+
+
 .rd-hero-description{font-size:15px;line-height:1.85;max-width:480px;color:var(--rd-muted);margin-bottom:26px!important}
 .rd-actions{display:flex;flex-wrap:wrap;gap:12px}
 .rd-actions .rd-button{font-size:12px;padding:16px 23px;gap:17px}
@@ -208,3 +208,58 @@
 @media(max-width:760px){.rd-wrap{width:calc(100% - 40px)}.rd-header{height:75px}.rd-header-inner{gap:15px}.rd-brand img{width:41px;height:41px}.rd-brand strong{font-size:21px}.rd-brand small{font-size:7px;letter-spacing:.18em}.rd-menu-button{display:grid;place-items:center;background:var(--rd-mint);color:var(--rd-green);border:1px solid #dbe9e1;width:40px;height:40px;border-radius:50%}.rd-header nav{display:none;position:absolute;left:0;right:0;top:75px;background:#fff;padding:25px 25px 29px;box-shadow:0 16px 20px #0c3d2c0b;border-bottom:1px solid var(--rd-line)}.rd-header nav.is-open{display:flex;flex-direction:column;align-items:stretch;gap:0}.rd-header nav>a{font-size:16px;padding:12px 6px}.rd-header nav .rd-mobile-cta{display:flex;justify-content:space-between;color:var(--rd-green);font-weight:600;border-top:1px solid var(--rd-line);margin-top:10px;padding-top:20px}.rd-hero-layout{grid-template-columns:1fr;gap:27px;padding:32px 0 29px}.rd-hero-copy{padding-bottom:0}.rd-location{font-size:10px;margin-bottom:20px!important}.adriano-redesign h1{font-size:clamp(47px,11.8vw,79px);line-height:1.05;margin-bottom:31px;letter-spacing:-.057em}.rd-smile-text svg{bottom:-20px;height:22px;right:12px}.rd-hero-description{font-size:13px;line-height:1.8;margin-bottom:21px!important;max-width:420px}.rd-actions{gap:10px}.rd-actions .rd-button{padding:15px 20px;font-size:11px;min-height:47px}.rd-actions .rd-button-outline{padding:12px 4px;font-size:10px}.rd-hero-canvas{border-radius:22px;padding:19px 20px 17px}.rd-scene-content{height:270px}.rd-scene-tabs{margin-top:10px}.rd-scene-tabs button{font-size:10px;padding:6px 17px}.rd-scene-bottom{min-height:60px}.rd-scene-bottom label{font-size:10px}.rd-scene-bottom label span{font-size:8px}.rd-proof-band{padding:23px 0}.rd-proof-layout>div{flex-direction:column;gap:6px;align-items:center;text-align:center;padding:0 5px}.rd-proof-layout svg{width:23px;height:23px}.rd-proof-layout strong{font-size:17px;line-height:1.2}.rd-proof-layout small{font-size:6px;letter-spacing:.06em;line-height:1.5;max-width:115px}.rd-section{padding:64px 0}.adriano-redesign h2{font-size:clamp(36px,9.5vw,51px);line-height:1.09}.rd-section-heading{display:block;margin-bottom:27px}.rd-section-heading>p{margin-top:18px;font-size:12px}.rd-section-heading>p br{display:none}.rd-treatment-layout{grid-template-columns:1fr;gap:22px}.rd-treatment-canvas{aspect-ratio:1.27;border-radius:21px;max-height:350px}.rd-treatment-art svg{max-height:330px}.rd-illustration-note{bottom:10px;font-size:9px}.rd-treatment-row{padding:19px 0}.rd-treatment-row h3 button{font-size:26px;gap:14px}.rd-treatment-number{width:33px;min-width:33px;font-size:12px;height:25px}.rd-treatment-detail{padding:15px 5px 8px 47px;font-size:12px}.rd-treatment-detail a{font-size:12px;margin-top:16px}.rd-hifu{padding:56px 0 38px}.rd-hifu-layout{grid-template-columns:1fr}.rd-hifu h2{font-size:clamp(42px,11vw,58px)}.rd-hifu-copy>.rd-kicker{font-size:8px;margin-bottom:22px}.rd-hifu-copy>p:not(.rd-kicker){font-size:13px;margin-top:23px}.rd-hifu ol{margin:23px 0 28px;font-size:12px;gap:14px}.rd-hifu ol span{width:46px;font-size:12px;margin-right:14px}.rd-button-mint{font-size:12px;min-height:48px;padding:15px 22px;gap:30px}.rd-rental-link{font-size:10px;margin-top:25px}.rd-hifu-art>svg{height:360px;width:100%;max-width:440px;transform:none;margin-top:0}.rd-hifu-art>p{font-size:8px}.rd-doctor-layout{grid-template-columns:1fr;gap:31px}.rd-doctor-photo{max-height:480px;aspect-ratio:1/1.05;border-radius:21px}.rd-doctor-photo figcaption{left:16px;bottom:16px;font-size:11px;padding:10px 12px}.rd-doctor-layout>div>p{font-size:13px;margin-top:22px}.rd-education{gap:21px;margin-top:26px!important}.rd-education dt{font-size:23px}.rd-education dd{font-size:11px}.rd-office-layout{grid-template-columns:1fr;gap:33px}.rd-office-main{aspect-ratio:1.35;border-radius:18px}.rd-office-thumbnails{gap:5px}.rd-office-thumbnails img{height:47px}.rd-video-frame{height:265px}.rd-office-video h3{font-size:32px}.rd-office-video h3 br{display:none}.rd-office-address{font-size:9px;line-height:1.8;align-items:flex-start}.rd-office-address svg{flex-shrink:0}.rd-stories>.rd-wrap{grid-template-columns:1fr;gap:26px}.rd-stories h2 br{display:none}.rd-stories .rd-kicker{margin-bottom:13px}.rd-story-stars{margin-bottom:15px}.rd-story-content blockquote{font-size:23px;min-height:185px}.rd-story-author{margin-top:20px}.rd-story-author small{font-size:8px;max-width:220px}.rd-story-author strong{font-size:12px}.rd-contact{padding:57px 0}.rd-contact-layout{grid-template-columns:1fr;gap:31px}.rd-contact h2{font-size:clamp(36px,9.5vw,51px)}.rd-contact-copy>p{font-size:12px;margin-top:20px}.rd-contact ul{margin-top:25px;gap:14px}.rd-contact li{font-size:12px;gap:13px}.rd-contact li>svg{padding:10px;width:19px;height:19px}.rd-appointment{padding:26px 24px;border-radius:21px}.rd-appointment h3{font-size:36px;margin-bottom:22px}.rd-appointment label{font-size:12px}.rd-appointment :is(input,select){font-size:16px;min-height:48px}.rd-appointment .rd-button{font-size:12px;min-height:49px}.rd-appointment form>small{font-size:9px}.rd-footer{padding:33px 0 27px}.rd-footer-top{align-items:flex-start;flex-direction:column;gap:26px}.rd-footer nav{gap:15px 22px;font-size:11px}.rd-footer-bottom{flex-wrap:wrap;gap:15px;font-size:8px}.rd-footer-bottom>a:last-child{margin-left:0;width:100%;font-size:8px}.rd-legacy-results .section{padding:60px 0}.rd-legacy-results .container{width:calc(100% - 40px)}.rd-legacy-results .section-title{font-size:40px}.rd-legacy-results .section-subtitle{font-size:13px}}
 @media(max-width:370px){.rd-wrap{width:calc(100% - 32px)}.adriano-redesign h1{font-size:43px}.rd-actions{gap:6px}.rd-actions .rd-button{padding:14px 15px;font-size:10px}.rd-actions .rd-button-outline{padding:10px 1px;font-size:9px}.rd-scene-content{height:225px}.rd-proof-layout strong{font-size:15px}.rd-treatment-row h3 button{font-size:23px}.rd-story-author small{max-width:190px}.rd-contact h2{font-size:34px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}.adriano-redesign *{animation:none!important;transition:none!important}.rd-face-outline,.rd-smile-text path{stroke-dashoffset:0!important}}
+
+/* Refinement: expressive smile, coordinated vector motion and responsive depth. */
+.rd-care-word{position:relative;display:inline-block}
+.rd-care-word .rd-smile-mark{position:absolute;left:0;right:auto;bottom:-49px;width:98%;height:57px;overflow:visible;pointer-events:none}
+.rd-smile-reveal{transform-origin:left center;animation:rd-smile-write 1.8s .35s cubic-bezier(.16,1,.3,1) both}
+.rd-smile-ribbon{transform-origin:180px 22px;animation:rd-smile-breathe 9s 2.2s ease-in-out infinite}
+.rd-smile-star{transform-box:fill-box;transform-origin:center;animation:rd-smile-twinkle 5s 1.3s ease-in-out infinite}
+.rd-smile-fine{stroke-dasharray:300;stroke-dashoffset:300;animation:rd-draw 1.8s .7s forwards}
+.adriano-redesign h1{margin-bottom:56px}
+.rd-hero-canvas{perspective:900px;background:radial-gradient(ellipse at 58% 34%,#f9fdfb 0,#edf7f2 64%);border-color:#dcebe2}
+.rd-scene-content{height:355px}
+.rd-scene-stage{width:100%;height:100%;transform:perspective(900px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg)) translate3d(var(--shift-x,0px),var(--shift-y,0px),0);transition:transform .6s cubic-bezier(.22,1,.36,1);will-change:transform}
+.rd-scene-stage>svg{width:100%;height:100%;display:block}
+.rd-scene-content .rd-dental-scene{transform:scale(1.035)}
+.rd-chair-back,.rd-chair-foot{transition:transform .09s linear}
+.rd-clinic-orbit{transform-origin:361px 217px;animation:rd-orbit 38s linear infinite}
+.rd-light-head{transform-origin:325px 94px;animation:rd-lamp-sway 10s ease-in-out infinite}
+.rd-clinic-beam{animation:rd-light-breathe 7s ease-in-out infinite}
+.rd-scene-plant{transform-origin:76px 370px;animation:rd-plant-sway 11s ease-in-out infinite}
+.rd-smile-arch{transform-origin:320px 250px;animation:rd-smile-float 7s ease-in-out infinite}
+.rd-smile-tooth{animation:rd-tooth-settle 1.1s cubic-bezier(.2,.8,.2,1) both}
+.rd-smile-sheen{animation:rd-enamel-light 6.8s 1.5s cubic-bezier(.4,0,.2,1) infinite}
+.rd-smile-scene-star{transform-origin:492px 162px;animation:rd-smile-twinkle 5s ease-in-out infinite}
+.rd-smile-orbit{transform-origin:320px 248px;animation:rd-orbit-drift 15s ease-in-out infinite}
+.rd-smile-signal{animation:rd-shimmer 4s ease-in-out infinite}
+.rd-enamel-sheen{animation:rd-enamel-light 8s 2s cubic-bezier(.4,0,.2,1) infinite}
+.rd-orbit{animation-duration:24s}
+.rd-orbit-back{animation-duration:33s}
+.rd-ultrasound-wave{transform-origin:396px 334px;animation:rd-wave-travel 4.8s linear infinite}
+.rd-face-scan{animation:rd-contour-scan 7s linear infinite}
+.rd-face-hair{animation:rd-hair-flow 12s ease-in-out infinite}
+.rd-hero-description{font-size:16px;line-height:1.8}
+.rd-treatment-detail{font-size:13px}
+.motion-paused .rd-scene-stage{transform:none;transition:none}
+.motion-paused :is(.rd-smile-reveal,.rd-smile-tooth){animation:none!important;transform:none;opacity:1}
+.motion-paused .rd-smile-fine{stroke-dashoffset:0}
+@keyframes rd-smile-write{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes rd-smile-breathe{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.1)}}
+@keyframes rd-smile-twinkle{0%,100%{opacity:.5;transform:scale(.8) rotate(-5deg)}50%{opacity:1;transform:scale(1.05) rotate(5deg)}}
+@keyframes rd-lamp-sway{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+@keyframes rd-light-breathe{0%,100%{opacity:.25}50%{opacity:.8}}
+@keyframes rd-plant-sway{0%,100%{transform:rotate(-1.2deg)}50%{transform:rotate(1.2deg)}}
+@keyframes rd-smile-float{0%,100%{transform:translateY(0) rotate(-.6deg)}50%{transform:translateY(-7px) rotate(.6deg)}}
+@keyframes rd-tooth-settle{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes rd-enamel-light{0%,12%{opacity:0;transform:translateX(0) skewX(-12deg)}18%{opacity:.8}58%{opacity:.6}67%,100%{opacity:0;transform:translateX(480px) skewX(-12deg)}}
+@keyframes rd-orbit-drift{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+@keyframes rd-wave-travel{0%{opacity:0;transform:translateX(-4px) scale(.94)}20%{opacity:.65}75%{opacity:.28}100%{opacity:0;transform:translateX(12px) scale(1.065)}}
+@keyframes rd-contour-scan{from{stroke-dashoffset:380}to{stroke-dashoffset:-25}}
+@keyframes rd-hair-flow{0%,100%{opacity:.2}50%{opacity:.38}}
+@media(min-width:1600px){.rd-scene-content{height:395px}}
+@media(max-width:1200px){.rd-scene-content{height:315px}.rd-hero-description{font-size:14px}}
+@media(max-width:980px){.rd-scene-content{height:288px}.rd-hero-description{font-size:13px}.rd-care-word .rd-smile-mark{bottom:-36px;height:42px}.adriano-redesign h1{margin-bottom:43px}}
+@media(max-width:760px){.rd-scene-content{height:295px}.rd-care-word .rd-smile-mark{left:1px;bottom:-33px;height:40px;width:98%}.adriano-redesign h1{margin-bottom:43px}.rd-hero-description{font-size:13px}.rd-scene-stage{will-change:auto}.rd-treatment-detail{font-size:12px}}
+@media(max-width:370px){.rd-scene-content{height:254px}}
+@media(prefers-reduced-motion:reduce){.rd-scene-stage{transform:none!important}.rd-smile-reveal{transform:none!important}.rd-smile-fine{stroke-dashoffset:0!important}}
