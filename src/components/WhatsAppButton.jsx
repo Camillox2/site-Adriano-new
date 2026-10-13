@@ -89,6 +89,9 @@ const WhatsAppButton = ({ href, label }) => {
   const bannerLift = useCookieBannerLift();
   const isLifted = bannerLift !== null;
 
+  // The rental showroom provides its own contextual consultation CTA.
+  if (isRentalPage) return null;
+
   return (
     <a
       href={resolvedHref}
@@ -119,3 +122,4 @@ const WhatsAppButton = ({ href, label }) => {
 };
 
 export default WhatsAppButton;
+

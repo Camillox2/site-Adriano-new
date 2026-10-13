@@ -64,10 +64,26 @@ export const SERVICES_FAQS = [
 ];
 
 export const ALUGAR_HIFU_FAQS = [
-  { question: 'Como funciona a entrega e a retirada?', answer: 'A logística é alinhada com a sua agenda e a região de atendimento antes da confirmação da locação.' },
-  { question: 'Quais ponteiras acompanham o equipamento?', answer: 'A disponibilidade das ponteiras faciais de 1,5 mm, 3,0 mm e 4,5 mm é confirmada no momento da locação.' },
-  { question: 'Quem pode operar o Ultramed HIFU?', answer: 'O equipamento deve ser utilizado por profissionais habilitados e capacitados, respeitando as regras aplicáveis ao seu conselho profissional.' },
-  { question: 'Posso consultar datas para a minha cidade?', answer: 'Sim. Fale pelo WhatsApp, informe sua cidade e a data desejada para verificar a disponibilidade.' },
+  {
+    "question": "É possível contratar com CPF?",
+    "answer": "Sim, a consulta pode ser feita como profissional autônomo, com CPF, ou como clínica e empresa, com CNPJ. Os documentos e a habilitação do responsável são verificados antes da confirmação."
+  },
+  {
+    "question": "Quais ponteiras acompanham o aparelho?",
+    "answer": "Consulte a disponibilidade das ponteiras faciais de 1,5 mm, 3,0 mm e 4,5 mm. A configuração e os disparos incluídos são definidos na proposta de locação."
+  },
+  {
+    "question": "Como funcionam a entrega e a retirada?",
+    "answer": "Informe sua cidade e a data desejada. A logística, os horários e eventuais custos são combinados antes da reserva."
+  },
+  {
+    "question": "Quem pode operar o Ultramed HIFU?",
+    "answer": "Profissionais habilitados e capacitados para operar o equipamento. Informe sua formação e experiência na consulta para alinhar os requisitos de uso e a orientação operacional."
+  },
+  {
+    "question": "Qual é o valor da locação?",
+    "answer": "O valor depende do período, da configuração e da logística. A proposta informa as condições de uso, as ponteiras e os disparos incluídos."
+  }
 ];
 
 // Nó FAQPage (schema.org) com exatamente o texto visível das perguntas/respostas.
@@ -79,3 +95,4 @@ export const faqPageSchema = (faqs) => ({
     acceptedAnswer: { '@type': 'Answer', text: faq.answer },
   })),
 });
+

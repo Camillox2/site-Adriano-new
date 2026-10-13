@@ -22,9 +22,9 @@ export const PAGE_META = {
     h1: 'HIFU: o lifting facial sem cirurgia',
   },
   '/alugar_hifu': {
-    title: 'Locação de Ultramed HIFU para Clínicas | Dr. Adriano',
-    description: 'Alugue o Ultramed HIFU para sua clínica com equipamento revisado, ponteiras faciais, logística agendada e orientação operacional. Consulte disponibilidade.',
-    h1: 'Quer levar o HIFU para a sua clínica?',
+    title: 'Locação de Ultramed HIFU com CPF ou CNPJ | Dr. Adriano',
+    description: 'Conheça o Ultramed HIFU, explore suas profundidades e consulte a locação com CPF ou CNPJ para profissionais habilitados e clínicas.',
+    h1: 'O Ultramed na sua clínica.',
   },
   '/politica-de-privacidade': {
     title: 'Política de Privacidade | Dr. Adriano Camillo',
@@ -51,3 +51,4 @@ export const blogPostMeta = (post) => ({
   description: post.excerpt,
   h1: post.title,
 });
+
