@@ -7,7 +7,7 @@
 .hifu-v3 .motion-region[data-motion-active="true"] .face-float,
 .hifu-v3 .motion-region[data-motion-active="true"] .fiber-float{will-change:transform}
 .hifu-v3 .main-header>.original-brand{background:#fff;border-radius:0 0 12px 12px;overflow:hidden;height:104px;align-self:flex-start;box-shadow:0 4px 20px #5d8ca108}
-.hifu-v3 .product-light-pass{mask-image:url('/media/hifu-showroom/ultramed-studio.webp');background-size:350% 100%}
+.hifu-v3 .product-light-pass{mask-image:url('../../../public/media/hifu-showroom/ultramed-studio.webp');background-size:350% 100%}
 .hifu-v3 .cinema-grain{display:none}
 /* Clip decorative overflow without creating an internally scrollable hero. */
 .hifu-v3 .cinema-stage{overflow:clip}
